@@ -623,130 +623,148 @@
       html, body {
         margin: 0;
         padding: 0;
-        background-color: #080c16;
-        color: #FEF3C7;
+        background-color: #090a0f;
+        color: #f8f3e6;
         font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans Devanagari", sans-serif;
         -webkit-font-smoothing: antialiased;
         overflow-x: hidden;
       }
       #root {
         min-height: 100vh;
-        background-color: #080c16;
+        background-color: #090a0f;
       }
-      /* Screen-reader and Search Engine friendly hidden section (100% crawlable by Googlebot) */
-      .pj-seo-crawlable-text {
-        position: absolute !important;
-        width: 1px !important;
-        height: 1px !important;
-        padding: 0 !important;
-        margin: -1px !important;
-        overflow: hidden !important;
-        clip: rect(0, 0, 0, 0) !important;
-        white-space: nowrap !important;
-        border: 0 !important;
+      /* Professional Vedic App Shell (Zero Flash, Zero Unstyled Text) */
+      .pj-shell-container {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        width: 100%;
+        background-color: #090a0f;
+        box-sizing: border-box;
       }
-      /* Divine Vedic Instant Splash / Loader */
-      .pj-splash-container {
+      .pj-shell-topbar {
+        height: 32px;
+        background: linear-gradient(90deg, #1d0f05, #2b1608, #1d0f05);
+        border-bottom: 1px solid rgba(217, 119, 6, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 16px;
+        font-size: 11px;
+        color: #fde68a;
+        box-sizing: border-box;
+      }
+      .pj-shell-header {
+        height: 68px;
+        background: rgba(11, 15, 25, 0.96);
+        border-bottom: 1px solid rgba(180, 83, 9, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 16px;
+        box-sizing: border-box;
+      }
+      .pj-shell-brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .pj-shell-avatar {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #d97706, #78350f);
+        border: 2px solid rgba(245, 158, 11, 0.7);
+        box-shadow: 0 0 18px rgba(245, 158, 11, 0.35);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 1;
+      }
+      .pj-shell-titles {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+      .pj-shell-name {
+        font-size: 18px;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+        background: linear-gradient(180deg, #fffbeb 0%, #f59e0b 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-family: Georgia, serif;
+        line-height: 1.2;
+      }
+      .pj-shell-sub {
+        font-size: 11px;
+        color: #d97706;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        line-height: 1;
+      }
+      .pj-shell-center-area {
+        flex: 1;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        min-height: 100vh;
-        width: 100%;
-        padding: 24px 16px;
+        padding: 32px 16px;
+        background: radial-gradient(circle at 50% 38%, rgba(180, 83, 9, 0.18) 0%, rgba(9, 10, 15, 1) 75%);
         box-sizing: border-box;
-        background: radial-gradient(circle at 50% 35%, rgba(180, 83, 9, 0.22) 0%, rgba(8, 12, 22, 1) 70%);
-        text-align: center;
-        user-select: none;
       }
-      .pj-splash-badge {
+      .pj-shell-emblem-badge {
         position: relative;
-        width: 86px;
-        height: 86px;
-        margin-bottom: 20px;
+        width: 82px;
+        height: 82px;
+        margin-bottom: 22px;
         border-radius: 50%;
-        background: linear-gradient(145deg, #1f1406, #0e1424);
-        border: 2px solid rgba(245, 158, 11, 0.65);
-        box-shadow: 0 0 35px rgba(245, 158, 11, 0.28), inset 0 0 15px rgba(245, 158, 11, 0.18);
+        background: radial-gradient(circle, #2a1608 20%, #0d1220 90%);
+        border: 2px solid rgba(245, 158, 11, 0.75);
+        box-shadow: 0 0 35px rgba(245, 158, 11, 0.35), inset 0 0 15px rgba(245, 158, 11, 0.2);
         display: flex;
         align-items: center;
         justify-content: center;
-        animation: pj-pulse 2.4s ease-in-out infinite;
+        animation: pj-shell-pulse 2.2s ease-in-out infinite;
       }
-      .pj-om-symbol {
-        font-size: 42px;
+      .pj-shell-emblem-om {
+        font-size: 40px;
         font-weight: 700;
         background: linear-gradient(180deg, #FFFBEB 0%, #FBBF24 50%, #D97706 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         line-height: 1;
         transform: translateY(-1px);
-        filter: drop-shadow(0 2px 8px rgba(217, 119, 6, 0.45));
+        filter: drop-shadow(0 2px 8px rgba(217, 119, 6, 0.5));
       }
-      .pj-splash-title {
-        font-size: 24px;
-        font-weight: 800;
-        letter-spacing: 0.02em;
-        background: linear-gradient(180deg, #FEF3C7 0%, #F59E0B 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        margin-bottom: 4px;
-        font-family: Georgia, serif;
-      }
-      .pj-splash-subtitle {
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: 0.25em;
-        color: #D97706;
-        margin-bottom: 10px;
-        text-transform: uppercase;
-      }
-      .pj-splash-founder {
-        font-size: 13px;
-        color: #FCD34D;
-        font-weight: 600;
-        margin-bottom: 6px;
-      }
-      .pj-splash-tagline {
-        font-size: 12px;
-        color: #94A3B8;
-        max-width: 320px;
-        line-height: 1.5;
-        margin-bottom: 24px;
-      }
-      .pj-splash-track {
-        width: 170px;
+      .pj-shell-bar-track {
+        width: 140px;
         height: 3px;
         background: rgba(245, 158, 11, 0.15);
         border-radius: 9999px;
         overflow: hidden;
         position: relative;
-        margin-bottom: 12px;
       }
-      .pj-splash-bar {
+      .pj-shell-bar-fill {
         position: absolute;
         top: 0;
         left: 0;
         bottom: 0;
-        width: 50%;
+        width: 45%;
         background: linear-gradient(90deg, transparent, #F59E0B, #FEF3C7, #F59E0B, transparent);
         border-radius: 9999px;
-        animation: pj-shimmer 1.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        animation: pj-shell-shimmer 1.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
       }
-      .pj-splash-loading-text {
-        font-size: 11px;
-        color: #FBBF24;
-        opacity: 0.85;
-        font-weight: 500;
-        letter-spacing: 0.04em;
-      }
-      @keyframes pj-shimmer {
+      @keyframes pj-shell-shimmer {
         0% { transform: translateX(-150%); }
         100% { transform: translateX(250%); }
       }
-      @keyframes pj-pulse {
+      @keyframes pj-shell-pulse {
         0%, 100% { transform: scale(1); box-shadow: 0 0 25px rgba(245, 158, 11, 0.25); }
-        50% { transform: scale(1.03); box-shadow: 0 0 40px rgba(245, 158, 11, 0.45); }
+        50% { transform: scale(1.04); box-shadow: 0 0 42px rgba(245, 158, 11, 0.5); }
       }
     </style>
     <!-- ============================================================================ -->
@@ -765,50 +783,42 @@
 
   <body>
     <!-- ============================================================================ -->
-    <!-- [SECTION 4: SEMANTIC APPLICATION ROOT CONTAINER (GSC FAST-CRAWL READY)]      -->
+    <!-- [SECTION 4: INSTANT SEAMLESS VEDIC APP SHELL (0ms FOUC-FREE INITIAL RENDER)]  -->
     <!-- ============================================================================ -->
     <div id="root">
-      <!-- Instant Vedic Splash Loader (0ms FOUC-Free Initial Render) -->
-      <div id="pj-initial-splash" class="pj-splash-container" aria-busy="true">
-        <div class="pj-splash-badge">
-          <div class="pj-om-symbol">ॐ</div>
+      <div id="pj-initial-app-shell" class="pj-shell-container" aria-busy="true">
+        <!-- Top Utility Bar Shell -->
+        <div class="pj-shell-topbar">
+          <div style="display:flex;align-items:center;gap:6px;font-weight:700;">
+            <span style="color:#f59e0b;">📍</span>
+            <span>रुद्रपुर (उत्तराखण्ड)</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;font-weight:600;color:#fde68a;">
+            <span>+91 8958499979</span>
+          </div>
         </div>
-        <div class="pj-splash-title">पण्डित जी ऑनलाइन</div>
-        <div class="pj-splash-subtitle">PANDIT JI ONLINE</div>
-        <div class="pj-splash-founder">आचार्य पण्डित शशांक शर्मा · रुद्रपुर (उत्तराखण्ड)</div>
-        <div class="pj-splash-tagline">सटीक दृक गणित पंचांग, शुभ मुहूर्त एवं वैदिक ज्योतिष</div>
-        <div class="pj-splash-track">
-          <div class="pj-splash-bar"></div>
-        </div>
-        <div class="pj-splash-loading-text">वैदिक पंचांग व गणना लोड हो रही है...</div>
-      </div>
 
-      <!-- Semantic Crawlable Fallback for Google Search Console (Crawlable without layout flash) -->
-      <section class="pj-seo-crawlable-text" aria-label="Core Vedic Astrology Services">
-        <header>
-          <h1>Pandit Ji Online — पण्डित जी ऑनलाइन (आचार्य पण्डित शशांक शर्मा, रुद्रपुर)</h1>
-          <p>सटीक दृक गणित पंचांग, शुभ मुहूर्त २०२६-२७, नाम राशि कैलकुलेटर, ३६ गुण कुंडली मिलान, सम्पूर्ण जन्म कुंडली एवं श्री डिजिटल मंदिर</p>
-        </header>
-        <main>
-          <h2>निःशुल्क वैदिक ज्योतिष, शुभ मुहूर्त एवं पंचांग सेवाएं</h2>
-          <p>
-            आचार्य पण्डित शशांक शर्मा (रुद्रपुर, उधम सिंह नगर, उत्तराखण्ड) के मार्गदर्शन में लाहिड़ी अयनांश पर आधारित दैनिक दृक गणित पंचांग, विवाह एवं गृह प्रवेश शुभ मुहूर्त, नाम के प्रथम अक्षर से वैदिक राशि व शुभ रत्न, ३६ गुण अष्टकूट कुंडली मिलान, विंशोत्तरी महादशा और ज्योतिष AI परामर्श प्राप्त करें।
-          </p>
-          <nav aria-label="Primary Canonical Pages">
-            <a href="https://panditjionline.online/">मुख्य पृष्ठ (Home)</a>
-            <a href="https://panditjionline.online/panchang">दृक गणित पंचांग (Panchang)</a>
-            <a href="https://panditjionline.online/shubh-muhurat">शुभ मुहूर्त व नाम राशि (Shubh Muhurat)</a>
-            <a href="https://panditjionline.online/janam-kundali">जन्म कुंडली (Janam Kundali)</a>
-            <a href="https://panditjionline.online/kundali-milan">३६ गुण मिलान (Gun Milan)</a>
-            <a href="https://panditjionline.online/digital-mandir">श्री डिजिटल मंदिर (Digital Mandir)</a>
-            <a href="https://panditjionline.online/jyotish-ai">ज्योतिष AI परामर्श (Jyotish AI)</a>
-            <a href="https://panditjionline.online/puja-services">वैदिक पूजा बुकिंग (Puja Booking)</a>
-          </nav>
-        </main>
-        <footer>
-          © Pandit Ji Online · Acharya Pandit Shashank Sharma · Rudrapur, Uttarakhand (+91 8958499979)
-        </footer>
-      </section>
+        <!-- Main Header Shell -->
+        <div class="pj-shell-header">
+          <div class="pj-shell-brand">
+            <div class="pj-shell-avatar">ॐ</div>
+            <div class="pj-shell-titles">
+              <div class="pj-shell-name">पण्डित जी ऑनलाइन</div>
+              <div class="pj-shell-sub">आचार्य पण्डित शशांक शर्मा</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Center Shimmer Area -->
+        <div class="pj-shell-center-area">
+          <div class="pj-shell-emblem-badge">
+            <div class="pj-shell-emblem-om">ॐ</div>
+          </div>
+          <div class="pj-shell-bar-track">
+            <div class="pj-shell-bar-fill"></div>
+          </div>
+        </div>
+      </div>
 
       <noscript>
         <div style="background:#1e140a;color:#fde68a;padding:12px;text-align:center;font-size:13px;border-bottom:1px solid #d97706;">
