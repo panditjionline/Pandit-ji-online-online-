@@ -3,7 +3,13 @@
   "trailingSlash": false,
   "redirects": [
     {
-      "source": "https://www.panditjionline.online/:path*",
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.panditjionline.online"
+        }
+      ],
       "destination": "https://panditjionline.online/:path*",
       "permanent": true
     }
