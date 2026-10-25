@@ -1,8 +1,47 @@
 {
-  "rewrites": [
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "vite build",
+  "outputDirectory": "dist",
+  "framework": "vite",
+  "headers": [
     {
-      "source": "/((?!sitemap\\.xml|robots\\.txt|assets/).*)",
-      "destination": "/index.html"
-    }
-  ]
-}
+      "source": "/sitemap.xml",
+      "headers": [
+        { "key": "Content-Type", "value": "application/xml; charset=utf-8" },
+        { "key": "Cache-Control", "value": "public, max-age=1800, s-maxage=1800" }
+      ]
+    },
+      {
+        "source": "/robots.txt",
+        "headers": [
+          { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
+          { "key": "Cache-Control", "value": "public, max-age=3600, s-maxage=3600" }
+        ]
+      },
+      {
+        "source": "/ads.txt",
+        "headers": [
+          { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
+          { "key": "Cache-Control", "value": "public, max-age=86400, s-maxage=86400" }
+        ]
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/sitemap.xml",
+        "destination": "/api/sitemap.xml"
+      },
+      {
+        "source": "/robots.txt",
+        "destination": "/api/robots.txt"
+      },
+      {
+        "source": "/api/(.*)",
+        "destination": "/api"
+      },
+      {
+        "source": "/((?!assets/|sitemap\\.xml|robots\\.txt|ads\\.txt|manifest\\.json|sw\\.js|.*\\..*).*)",
+        "destination": "/index.html"
+      }
+    ]
+  }
