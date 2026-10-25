@@ -1,0 +1,61 @@
+# Pandit Ji Online - Autonomous SEO & Google AdSense Protocol
+# Acharya Pandit Shashank Sharma (Rudrapur, Uttarakhand)
+
+# 1. Google AdSense Review Crawler (Mediapartners-Google)
+User-agent: Mediapartners-Google
+Allow: /
+
+# 2. Google Ads Quality & Verification Bot
+User-agent: AdsBot-Google
+Allow: /
+
+User-agent: AdsBot-Google-Mobile
+Allow: /
+
+# 3. General Search Engines & Standard Crawlers
+User-agent: *
+Allow: /
+Allow: /ads.txt
+Allow: /googlea0e64484b80e13d1.html
+Allow: /kundli
+Allow: /janam-kundali
+Allow: /panchang
+Allow: /mandir
+Allow: /digital-mandir
+Allow: /milan
+Allow: /kundali-milan
+Allow: /muhurat
+Allow: /shubh-muhurat
+Allow: /rashifal
+Allow: /jyotish-ai
+Allow: /puja-services
+Allow: /dharm-gyan-kosh
+Allow: /mantra-jaap
+Allow: /vedic-videos
+Allow: /about
+Allow: /about-us
+Allow: /privacy-policy
+Allow: /terms
+Allow: /terms-and-conditions
+Allow: /contact
+Allow: /contact-us
+Allow: /disclaimer
+Disallow: /api/
+
+User-agent: Googlebot
+Allow: /
+Allow: /ads.txt
+Allow: /googlea0e64484b80e13d1.html
+Disallow: /api/
+
+User-agent: Googlebot-Image
+Allow: /
+Allow: /favicon.ico
+Allow: /favicon-48x48.png
+Allow: /favicon-96x96.png
+Allow: /pwa-192x192.png
+Allow: /pwa-512x512.png
+Allow: /app-icon.svg
+Allow: /apple-touch-icon.png
+
+Sitemap: https://www.panditjionline.online/sitemap.xml
