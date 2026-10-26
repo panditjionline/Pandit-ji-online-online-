@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ard-spec.org/schemas/v1.0/ai-catalog.json",
+  "specVersion": "1.0",
+  "host": "www.panditjionline.online",
+  "entries": [
+    {
+      "id": "urn:air:panditjionline.online:agent:jyotish-ai",
+      "displayName": "Pandit Ji Online — Jyotish AI & Vedic Astrology Agent",
+      "type": "application/a2a-agent-card+json",
+      "url": "https://www.panditjionline.online/jyotish-ai",
+      "description": "Authentic Vedic Astrology AI consultation by Acharya Pandit Shashank Sharma (Rudrapur, Uttarakhand) offering Drik Ganit Panchang, 36 Gun Kundli Milan, Janam Kundli, Shubh Muhurat 2026-2027, Naam Rashi calculator, and Vedic remedies.",
+      "representativeQueries": [
+        "Check Vivah Muhurat 2026-2027 and शुभ विवाह मुहूर्त by name",
+        "Calculate 36 Gun Kundli Milan and Manglik or Nadi Dosh remedies",
+        "Find Rashi, Nakshatra, Swabhav, and Shani Sadesati phase from name",
+        "View today Drik Ganit Hindu Panchang, Rahukaal, and Abhijit Muhurat"
+      ]
+    },
+    {
+      "id": "urn:air:panditjionline.online:skill:vedic-muhurat-kundli",
+      "displayName": "Drik Ganit Panchang, Muhurat & Kundli Calculators",
+      "type": "text/markdown",
+      "url": "https://www.panditjionline.online/llms.txt",
+      "description": "Structured reference of all 32 Vedic Astrology tools, interactive name-based calculators (Vivah Muhurat 2027, Mundan Muhurat, Vehicle Muhurat, Naam Rashi Swabhav, Shani Sadesati, Manglik Dosh, Nadi Dosh), Digital Mandir, and Panchang routes.",
+      "representativeQueries": [
+        "What Vedic astrology calculators and muhurat pages are available on Pandit Ji Online?",
+        "Check vehicle buying muhurat or mundan sanskar muhurat by name",
+        "Generate free online Janam Kundali with Lahiri Ayanamsha"
+      ]
+    }
+  ]
+}
