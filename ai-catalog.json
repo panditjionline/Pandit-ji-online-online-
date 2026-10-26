@@ -1,10 +1,13 @@
 {
-  "$schema": "https://ard-spec.org/schemas/v1.0/ai-catalog.json",
+  "$schema": "https://raw.githubusercontent.com/ards-project/ard-spec/main/spec/schemas/ai-catalog.schema.json",
   "specVersion": "1.0",
-  "host": "www.panditjionline.online",
+  "host": {
+    "displayName": "Pandit Ji Online",
+    "identifier": "did:web:www.panditjionline.online"
+  },
   "entries": [
     {
-      "id": "urn:air:panditjionline.online:agent:jyotish-ai",
+      "identifier": "urn:air:panditjionline.online:agent:jyotish-ai",
       "displayName": "Pandit Ji Online — Jyotish AI & Vedic Astrology Agent",
       "type": "application/a2a-agent-card+json",
       "url": "https://www.panditjionline.online/jyotish-ai",
@@ -17,7 +20,7 @@
       ]
     },
     {
-      "id": "urn:air:panditjionline.online:skill:vedic-muhurat-kundli",
+      "identifier": "urn:air:panditjionline.online:skill:vedic-muhurat-kundli",
       "displayName": "Drik Ganit Panchang, Muhurat & Kundli Calculators",
       "type": "text/markdown",
       "url": "https://www.panditjionline.online/llms.txt",
