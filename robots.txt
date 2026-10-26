@@ -1,4 +1,4 @@
-# Pandit Ji Online - Autonomous SEO & Google AdSense Protocol
+# Pandit Ji Online - Autonomous SEO, Agentic Discovery & Google AdSense Protocol
 # Acharya Pandit Shashank Sharma (Rudrapur, Uttarakhand)
 
 # 1. Google AdSense Review Crawler (Mediapartners-Google)
@@ -12,10 +12,14 @@ Allow: /
 User-agent: AdsBot-Google-Mobile
 Allow: /
 
-# 3. General Search Engines & Standard Crawlers
+# 3. General Search Engines, AI Agents & Standard Crawlers
 User-agent: *
 Allow: /
 Allow: /ads.txt
+Allow: /ai-catalog.json
+Allow: /.well-known/ai-catalog.json
+Allow: /.well-known/ard.json
+Allow: /llms.txt
 Allow: /googlea0e64484b80e13d1.html
 Allow: /kundli
 Allow: /janam-kundali
@@ -53,6 +57,9 @@ Disallow: /api/
 User-agent: Googlebot
 Allow: /
 Allow: /ads.txt
+Allow: /ai-catalog.json
+Allow: /.well-known/ai-catalog.json
+Allow: /llms.txt
 Allow: /googlea0e64484b80e13d1.html
 Disallow: /api/
 
@@ -66,4 +73,5 @@ Allow: /pwa-512x512.png
 Allow: /app-icon.svg
 Allow: /apple-touch-icon.png
 
+Agentmap: https://www.panditjionline.online/ai-catalog.json
 Sitemap: https://www.panditjionline.online/sitemap.xml
