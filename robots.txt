@@ -73,5 +73,4 @@ Allow: /pwa-512x512.png
 Allow: /app-icon.svg
 Allow: /apple-touch-icon.png
 
-Agentmap: https://www.panditjionline.online/ai-catalog.json
 Sitemap: https://www.panditjionline.online/sitemap.xml
