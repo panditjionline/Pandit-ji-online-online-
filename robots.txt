@@ -26,6 +26,13 @@ Allow: /milan
 Allow: /kundali-milan
 Allow: /muhurat
 Allow: /shubh-muhurat
+Allow: /vivah-muhurat-2027
+Allow: /mundan-muhurat
+Allow: /vahan-kharidne-ka-muhurat
+Allow: /s-naam-rashi-swabhav
+Allow: /shani-sadesati-upay
+Allow: /manglik-dosh-nivaran
+Allow: /nadi-dosh-nuskhe
 Allow: /rashifal
 Allow: /jyotish-ai
 Allow: /puja-services
@@ -40,6 +47,7 @@ Allow: /terms-and-conditions
 Allow: /contact
 Allow: /contact-us
 Allow: /disclaimer
+Allow: /mera-khata
 Disallow: /api/
 
 User-agent: Googlebot

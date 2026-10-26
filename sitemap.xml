@@ -4,146 +4,194 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
     <loc>https://www.panditjionline.online/</loc>
-    <lastmod>2026-10-25T00:00:00+05:30</lastmod>
+    <lastmod>2026-10-26T00:00:00+05:30</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.panditjionline.online/kundli</loc>
-    <lastmod>2026-10-25T00:00:00+05:30</lastmod>
+    <lastmod>2026-10-26T00:00:00+05:30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://www.panditjionline.online/janam-kundali</loc>
-    <lastmod>2026-10-25T00:00:00+05:30</lastmod>
+    <lastmod>2026-10-26T00:00:00+05:30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://www.panditjionline.online/panchang</loc>
-    <lastmod>2026-10-25T00:00:00+05:30</lastmod>
+    <lastmod>2026-10-26T00:00:00+05:30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://www.panditjionline.online/mandir</loc>
-    <lastmod>2026-10-25T00:00:00+05:30</lastmod>
+    <lastmod>2026-10-26T00:00:00+05:30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://www.panditjionline.online/digital-mandir</loc>
-    <lastmod>2026-10-25T00:00:00+05:30</lastmod>
+    <lastmod>2026-10-26T00:00:00+05:30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
     <loc>https://www.panditjionline.online/milan</loc>
-    <lastmod>2026-10-19T00:00:00+05:30</lastmod>
+    <lastmod>2026-10-26T00:00:00+05:30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://www.panditjionline.online/kundali-milan</loc>
-    <lastmod>2026-10-19T00:00:00+05:30</lastmod>
+    <lastmod>2026-10-26T00:00:00+05:30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://www.panditjionline.online/muhurat</loc>
-    <lastmod>2026-10-25T00:00:00+05:30</lastmod>
+    <lastmod>2026-10-26T00:00:00+05:30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://www.panditjionline.online/shubh-muhurat</loc>
-    <lastmod>2026-10-25T00:00:00+05:30</lastmod>
+    <lastmod>2026-10-26T00:00:00+05:30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
+    <loc>https://www.panditjionline.online/vivah-muhurat-2027</loc>
+    <lastmod>2026-10-26T00:00:00+05:30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://www.panditjionline.online/mundan-muhurat</loc>
+    <lastmod>2026-10-26T00:00:00+05:30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://www.panditjionline.online/vahan-kharidne-ka-muhurat</loc>
+    <lastmod>2026-10-26T00:00:00+05:30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://www.panditjionline.online/s-naam-rashi-swabhav</loc>
+    <lastmod>2026-10-26T00:00:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://www.panditjionline.online/shani-sadesati-upay</loc>
+    <lastmod>2026-10-26T00:00:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://www.panditjionline.online/manglik-dosh-nivaran</loc>
+    <lastmod>2026-10-26T00:00:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://www.panditjionline.online/nadi-dosh-nuskhe</loc>
+    <lastmod>2026-10-26T00:00:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
     <loc>https://www.panditjionline.online/rashifal</loc>
-    <lastmod>2026-10-25T00:00:00+05:30</lastmod>
+    <lastmod>2026-10-26T00:00:00+05:30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://www.panditjionline.online/jyotish-ai</loc>
-    <lastmod>2026-10-25T00:00:00+05:30</lastmod>
+    <lastmod>2026-10-26T00:00:00+05:30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
     <loc>https://www.panditjionline.online/puja-services</loc>
-    <lastmod>2026-10-19T00:00:00+05:30</lastmod>
+    <lastmod>2026-10-26T00:00:00+05:30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://www.panditjionline.online/dharm-gyan-kosh</loc>
-    <lastmod>2026-10-19T00:00:00+05:30</lastmod>
+    <lastmod>2026-10-26T00:00:00+05:30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://www.panditjionline.online/mantra-jaap</loc>
-    <lastmod>2026-10-19T00:00:00+05:30</lastmod>
+    <lastmod>2026-10-26T00:00:00+05:30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://www.panditjionline.online/vedic-videos</loc>
-    <lastmod>2026-10-19T00:00:00+05:30</lastmod>
+    <lastmod>2026-10-26T00:00:00+05:30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://www.panditjionline.online/about</loc>
-    <lastmod>2026-10-19T00:00:00+05:30</lastmod>
+    <lastmod>2026-10-26T00:00:00+05:30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://www.panditjionline.online/about-us</loc>
-    <lastmod>2026-10-19T00:00:00+05:30</lastmod>
+    <lastmod>2026-10-26T00:00:00+05:30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://www.panditjionline.online/privacy-policy</loc>
-    <lastmod>2026-10-19T00:00:00+05:30</lastmod>
+    <lastmod>2026-10-26T00:00:00+05:30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
     <loc>https://www.panditjionline.online/terms</loc>
-    <lastmod>2026-10-19T00:00:00+05:30</lastmod>
+    <lastmod>2026-10-26T00:00:00+05:30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
     <loc>https://www.panditjionline.online/terms-and-conditions</loc>
-    <lastmod>2026-10-19T00:00:00+05:30</lastmod>
+    <lastmod>2026-10-26T00:00:00+05:30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
     <loc>https://www.panditjionline.online/contact</loc>
-    <lastmod>2026-10-19T00:00:00+05:30</lastmod>
+    <lastmod>2026-10-26T00:00:00+05:30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://www.panditjionline.online/contact-us</loc>
-    <lastmod>2026-10-19T00:00:00+05:30</lastmod>
+    <lastmod>2026-10-26T00:00:00+05:30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
     <loc>https://www.panditjionline.online/disclaimer</loc>
-    <lastmod>2026-10-19T00:00:00+05:30</lastmod>
+    <lastmod>2026-10-26T00:00:00+05:30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://www.panditjionline.online/mera-khata</loc>
+    <lastmod>2026-10-26T00:00:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
   </url>
 </urlset>
