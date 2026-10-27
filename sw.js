@@ -1,5 +1,5 @@
 // Service Worker for Pandit Ji Online (Network-First with Full Offline Support)
-const CACHE_NAME = 'panditji-v14';
+const CACHE_NAME = 'panditji-v15';
 const PRECACHE_ASSETS = [
   '/',
   '/manifest.json',
