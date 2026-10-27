@@ -216,12 +216,16 @@ app.get('/api/admin/gemini-key', (_req, res) => {
 
 app.post('/api/admin/gemini-key', (req, res) => {
   try {
-    const rawKey = typeof req.body?.apiKey === 'string' ? req.body.apiKey : '';
-    const saved = savePermanentAdminGeminiKey(rawKey);
+    const rawInput = Array.isArray(req.body?.keys)
+      ? req.body.keys
+      : typeof req.body?.apiKey === 'string'
+      ? req.body.apiKey
+      : [];
+    const saved = savePermanentAdminGeminiKey(rawInput);
     res.json({ success: true, ...saved });
   } catch (error) {
     console.error('Error in POST /api/admin/gemini-key:', error);
-    res.status(500).json({ error: 'Failed to save global Admin Gemini API key' });
+    res.status(500).json({ error: 'Failed to save global Admin Gemini API keys' });
   }
 });
 
