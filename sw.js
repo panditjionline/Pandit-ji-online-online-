@@ -1,5 +1,5 @@
 // Service Worker for Pandit Ji Online (Network-First with Full Offline Support)
-const CACHE_NAME = 'panditji-v15';
+const CACHE_NAME = 'panditji-v16';
 const PRECACHE_ASSETS = [
   '/',
   '/manifest.json',
@@ -9,9 +9,6 @@ const PRECACHE_ASSETS = [
   '/pwa-512x512.png',
   '/pwa-maskable-512x512.png',
   '/apple-touch-icon.png',
-  '/pandit-photo.jpg',
-  '/FB_IMG_1792320177760.jpg',
-  '/pandit-shashank-sharma.jpg',
   '/assets/deities/surya.jpg',
   '/assets/deities/shiva.jpg',
   '/assets/deities/hanuman.jpg',
@@ -47,20 +44,24 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
 
+  // Only intercept same-origin GET requests
+  if (url.origin !== self.location.origin || event.request.method !== 'GET') {
+    return;
+  }
+
   // If user-agent is a search bot/crawler, bypass service worker completely so crawler gets pristine network response
   const ua = navigator.userAgent || '';
   if (/bot|googlebot|crawler|spider|inspection/i.test(ua)) {
     return;
   }
 
-  // Do not intercept API requests, Vite dev module requests, or non-GET requests
+  // Do not intercept API requests, Vite dev module requests, or standalone download route
   if (
     url.pathname.startsWith('/api/') ||
     url.pathname.startsWith('/src/') ||
     url.pathname.startsWith('/@') ||
     url.pathname.startsWith('/node_modules/') ||
-    url.pathname.endsWith('standalone-firebase-index.html') ||
-    event.request.method !== 'GET'
+    url.pathname.endsWith('standalone-firebase-index.html')
   ) {
     return;
   }
