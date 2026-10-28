@@ -59,6 +59,7 @@ Allow: /
 Allow: /ads.txt
 Allow: /ai-catalog.json
 Allow: /.well-known/ai-catalog.json
+Allow: /.well-known/ard.json
 Allow: /llms.txt
 Allow: /googlea0e64484b80e13d1.html
 Disallow: /api/
