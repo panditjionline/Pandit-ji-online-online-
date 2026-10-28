@@ -1,5 +1,4 @@
 {
-  "$schema": "https://raw.githubusercontent.com/ards-project/ard-spec/main/spec/schemas/ai-catalog.schema.json",
   "specVersion": "1.0",
   "host": {
     "displayName": "Pandit Ji Online",
@@ -22,7 +21,7 @@
     {
       "identifier": "urn:air:panditjionline.online:skill:vedic-muhurat-kundli",
       "displayName": "Drik Ganit Panchang, Muhurat & Kundli Calculators",
-      "type": "text/markdown",
+      "type": "text/markdown; profile=\"urn:air:agent-skills\"",
       "url": "https://www.panditjionline.online/llms.txt",
       "description": "Structured reference of all 32 Vedic Astrology tools, interactive name-based calculators (Vivah Muhurat 2027, Mundan Muhurat, Vehicle Muhurat, Naam Rashi Swabhav, Shani Sadesati, Manglik Dosh, Nadi Dosh), Digital Mandir, and Panchang routes.",
       "representativeQueries": [
