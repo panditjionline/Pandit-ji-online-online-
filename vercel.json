@@ -70,7 +70,7 @@
         { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(self)" },
         { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://pagead2.googlesyndication.com https://www.googletagmanager.com https://translate.google.com https://translate.googleapis.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https: wss:; media-src 'self' https: data: blob:; frame-src 'self' https://www.google.com https://www.youtube.com https://googleads.g.doubleclick.net; object-src 'none'; base-uri 'self'; form-action 'self';" },
         { "key": "X-Robots-Tag", "value": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
-        { "key": "Link", "value": "</ai-catalog.json>; rel=\"ai-catalog\"" }
+        { "key": "Link", "value": "</ai-catalog.json>; rel=\"ai-catalog\", </.well-known/ard.json>; rel=\"ard\"" }
       ]
     },
     {
@@ -83,7 +83,8 @@
         { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" },
         { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(self)" },
         { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://pagead2.googlesyndication.com https://www.googletagmanager.com https://translate.google.com https://translate.googleapis.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https: wss:; media-src 'self' https: data: blob:; frame-src 'self' https://www.google.com https://www.youtube.com https://googleads.g.doubleclick.net; object-src 'none'; base-uri 'self'; form-action 'self';" },
-        { "key": "X-Robots-Tag", "value": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" }
+        { "key": "X-Robots-Tag", "value": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
+        { "key": "Link", "value": "</ai-catalog.json>; rel=\"ai-catalog\", </.well-known/ard.json>; rel=\"ard\"" }
       ]
     },
     {
@@ -122,7 +123,7 @@
         { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(self)" },
         { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://pagead2.googlesyndication.com https://www.googletagmanager.com https://translate.google.com https://translate.googleapis.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https: wss:; media-src 'self' https: data: blob:; frame-src 'self' https://www.google.com https://www.youtube.com https://googleads.g.doubleclick.net; object-src 'none'; base-uri 'self'; form-action 'self';" },
         { "key": "X-Robots-Tag", "value": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
-        { "key": "Link", "value": "</ai-catalog.json>; rel=\"ai-catalog\"" }
+        { "key": "Link", "value": "</ai-catalog.json>; rel=\"ai-catalog\", </.well-known/ard.json>; rel=\"ard\"" }
       ]
     },
     {
