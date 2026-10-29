@@ -9,12 +9,6 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.panditjionline.online/kundli</loc>
-    <lastmod>2026-10-29T00:00:00+05:30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
     <loc>https://www.panditjionline.online/janam-kundali</loc>
     <lastmod>2026-10-29T00:00:00+05:30</lastmod>
     <changefreq>daily</changefreq>
@@ -27,34 +21,16 @@
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://www.panditjionline.online/mandir</loc>
-    <lastmod>2026-10-29T00:00:00+05:30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
     <loc>https://www.panditjionline.online/digital-mandir</loc>
     <lastmod>2026-10-29T00:00:00+05:30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://www.panditjionline.online/milan</loc>
-    <lastmod>2026-10-29T00:00:00+05:30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.90</priority>
-  </url>
-  <url>
     <loc>https://www.panditjionline.online/kundali-milan</loc>
     <lastmod>2026-10-29T00:00:00+05:30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://www.panditjionline.online/muhurat</loc>
-    <lastmod>2026-10-29T00:00:00+05:30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.95</priority>
   </url>
   <url>
     <loc>https://www.panditjionline.online/shubh-muhurat</loc>
@@ -213,25 +189,13 @@
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://www.panditjionline.online/about</loc>
+    <loc>https://www.panditjionline.online/about-us</loc>
     <lastmod>2026-10-26T00:00:00+05:30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://www.panditjionline.online/about-us</loc>
-    <lastmod>2026-10-26T00:00:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
     <loc>https://www.panditjionline.online/privacy-policy</loc>
-    <lastmod>2026-10-26T00:00:00+05:30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.50</priority>
-  </url>
-  <url>
-    <loc>https://www.panditjionline.online/terms</loc>
     <lastmod>2026-10-26T00:00:00+05:30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
@@ -243,27 +207,15 @@
     <priority>0.50</priority>
   </url>
   <url>
-    <loc>https://www.panditjionline.online/contact</loc>
-    <lastmod>2026-10-26T00:00:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
     <loc>https://www.panditjionline.online/contact-us</loc>
     <lastmod>2026-10-26T00:00:00+05:30</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.80</priority>
   </url>
   <url>
     <loc>https://www.panditjionline.online/disclaimer</loc>
     <lastmod>2026-10-26T00:00:00+05:30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
-  </url>
-  <url>
-    <loc>https://www.panditjionline.online/mera-khata</loc>
-    <lastmod>2026-10-26T00:00:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
   </url>
 </urlset>

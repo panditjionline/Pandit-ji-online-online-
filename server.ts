@@ -121,6 +121,39 @@ app.get('/api/raw-download/:filename', (req, res) => {
   res.status(200).send(payload.content || '');
 });
 
+// App Engine JS Bundle endpoint (serves as application/javascript or text/plain for .txt, .html and .js filenames)
+app.get(['/app-engine.txt', '/app-engine.html', '/panditji-app.bundle.js'], (req, res) => {
+  const pubTxt = path.join(__dirname, 'public', 'app-engine.txt');
+  const pubEngine = path.join(__dirname, 'public', 'app-engine.html');
+  const pubBundle = path.join(__dirname, 'public', 'panditji-app.bundle.js');
+  const distTxt = path.join(__dirname, 'dist', 'app-engine.txt');
+  const distEngine = path.join(__dirname, 'dist', 'app-engine.html');
+  const distBundle = path.join(__dirname, 'dist', 'panditji-app.bundle.js');
+  const fileToServe = fs.existsSync(pubTxt)
+    ? pubTxt
+    : fs.existsSync(pubEngine)
+    ? pubEngine
+    : fs.existsSync(pubBundle)
+    ? pubBundle
+    : fs.existsSync(distTxt)
+    ? distTxt
+    : fs.existsSync(distEngine)
+    ? distEngine
+    : fs.existsSync(distBundle)
+    ? distBundle
+    : null;
+
+  if (fileToServe) {
+    const isTxt = req.path.endsWith('.txt');
+    res.setHeader('Content-Type', isTxt ? 'text/plain; charset=utf-8' : 'application/javascript; charset=utf-8');
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+    res.sendFile(fileToServe);
+    return;
+  }
+  res.status(404).send('App engine bundle not found');
+});
+
 // Direct attachment download for standalone index.html on mobile & desktop
 app.get(['/standalone-firebase-index.html', '/api/download-standalone'], (req, res) => {
   const standaloneFile = path.join(__dirname, 'public', 'standalone-firebase-index.html');

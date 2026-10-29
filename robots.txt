@@ -21,14 +21,10 @@ Allow: /.well-known/ai-catalog.json
 Allow: /.well-known/ard.json
 Allow: /llms.txt
 Allow: /googlea0e64484b80e13d1.html
-Allow: /kundli
 Allow: /janam-kundali
 Allow: /panchang
-Allow: /mandir
 Allow: /digital-mandir
-Allow: /milan
 Allow: /kundali-milan
-Allow: /muhurat
 Allow: /shubh-muhurat
 Allow: /vivah-muhurat-2027
 Allow: /mundan-muhurat
@@ -55,15 +51,12 @@ Allow: /vedic-baby-names
 Allow: /char-dham-tirth-darshan
 Allow: /mantra-jaap
 Allow: /vedic-videos
-Allow: /about
 Allow: /about-us
 Allow: /privacy-policy
-Allow: /terms
 Allow: /terms-and-conditions
-Allow: /contact
 Allow: /contact-us
 Allow: /disclaimer
-Allow: /mera-khata
+Disallow: /mera-khata
 Disallow: /api/
 
 User-agent: Googlebot
@@ -74,6 +67,7 @@ Allow: /.well-known/ai-catalog.json
 Allow: /.well-known/ard.json
 Allow: /llms.txt
 Allow: /googlea0e64484b80e13d1.html
+Disallow: /mera-khata
 Disallow: /api/
 
 User-agent: Googlebot-Image
