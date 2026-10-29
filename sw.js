@@ -1,9 +1,12 @@
-// Pandit Ji Online — Lightweight Service Worker & Offline Caching Engine (v20)
-// Designed for instant mobile copy-paste on GitHub (~75 lines, ~2.5 KB)
-const CACHE_NAME = 'panditji-v20';
+// Pandit Ji Online — Lightweight Service Worker & Instant Engine Cache (v21)
+// Designed for instant mobile copy-paste on GitHub (~85 lines, ~2.8 KB)
+const CACHE_NAME = 'panditji-v21';
 const PRECACHE_ASSETS = [
   '/',
   '/manifest.json',
+  '/app-engine.txt',
+  '/app-engine.html',
+  '/panditji-app.bundle.js',
   '/app-icon.svg',
   '/favicon.ico',
   '/pwa-192x192.png',
@@ -43,6 +46,32 @@ self.addEventListener('fetch', (event) => {
   ) {
     return;
   }
+
+  // Instant Stale-While-Revalidate for heavy app engine bundles (~15ms repeat load)
+  const isEngineBundle =
+    url.pathname === '/app-engine.txt' ||
+    url.pathname === '/app-engine.html' ||
+    url.pathname === '/panditji-app.bundle.js';
+
+  if (isEngineBundle) {
+    event.respondWith(
+      caches.open(CACHE_NAME).then((cache) =>
+        cache.match(event.request).then((cachedResponse) => {
+          const fetchPromise = fetch(event.request)
+            .then((networkResponse) => {
+              if (networkResponse && networkResponse.status === 200) {
+                cache.put(event.request, networkResponse.clone());
+              }
+              return networkResponse;
+            })
+            .catch(() => cachedResponse);
+          return cachedResponse || fetchPromise;
+        })
+      )
+    );
+    return;
+  }
+
   const isCodeAsset = /\.(js|mjs|ts|tsx|jsx|css)$/i.test(url.pathname);
   event.respondWith(
     fetch(event.request)
