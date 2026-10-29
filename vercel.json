@@ -48,6 +48,30 @@
       ]
     },
     {
+      "source": "/app-engine.txt",
+      "headers": [
+        { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/app-engine.html",
+      "headers": [
+        { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/panditji-app.bundle.js",
+      "headers": [
+        { "key": "Content-Type", "value": "application/javascript; charset=utf-8" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
       "source": "/assets/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
@@ -113,7 +137,7 @@
       ]
     },
     {
-      "source": "/((?!api/|assets/|\\.well-known/|ai-catalog\\.json|llms\\.txt|ads\\.txt|sitemap\\.xml|robots\\.txt|manifest\\.json|sw\\.js|favicon|pwa-|apple-touch-icon|app-icon|.*\\.(?:ico|png|jpg|jpeg|svg|webp|woff2|js|css|json|txt|xml|map)).*)",
+      "source": "/((?!api/|assets/|\\.well-known/|ai-catalog\\.json|llms\\.txt|ads\\.txt|sitemap\\.xml|robots\\.txt|manifest\\.json|sw\\.js|app-engine|panditji-app|favicon|pwa-|apple-touch-icon|app-icon|.*\\.(?:ico|png|jpg|jpeg|svg|webp|woff2|js|css|json|txt|xml|map)).*)",
       "headers": [
         { "key": "Content-Type", "value": "text/html; charset=utf-8" },
         { "key": "X-Content-Type-Options", "value": "nosniff" },
@@ -154,7 +178,7 @@
       "destination": "/api"
     },
     {
-      "source": "/((?!api/|\\.well-known/|ai-catalog\\.json|llms\\.txt|ads\\.txt|sitemap\\.xml|robots\\.txt|manifest\\.json|sw\\.js|favicon|pwa-|apple-touch-icon|app-icon).*)",
+      "source": "/((?!api/|assets/|\\.well-known/|ai-catalog\\.json|llms\\.txt|ads\\.txt|sitemap\\.xml|robots\\.txt|manifest\\.json|sw\\.js|app-engine|panditji-app|favicon|pwa-|apple-touch-icon|app-icon|.*\\.(?:ico|png|jpg|jpeg|svg|webp|woff2|js|css|json|txt|xml|map)).*)",
       "destination": "/index.html"
     }
   ]
