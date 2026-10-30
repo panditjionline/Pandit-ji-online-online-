@@ -1,0 +1,79 @@
+{
+  "id": "/",
+  "name": "Pandit Ji Online - Vedic Astrology & Free Kundli",
+  "short_name": "Pandit Ji",
+  "description": "आचार्य पण्डित शशांक शर्मा (रुद्रपुर, उत्तराखंड) द्वारा सटीक वैदिक ज्योतिष, निःशुल्क जन्म कुंडली, 36 गुण मिलान, दैनिक पंचांग, शुभ मुहूर्त एवं व्यक्तिगत ज्योतिष परामर्श।",
+  "lang": "hi-IN",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "portrait-primary",
+  "background_color": "#090a0f",
+  "theme_color": "#FF6F00",
+  "prefer_related_applications": false,
+  "categories": ["lifestyle", "education", "reference", "utilities"],
+  "icons": [
+    {
+      "src": "/pwa-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-maskable-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/app-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "जन्म कुंडली बनाएं",
+      "short_name": "कुंडली",
+      "description": "निःशुल्क वैदिक जन्म कुंडली एवं ग्रह स्पष्टीकरण",
+      "url": "/janam-kundali",
+      "icons": [{ "src": "/pwa-192x192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "36 गुण मिलान",
+      "short_name": "गुण मिलान",
+      "description": "वर-वधू अष्टकूट कुंडली मिलान",
+      "url": "/kundali-milan",
+      "icons": [{ "src": "/pwa-192x192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "ज्योतिष AI चैट",
+      "short_name": "AI ज्योतिष",
+      "description": "आचार्य जी के 4-स्तरीय वैदिक इंजन से प्रश्न पूछें",
+      "url": "/jyotish-ai",
+      "icons": [{ "src": "/pwa-192x192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "वैदिक मुहूर्त व ज्ञान कोष",
+      "short_name": "ज्ञान कोष",
+      "description": "विवाह मुहूर्त, नाम राशि, साढ़ेसाती एवं दोष निवारण",
+      "url": "/vivah-muhurat-2027",
+      "icons": [{ "src": "/pwa-192x192.png", "sizes": "192x192", "type": "image/png" }]
+    }
+  ]
+}
