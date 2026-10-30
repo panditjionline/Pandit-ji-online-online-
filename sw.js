@@ -1,14 +1,12 @@
-// Pandit Ji Online — Lightweight Service Worker & Instant Engine Cache (v21)
-// Designed for instant mobile copy-paste on GitHub (~85 lines, ~2.8 KB)
-const CACHE_NAME = 'panditji-v21';
+// Pandit Ji Online — Lightweight Service Worker & Instant Engine Cache (v30)
+// Designed for instant mobile copy-paste on GitHub (~80 lines, ~2.6 KB)
+const CACHE_NAME = 'panditji-v30';
 const PRECACHE_ASSETS = [
-  '/',
   '/manifest.json',
-  '/app-engine.txt',
-  '/app-engine.html',
-  '/panditji-app.bundle.js',
   '/app-icon.svg',
   '/favicon.ico',
+  '/favicon-48x48.png',
+  '/favicon-96x96.png',
   '/pwa-192x192.png',
   '/pwa-512x512.png',
   '/pwa-maskable-512x512.png',
@@ -47,26 +45,27 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Instant Stale-While-Revalidate for heavy app engine bundles (~15ms repeat load)
-  const isEngineBundle =
+  // Always revalidate HTML navigation and app engine bundles against GitHub CDN so updates appear immediately
+  const isAlwaysFresh =
+    event.request.mode === 'navigate' ||
+    url.pathname === '/' ||
+    url.pathname === '/index.html' ||
+    url.pathname === '/404.html' ||
     url.pathname === '/app-engine.txt' ||
     url.pathname === '/app-engine.html' ||
     url.pathname === '/panditji-app.bundle.js';
 
-  if (isEngineBundle) {
+  if (isAlwaysFresh) {
     event.respondWith(
       caches.open(CACHE_NAME).then((cache) =>
-        cache.match(event.request).then((cachedResponse) => {
-          const fetchPromise = fetch(event.request)
-            .then((networkResponse) => {
-              if (networkResponse && networkResponse.status === 200) {
-                cache.put(event.request, networkResponse.clone());
-              }
-              return networkResponse;
-            })
-            .catch(() => cachedResponse);
-          return cachedResponse || fetchPromise;
-        })
+        fetch(event.request, { cache: 'no-cache' })
+          .then((networkResponse) => {
+            if (networkResponse && networkResponse.status === 200) {
+              cache.put(event.request, networkResponse.clone());
+            }
+            return networkResponse;
+          })
+          .catch(() => cache.match(event.request).then((res) => res || caches.match('/')))
       )
     );
     return;
