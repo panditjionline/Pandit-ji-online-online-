@@ -199,6 +199,28 @@
       "destination": "/api"
     },
     {
+      "source": "/:slug((?!api/|assets/|favicon|pwa-|apple-touch-icon|app-icon|.*\\.(?:ico|png|jpg|jpeg|svg|webp|woff2|js|css|json|txt|xml|map)).*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(WhatsApp|facebookexternalhit|Facebot|Twitterbot|TelegramBot|LinkedInBot|Pinterest|Slackbot|SkypeUriPreview|vkShare|redditbot).*"
+        }
+      ],
+      "destination": "/api/og-preview?path=:slug"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(WhatsApp|facebookexternalhit|Facebot|Twitterbot|TelegramBot|LinkedInBot|Pinterest|Slackbot|SkypeUriPreview|vkShare|redditbot).*"
+        }
+      ],
+      "destination": "/api/og-preview?path="
+    },
+    {
       "source": "/((?!api/|assets/|\\.well-known/|ai-catalog\\.json|llms\\.txt|ads\\.txt|sitemap\\.xml|robots\\.txt|manifest\\.json|sw\\.js|app-engine|panditji-app|favicon|pwa-|apple-touch-icon|app-icon|.*\\.(?:ico|png|jpg|jpeg|svg|webp|woff2|js|css|json|txt|xml|map)).*)",
       "destination": "/index.html"
     }
