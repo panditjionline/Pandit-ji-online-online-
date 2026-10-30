@@ -4,7 +4,8 @@ import fs from 'fs';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 import crypto from 'crypto';
-import { handleChatMessage } from './src/server/chatHandler';
+import { GoogleGenAI } from '@google/genai';
+import { handleChatMessage, registerServerGenAISdkRunner } from './src/server/chatHandler';
 import { getStoredBookings, saveNewBooking, deleteStoredBookings } from './src/server/bookingsHandler';
 import { getUserByPhone, getUserByEmail, saveOrUpdateUserByPhone, normalizePhone } from './src/server/userStoreHandler';
 import { getPermanentPhoto, savePermanentPhoto } from './src/server/photoStoreHandler';
@@ -18,6 +19,8 @@ import {
 import {
   generateDynamicSitemapXml,
   generateDynamicRobotsTxt,
+  generateAiCatalogJson,
+  generateLlmsTxt,
   resolveBaseOrigin,
   syncStaticSeoFilesToPublic,
   buildDynamicSitemapEntries,
@@ -215,6 +218,25 @@ app.get('/ads.txt', (_req, res) => {
   res.status(200).send('google.com, pub-9661029896137686, DIRECT, f08c47fec0942fa0\n');
 });
 
+// PageSpeed Insights Agentic Browsing — ARD 1.0 AI Catalog & llms.txt Endpoints
+app.get(['/ai-catalog.json', '/.well-known/ai-catalog.json', '/.well-known/ard.json'], (req, res) => {
+  const baseOrigin = resolveBaseOrigin(req.headers as Record<string, string | string[] | undefined>);
+  const json = generateAiCatalogJson(baseOrigin);
+  res.setHeader('Content-Type', 'application/json; charset=utf-8');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Cache-Control', 'public, max-age=3600, s-maxage=3600');
+  res.status(200).send(json);
+});
+
+app.get('/llms.txt', (req, res) => {
+  const baseOrigin = resolveBaseOrigin(req.headers as Record<string, string | string[] | undefined>);
+  const txt = generateLlmsTxt(baseOrigin);
+  res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Cache-Control', 'public, max-age=3600, s-maxage=3600');
+  res.status(200).send(txt);
+});
+
 // SEO & Sitemap Diagnostic Status Endpoint (/api/seo-status)
 app.get('/api/seo-status', (req, res) => {
   const baseOrigin = resolveBaseOrigin(req.headers as Record<string, string | string[] | undefined>);
@@ -262,12 +284,105 @@ app.post('/api/admin/gemini-key', (req, res) => {
   }
 });
 
+// Register @google/genai SDK runner for server-side Gemini execution across the 12-key pool
+registerServerGenAISdkRunner(async (apiKey, modelName, formattedContents, systemInstruction, useGoogleSearch) => {
+  try {
+    const ai = new GoogleGenAI({
+      apiKey,
+      httpOptions: { headers: { 'User-Agent': 'aistudio-build' } },
+    });
+    const config: Record<string, any> = {
+      systemInstruction,
+    };
+    if (modelName !== 'gemini-3.8-flash') {
+      config.temperature = 0.7;
+    }
+    if (useGoogleSearch) {
+      config.tools = [{ googleSearch: {} }];
+    }
+    const response = await ai.models.generateContent({
+      model: modelName,
+      contents: formattedContents,
+      config,
+    });
+    const text = (response?.text || '').trim();
+    const chunks = (response as any)?.candidates?.[0]?.groundingMetadata?.groundingChunks || [];
+    const sources: Array<{ uri: string; title: string }> = [];
+    const seen = new Set<string>();
+    for (const c of chunks) {
+      const uri = c?.web?.uri;
+      const title = c?.web?.title;
+      if (uri && typeof uri === 'string' && !seen.has(uri)) {
+        seen.add(uri);
+        sources.push({ uri, title: (title && typeof title === 'string' ? title.trim() : uri).slice(0, 90) });
+      }
+    }
+    return { text, sources: sources.slice(0, 5) };
+  } catch (err: any) {
+    const errText = String(err?.message || err || '');
+    const status = Number(err?.status || err?.statusCode || 0);
+    const isQuota =
+      status === 429 ||
+      errText.includes('429') ||
+      errText.includes('RESOURCE_EXHAUSTED') ||
+      errText.toLowerCase().includes('quota') ||
+      errText.toLowerCase().includes('rate limit');
+    const isInvalidKey =
+      status === 403 ||
+      errText.includes('API_KEY_INVALID') ||
+      errText.includes('API key not valid') ||
+      errText.includes('PERMISSION_DENIED') ||
+      errText.includes('UNAUTHENTICATED');
+    const isModelErr =
+      !isInvalidKey && (status === 404 || status === 400 || errText.includes('NOT_FOUND'));
+    return {
+      text: '',
+      sources: [],
+      quotaExhausted: isQuota,
+      invalidApiKey: isInvalidKey,
+      notFoundOrInvalidModel: isModelErr,
+    };
+  }
+});
+
+// Hydrate stored 12-key pool on server boot (and sync from Firebase RTDB if local file is empty)
+(async () => {
+  try {
+    const initial = getPermanentAdminGeminiKey(true);
+    if (!initial.keys || initial.keys.length === 0) {
+      const rtdbRes = await fetch(
+        'https://pandit-ji-online-default-rtdb.firebaseio.com/admin_config/gemini_key.json'
+      );
+      if (rtdbRes.ok) {
+        const rtdbData = await rtdbRes.json();
+        const remoteKeys: string[] = Array.isArray(rtdbData?.keys)
+          ? rtdbData.keys.map((k: unknown) => (typeof k === 'string' ? k.trim() : '')).filter(Boolean)
+          : typeof rtdbData?.apiKey === 'string' && rtdbData.apiKey.trim()
+          ? [rtdbData.apiKey.trim()]
+          : [];
+        if (remoteKeys.length > 0) {
+          savePermanentAdminGeminiKey(remoteKeys);
+        }
+      }
+    }
+  } catch {
+    // ignore startup RTDB sync error
+  }
+})();
+
 // API route for Shashank Sharma AI chat
 app.post('/api/chat', async (req, res) => {
   try {
-    getPermanentAdminGeminiKey(true);
-    const { message, history, language, userProfile } = req.body;
-    const result = await handleChatMessage(message, history || [], language, userProfile);
+    const stored = getPermanentAdminGeminiKey(true);
+    const { message, history, language, userProfile, apiKeys } = req.body;
+    const incomingKeys: string[] = Array.isArray(apiKeys)
+      ? apiKeys.map((k: unknown) => (typeof k === 'string' ? k.trim() : '')).filter((k: string) => k.length > 10)
+      : [];
+    if (incomingKeys.length > (stored.keys?.length || 0)) {
+      const merged = Array.from(new Set([...(stored.keys || []), ...incomingKeys]));
+      savePermanentAdminGeminiKey(merged);
+    }
+    const result = await handleChatMessage(message, history || [], language, userProfile, incomingKeys);
     res.json(result);
   } catch (error) {
     console.error('Error in /api/chat:', error);

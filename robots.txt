@@ -51,12 +51,21 @@ Allow: /vedic-baby-names
 Allow: /char-dham-tirth-darshan
 Allow: /mantra-jaap
 Allow: /vedic-videos
+Allow: /puja/griha-pravesh
+Allow: /puja/satyanarayan-katha
+Allow: /puja/rudrabhishek
+Allow: /puja/mahamrityunjaya-jap
+Allow: /puja/navgrah-shanti
+Allow: /puja/kundali-paramarsh
+Allow: /rudrapur-jyotish
+Allow: /kundali-dosh-upay
 Allow: /about-us
 Allow: /privacy-policy
 Allow: /terms-and-conditions
 Allow: /contact-us
 Allow: /disclaimer
 Disallow: /mera-khata
+Disallow: /history
 Disallow: /api/
 
 User-agent: Googlebot
@@ -68,6 +77,7 @@ Allow: /.well-known/ard.json
 Allow: /llms.txt
 Allow: /googlea0e64484b80e13d1.html
 Disallow: /mera-khata
+Disallow: /history
 Disallow: /api/
 
 User-agent: Googlebot-Image
