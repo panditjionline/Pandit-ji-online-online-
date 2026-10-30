@@ -32,6 +32,12 @@ import {
   getRawDownloadPayload,
   renderDownloadCenterHtml,
 } from './src/server/downloadCenterHandler';
+import {
+  getRouteSeo,
+  renderOgCrawlerHtml,
+  HOME_SEO_ITEM,
+  ROUTES_SEO_ITEMS,
+} from './src/server/routesSeoData';
 
 dotenv.config();
 
@@ -73,6 +79,8 @@ app.use((req, res, next) => {
       '/api/raw-download',
       '/api/contact',
       '/api/admin/gemini-key',
+      '/api/og-preview',
+      '/api/og-image',
     ];
     if (knownPrefixes.some((p) => candidate.startsWith(p))) {
       req.url = candidate;
@@ -122,6 +130,41 @@ app.get('/api/raw-download/:filename', (req, res) => {
     return;
   }
   res.status(200).send(payload.content || '');
+});
+
+// Social Crawler OpenGraph Preview endpoint for WhatsApp, Facebook, Telegram, Twitter, LinkedIn
+app.get('/api/og-preview', (req, res) => {
+  const reqPath = String(req.query.path || req.query.url || req.headers['x-matched-path'] || req.headers['x-vercel-matched-path'] || '');
+  const item = getRouteSeo(reqPath);
+  const baseOrigin = resolveBaseOrigin(req);
+  const html = renderOgCrawlerHtml(item, baseOrigin);
+  res.setHeader('Content-Type', 'text/html; charset=utf-8');
+  res.setHeader('Cache-Control', 'public, max-age=3600, s-maxage=3600');
+  res.setHeader('X-Robots-Tag', 'index, follow');
+  res.status(200).send(html);
+});
+
+// Dedicated OpenGraph 1200x630 banner image endpoint
+app.get(['/api/og-image/:filename', '/assets/og/:filename'], (req, res) => {
+  const filename = path.basename(req.params.filename || req.path);
+  const pubPath = path.join(__dirname, 'public', 'assets', 'og', filename);
+  const distPath = path.join(__dirname, 'dist', 'assets', 'og', filename);
+  const target = fs.existsSync(pubPath) ? pubPath : fs.existsSync(distPath) ? distPath : null;
+
+  if (target) {
+    res.setHeader('Content-Type', 'image/jpeg');
+    res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+    res.sendFile(target);
+    return;
+  }
+  const homeBanner = path.join(__dirname, 'public', 'assets', 'og', 'og-home.jpg');
+  if (fs.existsSync(homeBanner)) {
+    res.setHeader('Content-Type', 'image/jpeg');
+    res.setHeader('Cache-Control', 'public, max-age=3600');
+    res.sendFile(homeBanner);
+  } else {
+    res.status(404).send('Banner not found');
+  }
 });
 
 // App Engine JS Bundle endpoint (serves as application/javascript or text/plain for .txt, .html and .js filenames)
@@ -915,6 +958,30 @@ async function setupFrontend() {
       }
       res.setHeader('Content-Type', 'text/html; charset=utf-8');
       res.setHeader('X-Content-Type-Options', 'nosniff');
+
+      const userAgent = String(req.headers['user-agent'] || '');
+      const isSocialCrawler = /whatsapp|facebookexternalhit|facebot|twitterbot|telegrambot|linkedinbot|pinterest|slackbot|skypeuripreview|vkshare|redditbot/i.test(userAgent);
+      if (isSocialCrawler) {
+        const item = getRouteSeo(req.path);
+        const baseOrigin = resolveBaseOrigin(req);
+        const html = renderOgCrawlerHtml(item, baseOrigin);
+        res.setHeader('Cache-Control', 'public, max-age=3600, s-maxage=3600');
+        res.status(200).send(html);
+        return;
+      }
+
+      const cleanSlug = (req.path || '').replace(/^\/+|\/+$/g, '').toLowerCase();
+      const distSubHtml = path.join(distPath, cleanSlug, 'index.html');
+      const rootSubHtml = path.join(__dirname, cleanSlug, 'index.html');
+      if (cleanSlug && fs.existsSync(distSubHtml)) {
+        res.sendFile(distSubHtml);
+        return;
+      }
+      if (cleanSlug && fs.existsSync(rootSubHtml)) {
+        res.sendFile(rootSubHtml);
+        return;
+      }
+
       if (fs.existsSync(distIndexPath)) {
         res.sendFile(distIndexPath);
       } else {
