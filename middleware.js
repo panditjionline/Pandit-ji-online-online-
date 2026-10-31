@@ -1,24 +1,60 @@
 // ============================================================================
-// PANDIT JI ONLINE — VERCEL EDGE ROUTING MIDDLEWARE (middleware.js)
+// PANDIT JI ONLINE — VERCEL EDGE ROUTING MIDDLEWARE (middleware.js — v33)
 // Zero-dependency Edge/Routing Middleware for www.panditjionline.online
 // Handles:
 // 1. Per-page WhatsApp / Facebook / Social Crawler OpenGraph HTML (200 OK)
 // 2. Dynamic 1200x630 Per-Page Vedic OG Card Images (/og-svg/:slug.svg & /og-card/:slug.jpg)
 // 3. Google Search Console (googlea0e64484b80e13d1.html) & AdSense (ads.txt)
+// 4. Zero-latency pass-through for Googlebot, PageSpeed Insights & AdSense bots
 // ============================================================================
 
 const SITE_ORIGIN = 'https://www.panditjionline.online';
 const HOMEPAGE_IMAGE = 'https://iili.io/neb1ghg.jpg';
-const VERSION_TAG = 'v32';
+const VERSION_TAG = 'v33';
 
 const ROUTE_ALIASES = {
   '/kundli': '/janam-kundali',
   '/kundali': '/janam-kundali',
   '/milan': '/kundali-milan',
   '/gun-milan': '/kundali-milan',
+  '/puja/kundali-milan': '/kundali-milan',
+  '/puja-kundali-milan': '/kundali-milan',
   '/mandir': '/digital-mandir',
   '/muhurat': '/shubh-muhurat',
   '/naam-rashi': '/shubh-muhurat',
+  '/dainik-rashifal': '/rashifal',
+  '/ram-shalaka': '/ram-shalaka-prashnavali',
+  '/shani-sadesati': '/shani-sadesati-calculator',
+  '/puja-samagri': '/puja-samagri-list',
+  '/aarti-chalisa': '/aarti-chalisa-sangrah',
+  '/vrat-katha': '/vrat-katha-paran-vidhi',
+  '/vastu-shastra': '/vastu-shastra-tips',
+  '/vastu': '/vastu-shastra-tips',
+  '/ratna-rudraksha': '/ratna-rudraksha-guide',
+  '/swapna-phal': '/swapna-phal-shakun-shastra',
+  '/swapna-shakun': '/swapna-phal-shakun-shastra',
+  '/swarodaya': '/swarodaya-vigyan',
+  '/gita-niti': '/geeta-chanakya-niti',
+  '/baby-names': '/vedic-baby-names',
+  '/tirth-darshan': '/char-dham-tirth-darshan',
+  '/teerth': '/char-dham-tirth-darshan',
+  '/jyotish-chat': '/jyotish-ai',
+  '/chat': '/jyotish-ai',
+  '/puja-booking': '/puja-services',
+  '/services': '/puja-services',
+  '/dharma-gyan': '/dharm-gyan-kosh',
+  '/gyan-kosh': '/dharm-gyan-kosh',
+  '/jap-mala': '/mantra-jaap',
+  '/jaap': '/mantra-jaap',
+  '/videos': '/vedic-videos',
+  '/youtube': '/vedic-videos',
+  '/history': '/mera-khata',
+  '/puja-griha-pravesh': '/puja/griha-pravesh',
+  '/puja-satyanarayan-katha': '/puja/satyanarayan-katha',
+  '/puja-rudrabhishek': '/puja/rudrabhishek',
+  '/puja-mahamrityunjaya-jap': '/puja/mahamrityunjaya-jap',
+  '/puja-navgrah-shanti': '/puja/navgrah-shanti',
+  '/puja-kundali-paramarsh': '/puja/kundali-paramarsh',
   '/about': '/about-us',
   '/contact': '/contact-us',
   '/terms': '/terms-and-conditions',
@@ -416,6 +452,16 @@ const ROUTE_DATA = {
     art: 'kundli',
     accent: '#ef4444'
   },
+  '/mera-khata': {
+    title: 'मेरा खाता एवं सुरक्षित कुंडली रिकॉर्ड | Mera Khata | पण्डित जी ऑनलाइन',
+    desc: 'अपनी सुरक्षित जन्म कुंडली, 36 गुण मिलान रिपोर्ट, 108 मंत्र जाप माला रिकॉर्ड एवं पूजा बुकिंग विवरण देखें।',
+    cardTitle: 'MERA KHATA & SAVED KUNDALI VAULT',
+    cardSub: 'Saved Janam Kundali • 36 Gun Milan Reports • Mantra Jaap Streaks',
+    shortCard: 'MERA KHATA VAULT\nSaved Kundali & Reports',
+    badge: 'YAJMAN PERSONAL VEDIC VAULT',
+    art: 'kundli',
+    accent: '#f59e0b'
+  },
   '/about-us': {
     title: 'आचार्य पण्डित शशांक शर्मा — परिचय एवं वैदिक ज्योतिष संस्थान, रुद्रपुर | पण्डित जी ऑनलाइन',
     desc: 'आचार्य पण्डित शशांक शर्मा (15+ वर्ष वैदिक कर्मकाण्ड एवं ज्योतिष अनुभव, रुद्रपुर, उत्तराखण्ड) का प्रामाणिक परिचय।',
@@ -435,6 +481,36 @@ const ROUTE_DATA = {
     badge: 'RUDRAPUR, UDHAM SINGH NAGAR (UK)',
     art: 'puja',
     accent: '#10b981'
+  },
+  '/privacy-policy': {
+    title: 'गोपनीयता नीति (Privacy Policy) | पण्डित जी ऑनलाइन',
+    desc: 'पण्डित जी ऑनलाइन की आधिकारिक गोपनीयता नीति — जन्म विवरण, डेटा सुरक्षा एवं गूगल एडसेंस मानक।',
+    cardTitle: 'PRIVACY POLICY & DATA SECURITY',
+    cardSub: '100% Confidential Birth Details & Secure Vedic Astrology Portal',
+    shortCard: 'PRIVACY POLICY\nPandit Ji Online',
+    badge: 'OFFICIAL PRIVACY & SECURITY STANDARDS',
+    art: 'gyan',
+    accent: '#10b981'
+  },
+  '/terms-and-conditions': {
+    title: 'नियम एवं शर्तें (Terms & Conditions) | पण्डित जी ऑनलाइन',
+    desc: 'पण्डित जी ऑनलाइन पोर्टल के उपयोग, वैदिक ज्योतिष गणना, पूजा बुकिंग एवं परामर्श से जुड़े नियम व शर्तें।',
+    cardTitle: 'TERMS & CONDITIONS • PANDIT JI ONLINE',
+    cardSub: 'Official Portal Guidelines, Puja Booking Rules & Vedic Standards',
+    shortCard: 'TERMS & CONDITIONS\nPandit Ji Online',
+    badge: 'OFFICIAL TERMS OF SERVICE',
+    art: 'gyan',
+    accent: '#f59e0b'
+  },
+  '/disclaimer': {
+    title: 'अस्वीकरण (Disclaimer) — वैदिक ज्योतिष एवं आध्यात्मिक परामर्श सूचना | पण्डित जी ऑनलाइन',
+    desc: 'पण्डित जी ऑनलाइन की आधिकारिक वैदिक ज्योतिष एवं आध्यात्मिक परामर्श अस्वीकरण सूचना।',
+    cardTitle: 'OFFICIAL ASTROLOGICAL DISCLAIMER',
+    cardSub: 'Vedic Shastra Advisory & Spiritual Guidance Standards',
+    shortCard: 'OFFICIAL DISCLAIMER\nPandit Ji Online',
+    badge: 'SPIRITUAL & ASTROLOGICAL NOTICE',
+    art: 'gyan',
+    accent: '#f59e0b'
   }
 };
 
@@ -447,9 +523,26 @@ function xmlEscape(str) {
     .replace(/'/g, '&#39;');
 }
 
-function resolveRouteInfo(rawPath) {
+function resolveRouteInfo(rawPath, searchParams) {
   let clean = String(rawPath || '/').split('?')[0].split('#')[0].replace(/\/+$/, '').toLowerCase() || '/';
   if (clean === '/index.html' || clean === '/index') clean = '/';
+
+  // Support ?tab= or ?category= deep links when path is /
+  if (clean === '/' && searchParams) {
+    const cat = (searchParams.get('category') || '').trim().toLowerCase();
+    if (cat) {
+      const catPath = '/' + cat.replace(/^\/+/, '');
+      if (ROUTE_ALIASES[catPath]) clean = ROUTE_ALIASES[catPath];
+      else if (ROUTE_DATA[catPath]) clean = catPath;
+    }
+    const tab = (searchParams.get('tab') || '').trim().toLowerCase();
+    if (tab && tab !== 'home' && clean === '/') {
+      const tabPath = '/' + tab.replace(/^\/+/, '');
+      if (ROUTE_ALIASES[tabPath]) clean = ROUTE_ALIASES[tabPath];
+      else if (ROUTE_DATA[tabPath]) clean = tabPath;
+    }
+  }
+
   const canonicalPath = ROUTE_ALIASES[clean] || clean;
   const info = ROUTE_DATA[canonicalPath] || ROUTE_DATA[clean];
   if (info) {
@@ -472,106 +565,122 @@ function resolveRouteInfo(rawPath) {
 function renderArtworkSvg(art, accent) {
   if (art === 'mandir') {
     return `
-      <g transform="translate(975, 295)">
-        <circle cx="0" cy="0" r="150" fill="#1a0903" stroke="${accent}" stroke-width="3"/>
-        <circle cx="0" cy="0" r="134" fill="none" stroke="#fde047" stroke-width="1" stroke-dasharray="6 6"/>
-        <polygon points="0,-105 -75,25 75,25" fill="none" stroke="#facc15" stroke-width="4"/>
-        <polygon points="0,-80 -55,25 55,25" fill="${accent}" fill-opacity="0.22" stroke="#fde047" stroke-width="2"/>
-        <circle cx="0" cy="-115" r="8" fill="#facc15"/>
-        <path d="M 0,-125 L 0,-142 L 38,-132 L 0,-123" fill="#ef4444"/>
-        <rect x="-65" y="25" width="130" height="65" fill="#2a0e05" stroke="#facc15" stroke-width="3"/>
-        <rect x="-28" y="40" width="56" height="50" rx="28" fill="#451a03" stroke="#fde047" stroke-width="2.5"/>
-        <path d="M -16,78 Q 0,92 16,78 Z" fill="#f59e0b"/>
-        <path d="M 0,52 Q -9,68 0,76 Q 9,68 0,52 Z" fill="#fef08a"/>
-        <rect x="-85" y="90" width="170" height="12" rx="4" fill="#facc15"/>
-        <text x="0" y="126" font-family="sans-serif" font-size="16" font-weight="800" fill="#fef08a" text-anchor="middle" letter-spacing="2">3D LIVE MANDIR</text>
+      <g transform="translate(975, 290)">
+        <circle cx="0" cy="0" r="165" fill="url(#emblemGlow)"/>
+        <circle cx="0" cy="0" r="148" fill="#1a0903" stroke="${accent}" stroke-width="3.5"/>
+        <circle cx="0" cy="0" r="132" fill="none" stroke="#fde047" stroke-width="1.5" stroke-dasharray="7 5"/>
+        <polygon points="0,-108 -78,24 78,24" fill="#2d1004" stroke="#facc15" stroke-width="4"/>
+        <polygon points="0,-82 -56,24 56,24" fill="${accent}" fill-opacity="0.28" stroke="#fde047" stroke-width="2.5"/>
+        <circle cx="0" cy="-118" r="9" fill="#facc15"/>
+        <path d="M 0,-127 L 0,-145 L 42,-134 L 0,-124 Z" fill="#ef4444" stroke="#fde047" stroke-width="1"/>
+        <rect x="-68" y="24" width="136" height="66" rx="4" fill="#2a0e05" stroke="#facc15" stroke-width="3"/>
+        <rect x="-28" y="38" width="56" height="52" rx="28" fill="#451a03" stroke="#fde047" stroke-width="2.5"/>
+        <path d="M -18,78 Q 0,94 18,78 Z" fill="#f59e0b"/>
+        <path d="M 0,50 Q -10,68 0,76 Q 10,68 0,50 Z" fill="#fef08a"/>
+        <rect x="-88" y="90" width="176" height="12" rx="5" fill="#facc15"/>
+        <rect x="-86" y="108" width="172" height="30" rx="15" fill="#451a03" stroke="#facc15" stroke-width="2"/>
+        <text x="0" y="128" font-family="sans-serif" font-size="14" font-weight="900" fill="#fef08a" text-anchor="middle" letter-spacing="1.8">3D LIVE MANDIR</text>
       </g>`;
   }
   if (art === 'kundli') {
     return `
-      <g transform="translate(975, 295)">
-        <circle cx="0" cy="0" r="150" fill="#1a0903" stroke="${accent}" stroke-width="3"/>
-        <rect x="-95" y="-95" width="190" height="190" fill="#270e04" stroke="#facc15" stroke-width="3.5"/>
-        <line x1="-95" y1="-95" x2="95" y2="95" stroke="#fbbf24" stroke-width="2"/>
-        <line x1="95" y1="-95" x2="-95" y2="95" stroke="#fbbf24" stroke-width="2"/>
-        <polygon points="0,-95 95,0 0,95 -95,0" fill="none" stroke="#fde047" stroke-width="2.5"/>
-        <text x="0" y="-38" font-family="sans-serif" font-size="15" font-weight="800" fill="#fef08a" text-anchor="middle">LAGNA</text>
-        <text x="0" y="-18" font-family="sans-serif" font-size="13" font-weight="700" fill="#fb923c" text-anchor="middle">1</text>
-        <text x="-48" y="5" font-family="sans-serif" font-size="13" font-weight="700" fill="#fde68a" text-anchor="middle">4</text>
-        <text x="0" y="52" font-family="sans-serif" font-size="13" font-weight="700" fill="#fde68a" text-anchor="middle">7</text>
-        <text x="48" y="5" font-family="sans-serif" font-size="13" font-weight="700" fill="#fde68a" text-anchor="middle">10</text>
-        <text x="0" y="128" font-family="sans-serif" font-size="15" font-weight="800" fill="#fef08a" text-anchor="middle" letter-spacing="1.5">VEDIC KUNDALI</text>
+      <g transform="translate(975, 290)">
+        <circle cx="0" cy="0" r="165" fill="url(#emblemGlow)"/>
+        <circle cx="0" cy="0" r="148" fill="#1a0903" stroke="${accent}" stroke-width="3.5"/>
+        <circle cx="0" cy="0" r="134" fill="none" stroke="#fde047" stroke-width="1.2" stroke-dasharray="6 6"/>
+        <rect x="-92" y="-98" width="184" height="184" fill="#270e04" stroke="#facc15" stroke-width="3.5"/>
+        <line x1="-92" y1="-98" x2="92" y2="86" stroke="#fbbf24" stroke-width="2.2"/>
+        <line x1="92" y1="-98" x2="-92" y2="86" stroke="#fbbf24" stroke-width="2.2"/>
+        <polygon points="0,-98 92,-6 0,86 -92,-6" fill="#451a03" fill-opacity="0.45" stroke="#fde047" stroke-width="2.5"/>
+        <text x="0" y="-42" font-family="sans-serif" font-size="15" font-weight="900" fill="#fef08a" text-anchor="middle">LAGNA</text>
+        <text x="0" y="-22" font-family="sans-serif" font-size="14" font-weight="800" fill="#fb923c" text-anchor="middle">D-1 &amp; D-9</text>
+        <text x="-48" y="-1" font-family="sans-serif" font-size="14" font-weight="800" fill="#fde68a" text-anchor="middle">4</text>
+        <text x="0" y="46" font-family="sans-serif" font-size="14" font-weight="800" fill="#fde68a" text-anchor="middle">7</text>
+        <text x="48" y="-1" font-family="sans-serif" font-size="14" font-weight="800" fill="#fde68a" text-anchor="middle">10</text>
+        <rect x="-86" y="102" width="172" height="30" rx="15" fill="#451a03" stroke="#facc15" stroke-width="2"/>
+        <text x="0" y="122" font-family="sans-serif" font-size="14" font-weight="900" fill="#fef08a" text-anchor="middle" letter-spacing="1.5">VEDIC KUNDALI</text>
       </g>`;
   }
   if (art === 'milan') {
     return `
-      <g transform="translate(975, 295)">
-        <circle cx="0" cy="0" r="150" fill="#1a0903" stroke="${accent}" stroke-width="3"/>
-        <circle cx="0" cy="0" r="132" fill="none" stroke="#f472b6" stroke-width="1.5" stroke-dasharray="6 6"/>
-        <circle cx="-28" cy="-18" r="48" fill="none" stroke="#facc15" stroke-width="5"/>
-        <circle cx="28" cy="-18" r="48" fill="none" stroke="#fb7185" stroke-width="5"/>
-        <rect x="-70" y="48" width="140" height="38" rx="19" fill="#831843" stroke="#facc15" stroke-width="2"/>
-        <text x="0" y="73" font-family="sans-serif" font-size="18" font-weight="900" fill="#fef08a" text-anchor="middle" letter-spacing="1.5">36 / 36 GUN</text>
-        <text x="0" y="122" font-family="sans-serif" font-size="14" font-weight="800" fill="#fbcfe8" text-anchor="middle" letter-spacing="1.5">ASHTAKOOT MILAN</text>
+      <g transform="translate(975, 290)">
+        <circle cx="0" cy="0" r="165" fill="url(#emblemGlow)"/>
+        <circle cx="0" cy="0" r="148" fill="#1a0903" stroke="${accent}" stroke-width="3.5"/>
+        <circle cx="0" cy="0" r="132" fill="none" stroke="#f472b6" stroke-width="1.8" stroke-dasharray="7 5"/>
+        <circle cx="-30" cy="-22" r="50" fill="#451a03" fill-opacity="0.4" stroke="#facc15" stroke-width="5.5"/>
+        <circle cx="30" cy="-22" r="50" fill="#500724" fill-opacity="0.4" stroke="#fb7185" stroke-width="5.5"/>
+        <rect x="-76" y="44" width="152" height="38" rx="19" fill="#831843" stroke="#facc15" stroke-width="2.5"/>
+        <text x="0" y="69" font-family="sans-serif" font-size="19" font-weight="900" fill="#fef08a" text-anchor="middle" letter-spacing="1.5">36 / 36 GUN</text>
+        <text x="0" y="114" font-family="sans-serif" font-size="14" font-weight="900" fill="#fbcfe8" text-anchor="middle" letter-spacing="1.5">ASHTAKOOT MILAN</text>
       </g>`;
   }
   if (art === 'panchang') {
     return `
-      <g transform="translate(975, 295)">
-        <circle cx="0" cy="0" r="150" fill="#1a0903" stroke="${accent}" stroke-width="3"/>
-        <circle cx="0" cy="0" r="126" fill="none" stroke="#fde047" stroke-width="1.5" stroke-dasharray="8 6"/>
-        <circle cx="0" cy="-12" r="54" fill="#f59e0b" fill-opacity="0.25" stroke="#facc15" stroke-width="4"/>
-        <circle cx="0" cy="-12" r="32" fill="#facc15"/>
-        <path d="M 12,-34 A 24,24 0 1,0 12,10 A 18,18 0 1,1 12,-34 Z" fill="#1a0903"/>
-        <rect x="-78" y="64" width="156" height="34" rx="17" fill="#451a03" stroke="#facc15" stroke-width="2"/>
-        <text x="0" y="86" font-family="sans-serif" font-size="15" font-weight="900" fill="#fef08a" text-anchor="middle" letter-spacing="1.5">DRIK PANCHANG</text>
+      <g transform="translate(975, 290)">
+        <circle cx="0" cy="0" r="165" fill="url(#emblemGlow)"/>
+        <circle cx="0" cy="0" r="148" fill="#1a0903" stroke="${accent}" stroke-width="3.5"/>
+        <circle cx="0" cy="0" r="128" fill="none" stroke="#fde047" stroke-width="1.8" stroke-dasharray="8 6"/>
+        <polygon points="0,-92 22,-32 82,-32 34,6 52,66 0,30 -52,66 -34,6 -82,-32 -22,-32" fill="#f59e0b" fill-opacity="0.18" stroke="#fbbf24" stroke-width="1.5"/>
+        <circle cx="0" cy="-14" r="56" fill="#451a03" stroke="#facc15" stroke-width="4"/>
+        <circle cx="0" cy="-14" r="34" fill="#facc15"/>
+        <path d="M 12,-36 A 24,24 0 1,0 12,8 A 18,18 0 1,1 12,-36 Z" fill="#1a0903"/>
+        <rect x="-86" y="64" width="172" height="36" rx="18" fill="#451a03" stroke="#facc15" stroke-width="2.2"/>
+        <text x="0" y="88" font-family="sans-serif" font-size="15" font-weight="900" fill="#fef08a" text-anchor="middle" letter-spacing="1.5">DRIK PANCHANG</text>
       </g>`;
   }
   if (art === 'rashi') {
     return `
-      <g transform="translate(975, 295)">
-        <circle cx="0" cy="0" r="150" fill="#1a0903" stroke="${accent}" stroke-width="3"/>
-        <circle cx="0" cy="0" r="124" fill="none" stroke="#facc15" stroke-width="2"/>
-        <circle cx="0" cy="0" r="82" fill="#2e1065" fill-opacity="0.55" stroke="#fde047" stroke-width="2"/>
-        <line x1="0" y1="-124" x2="0" y2="124" stroke="#facc15" stroke-width="1" stroke-opacity="0.5"/>
-        <line x1="-124" y1="0" x2="124" y2="0" stroke="#facc15" stroke-width="1" stroke-opacity="0.5"/>
-        <line x1="-88" y1="-88" x2="88" y2="88" stroke="#facc15" stroke-width="1" stroke-opacity="0.5"/>
-        <line x1="88" y1="-88" x2="-88" y2="88" stroke="#facc15" stroke-width="1" stroke-opacity="0.5"/>
-        <text x="0" y="-8" font-family="sans-serif" font-size="30" font-weight="900" fill="#fef08a" text-anchor="middle">A - Z</text>
-        <text x="0" y="22" font-family="sans-serif" font-size="15" font-weight="800" fill="#e9d5ff" text-anchor="middle" letter-spacing="1.5">12 RASHI</text>
-        <text x="0" y="112" font-family="sans-serif" font-size="14" font-weight="800" fill="#fde047" text-anchor="middle" letter-spacing="1.5">27 NAKSHATRA</text>
+      <g transform="translate(975, 290)">
+        <circle cx="0" cy="0" r="165" fill="url(#emblemGlow)"/>
+        <circle cx="0" cy="0" r="148" fill="#1a0903" stroke="${accent}" stroke-width="3.5"/>
+        <circle cx="0" cy="0" r="126" fill="none" stroke="#facc15" stroke-width="2"/>
+        <circle cx="0" cy="-6" r="82" fill="#2e1065" fill-opacity="0.65" stroke="#fde047" stroke-width="2.5"/>
+        <line x1="0" y1="-126" x2="0" y2="114" stroke="#facc15" stroke-width="1.2" stroke-opacity="0.5"/>
+        <line x1="-126" y1="-6" x2="126" y2="-6" stroke="#facc15" stroke-width="1.2" stroke-opacity="0.5"/>
+        <line x1="-88" y1="-94" x2="88" y2="82" stroke="#facc15" stroke-width="1.2" stroke-opacity="0.5"/>
+        <line x1="88" y1="-94" x2="-88" y2="82" stroke="#facc15" stroke-width="1.2" stroke-opacity="0.5"/>
+        <text x="0" y="-12" font-family="sans-serif" font-size="32" font-weight="900" fill="#fef08a" text-anchor="middle">A - Z</text>
+        <text x="0" y="18" font-family="sans-serif" font-size="16" font-weight="900" fill="#e9d5ff" text-anchor="middle" letter-spacing="1.5">12 RASHI</text>
+        <rect x="-86" y="88" width="172" height="32" rx="16" fill="#3b0764" stroke="#facc15" stroke-width="2"/>
+        <text x="0" y="109" font-family="sans-serif" font-size="14" font-weight="900" fill="#fde047" text-anchor="middle" letter-spacing="1.5">27 NAKSHATRA</text>
       </g>`;
   }
   if (art === 'shani') {
     return `
-      <g transform="translate(975, 295)">
-        <circle cx="0" cy="0" r="150" fill="#111827" stroke="${accent}" stroke-width="3"/>
-        <circle cx="0" cy="0" r="130" fill="none" stroke="#818cf8" stroke-width="1.5" stroke-dasharray="6 6"/>
-        <ellipse cx="0" cy="-10" rx="95" ry="26" fill="none" stroke="#facc15" stroke-width="6" transform="rotate(-18 0 -10)"/>
-        <circle cx="0" cy="-10" r="42" fill="#312e81" stroke="#fde047" stroke-width="3"/>
-        <rect x="-78" y="64" width="156" height="34" rx="17" fill="#1e1b4b" stroke="#facc15" stroke-width="2"/>
-        <text x="0" y="86" font-family="sans-serif" font-size="15" font-weight="900" fill="#fef08a" text-anchor="middle" letter-spacing="1.5">SHANI GOCHAR</text>
+      <g transform="translate(975, 290)">
+        <circle cx="0" cy="0" r="165" fill="url(#emblemGlow)"/>
+        <circle cx="0" cy="0" r="148" fill="#111827" stroke="${accent}" stroke-width="3.5"/>
+        <circle cx="0" cy="0" r="130" fill="none" stroke="#818cf8" stroke-width="1.8" stroke-dasharray="7 5"/>
+        <ellipse cx="0" cy="-14" rx="98" ry="28" fill="none" stroke="#facc15" stroke-width="6.5" transform="rotate(-18 0 -14)"/>
+        <circle cx="0" cy="-14" r="44" fill="#312e81" stroke="#fde047" stroke-width="3.5"/>
+        <rect x="-84" y="64" width="168" height="36" rx="18" fill="#1e1b4b" stroke="#facc15" stroke-width="2.2"/>
+        <text x="0" y="87" font-family="sans-serif" font-size="15" font-weight="900" fill="#fef08a" text-anchor="middle" letter-spacing="1.5">SHANI GOCHAR</text>
       </g>`;
   }
   if (art === 'puja') {
     return `
-      <g transform="translate(975, 295)">
-        <circle cx="0" cy="0" r="150" fill="#1a0903" stroke="${accent}" stroke-width="3"/>
-        <polygon points="-75,45 75,45 55,85 -55,85" fill="#7c2d12" stroke="#facc15" stroke-width="3"/>
-        <rect x="-88" y="85" width="176" height="16" rx="4" fill="#facc15"/>
-        <path d="M 0,-85 Q -45,-15 -22,42 L 22,42 Q 45,-15 0,-85 Z" fill="#f97316" stroke="#fde047" stroke-width="2"/>
-        <path d="M 0,-45 Q -22,0 -10,42 L 10,42 Q 22,0 0,-45 Z" fill="#fef08a"/>
-        <text x="0" y="126" font-family="sans-serif" font-size="15" font-weight="900" fill="#fef08a" text-anchor="middle" letter-spacing="1.5">VEDIC ANUSHTHAN</text>
+      <g transform="translate(975, 290)">
+        <circle cx="0" cy="0" r="165" fill="url(#emblemGlow)"/>
+        <circle cx="0" cy="0" r="148" fill="#1a0903" stroke="${accent}" stroke-width="3.5"/>
+        <circle cx="0" cy="0" r="132" fill="none" stroke="#fde047" stroke-width="1.5" stroke-dasharray="7 5"/>
+        <polygon points="-76,38 76,38 56,78 -56,78" fill="#7c2d12" stroke="#facc15" stroke-width="3"/>
+        <rect x="-88" y="78" width="176" height="16" rx="5" fill="#facc15"/>
+        <path d="M 0,-90 Q -48,-18 -24,36 L 24,36 Q 48,-18 0,-90 Z" fill="#f97316" stroke="#fde047" stroke-width="2.5"/>
+        <path d="M 0,-48 Q -24,-2 -10,36 L 10,36 Q 24,-2 0,-48 Z" fill="#fef08a"/>
+        <rect x="-88" y="102" width="176" height="30" rx="15" fill="#451a03" stroke="#facc15" stroke-width="2"/>
+        <text x="0" y="122" font-family="sans-serif" font-size="14" font-weight="900" fill="#fef08a" text-anchor="middle" letter-spacing="1.5">VEDIC ANUSHTHAN</text>
       </g>`;
   }
   return `
-    <g transform="translate(975, 295)">
-      <circle cx="0" cy="0" r="150" fill="#1a0903" stroke="${accent}" stroke-width="3"/>
-      <circle cx="0" cy="0" r="128" fill="none" stroke="#fde047" stroke-width="1.5" stroke-dasharray="6 6"/>
-      <polygon points="0,-95 26,-26 95,0 26,26 0,95 -26,26 -95,0 -26,-26" fill="${accent}" fill-opacity="0.22" stroke="#facc15" stroke-width="3"/>
-      <circle cx="0" cy="0" r="42" fill="#451a03" stroke="#fde047" stroke-width="3"/>
-      <text x="0" y="10" font-family="sans-serif" font-size="26" font-weight="900" fill="#fef08a" text-anchor="middle">OM</text>
-      <text x="0" y="124" font-family="sans-serif" font-size="15" font-weight="900" fill="#fef08a" text-anchor="middle" letter-spacing="1.5">VEDIC SHASTRA</text>
+    <g transform="translate(975, 290)">
+      <circle cx="0" cy="0" r="165" fill="url(#emblemGlow)"/>
+      <circle cx="0" cy="0" r="148" fill="#1a0903" stroke="${accent}" stroke-width="3.5"/>
+      <circle cx="0" cy="0" r="128" fill="none" stroke="#fde047" stroke-width="1.8" stroke-dasharray="7 5"/>
+      <polygon points="0,-96 28,-28 96,0 28,28 0,96 -28,28 -96,0 -28,-28" fill="${accent}" fill-opacity="0.26" stroke="#facc15" stroke-width="3"/>
+      <circle cx="0" cy="0" r="44" fill="#451a03" stroke="#fde047" stroke-width="3.5"/>
+      <text x="0" y="10" font-family="sans-serif" font-size="27" font-weight="900" fill="#fef08a" text-anchor="middle">OM</text>
+      <rect x="-86" y="102" width="172" height="30" rx="15" fill="#451a03" stroke="#facc15" stroke-width="2"/>
+      <text x="0" y="122" font-family="sans-serif" font-size="14" font-weight="900" fill="#fef08a" text-anchor="middle" letter-spacing="1.5">VEDIC SHASTRA</text>
     </g>`;
 }
 
@@ -602,41 +711,56 @@ function buildOgCardSvg(routeInfo) {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <defs>
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#2a0c04"/>
-      <stop offset="55%" stop-color="#140703"/>
-      <stop offset="100%" stop-color="#230b04"/>
+      <stop offset="0%" stop-color="#2e0d04"/>
+      <stop offset="50%" stop-color="#160702"/>
+      <stop offset="100%" stop-color="#290c03"/>
     </linearGradient>
     <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#fde047"/>
       <stop offset="50%" stop-color="#f59e0b"/>
       <stop offset="100%" stop-color="#fef08a"/>
     </linearGradient>
+    <linearGradient id="ctaGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ea580c"/>
+      <stop offset="50%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <radialGradient id="emblemGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="${accent}" stop-opacity="0.38"/>
+      <stop offset="100%" stop-color="${accent}" stop-opacity="0"/>
+    </radialGradient>
   </defs>
 
   <rect width="1200" height="630" fill="url(#bgGrad)"/>
-  <rect x="20" y="20" width="1160" height="590" rx="24" fill="none" stroke="url(#goldGrad)" stroke-width="3" stroke-opacity="0.8"/>
-  <rect x="30" y="30" width="1140" height="570" rx="18" fill="none" stroke="${accent}" stroke-width="1" stroke-dasharray="8 6" stroke-opacity="0.5"/>
+  <rect x="18" y="18" width="1164" height="594" rx="26" fill="none" stroke="url(#goldGrad)" stroke-width="3.5" stroke-opacity="0.9"/>
+  <rect x="28" y="28" width="1144" height="574" rx="20" fill="none" stroke="${accent}" stroke-width="1.2" stroke-dasharray="8 6" stroke-opacity="0.6"/>
 
-  <rect x="64" y="58" width="470" height="44" rx="22" fill="#451a03" stroke="#facc15" stroke-width="1.5"/>
-  <text x="299" y="86" font-family="sans-serif" font-size="16" font-weight="800" fill="#fde047" text-anchor="middle" letter-spacing="1.5">${badge}</text>
+  <circle cx="46" cy="46" r="6" fill="#facc15"/>
+  <circle cx="1154" cy="46" r="6" fill="#facc15"/>
 
-  <text x="64" y="${line2 ? '185' : '220'}" font-family="sans-serif" font-size="52" font-weight="900" fill="#fef08a" letter-spacing="0.5">${xmlEscape(line1)}</text>
-  ${line2 ? `<text x="64" y="250" font-family="sans-serif" font-size="50" font-weight="900" fill="#fbbf24" letter-spacing="0.5">${xmlEscape(line2)}</text>` : ''}
+  <rect x="60" y="54" width="490" height="44" rx="22" fill="#451a03" stroke="#facc15" stroke-width="1.8"/>
+  <text x="305" y="82" font-family="sans-serif" font-size="16" font-weight="900" fill="#fde047" text-anchor="middle" letter-spacing="1.5">${badge}</text>
 
-  <rect x="64" y="284" width="640" height="5" rx="2.5" fill="url(#goldGrad)"/>
+  <rect x="570" y="54" width="210" height="44" rx="22" fill="#064e3b" stroke="#34d399" stroke-width="1.8"/>
+  <text x="675" y="82" font-family="sans-serif" font-size="15" font-weight="900" fill="#a7f3d0" text-anchor="middle" letter-spacing="1.2">100% SHUDDH DRIK</text>
 
-  <text x="64" y="340" font-family="sans-serif" font-size="25" font-weight="700" fill="#fed7aa">${xmlEscape(subLine1)}</text>
-  ${subLine2 ? `<text x="64" y="382" font-family="sans-serif" font-size="24" font-weight="700" fill="#fdba74">${xmlEscape(subLine2)}</text>` : ''}
+  <text x="60" y="${line2 ? '182' : '216'}" font-family="sans-serif" font-size="54" font-weight="900" fill="#fef08a" letter-spacing="0.5">${xmlEscape(line1)}</text>
+  ${line2 ? `<text x="60" y="248" font-family="sans-serif" font-size="50" font-weight="900" fill="#fbbf24" letter-spacing="0.5">${xmlEscape(line2)}</text>` : ''}
 
-  <rect x="64" y="420" width="420" height="52" rx="26" fill="#d97706" stroke="#fef08a" stroke-width="2"/>
-  <text x="274" y="453" font-family="sans-serif" font-size="21" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="1">OPEN NOW • 100% FREE SEVA</text>
+  <rect x="60" y="280" width="660" height="5" rx="2.5" fill="url(#goldGrad)"/>
+
+  <text x="60" y="336" font-family="sans-serif" font-size="25" font-weight="800" fill="#fed7aa">${xmlEscape(subLine1)}</text>
+  ${subLine2 ? `<text x="60" y="378" font-family="sans-serif" font-size="24" font-weight="700" fill="#fdba74">${xmlEscape(subLine2)}</text>` : ''}
+
+  <rect x="60" y="416" width="450" height="56" rx="28" fill="url(#ctaGrad)" stroke="#fef08a" stroke-width="2.5"/>
+  <text x="285" y="451" font-family="sans-serif" font-size="21" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="1.2">OPEN NOW • 100% FREE SEVA</text>
 
   ${renderArtworkSvg(routeInfo.art, accent)}
 
-  <rect x="22" y="516" width="1156" height="92" rx="18" fill="#0f0502" fill-opacity="0.92"/>
-  <line x1="22" y1="516" x2="1178" y2="516" stroke="#f59e0b" stroke-width="2" stroke-opacity="0.6"/>
-  <text x="64" y="556" font-family="sans-serif" font-size="24" font-weight="900" fill="#facc15">PANDIT JI ONLINE — ACHARYA PANDIT SHASHANK SHARMA</text>
-  <text x="64" y="586" font-family="sans-serif" font-size="18" font-weight="600" fill="#fde68a">Vedic Jyotish &amp; Sanatan Dharm Sansthan, Rudrapur (Uttarakhand)  •  ${pathLabel}</text>
+  <rect x="20" y="512" width="1160" height="98" rx="20" fill="#0f0502" fill-opacity="0.95"/>
+  <line x1="20" y1="512" x2="1180" y2="512" stroke="url(#goldGrad)" stroke-width="2.5"/>
+  <text x="60" y="554" font-family="sans-serif" font-size="24" font-weight="900" fill="#facc15" letter-spacing="0.6">PANDIT JI ONLINE — ACHARYA PANDIT SHASHANK SHARMA</text>
+  <text x="60" y="586" font-family="sans-serif" font-size="19" font-weight="700" fill="#fde68a">Vedic Jyotish &amp; Sanatan Dharm Sansthan, Rudrapur (Uttarakhand)  •  ${pathLabel}</text>
 </svg>`;
 }
 
@@ -644,13 +768,12 @@ function buildSocialHtml(routeInfo) {
   const isHome = routeInfo.path === '/';
   const canonicalUrl = isHome ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}${routeInfo.path}`;
   const slug = routeInfo.path.replace(/^\/+/, '').replace(/\//g, '-') || 'home';
-  const svgCardUrl = `${SITE_ORIGIN}/og-svg/${slug}.svg?v=${VERSION_TAG}`;
+
+  // Single authoritative og:image URL on the first-party domain (serves 1200x630 JPEG 200 OK)
+  // Using a single og:image ensures BOTH Facebook and WhatsApp display the exact same rich Vedic card!
   const primaryOgImage = isHome
     ? HOMEPAGE_IMAGE
-    : `https://wsrv.nl/?url=${encodeURIComponent(svgCardUrl)}&w=1200&h=630&output=jpg&q=92`;
-  const fallbackOgImage = isHome
-    ? HOMEPAGE_IMAGE
-    : `https://placehold.co/1200x630/2a0c04/facc15/jpeg?font=montserrat&text=${encodeURIComponent(routeInfo.shortCard || routeInfo.cardTitle)}`;
+    : `${SITE_ORIGIN}/og-card/${slug}-${VERSION_TAG}.jpg`;
 
   const imgWidth = isHome ? '720' : '1200';
   const imgHeight = isHome ? '720' : '630';
@@ -658,10 +781,9 @@ function buildSocialHtml(routeInfo) {
   const safeDesc = xmlEscape(routeInfo.desc);
   const safeUrl = xmlEscape(canonicalUrl);
   const safeImg = xmlEscape(primaryOgImage);
-  const safeFallbackImg = xmlEscape(fallbackOgImage);
 
   return `<!doctype html>
-<html lang="hi">
+<html lang="hi" prefix="og: http://ogp.me/ns#">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -682,7 +804,9 @@ function buildSocialHtml(routeInfo) {
   <meta property="og:image:width" content="${imgWidth}" />
   <meta property="og:image:height" content="${imgHeight}" />
   <meta property="og:image:alt" content="${safeTitle}" />
-  <meta property="og:image" content="${safeFallbackImg}" />
+  <meta itemprop="name" content="${safeTitle}" />
+  <meta itemprop="description" content="${safeDesc}" />
+  <meta itemprop="image" content="${safeImg}" />
   <link rel="image_src" href="${safeImg}" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="${safeTitle}" />
@@ -698,6 +822,13 @@ function buildSocialHtml(routeInfo) {
   <p><a href="${safeUrl}" style="color:#facc15;">${safeUrl}</a></p>
 </body>
 </html>`;
+}
+
+function cleanSlugFromAssetPath(pathname) {
+  return pathname
+    .replace(/^\/(api\/)?og-(card|svg)\//i, '')
+    .replace(/\.(jpg|jpeg|png|svg|webp)$/i, '')
+    .replace(/[-_.]v\d+$/i, '');
 }
 
 export default async function middleware(request) {
@@ -728,49 +859,61 @@ export default async function middleware(request) {
 
   // 3. Dynamic Per-Page SVG Card (/og-svg/:slug.svg)
   if (pathname.startsWith('/og-svg/')) {
-    const rawSlug = pathname.replace(/^\/og-svg\//, '').replace(/\.(svg|jpg|jpeg|png)$/i, '');
-    const routePath = rawSlug === 'home' ? '/' : rawSlug.startsWith('puja-') && rawSlug !== 'puja-services' && rawSlug !== 'puja-samagri-list'
-      ? '/puja/' + rawSlug.slice(5)
-      : '/' + rawSlug;
-    const info = resolveRouteInfo(routePath);
+    const rawSlug = cleanSlugFromAssetPath(pathname);
+    const routePath =
+      rawSlug === 'home'
+        ? '/'
+        : rawSlug.startsWith('puja-') && rawSlug !== 'puja-services' && rawSlug !== 'puja-samagri-list'
+          ? '/puja/' + rawSlug.slice(5)
+          : '/' + rawSlug;
+    const info = resolveRouteInfo(routePath, url.searchParams);
     const svg = buildOgCardSvg(info);
     return new Response(svg, {
       status: 200,
       headers: {
         'Content-Type': 'image/svg+xml; charset=utf-8',
         'Access-Control-Allow-Origin': '*',
-        'Cache-Control': 'public, max-age=86400, s-maxage=86400'
+        'Cache-Control': 'public, max-age=31536000, s-maxage=31536000, immutable'
       }
     });
   }
 
   // 4. Dynamic Per-Page JPEG Card (/og-card/:slug.jpg or /api/og-card/:slug)
   if (pathname.startsWith('/og-card/') || pathname.startsWith('/api/og-card/')) {
-    const rawSlug = pathname
-      .replace(/^\/(api\/)?og-card\//, '')
-      .replace(/\.(jpg|jpeg|png|svg)$/i, '');
-    const routePath = rawSlug === 'home' ? '/' : rawSlug.startsWith('puja-') && rawSlug !== 'puja-services' && rawSlug !== 'puja-samagri-list'
-      ? '/puja/' + rawSlug.slice(5)
-      : '/' + rawSlug;
-    const info = resolveRouteInfo(routePath);
-    const svgUrl = `${SITE_ORIGIN}/og-svg/${rawSlug}.svg?v=${VERSION_TAG}`;
-    const wsrvUrl = `https://wsrv.nl/?url=${encodeURIComponent(svgUrl)}&w=1200&h=630&output=jpg&q=92`;
-    try {
-      const imgRes = await fetch(wsrvUrl);
-      if (imgRes.ok) {
-        const buf = await imgRes.arrayBuffer();
-        if (buf.byteLength > 1000) {
-          return new Response(buf, {
-            status: 200,
-            headers: {
-              'Content-Type': 'image/jpeg',
-              'Access-Control-Allow-Origin': '*',
-              'Cache-Control': 'public, max-age=86400, s-maxage=86400'
-            }
-          });
+    const rawSlug = cleanSlugFromAssetPath(pathname);
+    const routePath =
+      rawSlug === 'home'
+        ? '/'
+        : rawSlug.startsWith('puja-') && rawSlug !== 'puja-services' && rawSlug !== 'puja-samagri-list'
+          ? '/puja/' + rawSlug.slice(5)
+          : '/' + rawSlug;
+    const info = resolveRouteInfo(routePath, url.searchParams);
+    const svgUrl = `${SITE_ORIGIN}/og-svg/${rawSlug}-${VERSION_TAG}.svg`;
+
+    const rasterMirrors = [
+      `https://wsrv.nl/?url=${encodeURIComponent(svgUrl)}&w=1200&h=630&output=jpg&q=92`,
+      `https://images.weserv.nl/?url=${encodeURIComponent(svgUrl)}&w=1200&h=630&output=jpg&q=92`
+    ];
+
+    for (const mirrorUrl of rasterMirrors) {
+      try {
+        const imgRes = await fetch(mirrorUrl);
+        if (imgRes.ok) {
+          const buf = await imgRes.arrayBuffer();
+          if (buf.byteLength > 1000) {
+            return new Response(buf, {
+              status: 200,
+              headers: {
+                'Content-Type': 'image/jpeg',
+                'Content-Length': String(buf.byteLength),
+                'Access-Control-Allow-Origin': '*',
+                'Cache-Control': 'public, max-age=31536000, s-maxage=31536000, immutable'
+              }
+            });
+          }
         }
-      }
-    } catch {}
+      } catch {}
+    }
 
     const fallbackUrl = `https://placehold.co/1200x630/2a0c04/facc15/jpeg?font=montserrat&text=${encodeURIComponent(info.shortCard || info.cardTitle)}`;
     try {
@@ -781,8 +924,9 @@ export default async function middleware(request) {
           status: 200,
           headers: {
             'Content-Type': 'image/jpeg',
+            'Content-Length': String(buf.byteLength),
             'Access-Control-Allow-Origin': '*',
-            'Cache-Control': 'public, max-age=86400, s-maxage=86400'
+            'Cache-Control': 'public, max-age=3600, s-maxage=3600'
           }
         });
       }
@@ -794,7 +938,7 @@ export default async function middleware(request) {
   // 5. Explicit /api/social-preview endpoint
   if (pathname === '/api/social-preview') {
     const targetPath = url.searchParams.get('path') || '/';
-    const info = resolveRouteInfo(targetPath);
+    const info = resolveRouteInfo(targetPath, url.searchParams);
     return new Response(buildSocialHtml(info), {
       status: 200,
       headers: {
@@ -805,14 +949,18 @@ export default async function middleware(request) {
     });
   }
 
-  // 6. Intercept Social Media Crawlers (WhatsApp, Facebook, Telegram, Twitter/X, LinkedIn, Discord, Slack)
+  // 6. Intercept Social Media Crawlers (WhatsApp, Facebook, Telegram, Twitter/X, LinkedIn, Discord, Slack, Instagram, etc.)
+  // Never intercept Googlebot, Google-InspectionTool, PageSpeed/Lighthouse, or AdSense (Mediapartners-Google / AdsBot-Google)
   const ua = request.headers.get('user-agent') || '';
-  const isSocialBot = /whatsapp|facebookexternalhit|facebot|meta-externalagent|telegram|twitterbot|linkedinbot|slackbot|discordbot|pinterest|vkshare|skypeuripreview|embedly|quora|outbrain|redditbot|tumblr|bitlybot/i.test(ua);
+  const isGoogleOrAuditBot = /googlebot|google-inspectiontool|storebot-google|adsbot-google|mediapartners-google|apis-google|chrome-lighthouse|pagespeed|ptst|gtmetrix|bingbot|yandexbot|baiduspider|duckduckbot/i.test(ua);
+  const isSocialBot =
+    !isGoogleOrAuditBot &&
+    /whatsapp|facebookexternalhit|facebot|meta-externalagent|instagram|threads|telegram|twitterbot|linkedinbot|slackbot|discordbot|pinterest|vkshare|skypeuripreview|embedly|quora|outbrain|redditbot|tumblr|bitlybot|viber|line|snapchat|applebot|okhttp|dalvik/i.test(ua);
   const isPreviewQuery = url.searchParams.get('__social_preview') === '1';
 
   if (isSocialBot || isPreviewQuery) {
     if (!/\.(ico|png|jpg|jpeg|svg|webp|woff2|js|css|json|txt|xml|map)$/i.test(pathname)) {
-      const info = resolveRouteInfo(pathname);
+      const info = resolveRouteInfo(pathname, url.searchParams);
       return new Response(buildSocialHtml(info), {
         status: 200,
         headers: {
@@ -824,7 +972,7 @@ export default async function middleware(request) {
     }
   }
 
-  // 7. Normal Browser / Googlebot requests: pass through to static index.html / assets
+  // 7. Normal Browser, Googlebot, PageSpeed & AdSense requests: zero-latency pass-through to static index.html / assets
   return new Response(null, {
     headers: {
       'x-middleware-next': '1'
