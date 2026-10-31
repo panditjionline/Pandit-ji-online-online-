@@ -3,7 +3,7 @@
   "trailingSlash": false,
   "headers": [
     {
-      "source": "/ai-catalog.json",
+      "source": "/(ai-catalog\\.json|\\.well-known/.*\\.json)",
       "headers": [
         { "key": "Content-Type", "value": "application/json; charset=utf-8" },
         { "key": "Access-Control-Allow-Origin", "value": "*" },
@@ -11,26 +11,11 @@
       ]
     },
     {
-      "source": "/.well-known/(.*).json",
-      "headers": [
-        { "key": "Content-Type", "value": "application/json; charset=utf-8" },
-        { "key": "Access-Control-Allow-Origin", "value": "*" },
-        { "key": "Cache-Control", "value": "public, max-age=3600, s-maxage=3600" }
-      ]
-    },
-    {
-      "source": "/llms.txt",
+      "source": "/(llms|ads|robots)\\.txt",
       "headers": [
         { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
         { "key": "Access-Control-Allow-Origin", "value": "*" },
         { "key": "Cache-Control", "value": "public, max-age=3600" }
-      ]
-    },
-    {
-      "source": "/ads.txt",
-      "headers": [
-        { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
-        { "key": "Cache-Control", "value": "public, max-age=86400" }
       ]
     },
     {
@@ -38,13 +23,6 @@
       "headers": [
         { "key": "Content-Type", "value": "application/xml; charset=utf-8" },
         { "key": "Cache-Control", "value": "public, max-age=1800" }
-      ]
-    },
-    {
-      "source": "/robots.txt",
-      "headers": [
-        { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
-        { "key": "Cache-Control", "value": "public, max-age=3600" }
       ]
     },
     {
@@ -64,15 +42,7 @@
       ]
     },
     {
-      "source": "/app-engine.txt",
-      "headers": [
-        { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
-        { "key": "Access-Control-Allow-Origin", "value": "*" },
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
-      ]
-    },
-    {
-      "source": "/app-engine.html",
+      "source": "/(app-engine\\.txt|app-engine\\.html)",
       "headers": [
         { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
         { "key": "Access-Control-Allow-Origin", "value": "*" },
@@ -88,72 +58,9 @@
       ]
     },
     {
-      "source": "/assets/(.*)",
+      "source": "/(assets/.*|.*\\.(?:ico|png|jpg|jpeg|svg|webp|woff2))",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-      ]
-    },
-    {
-      "source": "/(.*)\\.(ico|png|jpg|jpeg|svg|webp|woff2)",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-      ]
-    },
-    {
-      "source": "/",
-      "headers": [
-        { "key": "Content-Type", "value": "text/html; charset=utf-8" },
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate, s-maxage=0" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(self)" },
-        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://pagead2.googlesyndication.com https://www.googletagmanager.com https://translate.google.com https://translate.googleapis.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https: wss:; media-src 'self' https: data: blob:; frame-src 'self' https://www.google.com https://www.youtube.com https://googleads.g.doubleclick.net; object-src 'none'; base-uri 'self'; form-action 'self';" },
-        { "key": "X-Robots-Tag", "value": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
-        { "key": "Link", "value": "</ai-catalog.json>; rel=\"ai-catalog\", </ai-catalog.json>; rel=\"ard\"" }
-      ]
-    },
-    {
-      "source": "/index.html",
-      "headers": [
-        { "key": "Content-Type", "value": "text/html; charset=utf-8" },
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate, s-maxage=0" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(self)" },
-        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://pagead2.googlesyndication.com https://www.googletagmanager.com https://translate.google.com https://translate.googleapis.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https: wss:; media-src 'self' https: data: blob:; frame-src 'self' https://www.google.com https://www.youtube.com https://googleads.g.doubleclick.net; object-src 'none'; base-uri 'self'; form-action 'self';" },
-        { "key": "X-Robots-Tag", "value": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
-        { "key": "Link", "value": "</ai-catalog.json>; rel=\"ai-catalog\", </ai-catalog.json>; rel=\"ard\"" }
-      ]
-    },
-    {
-      "source": "/404.html",
-      "headers": [
-        { "key": "Content-Type", "value": "text/html; charset=utf-8" },
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate, s-maxage=0" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
-      ]
-    },
-    {
-      "source": "/standalone-firebase-index.html",
-      "headers": [
-        { "key": "Content-Type", "value": "text/html; charset=utf-8" },
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate, s-maxage=0" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
-      ]
-    },
-    {
-      "source": "/googlea0e64484b80e13d1.html",
-      "headers": [
-        { "key": "Content-Type", "value": "text/html; charset=utf-8" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" }
       ]
     },
     {
@@ -161,13 +68,6 @@
       "headers": [
         { "key": "Content-Type", "value": "text/html; charset=utf-8" },
         { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate, s-maxage=0" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(self)" },
-        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://pagead2.googlesyndication.com https://www.googletagmanager.com https://translate.google.com https://translate.googleapis.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https: wss:; media-src 'self' https: data: blob:; frame-src 'self' https://www.google.com https://www.youtube.com https://googleads.g.doubleclick.net; object-src 'none'; base-uri 'self'; form-action 'self';" },
-        { "key": "X-Robots-Tag", "value": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
         { "key": "Link", "value": "</ai-catalog.json>; rel=\"ai-catalog\", </ai-catalog.json>; rel=\"ard\"" }
       ]
     },
@@ -177,51 +77,47 @@
         { "key": "X-Content-Type-Options", "value": "nosniff" },
         { "key": "X-Frame-Options", "value": "DENY" },
         { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(self)" },
         { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://pagead2.googlesyndication.com https://www.googletagmanager.com https://translate.google.com https://translate.googleapis.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https: wss:; media-src 'self' https: data: blob:; frame-src 'self' https://www.google.com https://www.youtube.com https://googleads.g.doubleclick.net; object-src 'none'; base-uri 'self'; form-action 'self';" },
-        {
-          "key": "X-Robots-Tag",
-          "value": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
-        }
+        { "key": "X-Robots-Tag", "value": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" }
       ]
     }
   ],
   "rewrites": [
     {
-      "source": "/.well-known/ai-catalog.json",
+      "source": "/.well-known/(ai-catalog|ard).json",
       "destination": "/ai-catalog.json"
     },
     {
-      "source": "/.well-known/ard.json",
-      "destination": "/ai-catalog.json"
+      "source": "/og-card/:slug*",
+      "destination": "https://ais-pre-vzln7mn7lygnkockjoehu3-746834689688.asia-east1.run.app/api/og-card/:slug*"
+    },
+    {
+      "source": "/api/og-card/:slug*",
+      "destination": "https://ais-pre-vzln7mn7lygnkockjoehu3-746834689688.asia-east1.run.app/api/og-card/:slug*"
+    },
+    {
+      "source": "/api/social-preview",
+      "destination": "https://ais-pre-vzln7mn7lygnkockjoehu3-746834689688.asia-east1.run.app/api/social-preview"
     },
     {
       "source": "/api/(.*)",
       "destination": "/api"
     },
     {
-      "source": "/:slug((?!api/|assets/|favicon|pwa-|apple-touch-icon|app-icon|.*\\.(?:ico|png|jpg|jpeg|svg|webp|woff2|js|css|json|txt|xml|map)).*)",
+      "source": "/((?!api/|assets/|og-card/|\\.well-known/|ai-catalog\\.json|llms\\.txt|ads\\.txt|sitemap\\.xml|robots\\.txt|manifest\\.json|sw\\.js|app-engine|panditji-app|favicon|pwa-|apple-touch-icon|app-icon|index\\.html$|.*\\.(?:ico|png|jpg|jpeg|svg|webp|woff2|js|css|json|txt|xml|map)).+)",
       "has": [
         {
           "type": "header",
           "key": "user-agent",
-          "value": ".*(WhatsApp|facebookexternalhit|Facebot|Twitterbot|TelegramBot|LinkedInBot|Pinterest|Slackbot|SkypeUriPreview|vkShare|redditbot).*"
+          "value": "(?i).*(whatsapp|facebookexternalhit|facebot|meta-externalagent|telegram|twitterbot|linkedinbot|slackbot|discordbot|pinterest|vkshare).*"
         }
       ],
-      "destination": "/api/og-preview?path=:slug"
+      "destination": "https://ais-pre-vzln7mn7lygnkockjoehu3-746834689688.asia-east1.run.app/api/social-preview?path=/$1"
     },
     {
-      "source": "/",
-      "has": [
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": ".*(WhatsApp|facebookexternalhit|Facebot|Twitterbot|TelegramBot|LinkedInBot|Pinterest|Slackbot|SkypeUriPreview|vkShare|redditbot).*"
-        }
-      ],
-      "destination": "/api/og-preview?path="
-    },
-    {
-      "source": "/((?!api/|assets/|\\.well-known/|ai-catalog\\.json|llms\\.txt|ads\\.txt|sitemap\\.xml|robots\\.txt|manifest\\.json|sw\\.js|app-engine|panditji-app|favicon|pwa-|apple-touch-icon|app-icon|.*\\.(?:ico|png|jpg|jpeg|svg|webp|woff2|js|css|json|txt|xml|map)).*)",
+      "source": "/((?!api/|assets/|og-card/|\\.well-known/|ai-catalog\\.json|llms\\.txt|ads\\.txt|sitemap\\.xml|robots\\.txt|manifest\\.json|sw\\.js|app-engine|panditji-app|favicon|pwa-|apple-touch-icon|app-icon|.*\\.(?:ico|png|jpg|jpeg|svg|webp|woff2|js|css|json|txt|xml|map)).*)",
       "destination": "/index.html"
     }
   ]
