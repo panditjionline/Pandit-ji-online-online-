@@ -318,185 +318,95 @@ const ROUTE_DATA = {
     cardTitle: 'CHAR DHAM & 12 JYOTIRLINGA DARSHAN',
     cardSub: 'Badrinath • Kedarnath • Gangotri • Yamunotri • Dwadash Jyotirlinga',
     shortCard: 'CHAR DHAM & JYOTIRLINGA\nSacred Tirth Yatra Guide',
-    badge: 'UTTARAKHAND & BHARAT TIRTH DARSHAN',
+    badge: 'SACRED HINDU PILGRIMAGE GUIDE',
     art: 'mandir',
-    accent: '#f97316'
+    accent: '#f59e0b'
   },
   '/rashifal': {
     title: 'आज का राशिफल (मेष से मीन 12 राशियां) | Daily Horoscope in Hindi | पण्डित जी ऑनलाइन',
     desc: 'दैनिक ग्रह गोचर एवं नक्षत्र गणना पर आधारित मेष से मीन तक सभी 12 राशियों का आज का सटीक वैदिक राशिफल व उपाय।',
-    cardTitle: 'AAJ KA VEDIC RASHIFAL (12 RASHI)',
-    cardSub: 'Mesh to Meen Daily Planetary Transit Prediction, Lucky Number & Upay',
-    shortCard: 'AAJ KA VEDIC RASHIFAL\nMesh to Meen 12 Rashiyan',
-    badge: 'DAILY HOROSCOPE IN HINDI',
+    cardTitle: 'AAJ KA DAINIK RASHIFAL',
+    cardSub: 'Mesh to Meen 12 Rashiyan • Lucky Color & Number • Daily Vedic Upay',
+    shortCard: 'AAJ KA RASHIFAL\nMesh to Meen 12 Rashiyan',
+    badge: 'DAILY VEDIC HOROSCOPE 12 RASHIS',
     art: 'rashi',
     accent: '#f59e0b'
   },
   '/jyotish-ai': {
     title: 'निःशुल्क ज्योतिष चैट एवं वैदिक परामर्श | Free Jyotish AI Chat | पण्डित जी ऑनलाइन',
     desc: 'आचार्य पण्डित शशांक शर्मा जी के मार्गदर्शन में जन्म कुंडली, विवाह, करियर व ग्रह शांति पर 24×7 निःशुल्क ज्योतिषीय परामर्श।',
-    cardTitle: '24x7 FREE VEDIC JYOTISH PARAMARSH',
-    cardSub: 'Instant Kundali, Vivah, Career & Graha Shanti Guidance Chat',
-    shortCard: 'FREE JYOTISH AI CHAT\n24x7 Vedic Consultation',
-    badge: 'ACHARYA SHASHANK SHARMA GUIDANCE',
+    cardTitle: 'FREE 24x7 VEDIC JYOTISH CONSULTATION',
+    cardSub: 'Kundali Analysis • Career & Vivah Guidance • Dosha Shanti Remedies',
+    shortCard: 'VEDIC JYOTISH CHAT\nFree 24x7 Guidance',
+    badge: '24x7 VEDIC ASTROLOGY CONSULTATION',
     art: 'gyan',
-    accent: '#fbbf24'
+    accent: '#38bdf8'
   },
   '/puja-services': {
     title: 'वैदिक पूजा एवं अनुष्ठान बुकिंग (रुद्रपुर) | Online Puja Booking | पण्डित जी ऑनलाइन',
     desc: 'रुद्रपुर (उत्तराखण्ड) में गृह प्रवेश, वास्तु शांति, सत्यनारायण कथा, रुद्राभिषेक एवं विवाह संस्कार हेतु प्रामाणिक वैदिक पूजा बुकिंग।',
-    cardTitle: 'VEDIC PUJA & ANUSHTHAN BOOKING',
-    cardSub: 'Griha Pravesh • Rudrabhishek • Satyanarayan Katha • Navgrah Shanti',
-    shortCard: 'VEDIC PUJA BOOKING\nAcharya Shashank Rudrapur',
-    badge: 'RUDRAPUR & UTTARAKHAND VEDIC PANDIT JI',
+    cardTitle: 'VEDIC PUJA & HAVAN SERVICES',
+    cardSub: 'Griha Pravesh • Satyanarayan Katha • Rudrabhishek • Navgrah Shanti',
+    shortCard: 'VEDIC PUJA SERVICES\nRudrapur Puja Booking',
+    badge: 'AUTHENTIC SHASTROKTA PUJA RUDRAPUR',
     art: 'puja',
     accent: '#f97316'
   },
   '/mantra-jaap': {
     title: '108 रुद्राक्ष डिजिटल मंत्र जप माला (Mantra Jaap Counter) | पण्डित जी ऑनलाइन',
     desc: 'गायत्री मंत्र, महामृत्युंजय मंत्र, ॐ नमः शिवाय एवं नवग्रह मंत्रों के दैनिक 108 मनके जाप हेतु डिजिटल रुद्राक्ष माला।',
-    cardTitle: '108 RUDRAKSHA DIGITAL JAAP MALA',
-    cardSub: 'Gayatri Mantra • Mahamrityunjaya • Om Namah Shivaya • Daily Counter',
-    shortCard: '108 RUDRAKSHA JAAP MALA\nDigital Mantra Counter',
-    badge: 'INTERACTIVE VEDIC MANTRA MEDITATION',
-    art: 'gyan',
-    accent: '#f59e0b'
+    cardTitle: '108 DIGITAL RUDRAKSHA JAP MALA',
+    cardSub: 'Gayatri Mantra • Mahamrityunjaya • Om Namah Shivaya • Sound & Vibrations',
+    shortCard: '108 JAP MALA COUNTER\nGayatri & Shiva Jaap',
+    badge: 'SACRED DIGITAL JAP COUNTER',
+    art: 'mandir',
+    accent: '#ea580c'
   },
   '/vedic-videos': {
     title: 'वैदिक ज्योतिष, मंत्र एवं धर्म ज्ञान वीडियो | Acharya Shashank Sharma | पण्डित जी ऑनलाइन',
     desc: 'आचार्य पण्डित शशांक शर्मा द्वारा वैदिक कर्मकाण्ड, पर्व-त्योहार मुहूर्त एवं सनातन धर्म ज्ञान के प्रामाणिक वीडियो।',
-    cardTitle: 'VEDIC JYOTISH & DHARM GYAN VIDEOS',
-    cardSub: 'Authentic Mantra Path, Parva Muhurat & Remedies by Acharya Shashank',
-    shortCard: 'VEDIC JYOTISH VIDEOS\nAcharya Shashank Sharma',
-    badge: 'OFFICIAL VIDEO GALLERY • RUDRAPUR',
+    cardTitle: 'VEDIC JYOTISH & DHARM VIDEOS',
+    cardSub: 'Acharya Shashank Sharma Lectures • Puja Vidhi • Shastra Katha',
+    shortCard: 'VEDIC VIDEOS & KATHA\nAcharya Shashank Sharma',
+    badge: 'OFFICIAL YOUTUBE & VIDEO LECTURES',
     art: 'gyan',
     accent: '#ef4444'
-  },
-  '/puja/griha-pravesh': {
-    title: 'गृह प्रवेश पूजा एवं वास्तु शांति विधान (शुभ मुहूर्त 2026-27 व सामग्री) | पण्डित जी ऑनलाइन',
-    desc: 'नूतन गृह प्रवेश का शास्त्रोक्त विधान, वास्तु पुरुष पूजन, कलश स्थापना विधि एवं रुद्रपुर में वैदिक पण्डित बुकिंग।',
-    cardTitle: 'GRIHA PRAVESH & VASTU SHANTI PUJA',
-    cardSub: 'Vastu Purush Pujan • Kalash Sthapana • Auspicious Muhurat & Booking',
-    shortCard: 'GRIHA PRAVESH PUJA\nVastu Shanti & Muhurat',
-    badge: 'SHASTROKTA GRIHA PRAVESH VIDHAN',
-    art: 'puja',
-    accent: '#f97316'
-  },
-  '/puja/satyanarayan-katha': {
-    title: 'श्री सत्यनारायण व्रत कथा पूजन विधि, सामग्री एवं महत्व | पण्डित जी ऑनलाइन',
-    desc: 'स्कन्द पुराण के रेवाखण्ड अनुसार श्री सत्यनारायण भगवान की कथा के ५ अध्याय, पञ्चलोकपाल व नवग्रह पूजन विधि।',
-    cardTitle: 'SHRI SATYANARAYAN VRAT KATHA PUJA',
-    cardSub: 'Skanda Purana 5 Chapters Katha • Navgrah Pujan & Samagri Vidhi',
-    shortCard: 'SATYANARAYAN VRAT KATHA\nPujan Vidhi & Samagri',
-    badge: 'PURANOKTA SATYANARAYAN PUJAN',
-    art: 'puja',
-    accent: '#fbbf24'
-  },
-  '/puja/rudrabhishek': {
-    title: 'महा रुद्राभिषेक पूजन विधि, शुक्ल यजुर्वेदीय रुद्राष्टाध्यायी एवं द्रव्य फल | पण्डित जी ऑनलाइन',
-    desc: 'भगवान आशुतोष शिव का शुक्ल यजुर्वेदीय रुद्राष्टाध्यायी से महा रुद्राभिषेक — गोदुग्ध, मधु, घृत व गन्ने के रस से अभिषेक के अचूक लाभ।',
-    cardTitle: 'SHUKLA YAJURVEDIYA RUDRABHISHEK',
-    cardSub: 'Rudrashtadhyayi Path • Shiv Abhishek Dravya Benefits & Booking',
-    shortCard: 'MAHA RUDRABHISHEK PUJA\nShukla Yajurvediya Path',
-    badge: 'MAHA RUDRABHISHEK ANUSHTHAN',
-    art: 'mandir',
-    accent: '#f59e0b'
-  },
-  '/puja/mahamrityunjaya-jap': {
-    title: 'महामृत्युंजय मंत्र जाप अनुष्ठान, हवन विधि एवं अकाल मृत्यु निवारण | पण्डित जी ऑनलाइन',
-    desc: 'त्र्यम्बक महामृत्युंजय मंत्र का वैदिक पुरश्चरण विधान, गिलोय-अमृता दशांश हवन एवं असाध्य रोग निवारण।',
-    cardTitle: 'MAHAMRITYUNJAYA MANTRA JAAP & HAVAN',
-    cardSub: 'Tryambakam Vedic Purashcharan • Health, Longevity & Graha Shanti',
-    shortCard: 'MAHAMRITYUNJAYA JAAP\nVedic Purashcharan Havan',
-    badge: 'VEDIC ANUSHTHAN • RUDRAPUR',
-    art: 'puja',
-    accent: '#ef4444'
-  },
-  '/puja/navgrah-shanti': {
-    title: 'नवग्रह शांति एवं नक्षत्र हवन विधान (शनि, राहु-केतु व मंगल दोष निवारण) | पण्डित जी ऑनलाइन',
-    desc: 'सूर्य से केतु तक नवग्रह मंडल पूजन, ९ वैदिक समिधाओं से ग्रह शांति हवन, मूल नक्षत्र शांति एवं साढ़ेसाती निवारण अनुष्ठान।',
-    cardTitle: 'NAVGRAH SHANTI & NAKSHATRA HAVAN',
-    cardSub: '9 Planetary Mandala Pujan • 9 Vedic Samidha Havan • Dosh Nivaran',
-    shortCard: 'NAVGRAH SHANTI HAVAN\n9 Graha Mandala Pujan',
-    badge: 'COMPLETE GRAHA SHANTI VIDHAN',
-    art: 'shani',
-    accent: '#a855f7'
-  },
-  '/puja/kundali-paramarsh': {
-    title: 'व्यक्तिगत जन्म कुंडली परामर्श एवं ३६ गुण विवाह मिलान — आचार्य शशांक शर्मा | पण्डित जी ऑनलाइन',
-    desc: 'पराशरी, जैमिनी और नाड़ी ज्योतिष के ३-स्तरीय सूत्र से जन्म पत्रिका विश्लेषण, करियर, विवाह समय, संतान योग एवं रत्न-रुद्राक्ष परामर्श।',
-    cardTitle: 'PERSONAL KUNDALI CONSULTATION',
-    cardSub: 'Parashari, Jaimini & Nadi Jyotish Analysis by Acharya Shashank Sharma',
-    shortCard: 'KUNDALI PARAMARSH\nAcharya Shashank Sharma',
-    badge: 'EXPERT JYOTISH PARAMARSH • RUDRAPUR',
-    art: 'kundli',
-    accent: '#f59e0b'
-  },
-  '/rudrapur-jyotish': {
-    title: 'रुद्रपुर एवं उत्तराखण्ड ज्योतिष व वैदिक कर्मकाण्ड केंद्र — पण्डित शशांक शर्मा | पण्डित जी ऑनलाइन',
-    desc: 'रुद्रपुर (जिला ऊधम सिंह नगर), हल्द्वानी, पंतनगर, काशीपुर एवं कुमाऊँ क्षेत्र में प्रामाणिक वैदिक पूजा, कथा, अनुष्ठान एवं जन्मपत्री परामर्श।',
-    cardTitle: 'RUDRAPUR VEDIC JYOTISH & PUJA KENDRA',
-    cardSub: 'Acharya Pandit Shashank Sharma • 15+ Yrs Experience in Kumaon & UK',
-    shortCard: 'RUDRAPUR JYOTISH KENDRA\nAcharya Shashank Sharma',
-    badge: 'UDHAM SINGH NAGAR • UTTARAKHAND',
-    art: 'puja',
-    accent: '#f97316'
-  },
-  '/kundali-dosh-upay': {
-    title: 'कुंडली दोष निवारण कोष — कालसर्प, पितृ दोष, गुरु चांडाल एवं ग्रहण दोष उपाय | पण्डित जी ऑनलाइन',
-    desc: 'बृहत् पराशर होरा शास्त्र के अनुसार कालसर्प योग, पितृ दोष, केमद्रुम दोष, अंगारक योग एवं विष योग के लक्षण, स्वतः भंग नियम और सात्विक उपाय।',
-    cardTitle: 'KUNDALI DOSH NIVARAN KOSH',
-    cardSub: 'Kaalsarp • Pitra Dosh • Guru Chandal • Grahan & Kemadruma Remedies',
-    shortCard: 'KUNDALI DOSH NIVARAN\nKaalsarp & Pitra Dosh Upay',
-    badge: 'SHASTROKTA DOSH PARIHAR GUIDE',
-    art: 'kundli',
-    accent: '#ef4444'
-  },
-  '/mera-khata': {
-    title: 'मेरा खाता एवं सुरक्षित कुंडली रिकॉर्ड | Mera Khata | पण्डित जी ऑनलाइन',
-    desc: 'अपनी सुरक्षित जन्म कुंडली, 36 गुण मिलान रिपोर्ट, 108 मंत्र जाप माला रिकॉर्ड एवं पूजा बुकिंग विवरण देखें।',
-    cardTitle: 'MERA KHATA & SAVED KUNDALI VAULT',
-    cardSub: 'Saved Janam Kundali • 36 Gun Milan Reports • Mantra Jaap Streaks',
-    shortCard: 'MERA KHATA VAULT\nSaved Kundali & Reports',
-    badge: 'YAJMAN PERSONAL VEDIC VAULT',
-    art: 'kundli',
-    accent: '#f59e0b'
   },
   '/about-us': {
     title: 'आचार्य पण्डित शशांक शर्मा — परिचय एवं वैदिक ज्योतिष संस्थान, रुद्रपुर | पण्डित जी ऑनलाइन',
     desc: 'आचार्य पण्डित शशांक शर्मा (15+ वर्ष वैदिक कर्मकाण्ड एवं ज्योतिष अनुभव, रुद्रपुर, उत्तराखण्ड) का प्रामाणिक परिचय।',
     cardTitle: 'ACHARYA PANDIT SHASHANK SHARMA',
-    cardSub: '15+ Years Vedic Jyotish & Karmakand Experience • Rudrapur, Uttarakhand',
-    shortCard: 'ACHARYA SHASHANK SHARMA\nPandit Ji Online Rudrapur',
-    badge: 'FOUNDER • PANDIT JI ONLINE',
+    cardSub: '15+ Years Vedic Experience • Rudrapur, Udham Singh Nagar, Uttarakhand',
+    shortCard: 'ACHARYA SHASHANK SHARMA\nRudrapur, Uttarakhand',
+    badge: 'VEDIC JYOTISH & KARMAKAND ACHARYA',
     art: 'gyan',
     accent: '#f59e0b'
   },
   '/contact-us': {
     title: 'संपर्क करें — आचार्य पण्डित शशांक शर्मा, रुद्रपुर (उत्तराखण्ड) | पण्डित जी ऑनलाइन',
     desc: 'वैदिक पूजा बुकिंग, जन्मपत्री परामर्श एवं ज्योतिषीय समाधान हेतु सीधे संपर्क करें: +91 7017279043, रुद्रपुर।',
-    cardTitle: 'CONTACT PANDIT JI ONLINE RUDRAPUR',
-    cardSub: 'Direct Puja Booking & Horoscope Consultation • +91 7017279043',
-    shortCard: 'CONTACT PANDIT JI ONLINE\nRudrapur +91 7017279043',
-    badge: 'RUDRAPUR, UDHAM SINGH NAGAR (UK)',
-    art: 'puja',
+    cardTitle: 'CONTACT PANDIT JI ONLINE',
+    cardSub: 'Direct Call / WhatsApp: +91 7017279043 • Rudrapur, Uttarakhand',
+    shortCard: 'CONTACT PANDIT JI\nCall: +91 7017279043',
+    badge: 'OFFICIAL DIRECT APPOINTMENTS & HELPLINE',
+    art: 'gyan',
     accent: '#10b981'
   },
   '/privacy-policy': {
     title: 'गोपनीयता नीति (Privacy Policy) | पण्डित जी ऑनलाइन',
-    desc: 'पण्डित जी ऑनलाइन की आधिकारिक गोपनीयता नीति — जन्म विवरण, डेटा सुरक्षा एवं गूगल एडसेंस मानक।',
+    desc: 'पण्डित जी ऑनलाइन पर यजमानों के जन्म विवरण व व्यक्तिगत डेटा की सुरक्षा एवं गोपनीयता नीति।',
     cardTitle: 'PRIVACY POLICY & DATA SECURITY',
-    cardSub: '100% Confidential Birth Details & Secure Vedic Astrology Portal',
+    cardSub: '100% Confidential Birth Details • Zero Commercial Selling',
     shortCard: 'PRIVACY POLICY\nPandit Ji Online',
-    badge: 'OFFICIAL PRIVACY & SECURITY STANDARDS',
+    badge: 'OFFICIAL PRIVACY & DATA GUARANTEE',
     art: 'gyan',
-    accent: '#10b981'
+    accent: '#f59e0b'
   },
   '/terms-and-conditions': {
     title: 'नियम एवं शर्तें (Terms & Conditions) | पण्डित जी ऑनलाइन',
-    desc: 'पण्डित जी ऑनलाइन पोर्टल के उपयोग, वैदिक ज्योतिष गणना, पूजा बुकिंग एवं परामर्श से जुड़े नियम व शर्तें।',
-    cardTitle: 'TERMS & CONDITIONS • PANDIT JI ONLINE',
-    cardSub: 'Official Portal Guidelines, Puja Booking Rules & Vedic Standards',
+    desc: 'पण्डित जी ऑनलाइन की वैदिक ज्योतिष, पंचांग एवं पूजा बुकिंग सेवाओं के उपयोग की शर्तें।',
+    cardTitle: 'TERMS & CONDITIONS OF SERVICE',
+    cardSub: 'Vedic Shastra Astrology Standards & Ethical Puja Conduct',
     shortCard: 'TERMS & CONDITIONS\nPandit Ji Online',
     badge: 'OFFICIAL TERMS OF SERVICE',
     art: 'gyan',
@@ -534,7 +444,6 @@ function resolveRouteInfo(rawPath, searchParams) {
     .toLowerCase() || '/';
   if (clean === '/index.html' || clean === '/index') clean = '/';
 
-  // Support ?tab= or ?category= deep links when path is /
   if (clean === '/' && searchParams) {
     const cat = (searchParams.get('category') || '').trim().toLowerCase();
     if (cat) {
@@ -556,7 +465,6 @@ function resolveRouteInfo(rawPath, searchParams) {
     return { path: canonicalPath, ...info };
   }
 
-  // If user appended a custom suffix segment (e.g., /panchang/2 or /s-naam-rashi-swabhav/xyz), match the base route
   const segments = clean.split('/').filter(Boolean);
   if (segments.length >= 2 && segments[0] !== 'puja') {
     const firstSegPath = '/' + segments[0];
@@ -651,28 +559,28 @@ function renderArtworkSvg(art, accent) {
       <g transform="translate(970, 286)">
         <circle cx="0" cy="0" r="168" fill="url(#emblemGlow)"/>
         <circle cx="0" cy="0" r="146" fill="#220903" stroke="#fde047" stroke-width="4"/>
-        <circle cx="0" cy="0" r="126" fill="none" stroke="#facc15" stroke-width="2.2"/>
-        <circle cx="0" cy="-6" r="82" fill="#3b0764" fill-opacity="0.75" stroke="#fde047" stroke-width="2.8"/>
-        <line x1="0" y1="-126" x2="0" y2="114" stroke="#facc15" stroke-width="1.4" stroke-opacity="0.55"/>
-        <line x1="-126" y1="-6" x2="126" y2="-6" stroke="#facc15" stroke-width="1.4" stroke-opacity="0.55"/>
-        <line x1="-88" y1="-94" x2="88" y2="82" stroke="#facc15" stroke-width="1.4" stroke-opacity="0.55"/>
-        <line x1="88" y1="-94" x2="-88" y2="82" stroke="#facc15" stroke-width="1.4" stroke-opacity="0.55"/>
-        <text x="0" y="-12" font-family="sans-serif" font-size="33" font-weight="900" fill="#fef08a" text-anchor="middle">A - Z</text>
-        <text x="0" y="18" font-family="sans-serif" font-size="16" font-weight="900" fill="#f3e8ff" text-anchor="middle" letter-spacing="1.5">12 RASHI</text>
-        <rect x="-88" y="88" width="176" height="32" rx="16" fill="#4c1d95" stroke="#fde047" stroke-width="2.2"/>
-        <text x="0" y="109" font-family="sans-serif" font-size="14" font-weight="900" fill="#fef08a" text-anchor="middle" letter-spacing="1.5">27 NAKSHATRA</text>
+        <circle cx="0" cy="0" r="128" fill="none" stroke="#c084fc" stroke-width="2" stroke-dasharray="6 6"/>
+        <circle cx="0" cy="0" r="94" fill="#3b0764" fill-opacity="0.45" stroke="#fde047" stroke-width="2"/>
+        <line x1="0" y1="-94" x2="0" y2="94" stroke="#fde047" stroke-width="1.8" stroke-dasharray="4 4"/>
+        <line x1="-94" y1="0" x2="94" y2="0" stroke="#fde047" stroke-width="1.8" stroke-dasharray="4 4"/>
+        <line x1="-66" y1="-66" x2="66" y2="66" stroke="#fde047" stroke-width="1.2" stroke-dasharray="4 4"/>
+        <line x1="66" y1="-66" x2="-66" y2="66" stroke="#fde047" stroke-width="1.2" stroke-dasharray="4 4"/>
+        <circle cx="0" cy="0" r="42" fill="#581c87" stroke="#facc15" stroke-width="3"/>
+        <text x="0" y="8" font-family="sans-serif" font-size="24" font-weight="900" fill="#fde047" text-anchor="middle">♈ ♉</text>
+        <rect x="-88" y="106" width="176" height="32" rx="16" fill="#451a03" stroke="#fde047" stroke-width="2.2"/>
+        <text x="0" y="127" font-family="sans-serif" font-size="13" font-weight="900" fill="#fef08a" text-anchor="middle" letter-spacing="1.5">12 RASHI CHAKRA</text>
       </g>`;
   }
   if (art === 'shani') {
     return `
       <g transform="translate(970, 286)">
         <circle cx="0" cy="0" r="168" fill="url(#emblemGlow)"/>
-        <circle cx="0" cy="0" r="146" fill="#111827" stroke="#fde047" stroke-width="4"/>
-        <circle cx="0" cy="0" r="130" fill="none" stroke="#818cf8" stroke-width="2" stroke-dasharray="7 5"/>
-        <ellipse cx="0" cy="-14" rx="98" ry="28" fill="none" stroke="#facc15" stroke-width="6.5" transform="rotate(-18 0 -14)"/>
-        <circle cx="0" cy="-14" r="44" fill="#312e81" stroke="#fde047" stroke-width="3.5"/>
-        <rect x="-86" y="64" width="172" height="36" rx="18" fill="#1e1b4b" stroke="#fde047" stroke-width="2.2"/>
-        <text x="0" y="87" font-family="sans-serif" font-size="15" font-weight="900" fill="#fef08a" text-anchor="middle" letter-spacing="1.5">SHANI GOCHAR</text>
+        <circle cx="0" cy="0" r="146" fill="#1e1b4b" stroke="#fde047" stroke-width="4"/>
+        <ellipse cx="0" cy="0" rx="124" ry="44" fill="none" stroke="#fde047" stroke-width="5" transform="rotate(-24)"/>
+        <ellipse cx="0" cy="0" rx="108" ry="34" fill="none" stroke="#818cf8" stroke-width="2.5" transform="rotate(-24)"/>
+        <circle cx="0" cy="0" r="54" fill="#312e81" stroke="#facc15" stroke-width="3.5"/>
+        <rect x="-88" y="106" width="176" height="32" rx="16" fill="#1e1b4b" stroke="#fde047" stroke-width="2.2"/>
+        <text x="0" y="127" font-family="sans-serif" font-size="13" font-weight="900" fill="#fef08a" text-anchor="middle" letter-spacing="1.5">SHANI GOCHAR UPAY</text>
       </g>`;
   }
   if (art === 'puja') {
@@ -680,41 +588,35 @@ function renderArtworkSvg(art, accent) {
       <g transform="translate(970, 286)">
         <circle cx="0" cy="0" r="168" fill="url(#emblemGlow)"/>
         <circle cx="0" cy="0" r="146" fill="#220903" stroke="#fde047" stroke-width="4"/>
-        <circle cx="0" cy="0" r="132" fill="none" stroke="#fde047" stroke-width="1.8" stroke-dasharray="7 5"/>
-        <polygon points="-76,38 76,38 56,78 -56,78" fill="#7c2d12" stroke="#facc15" stroke-width="3.2"/>
-        <rect x="-88" y="78" width="176" height="16" rx="5" fill="#facc15"/>
-        <path d="M 0,-90 Q -48,-18 -24,36 L 24,36 Q 48,-18 0,-90 Z" fill="#f97316" stroke="#fde047" stroke-width="2.5"/>
-        <path d="M 0,-48 Q -24,-2 -10,36 L 10,36 Q 24,-2 0,-48 Z" fill="#fef08a"/>
-        <rect x="-88" y="102" width="176" height="32" rx="16" fill="#451a03" stroke="#fde047" stroke-width="2.2"/>
-        <text x="0" y="123" font-family="sans-serif" font-size="14" font-weight="900" fill="#fef08a" text-anchor="middle" letter-spacing="1.5">VEDIC ANUSHTHAN</text>
+        <circle cx="0" cy="0" r="128" fill="none" stroke="#fb923c" stroke-width="2" stroke-dasharray="7 5"/>
+        <polygon points="-70,54 70,54 50,-10 -50,-10" fill="#7c2d12" stroke="#facc15" stroke-width="3.5"/>
+        <path d="M -30,-12 Q 0,-68 0,-76 Q 16,-46 30,-12 Z" fill="#f59e0b" stroke="#fde047" stroke-width="2.4"/>
+        <path d="M -16,-12 Q 0,-52 0,-58 Q 10,-38 16,-12 Z" fill="#fef08a"/>
+        <rect x="-88" y="96" width="176" height="32" rx="16" fill="#451a03" stroke="#fde047" stroke-width="2.2"/>
+        <text x="0" y="117" font-family="sans-serif" font-size="13" font-weight="900" fill="#fef08a" text-anchor="middle" letter-spacing="1.5">VEDIC PUJA HAVAN</text>
       </g>`;
   }
   return `
     <g transform="translate(970, 286)">
       <circle cx="0" cy="0" r="168" fill="url(#emblemGlow)"/>
       <circle cx="0" cy="0" r="146" fill="#220903" stroke="#fde047" stroke-width="4"/>
-      <circle cx="0" cy="0" r="128" fill="none" stroke="#fde047" stroke-width="2" stroke-dasharray="7 5"/>
-      <polygon points="0,-96 28,-28 96,0 28,28 0,96 -28,28 -96,0 -28,-28" fill="${accent}" fill-opacity="0.34" stroke="#facc15" stroke-width="3.2"/>
-      <circle cx="0" cy="0" r="46" fill="#451a03" stroke="#fde047" stroke-width="3.5"/>
-      <text x="0" y="10" font-family="sans-serif" font-size="28" font-weight="900" fill="#fef08a" text-anchor="middle">OM</text>
-      <rect x="-88" y="102" width="176" height="32" rx="16" fill="#451a03" stroke="#fde047" stroke-width="2.2"/>
-      <text x="0" y="123" font-family="sans-serif" font-size="14" font-weight="900" fill="#fef08a" text-anchor="middle" letter-spacing="1.5">VEDIC SHASTRA</text>
+      <circle cx="0" cy="0" r="128" fill="none" stroke="${accent}" stroke-width="2" stroke-dasharray="8 6"/>
+      <circle cx="0" cy="-6" r="68" fill="#451a03" stroke="#facc15" stroke-width="3"/>
+      <text x="0" y="24" font-family="sans-serif" font-size="82" font-weight="900" fill="#fde047" text-anchor="middle">🕉</text>
+      <rect x="-88" y="104" width="176" height="32" rx="16" fill="#451a03" stroke="#fde047" stroke-width="2.2"/>
+      <text x="0" y="125" font-family="sans-serif" font-size="14" font-weight="900" fill="#fef08a" text-anchor="middle" letter-spacing="1.5">VEDIC JYOTISH</text>
     </g>`;
 }
 
 function buildOgCardSvg(routeInfo) {
-  const words = String(routeInfo.cardTitle || 'PANDIT JI ONLINE').split(/\s+/);
-  let line1 = '';
+  const title = String(routeInfo.cardTitle || 'PANDIT JI ONLINE');
+  const words = title.split(' ');
+  let line1 = title;
   let line2 = '';
-  for (const w of words) {
-    if ((line1 + ' ' + w).trim().length <= 22) {
-      line1 = (line1 + ' ' + w).trim();
-    } else {
-      line2 = (line2 + ' ' + w).trim();
-    }
-  }
-  if (line2.length > 26) {
-    line2 = line2.slice(0, 25).trim() + '...';
+  if (words.length > 3 && title.length > 20) {
+    const half = Math.ceil(words.length / 2);
+    line1 = words.slice(0, half).join(' ');
+    line2 = words.slice(half).join(' ');
   }
 
   const subText = String(routeInfo.cardSub || '');
@@ -792,8 +694,6 @@ function buildSocialHtml(routeInfo, requestedUrlObj) {
   const canonicalUrl = isHome ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}${routeInfo.path}`;
   const slug = routeInfo.path.replace(/^\/+/, '').replace(/\//g, '-') || 'home';
 
-  // Preserve query/path variations in og:url so WhatsApp/Facebook cache-buster links (?v=1, ?s=v34, /v=1)
-  // are never collapsed back into a stale cached entry on the user's phone
   let ogUrl = canonicalUrl;
   if (requestedUrlObj) {
     const reqPath = requestedUrlObj.pathname || '/';
@@ -803,9 +703,6 @@ function buildSocialHtml(routeInfo, requestedUrlObj) {
     }
   }
 
-  // Single authoritative og:image URL on the first-party domain
-  // For home: official portrait photo of Acharya Pandit Shashank Sharma
-  // For subpages: dedicated per-page high-res Vedic card
   const primaryOgImage = isHome
     ? HOMEPAGE_IMAGE
     : `${SITE_ORIGIN}/og-card/${slug}-${VERSION_TAG}.jpg`;
@@ -867,7 +764,7 @@ function cleanSlugFromAssetPath(pathname) {
     .replace(/[-_.]v=?\d+$/i, '');
 }
 
-export default async function middleware(request) {
+async function middleware(request) {
   const url = new URL(request.url);
   const pathname = url.pathname || '/';
 
@@ -1003,7 +900,6 @@ export default async function middleware(request) {
   }
 
   // 6. Intercept Social Media Crawlers (WhatsApp, Facebook, Telegram, Twitter/X, LinkedIn, Discord, Slack, Instagram, etc.)
-  // Never intercept Googlebot, Google-InspectionTool, PageSpeed/Lighthouse, or AdSense (Mediapartners-Google / AdsBot-Google)
   const ua = request.headers.get('user-agent') || '';
   const isGoogleOrAuditBot = /googlebot|google-inspectiontool|storebot-google|adsbot-google|mediapartners-google|apis-google|chrome-lighthouse|pagespeed|ptst|gtmetrix|bingbot|yandexbot|baiduspider|duckduckbot/i.test(ua);
   const isSocialBot =
@@ -1032,3 +928,6 @@ export default async function middleware(request) {
     }
   });
 }
+
+module.exports = middleware;
+module.exports.default = middleware;
