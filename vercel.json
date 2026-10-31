@@ -1,6 +1,9 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "trailingSlash": false,
+  "proxy": {
+    "entrypoint": "middleware.js"
+  },
   "headers": [
     {
       "source": "/(ai-catalog\\.json|\\.well-known/.*\\.json)",
@@ -64,7 +67,7 @@
       ]
     },
     {
-      "source": "/((?!api/|assets/|\\.well-known/|ai-catalog\\.json|llms\\.txt|ads\\.txt|sitemap\\.xml|robots\\.txt|manifest\\.json|sw\\.js|app-engine|panditji-app|favicon|pwa-|apple-touch-icon|app-icon|.*\\.(?:ico|png|jpg|jpeg|svg|webp|woff2|js|css|json|txt|xml|map)).*)",
+      "source": "/((?!api/|assets/|og-card/|og-svg/|\\.well-known/|ai-catalog\\.json|llms\\.txt|ads\\.txt|sitemap\\.xml|robots\\.txt|manifest\\.json|sw\\.js|middleware\\.js|app-engine|panditji-app|googlea0e64484b80e13d1\\.html|favicon|pwa-|apple-touch-icon|app-icon|.*\\.(?:ico|png|jpg|jpeg|svg|webp|woff2|js|css|json|txt|xml|map)).*)",
       "headers": [
         { "key": "Content-Type", "value": "text/html; charset=utf-8" },
         { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate, s-maxage=0" },
@@ -90,34 +93,7 @@
       "destination": "/ai-catalog.json"
     },
     {
-      "source": "/og-card/:slug*",
-      "destination": "https://ais-pre-vzln7mn7lygnkockjoehu3-746834689688.asia-east1.run.app/api/og-card/:slug*"
-    },
-    {
-      "source": "/api/og-card/:slug*",
-      "destination": "https://ais-pre-vzln7mn7lygnkockjoehu3-746834689688.asia-east1.run.app/api/og-card/:slug*"
-    },
-    {
-      "source": "/api/social-preview",
-      "destination": "https://ais-pre-vzln7mn7lygnkockjoehu3-746834689688.asia-east1.run.app/api/social-preview"
-    },
-    {
-      "source": "/api/(.*)",
-      "destination": "/api"
-    },
-    {
-      "source": "/((?!api/|assets/|og-card/|\\.well-known/|ai-catalog\\.json|llms\\.txt|ads\\.txt|sitemap\\.xml|robots\\.txt|manifest\\.json|sw\\.js|app-engine|panditji-app|favicon|pwa-|apple-touch-icon|app-icon|index\\.html$|.*\\.(?:ico|png|jpg|jpeg|svg|webp|woff2|js|css|json|txt|xml|map)).+)",
-      "has": [
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i).*(whatsapp|facebookexternalhit|facebot|meta-externalagent|telegram|twitterbot|linkedinbot|slackbot|discordbot|pinterest|vkshare).*"
-        }
-      ],
-      "destination": "https://ais-pre-vzln7mn7lygnkockjoehu3-746834689688.asia-east1.run.app/api/social-preview?path=/$1"
-    },
-    {
-      "source": "/((?!api/|assets/|og-card/|\\.well-known/|ai-catalog\\.json|llms\\.txt|ads\\.txt|sitemap\\.xml|robots\\.txt|manifest\\.json|sw\\.js|app-engine|panditji-app|favicon|pwa-|apple-touch-icon|app-icon|.*\\.(?:ico|png|jpg|jpeg|svg|webp|woff2|js|css|json|txt|xml|map)).*)",
+      "source": "/((?!api/|assets/|og-card/|og-svg/|\\.well-known/|ai-catalog\\.json|llms\\.txt|ads\\.txt|sitemap\\.xml|robots\\.txt|manifest\\.json|sw\\.js|middleware\\.js|app-engine|panditji-app|googlea0e64484b80e13d1\\.html|favicon|pwa-|apple-touch-icon|app-icon|.*\\.(?:ico|png|jpg|jpeg|svg|webp|woff2|js|css|json|txt|xml|map)).*)",
       "destination": "/index.html"
     }
   ]
