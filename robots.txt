@@ -16,6 +16,7 @@ Allow: /
 User-agent: *
 Allow: /
 Allow: /ads.txt
+Allow: /og-card/
 Allow: /ai-catalog.json
 Allow: /.well-known/ai-catalog.json
 Allow: /.well-known/ard.json
@@ -71,6 +72,7 @@ Disallow: /api/
 User-agent: Googlebot
 Allow: /
 Allow: /ads.txt
+Allow: /og-card/
 Allow: /ai-catalog.json
 Allow: /.well-known/ai-catalog.json
 Allow: /.well-known/ard.json
@@ -82,6 +84,7 @@ Disallow: /api/
 
 User-agent: Googlebot-Image
 Allow: /
+Allow: /og-card/
 Allow: /favicon.ico
 Allow: /favicon-48x48.png
 Allow: /favicon-96x96.png
