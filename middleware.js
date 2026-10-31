@@ -1,16 +1,16 @@
 // ============================================================================
-// PANDIT JI ONLINE — VERCEL EDGE ROUTING MIDDLEWARE (middleware.js — v35)
+// PANDIT JI ONLINE — VERCEL EDGE ROUTING MIDDLEWARE (middleware.js — v37)
 // Zero-dependency Edge/Routing Middleware for www.panditjionline.online
 // Handles:
 // 1. Per-page WhatsApp / Facebook / Social Crawler OpenGraph HTML (200 OK)
-// 2. High-Resolution Sacred Vedic OG Card Images (/og-card/:slug.jpg)
+// 2. High-Resolution Dedicated Vedic OG Card Images (/og-card/:slug.jpg)
 // 3. Google Search Console (googlea0e64484b80e13d1.html) & AdSense (ads.txt)
 // 4. Zero-latency pass-through for Googlebot, PageSpeed Insights & AdSense bots
 // ============================================================================
 
 const SITE_ORIGIN = 'https://www.panditjionline.online';
 const HOMEPAGE_IMAGE = 'https://iili.io/neb1ghg.jpg';
-const VERSION_TAG = 'v35';
+const VERSION_TAG = 'v37';
 
 const ROUTE_ALIASES = {
   '/kundli': '/janam-kundali',
@@ -803,13 +803,15 @@ function buildSocialHtml(routeInfo, requestedUrlObj) {
     }
   }
 
-  // Single authoritative og:image URL on the first-party domain (serves 720x720 High-Res Vedic JPEG)
+  // Single authoritative og:image URL on the first-party domain
+  // For home: official portrait photo of Acharya Pandit Shashank Sharma
+  // For subpages: dedicated per-page high-res Vedic card
   const primaryOgImage = isHome
-    ? `${SITE_ORIGIN}/og-card/home.jpg?v=${VERSION_TAG}`
-    : `${SITE_ORIGIN}/og-card/${slug}.jpg?v=${VERSION_TAG}`;
+    ? HOMEPAGE_IMAGE
+    : `${SITE_ORIGIN}/og-card/${slug}-${VERSION_TAG}.jpg`;
 
-  const imgWidth = '720';
-  const imgHeight = '720';
+  const imgWidth = isHome ? '720' : '1200';
+  const imgHeight = isHome ? '720' : '630';
   const safeTitle = xmlEscape(routeInfo.title);
   const safeDesc = xmlEscape(routeInfo.desc);
   const safeCanonicalUrl = xmlEscape(canonicalUrl);
@@ -916,14 +918,13 @@ export default async function middleware(request) {
   if (pathname.startsWith('/og-card/') || pathname.startsWith('/api/og-card/')) {
     const rawSlug = cleanSlugFromAssetPath(pathname);
     const cleanSlug = rawSlug || 'home';
-    const targetStaticUrl = new URL(`/og-card/${cleanSlug}.jpg`, url.origin);
 
-    // Serve the authentic 720x720 JPEG directly from CDN/cache
-    try {
-      const staticRes = await fetch(targetStaticUrl);
-      if (staticRes.ok) {
-        const buf = await staticRes.arrayBuffer();
-        if (buf.byteLength > 1000) {
+    // If home is requested, serve the official Panditji portrait
+    if (cleanSlug === 'home') {
+      try {
+        const homeRes = await fetch(HOMEPAGE_IMAGE);
+        if (homeRes.ok) {
+          const buf = await homeRes.arrayBuffer();
           return new Response(buf, {
             status: 200,
             headers: {
@@ -935,28 +936,56 @@ export default async function middleware(request) {
             }
           });
         }
-      }
-    } catch {}
+      } catch {}
+      return Response.redirect(HOMEPAGE_IMAGE, 302);
+    }
 
-    // Fallback directly to the official high-resolution photo of Panditji
-    try {
-      const homeRes = await fetch(HOMEPAGE_IMAGE);
-      if (homeRes.ok) {
-        const buf = await homeRes.arrayBuffer();
-        return new Response(buf, {
-          status: 200,
+    // For all subpages, generate the dedicated, royal Vedic card from SVG via fast mirrors
+    const routePath =
+      cleanSlug.startsWith('puja-') && cleanSlug !== 'puja-services' && cleanSlug !== 'puja-samagri-list'
+        ? '/puja/' + cleanSlug.slice(5)
+        : '/' + cleanSlug;
+    const info = resolveRouteInfo(routePath, url.searchParams);
+    const canonicalSlug = info.path.replace(/^\/+/, '').replace(/\//g, '-') || 'home';
+    const svgUrl = `${SITE_ORIGIN}/og-svg/${canonicalSlug}-${VERSION_TAG}.svg`;
+
+    const rasterMirrors = [
+      `https://wsrv.nl/?url=${encodeURIComponent(svgUrl)}&w=1200&h=630&output=jpg&q=82`,
+      `https://images.weserv.nl/?url=${encodeURIComponent(svgUrl)}&w=1200&h=630&output=jpg&q=82`
+    ];
+
+    for (const mirrorUrl of rasterMirrors) {
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 2400);
+        const imgRes = await fetch(mirrorUrl, {
+          signal: controller.signal,
           headers: {
-            'Content-Type': 'image/jpeg',
-            'Content-Length': String(buf.byteLength),
-            'Access-Control-Allow-Origin': '*',
-            'Cache-Control': 'public, max-age=86400, s-maxage=86400',
-            'X-Robots-Tag': 'index, follow, max-image-preview:large'
+            'User-Agent': 'Mozilla/5.0 (compatible; PanditJiOnline/1.0; +https://www.panditjionline.online)',
+            'Accept': 'image/jpeg,image/*;q=0.8'
           }
         });
-      }
-    } catch {}
+        clearTimeout(timeoutId);
+        if (imgRes.ok) {
+          const buf = await imgRes.arrayBuffer();
+          if (buf.byteLength > 1000) {
+            return new Response(buf, {
+              status: 200,
+              headers: {
+                'Content-Type': 'image/jpeg',
+                'Content-Length': String(buf.byteLength),
+                'Access-Control-Allow-Origin': '*',
+                'Cache-Control': 'public, max-age=31536000, s-maxage=31536000, immutable',
+                'X-Robots-Tag': 'index, follow, max-image-preview:large'
+              }
+            });
+          }
+        }
+      } catch {}
+    }
 
-    return Response.redirect(HOMEPAGE_IMAGE, 302);
+    // Subpage dedicated fallback: redirect to the high-resolution vector raster mirror (never homepage photo)
+    return Response.redirect(rasterMirrors[0], 302);
   }
 
   // 5. Explicit /api/social-preview endpoint
