@@ -1,6 +1,6 @@
-// Pandit Ji Online — Lightweight Service Worker & Instant Engine Cache (v31)
+// Pandit Ji Online — Lightweight Service Worker & Instant Engine Cache (v36)
 // Designed for instant mobile copy-paste on GitHub (~80 lines, ~2.6 KB)
-const CACHE_NAME = 'panditji-v31';
+const CACHE_NAME = 'panditji-v36';
 const PRECACHE_ASSETS = [
   '/manifest.json',
   '/app-icon.svg',
@@ -36,6 +36,9 @@ self.addEventListener('fetch', (event) => {
   if (/bot|googlebot|crawler|spider|inspection|lighthouse|pagespeed|headless/i.test(ua)) return;
   if (
     url.pathname === '/sw.js' ||
+    url.pathname === '/middleware.js' ||
+    url.pathname.startsWith('/og-svg/') ||
+    url.pathname.startsWith('/og-card/') ||
     url.pathname.startsWith('/api/') ||
     url.pathname.startsWith('/src/') ||
     url.pathname.startsWith('/@') ||
@@ -45,17 +48,38 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Always revalidate HTML navigation and app engine bundles against GitHub CDN so updates appear immediately
-  const isAlwaysFresh =
+  // Versioned engine bundle (?v=...) is immutable per build stamp: serve instantly from cache (0ms freeze!)
+  const isVersionedEngine =
+    (url.pathname === '/app-engine.txt' ||
+      url.pathname === '/app-engine.html' ||
+      url.pathname === '/panditji-app.bundle.js') &&
+    url.search.includes('v=');
+
+  if (isVersionedEngine) {
+    event.respondWith(
+      caches.open(CACHE_NAME).then((cache) =>
+        cache.match(event.request).then((cachedResponse) => {
+          if (cachedResponse) return cachedResponse;
+          return fetch(event.request).then((networkResponse) => {
+            if (networkResponse && networkResponse.status === 200) {
+              cache.put(event.request, networkResponse.clone());
+            }
+            return networkResponse;
+          });
+        })
+      )
+    );
+    return;
+  }
+
+  // Always revalidate HTML navigation against GitHub CDN so updates appear immediately
+  const isHtmlNav =
     event.request.mode === 'navigate' ||
     url.pathname === '/' ||
     url.pathname === '/index.html' ||
-    url.pathname === '/404.html' ||
-    url.pathname === '/app-engine.txt' ||
-    url.pathname === '/app-engine.html' ||
-    url.pathname === '/panditji-app.bundle.js';
+    url.pathname === '/404.html';
 
-  if (isAlwaysFresh) {
+  if (isHtmlNav) {
     event.respondWith(
       caches.open(CACHE_NAME).then((cache) =>
         fetch(event.request, { cache: 'no-cache' })
