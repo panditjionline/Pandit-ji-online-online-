@@ -89,6 +89,10 @@
   ],
   "rewrites": [
     {
+      "source": "/(pwa-512x512\\.png|pwa-maskable-512x512\\.png|app-icon\\.svg)",
+      "destination": "/pwa-192x192.png"
+    },
+    {
       "source": "/.well-known/(ai-catalog|ard).json",
       "destination": "/ai-catalog.json"
     },
