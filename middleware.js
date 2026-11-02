@@ -823,10 +823,11 @@ function buildSocialHtml(routeInfo, requestedUrlObj) {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="${SITE_ORIGIN}/favicon.ico" sizes="48x48" />
   <link rel="icon" type="image/png" sizes="48x48" href="${SITE_ORIGIN}/favicon-48x48.png" />
   <link rel="icon" type="image/png" sizes="96x96" href="${SITE_ORIGIN}/favicon-96x96.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="${SITE_ORIGIN}/pwa-192x192.png" />
-  <link rel="shortcut icon" type="image/x-icon" href="${SITE_ORIGIN}/favicon.ico" />
+  <link rel="shortcut icon" href="${SITE_ORIGIN}/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="${SITE_ORIGIN}/apple-touch-icon.png" />
   <title>${safeTitle}</title>
   <meta name="title" content="${safeTitle}" />
@@ -1008,9 +1009,9 @@ async function middleware(request) {
   }
 
   // 6. Intercept Social Media Crawlers (WhatsApp, Facebook, Telegram, Twitter/X, LinkedIn, Discord, Slack, Instagram, etc.)
-  // Never intercept Googlebot, Google-InspectionTool, PageSpeed/Lighthouse, or AdSense (Mediapartners-Google / AdsBot-Google)
+  // Never intercept Googlebot, Google-Favicon, Google-InspectionTool, PageSpeed/Lighthouse, or AdSense (Mediapartners-Google / AdsBot-Google)
   const ua = request.headers.get('user-agent') || '';
-  const isGoogleOrAuditBot = /googlebot|google-inspectiontool|storebot-google|adsbot-google|mediapartners-google|apis-google|chrome-lighthouse|pagespeed|ptst|gtmetrix|bingbot|yandexbot|baiduspider|duckduckbot/i.test(ua);
+  const isGoogleOrAuditBot = /googlebot|google-favicon|google favicon|google-inspectiontool|storebot-google|adsbot-google|mediapartners-google|apis-google|chrome-lighthouse|pagespeed|ptst|gtmetrix|bingbot|yandexbot|baiduspider|duckduckbot/i.test(ua);
   const isSocialBot =
     !isGoogleOrAuditBot &&
     /whatsapp|facebookexternalhit|facebot|meta-externalagent|instagram|threads|telegram|twitterbot|linkedinbot|slackbot|discordbot|pinterest|vkshare|skypeuripreview|embedly|quora|outbrain|redditbot|tumblr|bitlybot|viber|line|snapchat|applebot|okhttp|dalvik/i.test(ua);
