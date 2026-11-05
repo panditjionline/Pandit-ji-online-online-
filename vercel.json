@@ -53,7 +53,7 @@
       ]
     },
     {
-      "source": "/panditji-app.bundle.js",
+      "source": "/(panditji-app\\.bundle\\.js|admin-control\\.js)",
       "headers": [
         { "key": "Content-Type", "value": "application/javascript; charset=utf-8" },
         { "key": "Access-Control-Allow-Origin", "value": "*" },
