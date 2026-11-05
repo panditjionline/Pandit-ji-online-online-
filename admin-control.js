@@ -43,7 +43,8 @@
   var GEMINI_SINGLE_STORAGE_KEY = 'panditji_global_gemini_api_key_v1';
   var GITHUB_SYNC_CONFIG_KEY = 'panditji_admin_github_sync_config_v1';
 
-  var FESTIVE_UPDATED_EVENT = 'panditji_festive_theme_updated';
+  var FESTIVE_UPDATED_EVENT = 'panditji-festive-theme-updated';
+  var FESTIVE_UPDATED_EVENT_LEGACY = 'panditji_festive_theme_updated';
   var GEMINI_KEYS_UPDATED_EVENT = 'panditji_gemini_keys_updated';
 
   var FEST_IDS = [
@@ -64,20 +65,24 @@
   "festiveTheme": {
     "mode": "auto",
     "manualFestivalId": null,
-    "enableDayOfWeekTheme": true,
+    "enableDayOfWeekTheme": false,
     "lightsMode": "royal_jhalar",
+    "jhalarAnimation": "twinkle",
+    "toranStyle": "marigold_mango",
+    "cornerLadiMode": "auto",
+    "autoPushpVarsha": true,
     "enableGlowingHairline": true,
     "hairlineIntensity": "medium",
     "hairlineEffect": "rainbow",
     "hairlineSpeed": "normal",
-    "showToran": true,
+    "showToran": false,
     "sandhyaAutoGlow": true,
-    "updatedAt": 1793870688398
+    "updatedAt": 1793877136567
   },
   "geminiKeysPool": {
     "keys": [],
     "count": 0,
-    "updatedAt": 1793870905077
+    "updatedAt": 1793877309926
   }
 } /*__PANDITJI_EMBEDDED_ADMIN_STATE_END__*/;
 
@@ -126,7 +131,7 @@
   }
 
   function encodeAbacusState(cfg) {
-    var sec = 1000000 + (Math.floor((Number(cfg && cfg.updatedAt) || Date.now()) / 2000) % 7999999);
+    var sec = 100000 + (Math.floor((Number(cfg && cfg.updatedAt) || Date.now()) / 2000) % 799999);
     var m = cfg && cfg.mode === 'manual' ? '2' : cfg && cfg.mode === 'default_as_is' ? '3' : '1';
     var fIdx = 98;
     if (cfg && cfg.manualFestivalId === 'default-vedic-royal') fIdx = 99;
@@ -135,17 +140,143 @@
       if (idx !== -1) fIdx = idx;
     }
     var fStr = fIdx < 10 ? '0' + fIdx : String(fIdx);
-    var l = cfg && cfg.lightsMode === 'soft_glow' ? '1' : cfg && cfg.lightsMode === 'spectrum_line' ? '2' : cfg && cfg.lightsMode === 'off' ? '3' : '0';
-    var b1 = (cfg && cfg.enableDayOfWeekTheme === false ? 0 : 4) + (cfg && cfg.showToran === false ? 0 : 2) + (cfg && cfg.sandhyaAutoGlow === false ? 0 : 1);
+    var l =
+      cfg && cfg.lightsMode === 'soft_glow'
+        ? '1'
+        : cfg && cfg.lightsMode === 'spectrum_line'
+        ? '2'
+        : cfg && cfg.lightsMode === 'off'
+        ? '3'
+        : cfg && cfg.lightsMode === 'diya_mala'
+        ? '4'
+        : cfg && cfg.lightsMode === 'temple_bells'
+        ? '5'
+        : cfg && cfg.lightsMode === 'crystal_chandeliers'
+        ? '6'
+        : '0';
+    var b1 =
+      (cfg && cfg.enableDayOfWeekTheme === false ? 0 : 4) +
+      (cfg && cfg.showToran === false ? 0 : 2) +
+      (cfg && cfg.sandhyaAutoGlow === false ? 0 : 1);
     var hInt = cfg && cfg.hairlineIntensity === 'slim' ? 0 : cfg && cfg.hairlineIntensity === 'bold' ? 2 : 1;
     var b2 = (cfg && cfg.enableGlowingHairline === false ? 0 : 4) + hInt;
-    var hEff = cfg && cfg.hairlineEffect === 'festival' ? '1' : cfg && cfg.hairlineEffect === 'golden' ? '2' : cfg && cfg.hairlineEffect === 'pulse' ? '3' : '0';
-    var hSpd = cfg && cfg.hairlineSpeed === 'slow' ? '0' : cfg && cfg.hairlineSpeed === 'fast' ? '2' : '1';
-    return Number(String(sec) + m + fStr + l + String(b1) + String(b2) + hEff + hSpd);
+    var hEff =
+      cfg && cfg.hairlineEffect === 'festival'
+        ? '1'
+        : cfg && cfg.hairlineEffect === 'golden'
+        ? '2'
+        : cfg && cfg.hairlineEffect === 'pulse'
+        ? '3'
+        : cfg && cfg.hairlineEffect === 'aurora_agni'
+        ? '4'
+        : cfg && cfg.hairlineEffect === 'neelkanth_peacock'
+        ? '5'
+        : '0';
+    var spdIdx = cfg && cfg.hairlineSpeed === 'slow' ? 0 : cfg && cfg.hairlineSpeed === 'fast' ? 2 : 1;
+    var ladiIdx = cfg && cfg.cornerLadiMode === 'grand_curtain' ? 1 : cfg && cfg.cornerLadiMode === 'off' ? 2 : 0;
+    var d13 = String(spdIdx * 3 + ladiIdx);
+    var animIdx =
+      cfg && cfg.jhalarAnimation === 'running_chase'
+        ? 1
+        : cfg && cfg.jhalarAnimation === 'breathing_aarti'
+        ? 2
+        : cfg && cfg.jhalarAnimation === 'sparkle_flash'
+        ? 3
+        : cfg && cfg.jhalarAnimation === 'steady'
+        ? 4
+        : 0;
+    var d14 = String((cfg && cfg.autoPushpVarsha ? 5 : 0) + animIdx);
+    var d15 =
+      cfg && cfg.toranStyle === 'lotus_ashoka'
+        ? '1'
+        : cfg && cfg.toranStyle === 'rudraksha_belpatra'
+        ? '2'
+        : cfg && cfg.toranStyle === 'pearl_swarna'
+        ? '3'
+        : '0';
+    return Number(String(sec) + m + fStr + l + String(b1) + String(b2) + hEff + d13 + d14 + d15);
   }
 
   function decodeAbacusState(val) {
-    var s = String(val || '').trim();
+    var s = String(Math.floor(Number(val) || 0)).trim();
+    if (s.length === 16 && /^\d{16}$/.test(s)) {
+      var sec16 = parseInt(s.slice(0, 6), 10);
+      if (!isFinite(sec16) || sec16 < 100000) return null;
+      var mChar16 = s.charAt(6);
+      var fIdx16 = parseInt(s.slice(7, 9), 10);
+      var lChar16 = s.charAt(9);
+      var b1_16 = parseInt(s.charAt(10), 10);
+      var b2_16 = parseInt(s.charAt(11), 10);
+      var hEffChar16 = s.charAt(12);
+      var d13 = parseInt(s.charAt(13), 10);
+      var d14 = parseInt(s.charAt(14), 10);
+      var d15 = s.charAt(15);
+      var mode16 = mChar16 === '2' ? 'manual' : mChar16 === '3' ? 'default_as_is' : 'auto';
+      var manualFestivalId16 =
+        mode16 === 'manual' ? (fIdx16 === 99 ? 'default-vedic-royal' : FEST_IDS[fIdx16] || null) : null;
+      var lightsMode16 =
+        lChar16 === '1'
+          ? 'soft_glow'
+          : lChar16 === '2'
+          ? 'spectrum_line'
+          : lChar16 === '3'
+          ? 'off'
+          : lChar16 === '4'
+          ? 'diya_mala'
+          : lChar16 === '5'
+          ? 'temple_bells'
+          : lChar16 === '6'
+          ? 'crystal_chandeliers'
+          : 'royal_jhalar';
+      var spdIdx = Math.floor(d13 / 3);
+      var ladiIdx = d13 % 3;
+      var animIdx = d14 % 5;
+      return {
+        mode: mode16,
+        manualFestivalId: manualFestivalId16,
+        enableDayOfWeekTheme: (b1_16 & 4) !== 0,
+        lightsMode: lightsMode16,
+        jhalarAnimation:
+          animIdx === 1
+            ? 'running_chase'
+            : animIdx === 2
+            ? 'breathing_aarti'
+            : animIdx === 3
+            ? 'sparkle_flash'
+            : animIdx === 4
+            ? 'steady'
+            : 'twinkle',
+        toranStyle:
+          d15 === '1'
+            ? 'lotus_ashoka'
+            : d15 === '2'
+            ? 'rudraksha_belpatra'
+            : d15 === '3'
+            ? 'pearl_swarna'
+            : 'marigold_mango',
+        cornerLadiMode: ladiIdx === 1 ? 'grand_curtain' : ladiIdx === 2 ? 'off' : 'auto',
+        autoPushpVarsha: d14 >= 5,
+        enableGlowingHairline: (b2_16 & 4) !== 0,
+        hairlineIntensity: (b2_16 & 3) === 0 ? 'slim' : (b2_16 & 3) === 2 ? 'bold' : 'medium',
+        hairlineEffect:
+          hEffChar16 === '1'
+            ? 'festival'
+            : hEffChar16 === '2'
+            ? 'golden'
+            : hEffChar16 === '3'
+            ? 'pulse'
+            : hEffChar16 === '4'
+            ? 'aurora_agni'
+            : hEffChar16 === '5'
+            ? 'neelkanth_peacock'
+            : 'rainbow',
+        hairlineSpeed: spdIdx === 0 ? 'slow' : spdIdx === 2 ? 'fast' : 'normal',
+        showToran: (b1_16 & 2) !== 0,
+        sandhyaAutoGlow: (b1_16 & 1) !== 0,
+        syncCode: Number(s),
+        updatedAt: Date.now()
+      };
+    }
     if (s.length !== 15 || !/^\d{15}$/.test(s)) return null;
     var sec = parseInt(s.slice(0, 7), 10);
     if (!isFinite(sec) || sec < 1000000) return null;
@@ -164,6 +295,10 @@
       manualFestivalId: manualFestivalId,
       enableDayOfWeekTheme: (b1 & 4) !== 0,
       lightsMode: lightsMode,
+      jhalarAnimation: 'twinkle',
+      toranStyle: 'marigold_mango',
+      cornerLadiMode: 'auto',
+      autoPushpVarsha: false,
       enableGlowingHairline: (b2 & 4) !== 0,
       hairlineIntensity: (b2 & 3) === 0 ? 'slim' : (b2 & 3) === 2 ? 'bold' : 'medium',
       hairlineEffect: hEffChar === '1' ? 'festival' : hEffChar === '2' ? 'golden' : hEffChar === '3' ? 'pulse' : 'rainbow',
@@ -233,6 +368,11 @@
               detail: EMBEDDED_ADMIN_STATE.festiveTheme
             })
           );
+          window.dispatchEvent(
+            new CustomEvent(FESTIVE_UPDATED_EVENT_LEGACY, {
+              detail: EMBEDDED_ADMIN_STATE.festiveTheme
+            })
+          );
         }
       }
 
@@ -263,6 +403,9 @@
 
   function syncFromRealtimeCloud() {
     if (typeof window.fetch !== 'function') return Promise.resolve(null);
+    if (Date.now() - Number(window.__pjLastAdminLocalActionAt || 0) < 10000) {
+      return Promise.resolve(null);
+    }
 
     // 1. Sync Festive & 7-Vaar Theme from Zero-Firebase Abacus Cloud State
     var themePromise = window
@@ -275,6 +418,7 @@
       })
       .then(function (abData) {
         if (!abData || typeof abData.value !== 'number') return null;
+        if (Date.now() - Number(window.__pjLastAdminLocalActionAt || 0) < 10000) return null;
         var decoded = decodeAbacusState(abData.value);
         if (!decoded) return null;
         try {
@@ -287,8 +431,13 @@
             decoded.mode !== currentObj.mode ||
             (decoded.manualFestivalId || null) !== (currentObj.manualFestivalId || null) ||
             (decoded.lightsMode || 'royal_jhalar') !== (currentObj.lightsMode || 'royal_jhalar') ||
+            (decoded.jhalarAnimation || 'twinkle') !== (currentObj.jhalarAnimation || 'twinkle') ||
+            (decoded.toranStyle || 'marigold_mango') !== (currentObj.toranStyle || 'marigold_mango') ||
+            (decoded.cornerLadiMode || 'auto') !== (currentObj.cornerLadiMode || 'auto') ||
+            Boolean(decoded.autoPushpVarsha) !== Boolean(currentObj.autoPushpVarsha) ||
             Boolean(decoded.showToran !== false) !== Boolean(currentObj.showToran !== false) ||
-            Boolean(decoded.enableGlowingHairline !== false) !== Boolean(currentObj.enableGlowingHairline !== false);
+            Boolean(decoded.enableGlowingHairline !== false) !== Boolean(currentObj.enableGlowingHairline !== false) ||
+            (decoded.hairlineEffect || 'rainbow') !== (currentObj.hairlineEffect || 'rainbow');
 
           if (isChanged) {
             var merged = Object.assign({}, currentObj || {}, decoded);
@@ -298,6 +447,7 @@
             window.localStorage.setItem(FESTIVE_LEGACY_KEY, serialized);
             applyThemeSnapshotToDOM(null);
             window.dispatchEvent(new CustomEvent(FESTIVE_UPDATED_EVENT, { detail: merged }));
+            window.dispatchEvent(new CustomEvent(FESTIVE_UPDATED_EVENT_LEGACY, { detail: merged }));
           }
         } catch (e) {
           // ignore
@@ -456,8 +606,10 @@
       );
     }
 
+    var ts = Date.now();
+    window.__pjLastAdminLocalActionAt = ts;
     var payload = Object.assign({}, themeConfig, {
-      updatedAt: Date.now(),
+      updatedAt: ts,
       adminBy: ADMIN_AUTHORIZED_PHONE
     });
     var stateCode = encodeAbacusState(payload);
@@ -473,6 +625,7 @@
       }
       applyThemeSnapshotToDOM(payload.themeSnapshot);
       window.dispatchEvent(new CustomEvent(FESTIVE_UPDATED_EVENT, { detail: payload }));
+      window.dispatchEvent(new CustomEvent(FESTIVE_UPDATED_EVENT_LEGACY, { detail: payload }));
     } catch (e) {
       // ignore
     }
