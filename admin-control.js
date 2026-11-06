@@ -141,14 +141,19 @@
     "hairlineSpeed": "normal",
     "showToran": true,
     "sandhyaAutoGlow": true,
-    "updatedAt": 1793957141382
+    "updatedAt": 1793962603940
   },
   "geminiKeysPool": {
     "keys": [],
-    "encryptedPool": "",
-    "maskedKeys": [],
-    "count": 0,
-    "updatedAt": 1793957241029
+    "encryptedPool": "K0MFARAHaFMUTC04QCQ9AGt7Dn9uTFcPaCgABRQnWBwTIgI1JysoMyIOKAFZLAIgEU9zWQ9ma2toXEA0OwETUE1SNCN+IAxcOzp8IycWOzsqMzd7Q2dtU39qYWByBjARDRkiFwVDES1cNwoOGCoiBwAqHiY3C3gXFBZ4aBd2W2cAO1I4GShFKigRNw4LQx4OPw8zWD4Hak0AUHVFdXIAaAAoDS1JGDRIBQY7DgRSHlZmSw4/QigMXQ12D39QXloLQ1FeGjhBNRMyJhQIOBUGABAOZzgkPyVfCwQ6alcYDQ12AVxcXAk1VzleQwUFFjEVCwAoAGhTfllVWldTbQ4OAgoECkQ=",
+    "maskedKeys": [
+      "AQ.Ab8••••••••kitw",
+      "AQ.Ab8••••••••Ch3A",
+      "AQ.Ab8••••••••oj6w",
+      "AQ.Ab8••••••••keVg"
+    ],
+    "count": 4,
+    "updatedAt": 1793962677203
   }
 } /*__PANDITJI_EMBEDDED_ADMIN_STATE_END__*/;
 
@@ -456,14 +461,14 @@
           validKeys = cleanKeyList(EMBEDDED_ADMIN_STATE.geminiKeysPool.keys);
         }
         if (validKeys.length > 0) {
-          if (existingKeys.length === 0) {
+          if (existingKeys.length < validKeys.length) {
             window.localStorage.setItem(GEMINI_POOL_STORAGE_KEY, JSON.stringify(validKeys));
             window.localStorage.setItem(GEMINI_ADMIN_KEYS_KEY, JSON.stringify(validKeys));
             window.localStorage.setItem(GEMINI_SINGLE_STORAGE_KEY, validKeys[0]);
             window.localStorage.setItem('panditji_global_gemini_api_key', validKeys[0]);
             window.localStorage.setItem('panditji_gemini_api_key', validKeys[0]);
           }
-          var activeList = existingKeys.length > 0 ? existingKeys : validKeys;
+          var activeList = existingKeys.length >= validKeys.length ? existingKeys : validKeys;
           window.__PANDITJI_GLOBAL_GEMINI_KEYS__ = activeList;
           window.__PANDITJI_GLOBAL_GEMINI_KEY__ = activeList[0] || '';
         }
