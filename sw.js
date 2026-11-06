@@ -1,6 +1,6 @@
-// Pandit Ji Online — Lightweight Service Worker & Instant Engine Cache (v66)
+// Pandit Ji Online — Lightweight Service Worker & Instant Engine Cache (v70)
 // Designed for instant mobile copy-paste on GitHub (~75 lines, ~2.5 KB)
-const CACHE_NAME = 'panditji-v66';
+const CACHE_NAME = 'panditji-v70';
 const PRECACHE_ASSETS = [
   '/manifest.json',
   '/favicon.ico',
@@ -34,6 +34,7 @@ self.addEventListener('fetch', (event) => {
   if (
     url.pathname === '/sw.js' ||
     url.pathname === '/middleware.js' ||
+    url.pathname === '/admin-control.js' ||
     url.pathname.startsWith('/og-svg/') ||
     url.pathname.startsWith('/og-card/') ||
     url.pathname.startsWith('/api/') ||
@@ -45,25 +46,23 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Versioned engine bundle (?v=...) is immutable per build stamp: serve instantly from cache (0ms freeze!)
+  // Network-first with instant cache fallback for engine bundles so newly deployed code always takes effect immediately
   const isVersionedEngine =
-    (url.pathname === '/app-engine.txt' ||
-      url.pathname === '/app-engine.html' ||
-      url.pathname === '/panditji-app.bundle.js') &&
-    url.search.includes('v=');
+    url.pathname === '/app-engine.txt' ||
+    url.pathname === '/app-engine.html' ||
+    url.pathname === '/panditji-app.bundle.js';
 
   if (isVersionedEngine) {
     event.respondWith(
       caches.open(CACHE_NAME).then((cache) =>
-        cache.match(event.request).then((cachedResponse) => {
-          if (cachedResponse) return cachedResponse;
-          return fetch(event.request).then((networkResponse) => {
+        fetch(event.request)
+          .then((networkResponse) => {
             if (networkResponse && networkResponse.status === 200) {
               cache.put(event.request, networkResponse.clone());
             }
             return networkResponse;
-          });
-        })
+          })
+          .catch(() => cache.match(event.request))
       )
     );
     return;
