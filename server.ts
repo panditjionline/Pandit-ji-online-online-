@@ -1063,7 +1063,7 @@ app.get('/manifest.json', (_req, res) => {
   const manifestPath = path.join(__dirname, 'public', 'manifest.json');
   if (fs.existsSync(manifestPath)) {
     res.setHeader('Content-Type', 'application/manifest+json; charset=utf-8');
-    res.setHeader('Cache-Control', 'public, max-age=3600');
+    res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
     res.sendFile(manifestPath);
   } else {
     res.status(404).end();
@@ -1083,13 +1083,20 @@ app.get([
   const filename = path.basename(req.path);
   const candidatePublic = path.join(__dirname, 'public', filename);
   const candidateDist = path.join(__dirname, 'dist', filename);
-  const target = fs.existsSync(candidatePublic) ? candidatePublic : fs.existsSync(candidateDist) ? candidateDist : null;
+  const fallback192 = path.join(__dirname, 'public', 'pwa-192x192.png');
+  const target = fs.existsSync(candidatePublic)
+    ? candidatePublic
+    : fs.existsSync(candidateDist)
+    ? candidateDist
+    : filename.includes('512') && fs.existsSync(fallback192)
+    ? fallback192
+    : null;
 
   if (target) {
     if (filename.endsWith('.ico')) res.setHeader('Content-Type', 'image/x-icon');
     else if (filename.endsWith('.png')) res.setHeader('Content-Type', 'image/png');
     else if (filename.endsWith('.svg')) res.setHeader('Content-Type', 'image/svg+xml');
-    res.setHeader('Cache-Control', 'public, max-age=86400, s-maxage=86400');
+    res.setHeader('Cache-Control', 'public, max-age=31536000, s-maxage=31536000, immutable');
     res.setHeader('X-Robots-Tag', 'index, follow');
     res.sendFile(target);
   } else {
