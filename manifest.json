@@ -28,14 +28,20 @@
       "purpose": "any"
     },
     {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
       "src": "/pwa-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
-      "src": "/apple-touch-icon.png",
-      "sizes": "180x180",
+      "src": "/pwa-192x192.png",
+      "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     }
@@ -56,10 +62,10 @@
       "icons": [{ "src": "/pwa-192x192.png", "sizes": "192x192", "type": "image/png" }]
     },
     {
-      "name": "ज्योतिष AI चैट",
-      "short_name": "AI ज्योतिष",
+      "name": "ज्योतिष चैट",
+      "short_name": "ज्योतिष चैट",
       "description": "आचार्य जी के 4-स्तरीय वैदिक इंजन से प्रश्न पूछें",
-      "url": "/jyotish-ai",
+      "url": "/jyotish-chat",
       "icons": [{ "src": "/pwa-192x192.png", "sizes": "192x192", "type": "image/png" }]
     },
     {
