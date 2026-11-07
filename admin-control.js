@@ -4,24 +4,7 @@
  * File Name : admin-control.js (Root File #20 of 20)
  * Domain    : https://www.panditjionline.online
  * Admin ID  : +91 8958499979 (आचार्य शशांक शर्मा - Strict Admin Auth)
- * Cloud Sync: Zero-Firebase Global Cloud Sync (Abacus + ntfy + GitHub + Vercel)
- * ============================================================================
- * मुख्य विशेषताएँ (All-in-One Ready-to-Use Features — No Firebase Setup Required):
- * 1. Real-Time 12-Month Festive & 7-Vaar Day Theme Sync + GitHub Auto-Save:
- *    - एडमिन पैनल (8958499979) से कोई भी पर्व थीम, ७-वार थीम, मूल स्वरूप (As-Is) या
- *      उत्सव लाइट्स बदलने पर बिना Firebase सेटअप के तुरंत ग्लोबल क्लाउड, सर्वर और GitHub में सेव होता है।
- *    - www.panditjionline.online (HTML शेल और React ऐप दोनों पर) ओपन या रिफ्रेश करते ही
- *      देश-विदेश के सभी यूज़र्स के लिए रियल-टाइम में तुरंत लागू होता है।
- * 2. 12 Gemini API Keys Multi-Slot Management System (Real-Time Failover):
- *    - एडमिन के 12 Gemini API Keys स्लॉट्स (Key #1 से Key #12) को रियल-टाइम में सिंक करता है।
- *    - यदि कोई Key कोटा (429) समाप्त करती है, तो स्वतः अगली सक्रिय Key पर स्विच करता है।
- * 3. Strict Admin Mobile Authentication (8958499979):
- *    - केवल मोबाइल नंबर 8958499979 से लॉगिन प्रमाणित एडमिन को ही कंट्रोल पैनल दिखता है
- *      और थीम/Keys अपडेट करने की अनुमति मिलती है।
- * 4. Google PageSpeed (99-100) + Search Console + AdSense Bot Optimizer:
- *    - HeadlessChromium / Lighthouse / PageSpeed टेस्ट के दौरान TBT = 0ms, LCP < 0.6s और CLS = 0 रखता है।
- *    - Googlebot एवं Mediapartners-Google (AdSense) बॉट्स के लिए संपूर्ण SEO शेल व
- *      ca-pub-9661029896137686 को बिना किसी रुकावट के उपलब्ध रखता है।
+ * Security  : Zero Client-Side Secrets | Server-Only API Keys & Tokens
  * ============================================================================
  */
 (function (window, document) {
@@ -29,11 +12,7 @@
 
   var ADMIN_AUTHORIZED_PHONE = '8958499979';
   var ABACUS_THEME_GET_URL = 'https://abacus.jasoncameron.dev/get/panditjionline.online/admin_theme_sync_v1';
-  var ABACUS_THEME_SET_URL = 'https://abacus.jasoncameron.dev/set/panditjionline.online/admin_theme_sync_v1';
-  var ABACUS_THEME_ADMIN_KEY = '3f4e5d2d-a85b-4764-b3d7-29b33e4ab76a';
   var NTFY_THEME_TOPIC_URL = 'https://ntfy.sh/pj_theme_sync_8958499979_v1';
-  var NTFY_KEYS_TOPIC_URL = 'https://ntfy.sh/pj_keys_sync_8958499979_v2';
-  var CIPHER_SALT = 'PanditJiOnline_8958499979_Rudrapur';
 
   var FESTIVE_STORAGE_KEY = 'panditji_admin_festive_override_v1';
   var FESTIVE_LEGACY_KEY = 'panditji_admin_festive_override';
@@ -53,7 +32,6 @@
     var t = val.trim();
     if (t.length < 20 || t.length > 120) return false;
     if (t.indexOf('•') !== -1 || t.indexOf('*') !== -1 || t.indexOf('...') !== -1) return false;
-    if (t === 'AIzaSyCZjuCczrSRBsEOeNa2tg5iUxadNTUUHAc') return false;
     if (t.indexOf('YOUR_') !== -1 || t.indexOf('REPLACE_') !== -1) return false;
     if (!/^[\x21-\x7E]+$/.test(t)) return false;
     return true;
@@ -74,44 +52,6 @@
     return out;
   }
 
-  function encryptKeysPayload(keys) {
-    try {
-      var json = JSON.stringify(cleanKeyList(keys));
-      var xored = [];
-      for (var i = 0; i < json.length; i++) {
-        xored.push(json.charCodeAt(i) ^ CIPHER_SALT.charCodeAt(i % CIPHER_SALT.length));
-      }
-      return window.btoa(String.fromCharCode.apply(null, xored));
-    } catch (e) {
-      return '';
-    }
-  }
-
-  function decryptKeysPayload(cipher) {
-    if (!cipher || typeof cipher !== 'string') return [];
-    try {
-      var trimmed = cipher.trim();
-      if (trimmed.indexOf('{') === 0) {
-        var wrapper = JSON.parse(trimmed);
-        if (wrapper && typeof wrapper.c === 'string') {
-          trimmed = wrapper.c.trim();
-        }
-      }
-      var raw = window.atob(trimmed);
-      var chars = [];
-      for (var i = 0; i < raw.length; i++) {
-        chars.push(raw.charCodeAt(i) ^ CIPHER_SALT.charCodeAt(i % CIPHER_SALT.length));
-      }
-      var decoded = String.fromCharCode.apply(null, chars);
-      var parsed = JSON.parse(decoded);
-      if (Array.isArray(parsed)) return cleanKeyList(parsed);
-      if (parsed && Array.isArray(parsed.keys)) return cleanKeyList(parsed.keys);
-      return [];
-    } catch (e) {
-      return [];
-    }
-  }
-
   var FEST_IDS = [
     'day-sunday-surya','day-monday-shiva','day-tuesday-hanuman','day-wednesday-ganesha','day-thursday-vishnu','day-friday-lakshmi','day-saturday-shani',
     'lohri-parv','makar-sankranti','mauni-amavasya','vasant-panchami','maghi-purnima','maha-shivratri','phulera-dooj','choti-holi','badi-holi',
@@ -122,14 +62,14 @@
     'vivah-panchami','gita-jayanti-mokshada','dattatreya-annapurna-jayanti','masik-ekadashi-vrat','masik-pradosh-vrat','masik-purnima-satyanarayan'
   ];
 
-  // Default Embedded Snapshot (Dynamically Replaced on Server Download)
+  // Default Embedded Snapshot (Dynamically Replaced on Server Download - Zero Secrets)
   var EMBEDDED_ADMIN_STATE = /*__PANDITJI_EMBEDDED_ADMIN_STATE_START__*/ {
-  "version": "20.2.0",
+  "version": "20.3.0",
   "adminPhone": "8958499979",
   "festiveTheme": {
     "mode": "auto",
     "manualFestivalId": null,
-    "enableDayOfWeekTheme": false,
+    "enableDayOfWeekTheme": true,
     "lightsMode": "royal_jhalar",
     "jhalarAnimation": "running_chase",
     "toranStyle": "marigold_mango",
@@ -141,11 +81,10 @@
     "hairlineSpeed": "normal",
     "showToran": true,
     "sandhyaAutoGlow": true,
-    "updatedAt": 1793962603940
+    "updatedAt": 1794041713103
   },
   "geminiKeysPool": {
     "keys": [],
-    "encryptedPool": "K0MFARAHaFMUTC04QCQ9AGt7Dn9uTFcPaCgABRQnWBwTIgI1JysoMyIOKAFZLAIgEU9zWQ9ma2toXEA0OwETUE1SNCN+IAxcOzp8IycWOzsqMzd7Q2dtU39qYWByBjARDRkiFwVDES1cNwoOGCoiBwAqHiY3C3gXFBZ4aBd2W2cAO1I4GShFKigRNw4LQx4OPw8zWD4Hak0AUHVFdXIAaAAoDS1JGDRIBQY7DgRSHlZmSw4/QigMXQ12D39QXloLQ1FeGjhBNRMyJhQIOBUGABAOZzgkPyVfCwQ6alcYDQ12AVxcXAk1VzleQwUFFjEVCwAoAGhTfllVWldTbQ4OAgoECkQ=",
     "maskedKeys": [
       "AQ.Ab8••••••••kitw",
       "AQ.Ab8••••••••Ch3A",
@@ -153,16 +92,9 @@
       "AQ.Ab8••••••••keVg"
     ],
     "count": 4,
-    "updatedAt": 1793962677203
+    "updatedAt": 1794042487780
   }
 } /*__PANDITJI_EMBEDDED_ADMIN_STATE_END__*/;
-
-  // Detect PageSpeed / Lighthouse (including HeadlessChromium & Emulated Moto G Power) vs Search / AdSense Bots
-  var ua = (window.navigator && window.navigator.userAgent) || '';
-  var isPageSpeedAudit =
-    Boolean(window.navigator && window.navigator.webdriver) ||
-    /HeadlessChrome|HeadlessChromium|Moto G Power|Chrome-Lighthouse|Lighthouse|PageSpeed|PTST|Speed Insights|gtmetrix|Pingdom/i.test(ua);
-  var isSearchOrAdSenseBot = /Googlebot|Mediapartners-Google|AdsBot-Google|Google-InspectionTool|bingbot|Applebot/i.test(ua);
 
   function cleanPhone(raw) {
     var digits = String(raw || '').replace(/\D/g, '');
@@ -446,33 +378,6 @@
           );
         }
       }
-
-      if (
-        EMBEDDED_ADMIN_STATE &&
-        EMBEDDED_ADMIN_STATE.geminiKeysPool
-      ) {
-        var existingKeysRaw = window.localStorage.getItem(GEMINI_ADMIN_KEYS_KEY) || window.localStorage.getItem(GEMINI_POOL_STORAGE_KEY);
-        var existingKeys = existingKeysRaw ? cleanKeyList(JSON.parse(existingKeysRaw)) : [];
-        var validKeys = [];
-        if (typeof EMBEDDED_ADMIN_STATE.geminiKeysPool.encryptedPool === 'string' && EMBEDDED_ADMIN_STATE.geminiKeysPool.encryptedPool) {
-          validKeys = decryptKeysPayload(EMBEDDED_ADMIN_STATE.geminiKeysPool.encryptedPool);
-        }
-        if (validKeys.length === 0 && Array.isArray(EMBEDDED_ADMIN_STATE.geminiKeysPool.keys)) {
-          validKeys = cleanKeyList(EMBEDDED_ADMIN_STATE.geminiKeysPool.keys);
-        }
-        if (validKeys.length > 0) {
-          if (existingKeys.length < validKeys.length) {
-            window.localStorage.setItem(GEMINI_POOL_STORAGE_KEY, JSON.stringify(validKeys));
-            window.localStorage.setItem(GEMINI_ADMIN_KEYS_KEY, JSON.stringify(validKeys));
-            window.localStorage.setItem(GEMINI_SINGLE_STORAGE_KEY, validKeys[0]);
-            window.localStorage.setItem('panditji_global_gemini_api_key', validKeys[0]);
-            window.localStorage.setItem('panditji_gemini_api_key', validKeys[0]);
-          }
-          var activeList = existingKeys.length >= validKeys.length ? existingKeys : validKeys;
-          window.__PANDITJI_GLOBAL_GEMINI_KEYS__ = activeList;
-          window.__PANDITJI_GLOBAL_GEMINI_KEY__ = activeList[0] || '';
-        }
-      }
     } catch (e) {
       // ignore storage errors
     }
@@ -554,43 +459,7 @@
         return decoded;
       });
 
-    // 2. Real-time Zero-Firebase synchronization of Admin's 12 Gemini API keys for ALL users via ntfy.sh + /api/admin/gemini-key
-    var ntfyKeysPromise = window
-      .fetch(NTFY_KEYS_TOPIC_URL + '/json?poll=1&since=all', { cache: 'no-store' })
-      .then(function (r) {
-        return r.ok ? r.text() : '';
-      })
-      .catch(function () {
-        return '';
-      })
-      .then(function (ndjson) {
-        if (!ndjson) return [];
-        var lines = ndjson.trim().split('\n');
-        var latestKeys = [];
-        var latestTs = 0;
-        for (var i = lines.length - 1; i >= 0; i--) {
-          var line = lines[i].trim();
-          if (!line) continue;
-          try {
-            var evt = JSON.parse(line);
-            if (evt && evt.event === 'message' && typeof evt.message === 'string') {
-              var dec = decryptKeysPayload(evt.message);
-              if (dec.length > 0) {
-                latestKeys = dec;
-                latestTs = Number(evt.time || 0) * 1000;
-                break;
-              }
-            }
-          } catch (e) {
-            // ignore
-          }
-        }
-        if (latestKeys.length > 0) {
-          persistSyncedKeysToBrowser(latestKeys);
-        }
-        return latestKeys;
-      });
-
+    // 2. Sync masked key status from secure backend (/api/admin/gemini-key)
     var keysPromise = window
       .fetch('/api/admin/gemini-key', {
         headers: { Accept: 'application/json' },
@@ -605,17 +474,6 @@
       .then(function (data) {
         if (!data) return null;
         try {
-          if (typeof data.encryptedPool === 'string' && data.encryptedPool) {
-            var decodedServerKeys = decryptKeysPayload(data.encryptedPool);
-            if (decodedServerKeys.length > 0) {
-              persistSyncedKeysToBrowser(decodedServerKeys);
-            }
-          } else if (Array.isArray(data.keys)) {
-            var validDirect = cleanKeyList(data.keys);
-            if (validDirect.length > 0) {
-              persistSyncedKeysToBrowser(validDirect);
-            }
-          }
           if (Array.isArray(data.keyStatuses) && data.keyStatuses.length > 0) {
             window.dispatchEvent(
               new CustomEvent(GEMINI_KEYS_UPDATED_EVENT, {
@@ -634,7 +492,7 @@
         return data;
       });
 
-    return Promise.all([themePromise, ntfyKeysPromise, keysPromise]);
+    return Promise.all([themePromise, keysPromise]);
   }
 
   function getGitHubSyncConfig() {
@@ -770,13 +628,6 @@
       // ignore
     }
 
-    var abacusReq = window
-      .fetch(ABACUS_THEME_SET_URL + '?value=' + stateCode, {
-        method: 'POST',
-        headers: { Authorization: 'Bearer ' + ABACUS_THEME_ADMIN_KEY }
-      })
-      .catch(function () {});
-
     var ntfyReq = window
       .fetch(NTFY_THEME_TOPIC_URL, {
         method: 'POST',
@@ -787,12 +638,15 @@
     var serverReq = window
       .fetch('/api/festive-theme', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'x-admin-phone': ADMIN_AUTHORIZED_PHONE
+        },
         body: JSON.stringify(payload)
       })
       .catch(function () {});
 
-    return Promise.allSettled([abacusReq, ntfyReq, serverReq]).then(function () {
+    return Promise.allSettled([ntfyReq, serverReq]).then(function () {
       return pushConfigToGitHubRepo({ festiveTheme: payload }, adminPhone);
     });
   }
@@ -807,10 +661,8 @@
     var cleanedKeys = cleanKeyList(keysArray);
     var ts = Date.now();
     window.__pjLastAdminLocalActionAt = ts;
-    var cipher = encryptKeysPayload(cleanedKeys);
     var payload = {
       keys: cleanedKeys,
-      encryptedPool: cipher,
       apiKey: cleanedKeys[0] || '',
       count: cleanedKeys.length,
       updatedBy: ADMIN_AUTHORIZED_PHONE,
@@ -824,28 +676,7 @@
       // ignore
     }
 
-    // 1. Broadcast encrypted key pool to Zero-Firebase Real-time Cloud Topic (ntfy.sh) so all visitors get keys immediately
-    var ntfyKeysReq = cipher
-      ? window
-          .fetch(NTFY_KEYS_TOPIC_URL, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              Title: 'PanditJi Online 12-Key Pool Sync',
-              Priority: 'default'
-            },
-            body: JSON.stringify({
-              v: 2,
-              ts: ts,
-              by: ADMIN_AUTHORIZED_PHONE,
-              n: cleanedKeys.length,
-              c: cipher
-            })
-          })
-          .catch(function () {})
-      : Promise.resolve();
-
-    // 2. Secure server key storage with Admin Authorization header
+    // Secure server key storage with Admin Authorization header (Zero public ntfy broadcasting)
     var serverReq = window
       .fetch('/api/admin/gemini-key', {
         method: 'POST',
@@ -862,8 +693,8 @@
         return { ok: false, error: err };
       });
 
-    return Promise.allSettled([ntfyKeysReq, serverReq]).then(function () {
-      return pushConfigToGitHubRepo({ geminiKeysPool: payload }, adminPhone);
+    return Promise.allSettled([serverReq]).then(function () {
+      return pushConfigToGitHubRepo({ geminiKeysPool: { count: cleanedKeys.length, updatedAt: ts } }, adminPhone);
     });
   }
 
@@ -887,7 +718,7 @@
   }
 
   window.PanditJiAdminControl = {
-    version: '20.2.0',
+    version: '20.3.0',
     adminPhone: ADMIN_AUTHORIZED_PHONE,
     encodeAbacusState: encodeAbacusState,
     decodeAbacusState: decodeAbacusState,
@@ -898,21 +729,17 @@
     getActiveGeminiKeysPool: getActiveGeminiKeysPool,
     getGitHubSyncConfig: getGitHubSyncConfig,
     saveGitHubSyncConfig: saveGitHubSyncConfig,
-    syncToGitHub: pushConfigToGitHubRepo,
-    isPageSpeedAudit: isPageSpeedAudit,
-    isSearchOrAdSenseBot: isSearchOrAdSenseBot
+    syncToGitHub: pushConfigToGitHubRepo
   };
 
   applyEmbeddedDefaultsIfNewer();
 
-  if (!isPageSpeedAudit) {
-    syncFromRealtimeCloud();
-    window.setInterval(syncFromRealtimeCloud, 4000);
-    window.addEventListener('focus', syncFromRealtimeCloud);
-    document.addEventListener('visibilitychange', function () {
-      if (document.visibilityState === 'visible') {
-        syncFromRealtimeCloud();
-      }
-    });
-  }
+  syncFromRealtimeCloud();
+  window.setInterval(syncFromRealtimeCloud, 4000);
+  window.addEventListener('focus', syncFromRealtimeCloud);
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'visible') {
+      syncFromRealtimeCloud();
+    }
+  });
 })(window, document);
