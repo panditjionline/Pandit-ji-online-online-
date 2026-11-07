@@ -41,8 +41,8 @@ const ROUTE_ALIASES = {
   '/baby-names': '/vedic-baby-names',
   '/tirth-darshan': '/char-dham-tirth-darshan',
   '/teerth': '/char-dham-tirth-darshan',
-  '/jyotish-chat': '/jyotish-ai',
-  '/chat': '/jyotish-ai',
+  '/jyotish-ai': '/jyotish-chat',
+  '/chat': '/jyotish-chat',
   '/puja-booking': '/puja-services',
   '/services': '/puja-services',
   '/dharma-gyan': '/dharm-gyan-kosh',
@@ -335,12 +335,12 @@ const ROUTE_DATA = {
     art: 'rashi',
     accent: '#f59e0b'
   },
-  '/jyotish-ai': {
-    title: 'निःशुल्क ज्योतिष चैट एवं वैदिक परामर्श | Free Jyotish AI Chat | पण्डित जी ऑनलाइन',
+  '/jyotish-chat': {
+    title: 'निःशुल्क ज्योतिष चैट एवं वैदिक परामर्श | Free Jyotish Chat | पण्डित जी ऑनलाइन',
     desc: 'आचार्य पण्डित शशांक शर्मा जी के मार्गदर्शन में जन्म कुंडली, विवाह, करियर व ग्रह शांति पर 24×7 निःशुल्क ज्योतिषीय परामर्श।',
     cardTitle: '24x7 FREE VEDIC JYOTISH PARAMARSH',
     cardSub: 'Instant Kundali, Vivah, Career & Graha Shanti Guidance Chat',
-    shortCard: 'FREE JYOTISH AI CHAT\n24x7 Vedic Consultation',
+    shortCard: 'FREE JYOTISH CHAT\n24x7 Vedic Consultation',
     badge: 'ACHARYA SHASHANK SHARMA GUIDANCE',
     art: 'gyan',
     accent: '#fbbf24'
@@ -514,6 +514,86 @@ const ROUTE_DATA = {
     badge: 'SPIRITUAL & ASTROLOGICAL NOTICE',
     art: 'gyan',
     accent: '#f59e0b'
+  },
+  '/a-naam-rashi-swabhav': {
+    title: 'A नाम की राशि क्या है? (मेष राशि) — स्वभाव, करियर, प्रेम व शुभ रत्न | पण्डित जी ऑनलाइन',
+    desc: 'जानिए A (अ, आ, ल) अक्षर से नाम वाले लोगों की वैदिक राशि (मेष - Aries), स्वामी मंगल, स्वभाव, करियर, प्रेम विवाह, भाग्यशाली मूंगा रत्न और अचूक वैदिक उपाय।',
+    cardTitle: 'A NAAM KI RASHI: MESH (ARIES)',
+    cardSub: 'Swami Mangal • Swabhav • Career • Love Life & Lucky Moonga Ratna',
+    shortCard: 'A NAAM KI RASHI (MESH)\nSwabhav, Career & Ratna',
+    badge: 'STAGE 1 • TOP SEARCH NAAM RASHI GUIDE',
+    art: 'rashi',
+    accent: '#ef4444'
+  },
+  '/r-naam-rashi-swabhav': {
+    title: 'R नाम की राशि क्या है? (तुला राशि) — स्वभाव, करियर, विवाह व शुभ रत्न | पण्डित जी ऑनलाइन',
+    desc: 'जानिए R (र, त) अक्षर से नाम वाले लोगों की वैदिक राशि (तुला - Libra), स्वामी शुक्र, आकर्षक व्यक्तित्व, करियर, वैवाहिक जीवन, शुभ ओपल/हीरा रत्न और अचूक उपाय।',
+    cardTitle: 'R NAAM KI RASHI: TULA (LIBRA)',
+    cardSub: 'Swami Shukra • Swabhav • Career • Marriage & Lucky Opal Ratna',
+    shortCard: 'R NAAM KI RASHI (TULA)\nSwabhav, Vivah & Ratna',
+    badge: 'STAGE 1 • TOP SEARCH NAAM RASHI GUIDE',
+    art: 'rashi',
+    accent: '#ec4899'
+  },
+  '/m-naam-rashi-swabhav': {
+    title: 'M नाम की राशि क्या है? (सिंह राशि) — स्वभाव, राजयोग, करियर व माणिक्य रत्न | पण्डित जी ऑनलाइन',
+    desc: 'जानिए M (म, ट) अक्षर से नाम वाले लोगों की वैदिक राशि (सिंह - Leo), स्वामी सूर्य, राजसी स्वभाव, सरकारी नौकरी/व्यापार राजयोग, प्रेम जीवन और शुभ माणिक्य रत्न।',
+    cardTitle: 'M NAAM KI RASHI: SINGH (LEO)',
+    cardSub: 'Swami Surya • Royal Nature • Rajyoga • Career & Lucky Ruby Ratna',
+    shortCard: 'M NAAM KI RASHI (SINGH)\nRajyoga, Career & Manikya',
+    badge: 'STAGE 1 • TOP SEARCH NAAM RASHI GUIDE',
+    art: 'rashi',
+    accent: '#f59e0b'
+  },
+  '/p-naam-rashi-swabhav': {
+    title: 'P नाम की राशि क्या है? (कन्या राशि) — स्वभाव, करियर, व्यापार व पन्ना रत्न | पण्डित जी ऑनलाइन',
+    desc: 'जानिए P (प, ष, ण) अक्षर से नाम वाले लोगों की वैदिक राशि (कन्या - Virgo), स्वामी बुध, तीव्र बुद्धि, व्यापार व करियर सफलता, प्रेम जीवन और शुभ पन्ना रत्न।',
+    cardTitle: 'P NAAM KI RASHI: KANYA (VIRGO)',
+    cardSub: 'Swami Budh • Sharp Intellect • Business • Career & Emerald Ratna',
+    shortCard: 'P NAAM KI RASHI (KANYA)\nSwabhav, Vyapar & Panna',
+    badge: 'STAGE 1 • TOP SEARCH NAAM RASHI GUIDE',
+    art: 'rashi',
+    accent: '#10b981'
+  },
+  '/griha-pravesh-muhurat-2027': {
+    title: 'गृह प्रवेश मुहूर्त 2026-2027 — नूतन गृह प्रवेश की शुभ तिथियां, वास्तु नियम व पूजा विधि | पण्डित जी ऑनलाइन',
+    desc: 'साल 2026 और 2027 में नए घर में प्रवेश (नूतन, सपूर्व व जीर्ण गृह प्रवेश) के सभी सर्वोत्तम शुभ मुहूर्त, स्थिर लग्न सारणी, वास्तु कलश स्थापना विधि और वर्जित मास।',
+    cardTitle: 'GRIHA PRAVESH MUHURAT 2026-2027',
+    cardSub: 'Auspicious Dates • Sthir Lagna Table • Vastu Kalash Sthapana Vidhi',
+    shortCard: 'GRIHA PRAVESH 2026-27\nShubh Tithi & Vastu Vidhi',
+    badge: 'STAGE 2 • SHUBH MUHURAT PANCHANG 2026-27',
+    art: 'panchang',
+    accent: '#f97316'
+  },
+  '/ekadashi-vrat-list-2027': {
+    title: 'एकादशी व्रत कैलेंडर एवं पारण समय सारणी 2026-2027 (सभी 24 एकादशी तिथि) | पण्डित जी ऑनलाइन',
+    desc: 'वर्ष 2026-2027 की सभी 24 एकादशी (निर्जला, देवउठनी, देवशयनी, पुत्रदा, मोक्षदा एकादशी) की सटीक व्रत तिथि, हरि वासर नियम, द्वादशी पारण का शुभ समय एवं व्रत विधि।',
+    cardTitle: 'EKADASHI VRAT & PARANA LIST 2026-27',
+    cardSub: 'All 24 Ekadashi Dates • Smarta & Vaishnava • Hari Vasar Parana Time',
+    shortCard: '24 EKADASHI CALENDAR\nVrat Tithi & Parana Time',
+    badge: 'STAGE 2 • SANATAN VRAT PANCHANG 2026-27',
+    art: 'panchang',
+    accent: '#fbbf24'
+  },
+  '/kaalsarp-dosh-nivaran': {
+    title: 'कालसर्प दोष क्या है? 12 प्रकार (अनंत से शेषनाग), कुंडली जांच एवं अचूक वैदिक उपाय | पण्डित जी ऑनलाइन',
+    desc: 'जानिए जन्म कुंडली में राहु-केतु से बनने वाले 12 प्रकार के कालसर्प दोष (अनंत, कुलिक, वासुकि, तक्षक, कर्कोटक, शेषनाग आदि) के लक्षण, स्वतः भंग नियम और अचूक वैदिक शांति उपाय।',
+    cardTitle: 'KAALSARP DOSH CHECKER & 12 TYPES',
+    cardSub: 'Anant to Sheshnag 12 Kaalsarp • Cancellation Rules & Rudrabhishek Upay',
+    shortCard: 'KAALSARP DOSH NIVARAN\n12 Types & Kundali Check',
+    badge: 'STAGE 3 • KUNDALI DOSH CALCULATOR',
+    art: 'kundli',
+    accent: '#a855f7'
+  },
+  '/sapne-me-saap-dekhna': {
+    title: 'सपने में सांप देखना (स्वप्न शास्त्र) — काले, सफेद, पीले व नाग-नागिन दिखने के 21 शुभ-अशुभ संकेत | पण्डित जी ऑनलाइन',
+    desc: 'स्वप्न शास्त्र और अग्नि पुराण के अनुसार सपने में सांप देखना, सांप का काटना, शिवलिंग पर नाग दिखना, सफेद या काला सांप दिखने के 21 गूढ़ रहस्य, धन लाभ संकेत और वैदिक उपाय।',
+    cardTitle: 'SAPNE ME SAAP DEKHNA (SWAPNA SHASTRA)',
+    cardSub: '21 Auspicious & Warning Snake Dream Signs • Shivling Nag & Remedies',
+    shortCard: 'SAPNE ME SAAP DEKHNA\n21 Swapna Shastra Signs',
+    badge: 'STAGE 3 • VIRAL SWAPNA SHASTRA GUIDE',
+    art: 'gyan',
+    accent: '#14b8a6'
   }
 };
 
