@@ -13,6 +13,9 @@ const HOMEPAGE_IMAGE = 'https://iili.io/neb1ghg.jpg';
 const VERSION_TAG = 'v37';
 
 const ROUTE_ALIASES = {
+  '/home': '/',
+  '/index.html': '/',
+  '/index': '/',
   '/kundli': '/janam-kundali',
   '/kundali': '/janam-kundali',
   '/milan': '/kundali-milan',
@@ -63,8 +66,8 @@ const ROUTE_ALIASES = {
 
 const ROUTE_DATA = {
   '/': {
-    title: 'Pandit Ji Online - Free Kundli, Vedic Astrology & Horoscope',
-    desc: 'Get free Vedic astrology predictions, online kundli matching, 36 gun milan, daily rashifal, and expert astrological remedies at Pandit Ji Online, Rudrapur.',
+    title: 'पण्डित जी ऑनलाइन — निःशुल्क जन्म कुंडली, पंचांग व राशिफल',
+    desc: 'पण्डित जी ऑनलाइन (आचार्य पण्डित शशांक शर्मा, रुद्रपुर): निःशुल्क वैदिक जन्म कुंडली, 36 गुण विवाह मिलान, आज का पंचांग, शुभ मुहूर्त 2026-27 एवं सटीक दैनिक राशिफल।',
     cardTitle: 'PANDIT JI ONLINE',
     cardSub: 'Free Janam Kundali • 36 Gun Milan • Drik Panchang • Digital Mandir',
     shortCard: 'PANDIT JI ONLINE\nVedic Jyotish Rudrapur',
@@ -73,8 +76,8 @@ const ROUTE_DATA = {
     accent: '#f59e0b'
   },
   '/digital-mandir': {
-    title: 'डिजिटल मंदिर दर्शन एवं लाइव आरती | Virtual Hindu Temple | पण्डित जी ऑनलाइन',
-    desc: '3D सनातन डिजिटल मंदिर में भगवान श्री हरि विष्णु, महादेव, हनुमान जी, श्री गणेश व माँ दुर्गा के नित्य दर्शन, अखण्ड दीप, शंखनाद व लाइव आरती करें।',
+    title: 'श्री डिजिटल सनातन मंदिर (Live Digital Mandir) — अखंड ज्योति दर्शन, आरती, शंखनाद व वैदिक संकल्प | पण्डित जी ऑनलाइन',
+    desc: 'श्री डिजिटल सनातन मंदिर में घर बैठे पावन देव दर्शन करें — अखंड ज्योति प्रज्वलित करें, मंदिर की घंटी व शंखनाद बजाएं, पुष्प अर्पित करें और अपना दैनिक वैदिक संकल्प लें।',
     cardTitle: 'SHRI DIGITAL SANATAN MANDIR',
     cardSub: 'Live 3D Darshan • Akhand Jyoti • Bell & Shankhnaad • Live Aarti',
     shortCard: 'DIGITAL SANATAN MANDIR\nLive 3D Darshan & Aarti',
@@ -83,8 +86,8 @@ const ROUTE_DATA = {
     accent: '#fbbf24'
   },
   '/janam-kundali': {
-    title: 'सम्पूर्ण जन्म कुंडली (Lagna & Navamsha) | Free Vedic Kundli | पण्डित जी ऑनलाइन',
-    desc: 'अपनी जन्म तिथि, समय व स्थान से बनाएं लाहिड़ी अयनांश आधारित 100% सटीक वैदिक जन्म कुंडली — लग्न चार्ट, नवमांश (D-9), विंशोत्तरी महादशा व राजयोग विश्लेषण।',
+    title: 'निःशुल्क जन्म कुंडली बनाएं (Free Online Janam Kundali in Hindi) — लग्न कुंडली, महादशा व भविष्यफल | पण्डित जी ऑनलाइन',
+    desc: 'अपनी जन्म तिथि, समय और स्थान से मात्र 1 सेकंड में निःशुल्क वैदिक जन्म कुंडली (Lagna, Chandra & Navamsha Chart), विंशोत्तरी महादशा, मांगलिक/साढ़े साती विचार, शुभ रत्न और सम्पूर्ण भविष्यफल प्राप्त करें।',
     cardTitle: 'FREE VEDIC JANAM KUNDALI',
     cardSub: 'Lagna & Navamsha (D-9) • Vimshottari Dasha • Rajyoga & Remedies',
     shortCard: 'FREE JANAM KUNDALI\nLagna, D-9 & Mahadasha',
@@ -93,8 +96,8 @@ const ROUTE_DATA = {
     accent: '#f97316'
   },
   '/kundali-milan': {
-    title: '36 गुण कुंडली मिलान (अष्टकूट) | Free Kundli Matching for Marriage | पण्डित जी ऑनलाइन',
-    desc: 'वर-कन्या के नाम या जन्म विवरण से करें शास्त्रोक्त 36 गुण अष्टकूट कुंडली मिलान, मांगलिक दोष जाँच एवं नाड़ी/भकूट दोष परिहार।',
+    title: 'कुंडली मिलान (Free 36 Gun Milan in Hindi) — वर-कन्या अष्टकूट विवाह मिलान एवं मांगलिक दोष जाँच | पण्डित जी ऑनलाइन',
+    desc: 'वर और कन्या की जन्म तिथि या नाम से निःशुल्क 36 गुण अष्टकूट कुंडली मिलान (Kundali Matching for Marriage) करें। वर्ण, वश्य, तारा, योनि, ग्रह मैत्री, गण, भकूट, नाड़ी दोष और मांगलिक दोष का सटीक विश्लेषण।',
     cardTitle: '36 GUN ASHTAKOOT KUNDALI MILAN',
     cardSub: 'Var-Kanya Marriage Compatibility • Manglik Check • Nadi Parihar',
     shortCard: '36 GUN KUNDALI MILAN\nAshtakoot Vivah Matching',
@@ -103,8 +106,8 @@ const ROUTE_DATA = {
     accent: '#ec4899'
   },
   '/panchang': {
-    title: 'आज का पंचांग व शुभ मुहूर्त | Today Hindu Panchang Rudrapur | पण्डित जी ऑनलाइन',
-    desc: 'रुद्रपुर (उत्तराखण्ड) अक्षांश आधारित शुद्ध लाहिड़ी दृक गणित पंचांग — आज की तिथि, नक्षत्र, योग, करण, राहुकाल, अभिजीत मुहूर्त एवं चौघड़िया।',
+    title: 'आज का पंचांग (Aaj Ka Panchang) — आज की तिथि, नक्षत्र, शुभ मुहूर्त, राहुकाल व चौघड़िया | पण्डित जी ऑनलाइन',
+    desc: 'आज का शुद्ध दृक गणित हिन्दू पंचांग (प्रतिदिन लाइव अपडेटेड) — जानिए आज की तिथि, नक्षत्र, योग, करण, सूर्योदय-सूर्यास्त, अभिजित मुहूर्त, राहुकाल, दिन-रात का चौघड़िया और प्रमुख व्रत-त्योहार।',
     cardTitle: 'AAJ KA DRIK GANIT PANCHANG',
     cardSub: 'Tithi • Nakshatra • Yoga • Karana • Abhijit Muhurat • Rahukaal',
     shortCard: 'AAJ KA DRIK PANCHANG\nTithi, Nakshatra & Muhurat',
@@ -113,8 +116,8 @@ const ROUTE_DATA = {
     accent: '#f59e0b'
   },
   '/shubh-muhurat': {
-    title: 'विवाह, मुंडन, गृह प्रवेश व वाहन शुभ मुहूर्त 2026-27 | पण्डित जी ऑनलाइन',
-    desc: 'दृक पंचांग आधारित 2026-2027 के सर्वोत्तम विवाह, मुंडन संस्कार, गृह प्रवेश एवं वाहन खरीदने के शुभ मुहूर्त तथा नाम राशि कैलकुलेटर।',
+    title: 'शुभ मुहूर्त कैलेंडर एवं नाम से राशि कैलकुलेटर (Shubh Muhurat & Naam Rashi) | पण्डित जी ऑनलाइन',
+    desc: 'विवाह, गृह प्रवेश, वाहन खरीद, मुंडन व नामकरण संस्कार के सटीक शुभ मुहूर्त और अक्षर से अपनी वैदिक नाम राशि, नक्षत्र व भाग्यशाली रत्न तुरंत जानें।',
     cardTitle: 'SHUBH MUHURAT 2026 - 2027',
     cardSub: 'Vivah • Griha Pravesh • Mundan Sanskar • Vahan Kharid Muhurat',
     shortCard: 'SHUBH MUHURAT 2026-27\nVivah, Mundan & Vahan',
@@ -123,8 +126,8 @@ const ROUTE_DATA = {
     accent: '#eab308'
   },
   '/vivah-muhurat-2027': {
-    title: 'विवाह मुहूर्त 2026-2027: नाम से जानें शुभ शादी की तिथियां व तारा बल | पण्डित जी ऑनलाइन',
-    desc: 'वर और कन्या के नाम से जानें 2026-2027 के सर्वोत्तम विवाह मुहूर्त, तारा बल, चन्द्र बल और अबूझ मुहूर्त तिथियां।',
+    title: 'विवाह मुहूर्त 2026-2027 (Vivah Muhurat Dates) — शादी की सभी शुभ तिथियां, लग्न व नक्षत्र सारणी | पण्डित जी ऑनलाइन',
+    desc: 'वर्ष 2026 और 2027 (मई, जून, नवंबर, दिसंबर सहित) में शादी-विवाह के लिए 100% सटीक दृक गणित शुभ मुहूर्त तिथियां, शुभ नक्षत्र, तिथि और विवाह लग्न सारणी।',
     cardTitle: 'SHUBH VIVAH MUHURAT 2026-27',
     cardSub: 'Auspicious Hindu Wedding Dates • Tara Bal & Chandra Bal Check',
     shortCard: 'VIVAH MUHURAT 2026-27\nShubh Shadi Dates by Name',
@@ -133,8 +136,8 @@ const ROUTE_DATA = {
     accent: '#f43f5e'
   },
   '/mundan-muhurat': {
-    title: 'मुंडन संस्कार शुभ मुहूर्त 2026-2027: शिशु नाम से तिथि व नक्षत्र गणना | पण्डित जी ऑनलाइन',
-    desc: 'बच्चे के नाम से जानें मुंडन (चूड़ाकरण) संस्कार 2026-2027 की सबसे शुभ तिथियां, नक्षत्र, करण और भद्रा विचार।',
+    title: 'मुंडन मुहूर्त 2026-2027 (Mundan Muhurat) — बच्चों के मुंडन संस्कार की सबसे शुभ तिथियां व नक्षत्र | पण्डित जी ऑनलाइन',
+    desc: 'शिशु मुंडन (चूड़ाकरण) संस्कार 2026-2027 की सबसे शुभ तिथियां: भद्रा-रहित शुभ चर करण (बव, बालव, कौलव, तैतिल), 12 शुभ नक्षत्र (अश्विनी, मृगशिरा, पुष्य, हस्त, श्रवण) और वर्जित काल की संपूर्ण सारणी।',
     cardTitle: 'MUNDAN SANSKAR MUHURAT 2026-27',
     cardSub: 'Chudakaran Auspicious Dates • Baby Name Nakshatra & Tithi Check',
     shortCard: 'MUNDAN MUHURAT 2026-27\nShishu Chudakaran Dates',
@@ -143,8 +146,8 @@ const ROUTE_DATA = {
     accent: '#10b981'
   },
   '/vahan-kharidne-ka-muhurat': {
-    title: 'वाहन खरीदने का शुभ मुहूर्त 2026-2027: नाम से शुभ तिथि व लकी रंग | पण्डित जी ऑनलाइन',
-    desc: 'कार, बाइक या नया वाहन खरीदने के लिए नाम राशि अनुसार शुभ मुहूर्त 2026-2027, चर-द्विस्वभाव लग्न और भाग्यशाली वाहन रंग।',
+    title: 'वाहन खरीदने का शुभ मुहूर्त 2026-2027 (Car & Bike Buying Muhurat) — रविवार व सभी 7 दिनों की शुभ तिथियां | पण्डित जी ऑनलाइन',
+    desc: 'कार, बाइक या स्कूटी खरीदने और डिलीवरी लेने के लिए सभी 7 दिनों व रविवार (Sunday) की सबसे शुभ तिथियां, रवि-पुष्य योग, सर्वार्थ सिद्धि योग, शुभ चौघड़िया समय और राहुकाल विचार।',
     cardTitle: 'VAHAN KHARIDNE KA MUHURAT 2026-27',
     cardSub: 'Best Car & Bike Buying Dates • Lucky Vehicle Color by Rashi',
     shortCard: 'VAHAN MUHURAT 2026-27\nCar & Bike Shubh Dates',
@@ -153,12 +156,12 @@ const ROUTE_DATA = {
     accent: '#3b82f6'
   },
   '/s-naam-rashi-swabhav': {
-    title: 'नाम से जानें अपनी राशि, नक्षत्र, स्वभाव, करियर और भाग्यशाली रत्न | पण्डित जी ऑनलाइन',
-    desc: 'S नाम या किसी भी अक्षर (A to Z) से जानें अपनी वैदिक चन्द्र राशि, नक्षत्र चरण, स्वामी ग्रह, स्वभाव, करियर और भाग्यशाली रत्न।',
-    cardTitle: 'NAAM SE JANEIN RASHI & SWABHAV',
-    cardSub: 'A to Z Name Rashi Calculator • Nakshatra • Career • Lucky Gemstone',
-    shortCard: 'NAAM RASHI CALCULATOR\nRashi, Nakshatra & Swabhav',
-    badge: 'VEDIC CHANDRA RASHI & PERSONALITY GUIDE',
+    title: 'S नाम की राशि क्या है? (कुम्भ राशि) — S (स, श) नाम वालों का स्वभाव, करियर, प्रेम व शुभ रत्न | पण्डित जी ऑनलाइन',
+    desc: 'S नाम की राशि कुम्भ (Aquarius - स्वामी शनि देव) होती है। जानिए S (स, सा, सी, सू, से, सो, श) अक्षर से नाम शुरू होने वालों की सटीक वैदिक राशि, नक्षत्र, स्वभाव, करियर, वैवाहिक जीवन, शुभ रंग, शुभ अंक (8) और नीलम रत्न की संपूर्ण जानकारी।',
+    cardTitle: 'S NAAM KI RASHI: KUMBH RASHI',
+    cardSub: 'S Letter Zodiac (Aquarius) • Shani Dev • Swabhav, Career & Neelam',
+    shortCard: 'S NAAM KI RASHI (KUMBH)\nRashi, Swabhav & Career',
+    badge: 'S LETTER ZODIAC & PERSONALITY GUIDE',
     art: 'rashi',
     accent: '#a855f7'
   },
@@ -1031,11 +1034,29 @@ async function middleware(request) {
     }
   }
 
-  // 7. Normal Browser, Googlebot, PageSpeed & AdSense requests: zero-latency pass-through to static index.html / assets
+  // 7. 301 Permanent Redirect for Duplicate Short Alias URLs (consolidates SEO authority in Google Search Console)
+  const normalizedPath = pathname.replace(/\/+$/, '').toLowerCase() || '/';
+  if (ROUTE_ALIASES[normalizedPath]) {
+    return Response.redirect(`${SITE_ORIGIN}${ROUTE_ALIASES[normalizedPath]}${url.search}`, 301);
+  }
+
+  // 8. Normal Browser, Googlebot, PageSpeed & AdSense requests: zero-latency pass-through to static index.html / assets
+  const isKnownCanonicalRoute = Boolean(ROUTE_DATA[normalizedPath]);
+  const isAssetOrSystemPath =
+    pathname.startsWith('/assets/') ||
+    pathname.startsWith('/api/') ||
+    pathname.startsWith('/.well-known/') ||
+    /\.(ico|png|jpg|jpeg|svg|webp|woff2|js|css|json|txt|xml|html|map)$/i.test(pathname);
+
+  const passHeaders = {
+    'x-middleware-next': '1'
+  };
+  if (!isKnownCanonicalRoute && !isAssetOrSystemPath) {
+    passHeaders['X-Robots-Tag'] = 'noindex, nofollow';
+  }
+
   return new Response(null, {
-    headers: {
-      'x-middleware-next': '1'
-    }
+    headers: passHeaders
   });
 }
 
