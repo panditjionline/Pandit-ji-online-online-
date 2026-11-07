@@ -35,7 +35,7 @@ Allow: /shani-sadesati-upay
 Allow: /manglik-dosh-nivaran
 Allow: /nadi-dosh-nuskhe
 Allow: /rashifal
-Allow: /jyotish-ai
+Allow: /jyotish-chat
 Allow: /puja-services
 Allow: /dharm-gyan-kosh
 Allow: /ram-shalaka-prashnavali
