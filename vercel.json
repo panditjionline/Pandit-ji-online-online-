@@ -119,7 +119,7 @@
     { "source": "/gun-milan", "destination": "/kundali-milan", "permanent": true },
     { "source": "/mandir", "destination": "/digital-mandir", "permanent": true },
     { "source": "/muhurat", "destination": "/shubh-muhurat", "permanent": true },
-    { "source": "/naam-rashi", "destination": "/shubh-muhurat", "permanent": true },
+    { "source": "/singh-rashifal", "destination": "/simha-rashifal", "permanent": true },
     { "source": "/dainik-rashifal", "destination": "/rashifal", "permanent": true },
     { "source": "/chat", "destination": "/jyotish-chat", "permanent": true },
     { "source": "/jyotish-ai", "destination": "/jyotish-chat", "permanent": true },
