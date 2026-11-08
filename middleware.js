@@ -10,7 +10,8 @@
 
 const SITE_ORIGIN = 'https://www.panditjionline.online';
 const HOMEPAGE_IMAGE = 'https://iili.io/neb1ghg.jpg';
-const VERSION_TAG = 'v37';
+const PANDIT_PORTRAIT_DATA_URI = 'data:image/jpeg;base64,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';
+const VERSION_TAG = 'v38';
 
 const ROUTE_ALIASES = {
   '/home': '/',
@@ -785,40 +786,100 @@ function renderArtworkSvg(art, accent) {
     </g>`;
 }
 
-function buildOgCardSvg(routeInfo) {
-  const words = String(routeInfo.cardTitle || 'PANDIT JI ONLINE').split(/\s+/);
-  let line1 = '';
-  let line2 = '';
-  for (const w of words) {
-    if ((line1 + ' ' + w).trim().length <= 22) {
-      line1 = (line1 + ' ' + w).trim();
-    } else {
-      line2 = (line2 + ' ' + w).trim();
+function splitTitleToLines(title) {
+  const words = String(title || '').trim().split(/\s+/).filter(Boolean);
+  if (!words.length) return ['PANDIT JI ONLINE'];
+  const totalLen = words.reduce((acc, w) => acc + w.length, 0) + words.length - 1;
+  if (totalLen <= 22) {
+    return [words.join(' ')];
+  }
+  if (totalLen <= 46) {
+    const targetHalf = totalLen / 2;
+    let bestIdx = 1;
+    let minDiff = Infinity;
+    let running = 0;
+    for (let i = 0; i < words.length - 1; i++) {
+      running += words[i].length + (i > 0 ? 1 : 0);
+      const diff = Math.abs(running - targetHalf);
+      if (diff < minDiff) {
+        minDiff = diff;
+        bestIdx = i + 1;
+      }
+    }
+    return [words.slice(0, bestIdx).join(' '), words.slice(bestIdx).join(' ')];
+  }
+  const targetThird = totalLen / 3;
+  let idx1 = 1;
+  let idx2 = 2;
+  let running = 0;
+  for (let i = 0; i < words.length - 2; i++) {
+    running += words[i].length + (i > 0 ? 1 : 0);
+    if (running >= targetThird) {
+      idx1 = i + 1;
+      break;
     }
   }
-  if (line2.length > 26) {
-    line2 = line2.slice(0, 25).trim() + '...';
+  running = 0;
+  for (let i = idx1; i < words.length - 1; i++) {
+    running += words[i].length + (i > idx1 ? 1 : 0);
+    if (running >= targetThird) {
+      idx2 = i + 1;
+      break;
+    }
+  }
+  return [
+    words.slice(0, idx1).join(' '),
+    words.slice(idx1, idx2).join(' '),
+    words.slice(idx2).join(' ')
+  ].filter(Boolean);
+}
+
+function buildOgCardSvg(routeInfo) {
+  const lines = splitTitleToLines(routeInfo.cardTitle || 'PANDIT JI ONLINE');
+  const lineCount = lines.length;
+
+  let titleBlock = '';
+  let sepY = 250;
+  if (lineCount === 1) {
+    titleBlock = `<text x="60" y="190" font-family="system-ui, -apple-system, sans-serif" font-size="48" font-weight="900" fill="#ffffff" letter-spacing="0.5">${xmlEscape(lines[0])}</text>`;
+    sepY = 226;
+  } else if (lineCount === 2) {
+    titleBlock = `
+      <text x="60" y="164" font-family="system-ui, -apple-system, sans-serif" font-size="44" font-weight="900" fill="#ffffff" letter-spacing="0.5">${xmlEscape(lines[0])}</text>
+      <text x="60" y="220" font-family="system-ui, -apple-system, sans-serif" font-size="42" font-weight="900" fill="#fde047" letter-spacing="0.5">${xmlEscape(lines[1])}</text>`;
+    sepY = 248;
+  } else {
+    titleBlock = `
+      <text x="60" y="148" font-family="system-ui, -apple-system, sans-serif" font-size="34" font-weight="900" fill="#ffffff" letter-spacing="0.5">${xmlEscape(lines[0])}</text>
+      <text x="60" y="192" font-family="system-ui, -apple-system, sans-serif" font-size="34" font-weight="900" fill="#fde047" letter-spacing="0.5">${xmlEscape(lines[1])}</text>
+      <text x="60" y="234" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="900" fill="#fed7aa" letter-spacing="0.5">${xmlEscape(lines[2])}</text>`;
+    sepY = 258;
   }
 
   const subText = String(routeInfo.cardSub || '');
   const subParts = subText.split('•').map((s) => s.trim()).filter(Boolean);
-  const subLine1 = subParts.slice(0, 2).join('  •  ');
-  const subLine2 = subParts.slice(2, 4).join('  •  ');
+  const subLine1 = subParts.slice(0, 2).map((s) => '✦ ' + s).join('   ');
+  const subLine2 = subParts.slice(2, 4).map((s) => '✦ ' + s).join('   ');
 
-  const accent = routeInfo.accent || '#f59e0b';
-  const badge = xmlEscape(routeInfo.badge || 'PANDIT JI ONLINE • RUDRAPUR');
-  const pathLabel = xmlEscape(routeInfo.path === '/' ? 'www.panditjionline.online' : `panditjionline.online${routeInfo.path}`);
+  const badge = xmlEscape(routeInfo.badge || 'VEDIC JYOTISH SANSTHAN • RUDRAPUR');
+  const photoUrl = PANDIT_PORTRAIT_DATA_URI;
 
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  return `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1200" height="630" viewBox="0 0 1200 630">
   <defs>
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#451205"/>
-      <stop offset="48%" stop-color="#210702"/>
-      <stop offset="100%" stop-color="#3b0e04"/>
+      <stop offset="0%" stop-color="#3e1005"/>
+      <stop offset="45%" stop-color="#1d0502"/>
+      <stop offset="100%" stop-color="#2d0a03"/>
     </linearGradient>
-    <radialGradient id="warmCenter" cx="35%" cy="42%" r="60%">
-      <stop offset="0%" stop-color="#9a3412" stop-opacity="0.35"/>
+    <radialGradient id="warmCenter" cx="35%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#9a3412" stop-opacity="0.40"/>
       <stop offset="100%" stop-color="#180502" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="portraitAura" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fde047" stop-opacity="0.85"/>
+      <stop offset="50%" stop-color="#f59e0b" stop-opacity="0.50"/>
+      <stop offset="85%" stop-color="#d97706" stop-opacity="0.20"/>
+      <stop offset="100%" stop-color="#d97706" stop-opacity="0"/>
     </radialGradient>
     <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#fde047"/>
@@ -830,43 +891,81 @@ function buildOgCardSvg(routeInfo) {
       <stop offset="50%" stop-color="#d97706"/>
       <stop offset="100%" stop-color="#f59e0b"/>
     </linearGradient>
-    <radialGradient id="emblemGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="${accent}" stop-opacity="0.48"/>
-      <stop offset="100%" stop-color="${accent}" stop-opacity="0"/>
-    </radialGradient>
+    <clipPath id="panditPhotoClip">
+      <circle cx="945" cy="228" r="98"/>
+    </clipPath>
   </defs>
 
+  <!-- Background Canvas -->
   <rect width="1200" height="630" fill="url(#bgGrad)"/>
   <rect width="1200" height="630" fill="url(#warmCenter)"/>
-  <rect x="20" y="20" width="1160" height="590" rx="26" fill="none" stroke="url(#goldGrad)" stroke-width="4" stroke-opacity="0.95"/>
-  <rect x="30" y="30" width="1140" height="570" rx="20" fill="none" stroke="#fde047" stroke-width="1.4" stroke-dasharray="8 6" stroke-opacity="0.65"/>
 
-  <circle cx="48" cy="48" r="7" fill="#fde047"/>
-  <circle cx="1152" cy="48" r="7" fill="#fde047"/>
+  <!-- Ornate Golden Frames -->
+  <rect x="18" y="18" width="1164" height="594" rx="24" fill="none" stroke="url(#goldGrad)" stroke-width="3.8" stroke-opacity="0.95"/>
+  <rect x="28" y="28" width="1144" height="574" rx="18" fill="none" stroke="#fde047" stroke-width="1.4" stroke-dasharray="8 6" stroke-opacity="0.6"/>
 
-  <rect x="60" y="54" width="490" height="46" rx="23" fill="#451a03" stroke="#fde047" stroke-width="2.2"/>
-  <text x="305" y="83" font-family="sans-serif" font-size="16" font-weight="900" fill="#fef08a" text-anchor="middle" letter-spacing="1.5">${badge}</text>
+  <!-- Corner Gems -->
+  <circle cx="42" cy="42" r="7" fill="#fde047"/>
+  <circle cx="1158" cy="42" r="7" fill="#fde047"/>
+  <circle cx="42" cy="588" r="7" fill="#fde047"/>
+  <circle cx="1158" cy="588" r="7" fill="#fde047"/>
 
-  <rect x="568" y="54" width="218" height="46" rx="23" fill="#065f46" stroke="#6ee7b7" stroke-width="2"/>
-  <text x="677" y="83" font-family="sans-serif" font-size="15" font-weight="900" fill="#ecfdf5" text-anchor="middle" letter-spacing="1.2">100% SHUDDH DRIK</text>
+  <!-- Top Badges -->
+  <rect x="60" y="50" width="430" height="44" rx="22" fill="#451a03" stroke="#fde047" stroke-width="2.2"/>
+  <text x="275" y="78" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="900" fill="#fef08a" text-anchor="middle" letter-spacing="1.2">${badge}</text>
 
-  <text x="60" y="${line2 ? '182' : '216'}" font-family="sans-serif" font-size="55" font-weight="900" fill="#ffffff" letter-spacing="0.5">${xmlEscape(line1)}</text>
-  ${line2 ? `<text x="60" y="248" font-family="sans-serif" font-size="51" font-weight="900" fill="#fde047" letter-spacing="0.5">${xmlEscape(line2)}</text>` : ''}
+  <rect x="504" y="50" width="218" height="44" rx="22" fill="#065f46" stroke="#6ee7b7" stroke-width="1.8"/>
+  <text x="613" y="78" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="900" fill="#ecfdf5" text-anchor="middle" letter-spacing="1">100% SHUDDH DRIK</text>
 
-  <rect x="60" y="278" width="670" height="5" rx="2.5" fill="url(#goldGrad)"/>
+  <!-- Dynamic Title Block (No Cut-off) -->
+  ${titleBlock}
 
-  <text x="60" y="334" font-family="sans-serif" font-size="26" font-weight="800" fill="#fef3c7">${xmlEscape(subLine1)}</text>
-  ${subLine2 ? `<text x="60" y="376" font-family="sans-serif" font-size="24" font-weight="800" fill="#fed7aa">${xmlEscape(subLine2)}</text>` : ''}
+  <!-- Accent Divider -->
+  <rect x="60" y="${sepY}" width="660" height="4.5" rx="2.25" fill="url(#goldGrad)"/>
 
-  <rect x="60" y="414" width="460" height="58" rx="29" fill="url(#ctaGrad)" stroke="#fef08a" stroke-width="2.8"/>
-  <text x="290" y="450" font-family="sans-serif" font-size="22" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="1.2">OPEN NOW • 100% FREE SEVA</text>
+  <!-- Subtitle Features -->
+  <text x="60" y="${sepY + 44}" font-family="system-ui, -apple-system, sans-serif" font-size="23" font-weight="800" fill="#fef3c7">${xmlEscape(subLine1)}</text>
+  ${subLine2 ? `<text x="60" y="${sepY + 84}" font-family="system-ui, -apple-system, sans-serif" font-size="21" font-weight="800" fill="#fed7aa">${xmlEscape(subLine2)}</text>` : ''}
 
-  ${renderArtworkSvg(routeInfo.art, accent)}
+  <!-- Call To Action Button -->
+  <rect x="60" y="388" width="410" height="54" rx="27" fill="url(#ctaGrad)" stroke="#fef08a" stroke-width="2.8"/>
+  <text x="265" y="422" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="1.2">OPEN NOW • 100% FREE SEVA →</text>
 
-  <rect x="22" y="510" width="1156" height="98" rx="20" fill="#120502" fill-opacity="0.96"/>
-  <line x1="22" y1="510" x2="1178" y2="510" stroke="url(#goldGrad)" stroke-width="2.8"/>
-  <text x="60" y="553" font-family="sans-serif" font-size="24" font-weight="900" fill="#fde047" letter-spacing="0.6">PANDIT JI ONLINE — ACHARYA PANDIT SHASHANK SHARMA</text>
-  <text x="60" y="585" font-family="sans-serif" font-size="19" font-weight="800" fill="#fed7aa">Vedic Jyotish &amp; Sanatan Dharm Sansthan, Rudrapur (Uttarakhand)  •  ${pathLabel}</text>
+  <!-- RIGHT COLUMN: Acharya Pandit Shashank Sharma Portrait Medallion -->
+  <!-- Golden Radiant Aura Rays -->
+  <circle cx="945" cy="228" r="142" fill="url(#portraitAura)"/>
+  <circle cx="945" cy="228" r="122" fill="none" stroke="#fde047" stroke-width="1.8" stroke-dasharray="5 4" stroke-opacity="0.75"/>
+
+  <!-- Outer Bezel Ring -->
+  <circle cx="945" cy="228" r="108" fill="none" stroke="url(#goldGrad)" stroke-width="7"/>
+  <circle cx="945" cy="228" r="101" fill="none" stroke="#fef08a" stroke-width="2"/>
+
+  <!-- Circular Photo of Acharya Ji -->
+  <image href="${photoUrl}" xlink:href="${photoUrl}" x="847" y="130" width="196" height="196" clip-path="url(#panditPhotoClip)" preserveAspectRatio="xMidYMid slice"/>
+
+  <!-- Inner Bevel Over Photo -->
+  <circle cx="945" cy="228" r="98" fill="none" stroke="#fde047" stroke-width="2.5" stroke-opacity="0.9"/>
+
+  <!-- Verified Checkmark Badge at Bottom-Right of Portrait -->
+  <g transform="translate(1018, 302)">
+    <circle cx="0" cy="0" r="20" fill="#047857" stroke="#fde047" stroke-width="3.2"/>
+    <path d="M-7 0 L-2 5 L8 -6" fill="none" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Pandit Ji Official Name Plate -->
+  <rect x="795" y="352" width="300" height="36" rx="18" fill="#451a03" stroke="#fde047" stroke-width="2"/>
+  <text x="945" y="376" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="900" fill="#fef08a" text-anchor="middle" letter-spacing="0.6">आचार्य पण्डित शशांक शर्मा</text>
+
+  <text x="945" y="410" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="800" fill="#fed7aa" text-anchor="middle" letter-spacing="0.5">Vedic Jyotish • Rudrapur (Uttarakhand)</text>
+
+  <rect x="825" y="424" width="240" height="28" rx="14" fill="#065f46" stroke="#6ee7b7" stroke-width="1.4"/>
+  <text x="945" y="443" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="900" fill="#ecfdf5" text-anchor="middle" letter-spacing="0.8">✓ VERIFIED VEDIC ASTROLOGER</text>
+
+  <!-- Bottom Brand Footer Safe Bar -->
+  <rect x="22" y="496" width="1156" height="108" rx="18" fill="#120502" fill-opacity="0.97"/>
+  <line x1="22" y1="496" x2="1178" y2="496" stroke="url(#goldGrad)" stroke-width="2.8"/>
+  <text x="60" y="538" font-family="system-ui, -apple-system, sans-serif" font-size="23" font-weight="900" fill="#fde047" letter-spacing="0.6">PANDIT JI ONLINE — ACHARYA PANDIT SHASHANK SHARMA</text>
+  <text x="60" y="572" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="800" fill="#fed7aa">Vedic Jyotish &amp; Sanatan Dharm Sansthan, Rudrapur (Uttarakhand)  •  www.panditjionline.online</text>
 </svg>`;
 }
 
@@ -887,14 +986,13 @@ function buildSocialHtml(routeInfo, requestedUrlObj) {
   }
 
   // Single authoritative og:image URL on the first-party domain
-  // For home: official portrait photo of Acharya Pandit Shashank Sharma
-  // For subpages: dedicated per-page high-res Vedic card
+  // Always 1200x630 widescreen social share card with Panditji's portrait
   const primaryOgImage = isHome
-    ? HOMEPAGE_IMAGE
+    ? `${SITE_ORIGIN}/og-card/home-${VERSION_TAG}.jpg`
     : `${SITE_ORIGIN}/og-card/${slug}-${VERSION_TAG}.jpg`;
 
-  const imgWidth = isHome ? '720' : '1200';
-  const imgHeight = isHome ? '720' : '630';
+  const imgWidth = '1200';
+  const imgHeight = '630';
   const safeTitle = xmlEscape(routeInfo.title);
   const safeDesc = xmlEscape(routeInfo.desc);
   const safeCanonicalUrl = xmlEscape(canonicalUrl);
@@ -1008,32 +1106,13 @@ async function middleware(request) {
     const rawSlug = cleanSlugFromAssetPath(pathname);
     const cleanSlug = rawSlug || 'home';
 
-    // If home is requested, serve the official Panditji portrait
-    if (cleanSlug === 'home') {
-      try {
-        const homeRes = await fetch(HOMEPAGE_IMAGE);
-        if (homeRes.ok) {
-          const buf = await homeRes.arrayBuffer();
-          return new Response(buf, {
-            status: 200,
-            headers: {
-              'Content-Type': 'image/jpeg',
-              'Content-Length': String(buf.byteLength),
-              'Access-Control-Allow-Origin': '*',
-              'Cache-Control': 'public, max-age=31536000, s-maxage=31536000, immutable',
-              'X-Robots-Tag': 'index, follow, max-image-preview:large'
-            }
-          });
-        }
-      } catch {}
-      return Response.redirect(HOMEPAGE_IMAGE, 302);
-    }
-
-    // For all subpages, generate the dedicated, royal Vedic card from SVG via fast mirrors
+    // For home and all subpages, generate the dedicated 1200x630 royal Vedic card from SVG via fast mirrors
     const routePath =
-      cleanSlug.startsWith('puja-') && cleanSlug !== 'puja-services' && cleanSlug !== 'puja-samagri-list'
-        ? '/puja/' + cleanSlug.slice(5)
-        : '/' + cleanSlug;
+      cleanSlug === 'home'
+        ? '/'
+        : cleanSlug.startsWith('puja-') && cleanSlug !== 'puja-services' && cleanSlug !== 'puja-samagri-list'
+          ? '/puja/' + cleanSlug.slice(5)
+          : '/' + cleanSlug;
     const info = resolveRouteInfo(routePath, url.searchParams);
     const canonicalSlug = info.path.replace(/^\/+/, '').replace(/\//g, '-') || 'home';
     const svgUrl = `${SITE_ORIGIN}/og-svg/${canonicalSlug}-${VERSION_TAG}.svg`;
