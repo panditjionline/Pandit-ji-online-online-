@@ -12,11 +12,12 @@ Allow: /
 User-agent: AdsBot-Google-Mobile
 Allow: /
 
-# 3. General Search Engines, AI Agents & Standard Crawlers
+# 3. General Search Engines, AI Agents & Standard Crawlers (All 68 Canonical Pages)
 User-agent: *
 Allow: /
 Allow: /ads.txt
 Allow: /og-card/
+Allow: /og-svg/
 Allow: /ai-catalog.json
 Allow: /.well-known/ai-catalog.json
 Allow: /.well-known/ard.json
@@ -24,17 +25,41 @@ Allow: /llms.txt
 Allow: /googlea0e64484b80e13d1.html
 Allow: /janam-kundali
 Allow: /panchang
+Allow: /aaj-ka-panchang
+Allow: /aaj-ka-choghadiya
+Allow: /aaj-ka-rahukaal
 Allow: /digital-mandir
 Allow: /kundali-milan
 Allow: /shubh-muhurat
+Allow: /naam-rashi
 Allow: /vivah-muhurat-2027
 Allow: /mundan-muhurat
 Allow: /vahan-kharidne-ka-muhurat
+Allow: /griha-pravesh-muhurat-2027
+Allow: /ekadashi-vrat-list-2027
 Allow: /s-naam-rashi-swabhav
+Allow: /a-naam-rashi-swabhav
+Allow: /r-naam-rashi-swabhav
+Allow: /m-naam-rashi-swabhav
+Allow: /p-naam-rashi-swabhav
 Allow: /shani-sadesati-upay
 Allow: /manglik-dosh-nivaran
 Allow: /nadi-dosh-nuskhe
+Allow: /kaalsarp-dosh-nivaran
+Allow: /sapne-me-saap-dekhna
 Allow: /rashifal
+Allow: /mesh-rashifal
+Allow: /vrishabh-rashifal
+Allow: /mithun-rashifal
+Allow: /kark-rashifal
+Allow: /simha-rashifal
+Allow: /kanya-rashifal
+Allow: /tula-rashifal
+Allow: /vrishchik-rashifal
+Allow: /dhanu-rashifal
+Allow: /makar-rashifal
+Allow: /kumbh-rashifal
+Allow: /meen-rashifal
 Allow: /jyotish-chat
 Allow: /puja-services
 Allow: /dharm-gyan-kosh
@@ -73,6 +98,7 @@ User-agent: Googlebot
 Allow: /
 Allow: /ads.txt
 Allow: /og-card/
+Allow: /og-svg/
 Allow: /ai-catalog.json
 Allow: /.well-known/ai-catalog.json
 Allow: /.well-known/ard.json
@@ -85,6 +111,7 @@ Disallow: /api/
 User-agent: Googlebot-Image
 Allow: /
 Allow: /og-card/
+Allow: /og-svg/
 Allow: /favicon.ico
 Allow: /favicon-48x48.png
 Allow: /favicon-96x96.png
@@ -98,5 +125,20 @@ Allow: /favicon-48x48.png
 Allow: /favicon-96x96.png
 Allow: /pwa-192x192.png
 Allow: /apple-touch-icon.png
+
+User-agent: facebookexternalhit
+Allow: /
+Allow: /og-card/
+Allow: /og-svg/
+
+User-agent: WhatsApp
+Allow: /
+Allow: /og-card/
+Allow: /og-svg/
+
+User-agent: Twitterbot
+Allow: /
+Allow: /og-card/
+Allow: /og-svg/
 
 Sitemap: https://www.panditjionline.online/sitemap.xml
