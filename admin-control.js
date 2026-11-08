@@ -79,54 +79,15 @@
     "autoPushpVarsha": false,
     "enableGlowingHairline": true,
     "hairlineIntensity": "medium",
-    "hairlineEffect": "rainbow",
+    "hairlineEffect": "festival",
     "hairlineSpeed": "normal",
     "showToran": true,
     "sandhyaAutoGlow": true,
-    "updatedAt": 1794132000363,
+    "updatedAt": 1794138908844,
     "customBadgeHi": "",
     "customGreetingHi": "",
     "customSubtitleHi": "",
-    "themeSnapshot": {
-      "id": "badi-diwali",
-      "isDefaultAsIs": false,
-      "lightsMode": "royal_jhalar",
-      "jhalarAnimation": "running_chase",
-      "toranStyle": "lotus_ashoka",
-      "cornerLadiMode": "auto",
-      "showToran": true,
-      "icon": "🪷",
-      "badge": "५-दिवसीय दीपोत्सव",
-      "badgeEn": "Shubh Deepavali",
-      "fullBadge": "५-दिवसीय दीपोत्सव • दिवस ३: बड़ी दीपावली एवं महालक्ष्मी-गणेश महापूजन",
-      "name": "शुभ दीपावली (महालक्ष्मी-गणेश महापूजन)",
-      "nameEn": "Shubh Deepavali — Maha Lakshmi Pujan (Deepotsav Day 3)",
-      "sub": "शुभ दीपावली! माँ महालक्ष्मी और भगवान श्री गणेश आपके घर-परिवार में सुख, शांति, ऐश्वर्य और अखंड समृद्धि प्रदान करें",
-      "greeting": "शुभ दीपावली! माँ महालक्ष्मी और भगवान श्री गणेश आपके घर-परिवार में सुख, शांति, ऐश्वर्य और अखंड समृद्धि प्रदान करें",
-      "subtitle": "प्रदोष काल एवं स्थिर लग्न (वृषभ व सिंह लग्न) में श्री गणेश-लक्ष्मी-कुबेर पूजन व दीपमालिका प्रज्वलन करें",
-      "mantra": "ॐ श्रीं ह्रीं श्रीं कमले कमलालये प्रसीद प्रसीद श्रीं ह्रीं श्रीं ॐ महालक्ष्म्यै नमः ॥",
-      "cta": "महालक्ष्मी आरती व पूजन सामग्री",
-      "ctaTab": "dharm-gyan",
-      "color": "#b91c1c",
-      "accent": "#facc15",
-      "hBg": "linear-gradient(180deg,#450a0af5,#321202f5,#170502f5)",
-      "hBdr": "#b91c1c73",
-      "hShd": "0 6px 26px rgba(250, 204, 21, 0.5)",
-      "tBg": "linear-gradient(90deg,rgba(29,15,5,0.92),rgba(43,22,8,0.92),rgba(29,15,5,0.92))",
-      "tBdr": "rgba(180,83,9,0.4)",
-      "nBg": "rgba(13,19,34,0.96)",
-      "nBdr": "rgba(120,53,15,0.35)",
-      "pBg": "linear-gradient(90deg,#5c0808,#7f1d1d,#4a1803)",
-      "pBdr": "#b91c1c8c",
-      "pShd": "0 12px 35px rgba(250, 204, 21, 0.5)",
-      "boxBg": "rgba(15,23,42,0.85)",
-      "boxBdr": "rgba(146,64,14,0.4)",
-      "bBg": "linear-gradient(0deg,#450a0afa,#321202fa,#170502fa)",
-      "bBdr": "#b91c1c8c",
-      "sBg": "radial-gradient(circle at 50% 0%, #b91c1c22 0%, transparent 45%), radial-gradient(circle at 100% 25%, #facc1516 0%, transparent 35%)",
-      "updatedAt": 1794132000363
-    },
-    "syncCode": 3671211980750311
+    "syncCode": 3677631980751311
   },
   "geminiKeysPool": {
     "keys": [],
@@ -137,7 +98,7 @@
       "AQ.Ab8••••••••keVg"
     ],
     "count": 4,
-    "updatedAt": 1794132180669
+    "updatedAt": 1794139661782
   }
 } /*__PANDITJI_EMBEDDED_ADMIN_STATE_END__*/;
 
