@@ -11,13 +11,15 @@
   'use strict';
 
   var ADMIN_AUTHORIZED_PHONE = '8958499979';
-  var ABACUS_THEME_GET_URL = 'https://abacus.jasoncameron.dev/get/panditjionline.online/admin_theme_sync_v1';
+  var ABACUS_THEME_GET_URL = 'https://abacus.jasoncameron.dev/get/panditjionline.online/admin_theme_sync_v2';
+  var ABACUS_THEME_SET_URL = 'https://abacus.jasoncameron.dev/set/panditjionline.online/admin_theme_sync_v2';
+  var ABACUS_THEME_ADMIN_TOKEN = '1a94bb8a-98bc-4c03-8d0b-5194aecfcbbd';
   var NTFY_THEME_TOPIC_URL = 'https://ntfy.sh/pj_theme_sync_8958499979_v1';
 
   var FESTIVE_STORAGE_KEY = 'panditji_admin_festive_override_v1';
   var FESTIVE_LEGACY_KEY = 'panditji_admin_festive_override';
   var VISUAL_CACHE_KEY = 'panditji_active_theme_visual_cache_v1';
-  var CLOUD_THEME_CODE_KEY = 'panditji_last_cloud_theme_code_v1';
+  var CLOUD_THEME_CODE_KEY = 'panditji_last_cloud_theme_code_v2';
   var GEMINI_POOL_STORAGE_KEY = 'panditji_global_gemini_keys_pool_v1';
   var GEMINI_ADMIN_KEYS_KEY = 'panditji_admin_gemini_keys';
   var GEMINI_SINGLE_STORAGE_KEY = 'panditji_global_gemini_api_key_v1';
@@ -72,16 +74,59 @@
     "enableDayOfWeekTheme": true,
     "lightsMode": "royal_jhalar",
     "jhalarAnimation": "running_chase",
-    "toranStyle": "marigold_mango",
-    "cornerLadiMode": "grand_curtain",
-    "autoPushpVarsha": true,
+    "toranStyle": "lotus_ashoka",
+    "cornerLadiMode": "auto",
+    "autoPushpVarsha": false,
     "enableGlowingHairline": true,
     "hairlineIntensity": "medium",
-    "hairlineEffect": "festival",
+    "hairlineEffect": "rainbow",
     "hairlineSpeed": "normal",
     "showToran": true,
     "sandhyaAutoGlow": true,
-    "updatedAt": 1794051190939
+    "updatedAt": 1794132000363,
+    "customBadgeHi": "",
+    "customGreetingHi": "",
+    "customSubtitleHi": "",
+    "themeSnapshot": {
+      "id": "badi-diwali",
+      "isDefaultAsIs": false,
+      "lightsMode": "royal_jhalar",
+      "jhalarAnimation": "running_chase",
+      "toranStyle": "lotus_ashoka",
+      "cornerLadiMode": "auto",
+      "showToran": true,
+      "icon": "🪷",
+      "badge": "५-दिवसीय दीपोत्सव",
+      "badgeEn": "Shubh Deepavali",
+      "fullBadge": "५-दिवसीय दीपोत्सव • दिवस ३: बड़ी दीपावली एवं महालक्ष्मी-गणेश महापूजन",
+      "name": "शुभ दीपावली (महालक्ष्मी-गणेश महापूजन)",
+      "nameEn": "Shubh Deepavali — Maha Lakshmi Pujan (Deepotsav Day 3)",
+      "sub": "शुभ दीपावली! माँ महालक्ष्मी और भगवान श्री गणेश आपके घर-परिवार में सुख, शांति, ऐश्वर्य और अखंड समृद्धि प्रदान करें",
+      "greeting": "शुभ दीपावली! माँ महालक्ष्मी और भगवान श्री गणेश आपके घर-परिवार में सुख, शांति, ऐश्वर्य और अखंड समृद्धि प्रदान करें",
+      "subtitle": "प्रदोष काल एवं स्थिर लग्न (वृषभ व सिंह लग्न) में श्री गणेश-लक्ष्मी-कुबेर पूजन व दीपमालिका प्रज्वलन करें",
+      "mantra": "ॐ श्रीं ह्रीं श्रीं कमले कमलालये प्रसीद प्रसीद श्रीं ह्रीं श्रीं ॐ महालक्ष्म्यै नमः ॥",
+      "cta": "महालक्ष्मी आरती व पूजन सामग्री",
+      "ctaTab": "dharm-gyan",
+      "color": "#b91c1c",
+      "accent": "#facc15",
+      "hBg": "linear-gradient(180deg,#450a0af5,#321202f5,#170502f5)",
+      "hBdr": "#b91c1c73",
+      "hShd": "0 6px 26px rgba(250, 204, 21, 0.5)",
+      "tBg": "linear-gradient(90deg,rgba(29,15,5,0.92),rgba(43,22,8,0.92),rgba(29,15,5,0.92))",
+      "tBdr": "rgba(180,83,9,0.4)",
+      "nBg": "rgba(13,19,34,0.96)",
+      "nBdr": "rgba(120,53,15,0.35)",
+      "pBg": "linear-gradient(90deg,#5c0808,#7f1d1d,#4a1803)",
+      "pBdr": "#b91c1c8c",
+      "pShd": "0 12px 35px rgba(250, 204, 21, 0.5)",
+      "boxBg": "rgba(15,23,42,0.85)",
+      "boxBdr": "rgba(146,64,14,0.4)",
+      "bBg": "linear-gradient(0deg,#450a0afa,#321202fa,#170502fa)",
+      "bBdr": "#b91c1c8c",
+      "sBg": "radial-gradient(circle at 50% 0%, #b91c1c22 0%, transparent 45%), radial-gradient(circle at 100% 25%, #facc1516 0%, transparent 35%)",
+      "updatedAt": 1794132000363
+    },
+    "syncCode": 3671211980750311
   },
   "geminiKeysPool": {
     "keys": [],
@@ -92,7 +137,7 @@
       "AQ.Ab8••••••••keVg"
     ],
     "count": 4,
-    "updatedAt": 1794051309502
+    "updatedAt": 1794132180669
   }
 } /*__PANDITJI_EMBEDDED_ADMIN_STATE_END__*/;
 
@@ -347,15 +392,12 @@
     try {
       if (
         EMBEDDED_ADMIN_STATE &&
-        EMBEDDED_ADMIN_STATE.festiveTheme &&
-        Number(EMBEDDED_ADMIN_STATE.festiveTheme.updatedAt || 0) > 0
+        EMBEDDED_ADMIN_STATE.festiveTheme
       ) {
         var localRaw = window.localStorage.getItem(FESTIVE_STORAGE_KEY);
         var localObj = localRaw ? JSON.parse(localRaw) : null;
-        var localTs = localObj ? Number(localObj.updatedAt || 0) : 0;
-        var embeddedTs = Number(EMBEDDED_ADMIN_STATE.festiveTheme.updatedAt || 0);
 
-        if (embeddedTs > localTs) {
+        if (!localObj || !localObj.mode) {
           var serialized = JSON.stringify(EMBEDDED_ADMIN_STATE.festiveTheme);
           window.localStorage.setItem(FESTIVE_STORAGE_KEY, serialized);
           window.localStorage.setItem(FESTIVE_LEGACY_KEY, serialized);
@@ -407,13 +449,13 @@
 
   function syncFromRealtimeCloud() {
     if (typeof window.fetch !== 'function') return Promise.resolve(null);
-    if (Date.now() - Number(window.__pjLastAdminLocalActionAt || 0) < 10000) {
+    if (Date.now() - Number(window.__pjLastAdminLocalActionAt || 0) < 15000) {
       return Promise.resolve(null);
     }
 
-    // 1. Sync Festive & 7-Vaar Theme from Zero-Firebase Abacus Cloud State
+    // 1. Sync Festive & 7-Vaar Theme from Zero-Firebase Abacus v2 Cloud State
     var themePromise = window
-      .fetch(ABACUS_THEME_GET_URL, { cache: 'no-store' })
+      .fetch(ABACUS_THEME_GET_URL + '?t=' + Date.now(), { cache: 'no-store' })
       .then(function (r) {
         return r.ok ? r.json() : null;
       })
@@ -421,8 +463,8 @@
         return null;
       })
       .then(function (abData) {
-        if (!abData || typeof abData.value !== 'number') return null;
-        if (Date.now() - Number(window.__pjLastAdminLocalActionAt || 0) < 10000) return null;
+        if (!abData || typeof abData.value !== 'number' || abData.value <= 0) return null;
+        if (Date.now() - Number(window.__pjLastAdminLocalActionAt || 0) < 15000) return null;
         var decoded = decodeAbacusState(abData.value);
         if (!decoded) return null;
         try {
@@ -628,6 +670,22 @@
       // ignore
     }
 
+    var abacusReq = window
+      .fetch(
+        ABACUS_THEME_SET_URL +
+          '?token=' +
+          ABACUS_THEME_ADMIN_TOKEN +
+          '&value=' +
+          stateCode,
+        {
+          method: 'POST',
+          headers: {
+            Authorization: 'Bearer ' + ABACUS_THEME_ADMIN_TOKEN
+          }
+        }
+      )
+      .catch(function () {});
+
     var ntfyReq = window
       .fetch(NTFY_THEME_TOPIC_URL, {
         method: 'POST',
@@ -646,7 +704,7 @@
       })
       .catch(function () {});
 
-    return Promise.allSettled([ntfyReq, serverReq]).then(function () {
+    return Promise.allSettled([abacusReq, ntfyReq, serverReq]).then(function () {
       return pushConfigToGitHubRepo({ festiveTheme: payload }, adminPhone);
     });
   }
