@@ -25,7 +25,7 @@ const ROUTE_ALIASES = {
   '/puja-kundali-milan': '/kundali-milan',
   '/mandir': '/digital-mandir',
   '/muhurat': '/shubh-muhurat',
-  '/naam-rashi': '/shubh-muhurat',
+  '/singh-rashifal': '/simha-rashifal',
   '/dainik-rashifal': '/rashifal',
   '/ram-shalaka': '/ram-shalaka-prashnavali',
   '/shani-sadesati': '/shani-sadesati-calculator',
@@ -52,7 +52,8 @@ const ROUTE_ALIASES = {
   '/jaap': '/mantra-jaap',
   '/videos': '/vedic-videos',
   '/youtube': '/vedic-videos',
-  '/history': '/mera-khata',
+  '/history': '/',
+  '/mera-khata': '/',
   '/puja-griha-pravesh': '/puja/griha-pravesh',
   '/puja-satyanarayan-katha': '/puja/satyanarayan-katha',
   '/puja-rudrabhishek': '/puja/rudrabhishek',
@@ -595,6 +596,166 @@ const ROUTE_DATA = {
     badge: 'STAGE 3 • VIRAL SWAPNA SHASTRA GUIDE',
     art: 'gyan',
     accent: '#14b8a6'
+  },
+  '/aaj-ka-panchang': {
+    title: 'आज का पंचांग (Aaj Ka Panchang) — तिथि, वार, नक्षत्र, योग, करण व सूर्योदय-सूर्यास्त | पण्डित जी ऑनलाइन',
+    desc: 'आज का शुद्ध दृक गणित हिन्दू पंचांग — आज की सटीक तिथि, नक्षत्र, योग, करण, चंद्र राशि, सूर्योदय-सूर्यास्त, अभिजित मुहूर्त, राहुकाल और व्रत-त्योहार।',
+    cardTitle: 'AAJ KA SHUDDH DRIK PANCHANG',
+    cardSub: 'Daily Tithi • Nakshatra • Yoga • Karana • Sunrise & Abhijit Muhurat',
+    shortCard: 'AAJ KA PANCHANG\nTithi, Nakshatra & Muhurat',
+    badge: 'DAILY VEDIC PANCHANG • RUDRAPUR',
+    art: 'panchang',
+    accent: '#f59e0b'
+  },
+  '/aaj-ka-choghadiya': {
+    title: 'आज का चौघड़िया (Aaj Ka Choghadiya) — दिन और रात के शुभ चौघड़िया मुहूर्त (अमृत, शुभ, लाभ, चर) | पण्डित जी ऑनलाइन',
+    desc: 'स्थानीय सूर्योदय और सूर्यास्त पर आधारित आज का दिन और रात का चौघड़िया मुहूर्त — जानिए अमृत, शुभ, लाभ, चर, उद्वेग, काल व रोग चौघड़िया का सटीक समय।',
+    cardTitle: 'AAJ KA DIN & RAAT CHOGHADIYA',
+    cardSub: 'Amrit • Shubh • Labh • Char Muhurat • Daily Live Choghadiya Table',
+    shortCard: 'AAJ KA CHOGHADIYA\nAmrit, Shubh & Labh Time',
+    badge: 'LIVE VEDIC CHOGHADIYA MUHURAT',
+    art: 'panchang',
+    accent: '#10b981'
+  },
+  '/aaj-ka-rahukaal': {
+    title: 'आज का राहुकाल (Aaj Ka Rahukaal) — राहुकाल, यमगण्ड, गुलिक काल व अभिजित मुहूर्त समय | पण्डित जी ऑनलाइन',
+    desc: 'जानिए आज का सटीक राहुकाल समय, यमगण्ड काल, गुलिक काल और दुर्मुहूर्त का समय तथा राहुकाल में यात्रा व आवश्यक कार्य करने के शास्त्रीय नियम और उपाय।',
+    cardTitle: 'AAJ KA RAHUKAAL & YAMAGANDAM',
+    cardSub: 'Daily Rahu Kaal Time • Gulika Kaal • Abhijit Muhurat & Vedic Remedies',
+    shortCard: 'AAJ KA RAHUKAAL\nTime & Shastrokta Rules',
+    badge: 'DAILY RAHUKAAL & ABHIJIT MUHURAT',
+    art: 'panchang',
+    accent: '#f43f5e'
+  },
+  '/naam-rashi': {
+    title: 'नाम से राशि जानें (Naam Rashi Calculator A to Z) — अक्षर से वैदिक राशि, नक्षत्र, स्वामी ग्रह व शुभ रत्न | पण्डित जी ऑनलाइन',
+    desc: 'अपने हिंदी या अंग्रेजी नाम के पहले अक्षर (A से Z) से जानिए अपनी सटीक वैदिक चंद्र राशि, नक्षत्र चरण, राशि स्वामी, स्वभाव, करियर, लकी नंबर और भाग्यशाली रत्न।',
+    cardTitle: 'NAAM RASHI CALCULATOR (A TO Z)',
+    cardSub: 'Find Vedic Rashi by Name • 27 Nakshatra Pada • Lucky Ratna & Number',
+    shortCard: 'NAAM RASHI CALCULATOR\nRashi, Nakshatra & Ratna',
+    badge: '108 NAKSHATRA PADA NAME CALCULATOR',
+    art: 'rashi',
+    accent: '#a855f7'
+  },
+  '/mesh-rashifal': {
+    title: 'मेष राशिफल (Mesh Rashifal - Aries) — आज का मेष राशिफल, स्वभाव, करियर, प्रेम व मूंगा रत्न | पण्डित जी ऑनलाइन',
+    desc: 'मेष राशि (चू, चे, चो, ला, ली, लू, ले, लो, अ) का आज का वैदिक राशिफल, स्वामी मंगल का गोचर फल, व्यक्तित्व, करियर, विवाह सामंजस्य, शुभ मूंगा रत्न और अचूक उपाय।',
+    cardTitle: 'MESH RASHIFAL (ARIES HOROSCOPE)',
+    cardSub: 'Swami Mangal • Daily Gochar • Career, Love & Red Coral (Moonga) Upay',
+    shortCard: 'MESH RASHIFAL (ARIES)\nDaily Horoscope & Upay',
+    badge: 'VEDIC RASHIFAL • MESH (ARIES)',
+    art: 'rashi',
+    accent: '#ef4444'
+  },
+  '/vrishabh-rashifal': {
+    title: 'वृषभ राशिफल (Vrishabh Rashifal - Taurus) — आज का वृषभ राशिफल, स्वभाव, करियर व हीरा/ओपल रत्न | पण्डित जी ऑनलाइन',
+    desc: 'वृषभ राशि (ई, ऊ, ए, ओ, वा, वी, वू, वे, वो) का आज का वैदिक राशिफल, स्वामी शुक्र का गोचर प्रभाव, स्वभाव, धन-संपत्ति, दांपत्य जीवन, शुभ रत्न और वैदिक उपाय।',
+    cardTitle: 'VRISHABH RASHIFAL (TAURUS)',
+    cardSub: 'Swami Shukra • Daily Gochar • Wealth, Family & Diamond/Opal Ratna',
+    shortCard: 'VRISHABH RASHIFAL\nDaily Horoscope & Upay',
+    badge: 'VEDIC RASHIFAL • VRISHABH (TAURUS)',
+    art: 'rashi',
+    accent: '#ec4899'
+  },
+  '/mithun-rashifal': {
+    title: 'मिथुन राशिफल (Mithun Rashifal - Gemini) — आज का मिथुन राशिफल, स्वभाव, व्यापार व पन्ना रत्न | पण्डित जी ऑनलाइन',
+    desc: 'मिथुन राशि (का, की, कू, घ, ङ, छ, के, को, ह) का आज का वैदिक राशिफल, स्वामी बुध का गोचर फल, बौद्धिक क्षमता, व्यापार, करियर, शुभ पन्ना रत्न और गणपति उपाय।',
+    cardTitle: 'MITHUN RASHIFAL (GEMINI)',
+    cardSub: 'Swami Budh • Daily Gochar • Business, Intellect & Emerald (Panna)',
+    shortCard: 'MITHUN RASHIFAL\nDaily Horoscope & Upay',
+    badge: 'VEDIC RASHIFAL • MITHUN (GEMINI)',
+    art: 'rashi',
+    accent: '#10b981'
+  },
+  '/kark-rashifal': {
+    title: 'कर्क राशिफल (Kark Rashifal - Cancer) — आज का कर्क राशिफल, स्वभाव, परिवार व मोती रत्न | पण्डित जी ऑनलाइन',
+    desc: 'कर्क राशि (ही, हू, हे, हो, डा, डी, डू, डे, डो) का आज का वैदिक राशिफल, स्वामी चंद्रमा का गोचर फल, भावुक स्वभाव, पारिवारिक सुख, शुभ मोती रत्न और शिव आराधना उपाय।',
+    cardTitle: 'KARK RASHIFAL (CANCER HOROSCOPE)',
+    cardSub: 'Swami Chandra • Daily Gochar • Family, Peace & Natural Pearl (Moti)',
+    shortCard: 'KARK RASHIFAL (CANCER)\nDaily Horoscope & Upay',
+    badge: 'VEDIC RASHIFAL • KARK (CANCER)',
+    art: 'rashi',
+    accent: '#38bdf8'
+  },
+  '/simha-rashifal': {
+    title: 'सिंह राशिफल (Simha Rashifal - Leo) — आज का सिंह राशिफल, राजयोग, करियर व माणिक्य रत्न | पण्डित जी ऑनलाइन',
+    desc: 'सिंह राशि (मा, मी, मू, मे, मो, टा, टी, टू, टे) का आज का वैदिक राशिफल, स्वामी सूर्य देव का गोचर फल, नेतृत्व क्षमता, सरकारी नौकरी योग, माणिक्य रत्न और सूर्य अर्घ्य उपाय।',
+    cardTitle: 'SIMHA RASHIFAL (LEO HOROSCOPE)',
+    cardSub: 'Swami Surya • Daily Gochar • Leadership, Rajyoga & Ruby (Manikya)',
+    shortCard: 'SIMHA RASHIFAL (LEO)\nDaily Horoscope & Upay',
+    badge: 'VEDIC RASHIFAL • SIMHA (LEO)',
+    art: 'rashi',
+    accent: '#f59e0b'
+  },
+  '/kanya-rashifal': {
+    title: 'कन्या राशिफल (Kanya Rashifal - Virgo) — आज का कन्या राशिफल, स्वभाव, करियर व पन्ना रत्न | पण्डित जी ऑनलाइन',
+    desc: 'कन्या राशि (टो, पा, पी, पू, ष, ण, ठ, पे, पो) का आज का वैदिक राशिफल, उच्च के बुध का गोचर फल, विश्लेषणात्मक बुद्धि, व्यापार, स्वास्थ्य, पन्ना रत्न और वैदिक उपाय।',
+    cardTitle: 'KANYA RASHIFAL (VIRGO HOROSCOPE)',
+    cardSub: 'Swami Budh • Daily Gochar • Finance, Career & Emerald (Panna) Upay',
+    shortCard: 'KANYA RASHIFAL (VIRGO)\nDaily Horoscope & Upay',
+    badge: 'VEDIC RASHIFAL • KANYA (VIRGO)',
+    art: 'rashi',
+    accent: '#10b981'
+  },
+  '/tula-rashifal': {
+    title: 'तुला राशिफल (Tula Rashifal - Libra) — आज का तुला राशिफल, स्वभाव, दांपत्य व हीरा/ओपल रत्न | पण्डित जी ऑनलाइन',
+    desc: 'तुला राशि (रा, री, रू, रे, रो, ता, ती, तू, ते) का आज का वैदिक राशिफल, स्वामी शुक्र का गोचर फल, न्यायप्रिय स्वभाव, व्यापारिक साझेदारी, ऐश्वर्य, ओपल रत्न और लक्ष्मी उपाय।',
+    cardTitle: 'TULA RASHIFAL (LIBRA HOROSCOPE)',
+    cardSub: 'Swami Shukra • Daily Gochar • Harmony, Business & Opal/Diamond Upay',
+    shortCard: 'TULA RASHIFAL (LIBRA)\nDaily Horoscope & Upay',
+    badge: 'VEDIC RASHIFAL • TULA (LIBRA)',
+    art: 'rashi',
+    accent: '#ec4899'
+  },
+  '/vrishchik-rashifal': {
+    title: 'वृश्चिक राशिफल (Vrishchik Rashifal - Scorpio) — आज का वृश्चिक राशिफल, स्वभाव, करियर व मूंगा रत्न | पण्डित जी ऑनलाइन',
+    desc: 'वृश्चिक राशि (तो, ना, नी, नू, ने, नो, या, यी, यू) का आज का वैदिक राशिफल, स्वामी मंगल का गोचर फल, दृढ़ संकल्प, शोध व प्रशासन योग, मूंगा रत्न और हनुमान जी के उपाय।',
+    cardTitle: 'VRISHCHIK RASHIFAL (SCORPIO)',
+    cardSub: 'Swami Mangal • Daily Gochar • Determination, Career & Moonga Ratna',
+    shortCard: 'VRISHCHIK RASHIFAL\nDaily Horoscope & Upay',
+    badge: 'VEDIC RASHIFAL • VRISHCHIK (SCORPIO)',
+    art: 'rashi',
+    accent: '#dc2626'
+  },
+  '/dhanu-rashifal': {
+    title: 'धनु राशिफल (Dhanu Rashifal - Sagittarius) — आज का धनु राशिफल, धर्म, करियर व पुखराज रत्न | पण्डित जी ऑनलाइन',
+    desc: 'धनु राशि (ये, यो, भा, भी, भू, धा, फा, ढा, भे) का आज का वैदिक राशिफल, देवगुरु बृहस्पति का गोचर फल, आध्यात्मिक तेज, उच्च शिक्षा, पुखराज रत्न और विष्णु सहस्रनाम उपाय।',
+    cardTitle: 'DHANU RASHIFAL (SAGITTARIUS)',
+    cardSub: 'Swami Guru Brihaspati • Daily Gochar • Wisdom, Fortune & Pukhraj',
+    shortCard: 'DHANU RASHIFAL\nDaily Horoscope & Upay',
+    badge: 'VEDIC RASHIFAL • DHANU (SAGITTARIUS)',
+    art: 'rashi',
+    accent: '#eab308'
+  },
+  '/makar-rashifal': {
+    title: 'मकर राशिफल (Makar Rashifal - Capricorn) — आज का मकर राशिफल, कर्मयोग, करियर व नीलम रत्न | पण्डित जी ऑनलाइन',
+    desc: 'मकर राशि (भो, जा, जी, खी, खू, खे, खो, गा, गी) का आज का वैदिक राशिफल, कर्मफलदाता शनि देव का गोचर फल, अनुशासन, उद्योग व प्रशासन योग, नीलम रत्न और शनि शांति उपाय।',
+    cardTitle: 'MAKAR RASHIFAL (CAPRICORN)',
+    cardSub: 'Swami Shani Dev • Daily Gochar • Hard Work, Success & Blue Sapphire',
+    shortCard: 'MAKAR RASHIFAL\nDaily Horoscope & Upay',
+    badge: 'VEDIC RASHIFAL • MAKAR (CAPRICORN)',
+    art: 'shani',
+    accent: '#6366f1'
+  },
+  '/kumbh-rashifal': {
+    title: 'कुम्भ राशिफल (Kumbh Rashifal - Aquarius) — आज का कुम्भ राशिफल, साढ़ेसाती फल, करियर व नीलम रत्न | पण्डित जी ऑनलाइन',
+    desc: 'कुम्भ राशि (गू, गे, गो, सा, सी, सू, से, सो, दा) का आज का वैदिक राशिफल, मूलत्रिकोण स्वामी शनि का गोचर फल, नवाचार, समाज सेवा, साढ़ेसाती उपाय और शुभ नीलम रत्न।',
+    cardTitle: 'KUMBH RASHIFAL (AQUARIUS)',
+    cardSub: 'Swami Shani Dev • Daily Gochar • Innovation, Sadesati & Neelam Upay',
+    shortCard: 'KUMBH RASHIFAL\nDaily Horoscope & Upay',
+    badge: 'VEDIC RASHIFAL • KUMBH (AQUARIUS)',
+    art: 'shani',
+    accent: '#818cf8'
+  },
+  '/meen-rashifal': {
+    title: 'मीन राशिफल (Meen Rashifal - Pisces) — आज का मीन राशिफल, आध्यात्मिक योग, करियर व पुखराज रत्न | पण्डित जी ऑनलाइन',
+    desc: 'मीन राशि (दी, दू, थ, झ, ञ, दे, दो, चा, ची) का आज का वैदिक राशिफल, देवगुरु बृहस्पति का गोचर फल, सात्विक स्वभाव, शिक्षा, विदेश योग, पुखराज रत्न और वैदिक उपाय।',
+    cardTitle: 'MEEN RASHIFAL (PISCES HOROSCOPE)',
+    cardSub: 'Swami Guru Brihaspati • Daily Gochar • Spirituality & Yellow Sapphire',
+    shortCard: 'MEEN RASHIFAL (PISCES)\nDaily Horoscope & Upay',
+    badge: 'VEDIC RASHIFAL • MEEN (PISCES)',
+    art: 'rashi',
+    accent: '#fbbf24'
   }
 };
 
@@ -1199,7 +1360,8 @@ async function middleware(request) {
     return Response.redirect(`${SITE_ORIGIN}${ROUTE_ALIASES[normalizedPath]}${url.search}`, 301);
   }
 
-  // 8. Normal Browser, Googlebot, PageSpeed & AdSense requests: zero-latency pass-through to static index.html / assets
+  // 8. Normal Browser, Googlebot, PageSpeed & AdSense requests:
+  // If path is an unknown non-asset URL, return a clean HTTP 404 without AdSense scripts (prevents Soft-404 AdSense policy violations)
   const isKnownCanonicalRoute = Boolean(ROUTE_DATA[normalizedPath]);
   const isAssetOrSystemPath =
     pathname.startsWith('/assets/') ||
@@ -1207,15 +1369,46 @@ async function middleware(request) {
     pathname.startsWith('/.well-known/') ||
     /\.(ico|png|jpg|jpeg|svg|webp|woff2|js|css|json|txt|xml|html|map)$/i.test(pathname);
 
-  const passHeaders = {
-    'x-middleware-next': '1'
-  };
   if (!isKnownCanonicalRoute && !isAssetOrSystemPath) {
-    passHeaders['X-Robots-Tag'] = 'noindex, nofollow';
+    const notFoundHtml = `<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="googlebot" content="noindex, nofollow" />
+  <title>पृष्ठ उपलब्ध नहीं है (404 Not Found) | पण्डित जी ऑनलाइन</title>
+  <link rel="canonical" href="${SITE_ORIGIN}/" />
+</head>
+<body style="margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#120703;color:#fef3c7;font-family:system-ui,-apple-system,sans-serif;padding:24px;text-align:center;">
+  <main style="max-width:540px;background:rgba(30,14,6,0.95);border:1px solid rgba(245,158,11,0.45);border-radius:20px;padding:32px 24px;box-shadow:0 16px 40px rgba(0,0,0,0.6);">
+    <div style="font-size:42px;margin-bottom:10px;">🕉️</div>
+    <h1 style="margin:0 0 10px 0;font-size:22px;color:#fde047;">यह पृष्ठ उपलब्ध नहीं है (404)</h1>
+    <p style="margin:0 0 20px 0;font-size:14px;line-height:1.65;color:#fed7aa;">आप जिस वैदिक ज्योतिष पृष्ठ को खोज रहे हैं, उसका पता बदल गया है या वह उपलब्ध नहीं है। कृपया पण्डित जी ऑनलाइन के मुख्य पृष्ठ या नीचे दिए गए प्रमुख अनुभागों पर जाएं:</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
+      <a href="/" style="background:linear-gradient(90deg,#f59e0b,#facc15);color:#020617;text-decoration:none;font-weight:800;font-size:14px;padding:10px 18px;border-radius:999px;">🏠 मुख्य पृष्ठ (Home)</a>
+      <a href="/janam-kundali" style="background:rgba(245,158,11,0.18);border:1px solid rgba(245,158,11,0.5);color:#fef08a;text-decoration:none;font-weight:700;font-size:13px;padding:10px 16px;border-radius:999px;">📜 निःशुल्क जन्म कुंडली</a>
+      <a href="/kundali-milan" style="background:rgba(245,158,11,0.18);border:1px solid rgba(245,158,11,0.5);color:#fef08a;text-decoration:none;font-weight:700;font-size:13px;padding:10px 16px;border-radius:999px;">💑 36 गुण मिलान</a>
+      <a href="/panchang" style="background:rgba(245,158,11,0.18);border:1px solid rgba(245,158,11,0.5);color:#fef08a;text-decoration:none;font-weight:700;font-size:13px;padding:10px 16px;border-radius:999px;">📅 आज का पंचांग</a>
+      <a href="/rashifal" style="background:rgba(245,158,11,0.18);border:1px solid rgba(245,158,11,0.5);color:#fef08a;text-decoration:none;font-weight:700;font-size:13px;padding:10px 16px;border-radius:999px;">♈ दैनिक राशिफल</a>
+    </div>
+  </main>
+</body>
+</html>`;
+    return new Response(notFoundHtml, {
+      status: 404,
+      headers: {
+        'Content-Type': 'text/html; charset=utf-8',
+        'X-Robots-Tag': 'noindex, nofollow',
+        'Cache-Control': 'no-store, must-revalidate'
+      }
+    });
   }
 
   return new Response(null, {
-    headers: passHeaders
+    headers: {
+      'x-middleware-next': '1'
+    }
   });
 }
 
