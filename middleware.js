@@ -1304,8 +1304,12 @@ async function middleware(request, event) {
     });
   }
 
-  // 2b. Google Discover & Follow Live RSS 2.0 + Media RSS Feed (/feed.xml & /rss.xml)
+  // 2b. Google Discover, Google Search Console & Follow Live RSS 2.0 + Media RSS Feed (/feed.xml & /rss.xml)
   if (pathname === '/feed.xml' || pathname === '/rss.xml') {
+    const reqOrigin =
+      url.hostname === 'panditjionline.online' || url.hostname === 'www.panditjionline.online'
+        ? `https://${url.hostname}`
+        : SITE_ORIGIN;
     const nowUtc = new Date();
     const istMs = nowUtc.getTime() + 5.5 * 60 * 60 * 1000;
     const istDate = new Date(istMs);
@@ -1315,47 +1319,16 @@ async function middleware(request, event) {
     const todayIstStr = `${yyyy}-${mm}-${dd}`;
     const pubDateRfc = nowUtc.toUTCString();
 
-    const discoverFeedPaths = [
-      '/aaj-ka-panchang',
-      '/aaj-ka-choghadiya',
-      '/aaj-ka-rahukaal',
-      '/rashifal',
-      '/mesh-rashifal',
-      '/vrishabh-rashifal',
-      '/mithun-rashifal',
-      '/kark-rashifal',
-      '/simha-rashifal',
-      '/kanya-rashifal',
-      '/tula-rashifal',
-      '/vrishchik-rashifal',
-      '/dhanu-rashifal',
-      '/makar-rashifal',
-      '/kumbh-rashifal',
-      '/meen-rashifal',
-      '/vivah-muhurat-2027',
-      '/griha-pravesh-muhurat-2027',
-      '/ekadashi-vrat-list-2027',
-      '/s-naam-rashi-swabhav',
-      '/a-naam-rashi-swabhav',
-      '/r-naam-rashi-swabhav',
-      '/m-naam-rashi-swabhav',
-      '/p-naam-rashi-swabhav',
-      '/janam-kundali',
-      '/kundali-milan',
-      '/shani-sadesati-upay',
-      '/manglik-dosh-nivaran',
-      '/kaalsarp-dosh-nivaran',
-      '/sapne-me-saap-dekhna'
-    ];
+    const discoverFeedPaths = Object.keys(ROUTE_DATA);
 
     const itemsXml = discoverFeedPaths
       .map((p) => {
         const itemInfo = ROUTE_DATA[p];
         if (!itemInfo) return '';
-        const itemUrl = `${SITE_ORIGIN}${p}`;
-        const itemSlug = p.replace(/^\/+/, '').replace(/\//g, '-');
-        const itemImg = `${SITE_ORIGIN}/og-card/${itemSlug}-${VERSION_TAG}.jpg`;
-        const isDaily = p.includes('panchang') || p.includes('choghadiya') || p.includes('rahukaal') || p.includes('rashifal');
+        const itemUrl = p === '/' ? `${reqOrigin}/` : `${reqOrigin}${p}`;
+        const itemSlug = p === '/' ? 'home' : p.replace(/^\/+/, '').replace(/\//g, '-');
+        const itemImg = `${reqOrigin}/og-card/${itemSlug}-${VERSION_TAG}.jpg`;
+        const isDaily = p === '/' || p.includes('panchang') || p.includes('choghadiya') || p.includes('rahukaal') || p.includes('rashifal');
         const itemGuid = isDaily ? `${itemUrl}#${todayIstStr}` : itemUrl;
         return `    <item>
       <title>${xmlEscape(itemInfo.title)}</title>
@@ -1380,16 +1353,16 @@ async function middleware(request, event) {
   xmlns:media="http://search.yahoo.com/mrss/">
   <channel>
     <title>पण्डित जी ऑनलाइन — आज का पंचांग, राशिफल, शुभ मुहूर्त व जन्म कुंडली</title>
-    <link>${SITE_ORIGIN}/</link>
+    <link>${reqOrigin}/</link>
     <description>आचार्य पण्डित शशांक शर्मा (रुद्रपुर, उत्तराखण्ड) द्वारा प्रतिदिन अपडेटेड शुद्ध दृक पंचांग, दैनिक राशिफल, शुभ मुहूर्त एवं वैदिक ज्योतिष लेख।</description>
     <language>hi-IN</language>
     <lastBuildDate>${pubDateRfc}</lastBuildDate>
-    <atom:link href="${SITE_ORIGIN}/feed.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="${reqOrigin}${pathname}" rel="self" type="application/rss+xml" />
     <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
     <image>
-      <url>${SITE_ORIGIN}/pwa-512x512.png</url>
+      <url>${reqOrigin}/pwa-512x512.png</url>
       <title>पण्डित जी ऑनलाइन</title>
-      <link>${SITE_ORIGIN}/</link>
+      <link>${reqOrigin}/</link>
     </image>
 ${itemsXml}
   </channel>
@@ -1398,8 +1371,9 @@ ${itemsXml}
     return new Response(rssXml, {
       status: 200,
       headers: {
-        'Content-Type': 'application/rss+xml; charset=utf-8',
+        'Content-Type': 'application/xml; charset=utf-8',
         'Access-Control-Allow-Origin': '*',
+        'X-Robots-Tag': 'index, follow',
         'Cache-Control': 'public, max-age=900, s-maxage=900, stale-while-revalidate=3600'
       }
     });
@@ -1677,4 +1651,183 @@ function buildEdgeRouteArticleHtml(canonicalPath, info) {
     </section>
     <section style="margin-bottom:16px;">
       <h2 style="font-size:16px;font-weight:800;color:#fde047;margin:0 0 8px 0;">३. सात्विक वैदिक उपाय, मंत्र उपासना एवं व्यावहारिक मार्गदर्शन</h2>
-      <p style="font-size:13px;color:#e2e8f0;margin:0;">
+      <p style="font-size:13px;color:#e2e8f0;margin:0;">वैदिक ज्योतिष का उद्देश्य किसी प्रकार का भय उत्पन्न करना या महंगे व्यावसायिक रत्न थोपना नहीं है। कुंडली या गोचर में किसी भी ग्रह की प्रतिकूलता होने पर वैदिक बीज मंत्र जाप, इष्टदेव व कुलदेवता उपासना, श्री हनुमान चालीसा पाठ, रुद्राभिषेक, घर पर सरल हवन एवं प्रकृति-सम्मत दान-पुण्य (गौ सेवा, अन्न दान) सबसे अचूक और सात्विक उपाय हैं।</p>
+    </section>
+    ${buildEdgeAuthorBox()}
+  </article>`;
+}
+
+function injectEdgeRouteSeo(rawHtml, canonicalPath, info) {
+  if (!rawHtml || canonicalPath === '/') return rawHtml;
+  const canonicalUrl = `${SITE_ORIGIN}${canonicalPath}`;
+  const slug = canonicalPath.replace(/^\/+/, '').replace(/\//g, '-').toLowerCase() || 'home';
+  const socialImg = `${SITE_ORIGIN}/og-card/${slug}-${VERSION_TAG}.jpg`;
+  const safeTitle = xmlEscape(info.title);
+  const safeDesc = xmlEscape(info.desc);
+  const safeCanonical = xmlEscape(canonicalUrl);
+  const safeImg = xmlEscape(socialImg);
+  const articleHtml = buildEdgeRouteArticleHtml(canonicalPath, info);
+  const { datePublishedIso, dateModifiedIso } = getEdgeIstDateInfo();
+
+  const discoverArticleSchema = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    '@id': `${canonicalUrl}#discover-article`,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': canonicalUrl
+    },
+    headline: info.title,
+    description: info.desc,
+    inLanguage: 'hi-IN',
+    datePublished: datePublishedIso,
+    dateModified: dateModifiedIso,
+    image: [
+      {
+        '@type': 'ImageObject',
+        url: socialImg,
+        width: 1200,
+        height: 630
+      },
+      {
+        '@type': 'ImageObject',
+        url: `${SITE_ORIGIN}/og-card/${slug}-wa-${VERSION_TAG}.jpg`,
+        width: 800,
+        height: 800
+      }
+    ],
+    author: {
+      '@type': 'Person',
+      name: 'Acharya Pandit Shashank Sharma',
+      alternateName: 'आचार्य पण्डित शशांक शर्मा',
+      jobTitle: 'Chief Vedic Astrologer & Dharmacharya',
+      url: `${SITE_ORIGIN}/about-us`
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Pandit Ji Online',
+      alternateName: 'पण्डित जी ऑनलाइन — श्री ज्योतिष वैदिक संस्थान, रुद्रपुर',
+      url: `${SITE_ORIGIN}/`,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${SITE_ORIGIN}/pwa-512x512.png`,
+        width: 512,
+        height: 512
+      }
+    }
+  });
+
+  let html = rawHtml;
+  html = html.replace(/<title>[\s\S]*?<\/title>/i, () => `<title>${safeTitle}</title>`);
+  html = html.replace(/<meta\s+name="title"\s+content="[^"]*"\s*\/?>/i, () => `<meta name="title" content="${safeTitle}" />`);
+  html = html.replace(/<meta\s+name="description"\s+content="[^"]*"\s*\/?>/i, () => `<meta name="description" content="${safeDesc}" />`);
+  html = html.replace(/<link\s+rel="canonical"[^>]*href="[^"]*"[^>]*\/?>/i, () => `<link rel="canonical" id="pj-canonical-link" href="${safeCanonical}" />`);
+  html = html.replace(/<meta\s+property="og:title"\s+content="[^"]*"\s*\/?>/i, () => `<meta property="og:title" content="${safeTitle}" />`);
+  html = html.replace(/<meta\s+property="og:description"\s+content="[^"]*"\s*\/?>/i, () => `<meta property="og:description" content="${safeDesc}" />`);
+  html = html.replace(/<meta\s+property="og:url"[^>]*\/?>/i, () => `<meta property="og:url" id="pj-og-url" content="${safeCanonical}" />`);
+  html = html.replace(/<meta\s+property="og:image"\s+content="[^"]*"\s*\/?>/i, () => `<meta property="og:image" content="${safeImg}" />`);
+  html = html.replace(/<meta\s+property="og:image:url"\s+content="[^"]*"\s*\/?>/i, () => `<meta property="og:image:url" content="${safeImg}" />`);
+  html = html.replace(/<meta\s+property="og:image:secure_url"\s+content="[^"]*"\s*\/?>/i, () => `<meta property="og:image:secure_url" content="${safeImg}" />`);
+  html = html.replace(/<meta\s+property="og:image:alt"\s+content="[^"]*"\s*\/?>/i, () => `<meta property="og:image:alt" content="${safeTitle}" />`);
+  html = html.replace(/<link\s+rel="image_src"\s+href="[^"]*"\s*\/?>/i, () => `<link rel="image_src" href="${safeImg}" />`);
+  html = html.replace(/<meta\s+name="twitter:title"\s+content="[^"]*"\s*\/?>/i, () => `<meta name="twitter:title" content="${safeTitle}" />`);
+  html = html.replace(/<meta\s+name="twitter:description"\s+content="[^"]*"\s*\/?>/i, () => `<meta name="twitter:description" content="${safeDesc}" />`);
+  html = html.replace(/<meta\s+name="twitter:url"\s+content="[^"]*"\s*\/?>/i, () => `<meta name="twitter:url" content="${safeCanonical}" />`);
+  html = html.replace(/<meta\s+name="twitter:image"\s+content="[^"]*"\s*\/?>/i, () => `<meta name="twitter:image" content="${safeImg}" />`);
+  html = html.replace(/<meta\s+name="twitter:image:src"\s+content="[^"]*"\s*\/?>/i, () => `<meta name="twitter:image:src" content="${safeImg}" />`);
+  html = html.replace(/<meta\s+name="twitter:image:alt"\s+content="[^"]*"\s*\/?>/i, () => `<meta name="twitter:image:alt" content="${safeTitle}" />`);
+  html = html.replace(/<\/head>/i, () => `  <script type="application/ld+json" id="pj-edge-discover-jsonld">${discoverArticleSchema}</script>\n  </head>`);
+
+  // Demote top navbar brand H1 to DIV on subpages so the article H1 is the sole H1 on the page
+  html = html.replace(
+    /<h1\s+id="pj-shell-brand-h1"([^>]*)>([\s\S]*?)<\/h1>/i,
+    (_m, attrs, inner) => `<div id="pj-shell-brand-h1"${attrs}>${inner}</div>`
+  );
+
+  // Hide homepage-only cards on subroutes and prepend the dedicated server-rendered route article
+  html = html.replace(
+    /<div\s+id="pj-shell-home-only-content"\s+style="[^"]*">/i,
+    () => `<div id="pj-shell-home-only-content" style="display:none;">`
+  );
+  html = html.replace(
+    /<main\s+class="pj-shell-main"\s+id="pj-shell-main-area">/i,
+    () => `<main class="pj-shell-main" id="pj-shell-main-area">\n${articleHtml}`
+  );
+
+  return html;
+}
+
+  // 0. Pass-through internal shell fetch immediately to avoid recursion
+  if (request.headers.get('x-pj-internal-shell') === '1') {
+    return new Response(null, {
+      headers: {
+        'x-middleware-next': '1'
+      }
+    });
+  }
+
+  // 7. 301 Permanent Redirect for Duplicate Short Alias URLs & Query-String Tab Links
+  const normalizedPath = pathname.replace(/\/+$/, '').toLowerCase() || '/';
+  if (ROUTE_ALIASES[normalizedPath]) {
+    return Response.redirect(`${SITE_ORIGIN}${ROUTE_ALIASES[normalizedPath]}`, 301);
+  }
+  if (normalizedPath === '/' && (url.searchParams.has('tab') || url.searchParams.has('category'))) {
+    const qInfo = resolveRouteInfo('/', url.searchParams);
+    if (qInfo && qInfo.path && qInfo.path !== '/') {
+      return Response.redirect(`${SITE_ORIGIN}${qInfo.path}`, 301);
+    }
+  }
+
+  // 8. Edge SSR for All 67 Canonical Subroutes (Self-Referencing Canonical + Dedicated Article HTML)
+  const isKnownCanonicalRoute = Boolean(ROUTE_DATA[normalizedPath]);
+  if (isKnownCanonicalRoute && normalizedPath !== '/') {
+    const info = resolveRouteInfo(normalizedPath, url.searchParams);
+    try {
+      const shellUrl = new URL('/', url.origin);
+      const shellRes = await fetch(shellUrl.toString(), {
+        headers: {
+          'x-pj-internal-shell': '1',
+          'accept': 'text/html'
+        }
+      });
+      if (shellRes.ok) {
+        const rawShellHtml = await shellRes.text();
+        if (rawShellHtml && rawShellHtml.includes('<main')) {
+          const transformedHtml = injectEdgeRouteSeo(rawShellHtml, normalizedPath, info);
+          return new Response(transformedHtml, {
+            status: 200,
+            headers: {
+              'Content-Type': 'text/html; charset=utf-8',
+              'X-Robots-Tag': 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+              'Cache-Control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400'
+            }
+          });
+        }
+      }
+    } catch {}
+  }
+
+  // 9. Legacy or Unknown Non-Asset URLs:
+  // Redirect legacy astrology/puja slugs via 301 to their canonical match (or /) so Google Search Console
+  // validations for "Not found (404)" and "Excluded by 'noindex' tag" pass cleanly.
+  const isAssetOrSystemPath =
+    pathname.startsWith('/assets/') ||
+    pathname.startsWith('/api/') ||
+    pathname.startsWith('/.well-known/') ||
+    /\.(ico|png|jpg|jpeg|svg|webp|woff2|js|css|json|txt|xml|html|map)$/i.test(pathname);
+
+  if (!isKnownCanonicalRoute && !isAssetOrSystemPath) {
+    const resolved = resolveRouteInfo(normalizedPath, url.searchParams);
+    const targetCanonical = resolved && ROUTE_DATA[resolved.path] ? resolved.path : '/';
+    return Response.redirect(`${SITE_ORIGIN}${targetCanonical}`, 301);
+  }
+
+  return new Response(null, {
+    headers: {
+      'x-middleware-next': '1'
+    }
+  });
+}
+
+module.exports = middleware;
+module.exports.default = middleware;
