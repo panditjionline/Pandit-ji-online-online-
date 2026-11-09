@@ -22,9 +22,10 @@
       ]
     },
     {
-      "source": "/sitemap.xml",
+      "source": "/(sitemap|feed|rss)\\.xml",
       "headers": [
         { "key": "Content-Type", "value": "application/xml; charset=utf-8" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
         { "key": "Cache-Control", "value": "public, max-age=1800" }
       ]
     },
@@ -89,7 +90,7 @@
       ]
     },
     {
-      "source": "/((?!api/|assets/|og-card/|og-svg/|\\.well-known/|ai-catalog\\.json|llms\\.txt|ads\\.txt|sitemap\\.xml|robots\\.txt|manifest\\.json|sw\\.js|middleware\\.js|app-engine|panditji-app|googlea0e64484b80e13d1\\.html|favicon|pwa-|apple-touch-icon|app-icon|.*\\.(?:ico|png|jpg|jpeg|svg|webp|woff2|js|css|json|txt|xml|map)).*)",
+      "source": "/((?!api/|assets/|og-card/|og-svg/|\\.well-known/|ai-catalog\\.json|llms\\.txt|ads\\.txt|sitemap\\.xml|feed\\.xml|rss\\.xml|robots\\.txt|manifest\\.json|sw\\.js|middleware\\.js|app-engine|panditji-app|googlea0e64484b80e13d1\\.html|favicon|pwa-|apple-touch-icon|app-icon|.*\\.(?:ico|png|jpg|jpeg|svg|webp|woff2|js|css|json|txt|xml|map)).*)",
       "headers": [
         { "key": "Content-Type", "value": "text/html; charset=utf-8" },
         { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate, s-maxage=0" },
@@ -177,7 +178,7 @@
       "destination": "/og-card/:slug.jpg"
     },
     {
-      "source": "/((?!api/|assets/|og-card/|og-svg/|\\.well-known/|ai-catalog\\.json|llms\\.txt|ads\\.txt|sitemap\\.xml|robots\\.txt|manifest\\.json|sw\\.js|middleware\\.js|app-engine|panditji-app|googlea0e64484b80e13d1\\.html|favicon|pwa-|apple-touch-icon|app-icon|.*\\.(?:ico|png|jpg|jpeg|svg|webp|woff2|js|css|json|txt|xml|map)).*)",
+      "source": "/((?!api/|assets/|og-card/|og-svg/|\\.well-known/|ai-catalog\\.json|llms\\.txt|ads\\.txt|sitemap\\.xml|feed\\.xml|rss\\.xml|robots\\.txt|manifest\\.json|sw\\.js|middleware\\.js|app-engine|panditji-app|googlea0e64484b80e13d1\\.html|favicon|pwa-|apple-touch-icon|app-icon|.*\\.(?:ico|png|jpg|jpeg|svg|webp|woff2|js|css|json|txt|xml|map)).*)",
       "destination": "/index.html"
     }
   ]
