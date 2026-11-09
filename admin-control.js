@@ -74,8 +74,8 @@
     "enableDayOfWeekTheme": true,
     "lightsMode": "royal_jhalar",
     "jhalarAnimation": "running_chase",
-    "toranStyle": "lotus_ashoka",
-    "cornerLadiMode": "auto",
+    "toranStyle": "marigold_mango",
+    "cornerLadiMode": "grand_curtain",
     "autoPushpVarsha": false,
     "enableGlowingHairline": true,
     "hairlineIntensity": "medium",
@@ -83,11 +83,11 @@
     "hairlineSpeed": "normal",
     "showToran": true,
     "sandhyaAutoGlow": true,
-    "updatedAt": 1794138908844,
+    "updatedAt": 1794223254062,
     "customBadgeHi": "",
     "customGreetingHi": "",
     "customSubtitleHi": "",
-    "syncCode": 3677631980751311
+    "syncCode": 3907001980751410
   },
   "geminiKeysPool": {
     "keys": [],
@@ -98,7 +98,7 @@
       "AQ.Ab8••••••••keVg"
     ],
     "count": 4,
-    "updatedAt": 1794139661782
+    "updatedAt": 1794223341281
   }
 } /*__PANDITJI_EMBEDDED_ADMIN_STATE_END__*/;
 
