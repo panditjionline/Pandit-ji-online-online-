@@ -90,9 +90,6 @@ Allow: /privacy-policy
 Allow: /terms-and-conditions
 Allow: /contact-us
 Allow: /disclaimer
-Disallow: /mera-khata
-Disallow: /history
-Disallow: /api/
 
 User-agent: Googlebot
 Allow: /
@@ -104,9 +101,6 @@ Allow: /.well-known/ai-catalog.json
 Allow: /.well-known/ard.json
 Allow: /llms.txt
 Allow: /googlea0e64484b80e13d1.html
-Disallow: /mera-khata
-Disallow: /history
-Disallow: /api/
 
 User-agent: Googlebot-Image
 Allow: /
