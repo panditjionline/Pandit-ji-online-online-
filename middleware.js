@@ -1699,6 +1699,10 @@ async function middleware(request, event) {
     const todayIstStr = `${yyyy}-${mm}-${dd}`;
     const pubDateRfc = nowUtc.toUTCString();
 
+    // Exact 00:00:00 IST midnight RFC timestamp for daily items
+    const midnightIstDate = new Date(Date.UTC(yyyy, istDate.getUTCMonth(), istDate.getUTCDate(), 0, 0, 0) - 5.5 * 60 * 60 * 1000);
+    const midnightIstRfc = midnightIstDate.toUTCString();
+
     const discoverFeedPaths = Object.keys(ROUTE_DATA);
 
     const itemsXml = discoverFeedPaths
@@ -1710,11 +1714,12 @@ async function middleware(request, event) {
         const itemImg = `${reqOrigin}/og-card/${itemSlug}-discover-${VERSION_TAG}.jpg`;
         const isDaily = p === '/' || p.includes('panchang') || p.includes('choghadiya') || p.includes('rahukaal') || p.includes('rashifal');
         const itemGuid = isDaily ? `${itemUrl}#${todayIstStr}` : itemUrl;
+        const itemPubDate = isDaily ? midnightIstRfc : pubDateRfc;
         return `    <item>
       <title>${xmlEscape(itemInfo.title)}</title>
       <link>${xmlEscape(itemUrl)}</link>
       <guid isPermaLink="false">${xmlEscape(itemGuid)}</guid>
-      <pubDate>${pubDateRfc}</pubDate>
+      <pubDate>${itemPubDate}</pubDate>
       <dc:creator>आचार्य पण्डित शशांक शर्मा (Acharya Pandit Shashank Sharma)</dc:creator>
       <description>${xmlEscape(itemInfo.desc)}</description>
       <enclosure url="${xmlEscape(itemImg)}" length="95000" type="image/jpeg" />
