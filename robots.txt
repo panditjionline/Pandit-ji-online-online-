@@ -136,3 +136,4 @@ Allow: /og-card/
 Allow: /og-svg/
 
 Sitemap: https://www.panditjionline.online/sitemap.xml
+Sitemap: https://www.panditjionline.online/feed.xml

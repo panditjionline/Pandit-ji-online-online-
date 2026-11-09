@@ -1111,12 +1111,15 @@ app.get(['/og-card/:filename', '/api/og-card/:filename'], (req, res) => {
     .replace(/\.(jpg|jpeg|png|svg)$/i, '')
     .replace(/[-_.]v\d+$/i, '')
     .toLowerCase();
-  const safeSlug = rawName.replace(/[^a-z0-9-_]/g, '') || 'janam-kundali';
-  const filename = `${safeSlug}.jpg`;
-  const candidatePublic = path.join(__dirname, 'public', 'og-card', filename);
-  const candidateDist = path.join(__dirname, 'dist', 'og-card', filename);
-  const fallbackPublic = path.join(__dirname, 'public', 'og-card', 'janam-kundali.jpg');
-  const target = fs.existsSync(candidatePublic)
+  const safeSlug = rawName.replace(/[^a-z0-9-_]/g, '') || 'home';
+  const rawBase = path.basename(req.params.filename || '');
+  const candidateExact = path.join(__dirname, 'public', 'og-card', rawBase);
+  const candidatePublic = path.join(__dirname, 'public', 'og-card', `${safeSlug}.jpg`);
+  const candidateDist = path.join(__dirname, 'dist', 'og-card', `${safeSlug}.jpg`);
+  const fallbackPublic = path.join(__dirname, 'public', 'og-card', 'home.jpg');
+  const target = fs.existsSync(candidateExact)
+    ? candidateExact
+    : fs.existsSync(candidatePublic)
     ? candidatePublic
     : fs.existsSync(candidateDist)
     ? candidateDist
