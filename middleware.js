@@ -2030,6 +2030,57 @@ async function middleware(request, event) {
     });
   }
 
+  // 2a. Hindi & Sanskrit Vocal Audio TTS Proxy (/api/tts) for Aarti, Mantra, Chalisa & Rashifal
+  if (pathname === '/api/tts') {
+    const rawText = (url.searchParams.get('text') || '').trim();
+    const lang = (url.searchParams.get('lang') || 'hi').trim();
+    if (!rawText) {
+      return new Response('Missing text parameter', {
+        status: 400,
+        headers: { 'Content-Type': 'text/plain; charset=utf-8' }
+      });
+    }
+    const cleanText = rawText
+      .replace(/[*#_~`>|•]/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .slice(0, 200);
+    const encoded = encodeURIComponent(cleanText);
+    const ttsEndpoints = [
+      `https://translate.googleapis.com/translate_tts?ie=UTF-8&q=${encoded}&tl=${encodeURIComponent(lang)}&client=gtx`,
+      `https://translate.google.com/translate_tts?ie=UTF-8&q=${encoded}&tl=${encodeURIComponent(lang)}&client=tw-ob`
+    ];
+    for (const ttsUrl of ttsEndpoints) {
+      try {
+        const ttsRes = await fetch(ttsUrl, {
+          headers: {
+            'User-Agent':
+              'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+            'Referer': 'https://translate.google.com/'
+          }
+        });
+        if (ttsRes.ok) {
+          const audioBuf = await ttsRes.arrayBuffer();
+          if (audioBuf && audioBuf.byteLength > 100) {
+            return new Response(audioBuf, {
+              status: 200,
+              headers: {
+                'Content-Type': 'audio/mpeg',
+                'Content-Length': String(audioBuf.byteLength),
+                'Access-Control-Allow-Origin': '*',
+                'Cache-Control': 'public, max-age=86400, s-maxage=86400'
+              }
+            });
+          }
+        }
+      } catch {}
+    }
+    return new Response('TTS service unavailable', {
+      status: 502,
+      headers: { 'Content-Type': 'text/plain; charset=utf-8' }
+    });
+  }
+
   // 2b. Google Discover, Google Search Console & Follow Live RSS 2.0 + Media RSS Feed (/feed.xml & /rss.xml)
   if (pathname === '/feed.xml' || pathname === '/rss.xml') {
     const reqOrigin =
