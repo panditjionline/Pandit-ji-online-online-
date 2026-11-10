@@ -16,6 +16,7 @@ Allow: /
 User-agent: *
 Allow: /
 Allow: /ads.txt
+Allow: /seo-data.json
 Allow: /og-card/
 Allow: /og-svg/
 Allow: /ai-catalog.json
@@ -94,6 +95,7 @@ Allow: /disclaimer
 User-agent: Googlebot
 Allow: /
 Allow: /ads.txt
+Allow: /seo-data.json
 Allow: /og-card/
 Allow: /og-svg/
 Allow: /ai-catalog.json
