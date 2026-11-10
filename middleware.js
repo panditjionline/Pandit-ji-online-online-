@@ -63,13 +63,65 @@ const ROUTE_ALIASES = {
   '/about': '/about-us',
   '/contact': '/contact-us',
   '/terms': '/terms-and-conditions',
-  '/privacy': '/privacy-policy'
+  '/privacy': '/privacy-policy',
+  '/8': '/',
+  '/media': '/vedic-videos',
+  '/media/': '/vedic-videos',
+  '/fit]': '/',
+  '/&': '/',
+  '/404.html': '/',
+  '/404': '/'
 };
+
+let _SEO_DATA_CACHE = null;
+
+function getBuiltInFallbackSeoEntry(canonicalPath, info) {
+  const rawTitle = (info && info.title) || 'पण्डित जी ऑनलाइन — वैदिक ज्योतिष एवं पंचांग';
+  const rawDesc = (info && info.desc) || 'निःशुल्क वैदिक जन्म कुंडली, 36 गुण विवाह मिलान, आज का शुद्ध दृक पंचांग व शुभ मुहूर्त 2026-27 — अभी देखें ➔';
+  const shortTopic = String(rawTitle).split('—')[0].split('|')[0].trim() || rawTitle;
+  return {
+    title: rawTitle,
+    description: rawDesc,
+    keywords: `${shortTopic}, ${rawTitle}, Pandit Ji Online, Acharya Pandit Shashank Sharma, Rudrapur Jyotish`,
+    h1: rawTitle,
+    faq: [
+      {
+        q: `${shortTopic} की सटीक वैदिक गणना और शास्त्रीय नियम क्या हैं?`,
+        a: `${rawDesc.replace(/\s*➔\s*$/, '')} यह गणना बृहत् पाराशर होरा शास्त्र और लाहिड़ी चित्रापक्ष अयनांश पर आधारित है।`
+      },
+      {
+        q: `पण्डित जी ऑनलाइन पर ${shortTopic} निःशुल्क कैसे देखें?`,
+        a: `आप www.panditjionline.online के इस पृष्ठ पर अपना नाम या जन्म विवरण दर्ज करके 100% निःशुल्क और शुद्ध वैदिक गणना व सात्विक उपाय तुरंत देख सकते हैं।`
+      }
+    ]
+  };
+}
+
+async function loadSeoDataForRoute(origin, canonicalPath, info) {
+  if (!_SEO_DATA_CACHE) {
+    try {
+      const controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+      const timer = controller ? setTimeout(() => controller.abort(), 2500) : null;
+      const res = await fetch(`${origin}/seo-data.json`, {
+        headers: { 'x-pj-internal-shell': '1', 'accept': 'application/json' },
+        signal: controller ? controller.signal : undefined
+      });
+      if (timer) clearTimeout(timer);
+      if (res && res.ok) {
+        _SEO_DATA_CACHE = await res.json();
+      }
+    } catch {}
+  }
+  if (_SEO_DATA_CACHE && _SEO_DATA_CACHE[canonicalPath]) {
+    return _SEO_DATA_CACHE[canonicalPath];
+  }
+  return getBuiltInFallbackSeoEntry(canonicalPath, info);
+}
 
 const ROUTE_DATA = {
   '/': {
     title: 'पण्डित जी ऑनलाइन — निःशुल्क जन्म कुंडली, पंचांग व राशिफल',
-    desc: 'पण्डित जी ऑनलाइन (आचार्य पण्डित शशांक शर्मा, रुद्रपुर): निःशुल्क वैदिक जन्म कुंडली, 36 गुण विवाह मिलान, आज का पंचांग, शुभ मुहूर्त 2026-27 एवं सटीक दैनिक राशिफल।',
+    desc: 'निःशुल्क वैदिक जन्म कुंडली, 36 गुण विवाह मिलान, आज का शुद्ध दृक पंचांग, शुभ मुहूर्त 2026-27 व नाम राशिफल — अभी निःशुल्क देखें ➔',
     cardTitle: 'PANDIT JI ONLINE',
     cardSub: 'Free Janam Kundali • 36 Gun Milan • Drik Panchang • Digital Mandir',
     shortCard: 'PANDIT JI ONLINE\nVedic Jyotish Rudrapur',
@@ -78,8 +130,8 @@ const ROUTE_DATA = {
     accent: '#f59e0b'
   },
   '/digital-mandir': {
-    title: 'श्री डिजिटल सनातन मंदिर (Live Digital Mandir) — अखंड ज्योति दर्शन, आरती, शंखनाद व वैदिक संकल्प | पण्डित जी ऑनलाइन',
-    desc: 'श्री डिजिटल सनातन मंदिर में घर बैठे पावन देव दर्शन करें — अखंड ज्योति प्रज्वलित करें, मंदिर की घंटी व शंखनाद बजाएं, पुष्प अर्पित करें और अपना दैनिक वैदिक संकल्प लें।',
+    title: '3D डिजिटल सनातन मंदिर — लाइव आरती, शंखनाद, घंटी व 108 जप',
+    desc: 'घर बैठे करें श्री राम, महादेव, हनुमान जी, श्री गणेश व माँ लक्ष्मी के 3D लाइव दर्शन, अखण्ड ज्योति प्रज्वलन, शंखनाद, पुष्प वर्षा व आरती — अभी दर्शन करें ➔',
     cardTitle: 'SHRI DIGITAL SANATAN MANDIR',
     cardSub: 'Live 3D Darshan • Akhand Jyoti • Bell & Shankhnaad • Live Aarti',
     shortCard: 'DIGITAL SANATAN MANDIR\nLive 3D Darshan & Aarti',
@@ -88,8 +140,8 @@ const ROUTE_DATA = {
     accent: '#fbbf24'
   },
   '/janam-kundali': {
-    title: 'निःशुल्क जन्म कुंडली बनाएं (Free Online Janam Kundali in Hindi) — लग्न कुंडली, महादशा व भविष्यफल | पण्डित जी ऑनलाइन',
-    desc: 'अपनी जन्म तिथि, समय और स्थान से मात्र 1 सेकंड में निःशुल्क वैदिक जन्म कुंडली (Lagna, Chandra & Navamsha Chart), विंशोत्तरी महादशा, मांगलिक/साढ़े साती विचार, शुभ रत्न और सम्पूर्ण भविष्यफल प्राप्त करें।',
+    title: 'निःशुल्क जन्म कुंडली बनाएं — लग्न चार्ट, महादशा व भविष्यफल',
+    desc: 'अपनी जन्म तिथि, समय व स्थान से मात्र 2 सेकंड में बनाएं 100% सटीक वैदिक जन्म कुंडली (Lagna & Navamsha D-9), महादशा, राजयोग व शुभ रत्न — अभी बनाएं ➔',
     cardTitle: 'FREE VEDIC JANAM KUNDALI',
     cardSub: 'Lagna & Navamsha (D-9) • Vimshottari Dasha • Rajyoga & Remedies',
     shortCard: 'FREE JANAM KUNDALI\nLagna, D-9 & Mahadasha',
@@ -98,8 +150,8 @@ const ROUTE_DATA = {
     accent: '#f97316'
   },
   '/kundali-milan': {
-    title: 'कुंडली मिलान (Free 36 Gun Milan in Hindi) — वर-कन्या अष्टकूट विवाह मिलान एवं मांगलिक दोष जाँच | पण्डित जी ऑनलाइन',
-    desc: 'वर और कन्या की जन्म तिथि या नाम से निःशुल्क 36 गुण अष्टकूट कुंडली मिलान (Kundali Matching for Marriage) करें। वर्ण, वश्य, तारा, योनि, ग्रह मैत्री, गण, भकूट, नाड़ी दोष और मांगलिक दोष का सटीक विश्लेषण।',
+    title: '36 गुण कुंडली मिलान (निःशुल्क) — वर-कन्या नाम व जन्म से मिलान',
+    desc: 'वर और कन्या के नाम या जन्म विवरण से तुरंत करें अष्टकूट 36 गुण कुंडली मिलान, मांगलिक दोष जाँच व नाड़ी/भकूट दोष का शास्त्रीय परिहार — अभी मिलाएं ➔',
     cardTitle: '36 GUN ASHTAKOOT KUNDALI MILAN',
     cardSub: 'Var-Kanya Marriage Compatibility • Manglik Check • Nadi Parihar',
     shortCard: '36 GUN KUNDALI MILAN\nAshtakoot Vivah Matching',
@@ -108,8 +160,8 @@ const ROUTE_DATA = {
     accent: '#ec4899'
   },
   '/panchang': {
-    title: 'आज का पंचांग (Aaj Ka Panchang) — आज की तिथि, नक्षत्र, शुभ मुहूर्त, राहुकाल व चौघड़िया | पण्डित जी ऑनलाइन',
-    desc: 'आज का शुद्ध दृक गणित हिन्दू पंचांग (प्रतिदिन लाइव अपडेटेड) — जानिए आज की तिथि, नक्षत्र, योग, करण, सूर्योदय-सूर्यास्त, अभिजित मुहूर्त, राहुकाल, दिन-रात का चौघड़िया और प्रमुख व्रत-त्योहार।',
+    title: 'आज का पंचांग — तिथि, नक्षत्र, शुभ मुहूर्त, राहुकाल व चौघड़िया',
+    desc: 'आज का शुद्ध दृक गणित हिन्दू पंचांग (लाइव अपडेटेड) — जानें आज की तिथि, नक्षत्र, योग, करण, सूर्योदय, अभिजित मुहूर्त व दिन-रात का चौघड़िया ➔',
     cardTitle: 'AAJ KA DRIK GANIT PANCHANG',
     cardSub: 'Tithi • Nakshatra • Yoga • Karana • Abhijit Muhurat • Rahukaal',
     shortCard: 'AAJ KA DRIK PANCHANG\nTithi, Nakshatra & Muhurat',
@@ -118,8 +170,8 @@ const ROUTE_DATA = {
     accent: '#f59e0b'
   },
   '/shubh-muhurat': {
-    title: 'शुभ मुहूर्त कैलेंडर एवं नाम से राशि कैलकुलेटर (Shubh Muhurat & Naam Rashi) | पण्डित जी ऑनलाइन',
-    desc: 'विवाह, गृह प्रवेश, वाहन खरीद, मुंडन व नामकरण संस्कार के सटीक शुभ मुहूर्त और अक्षर से अपनी वैदिक नाम राशि, नक्षत्र व भाग्यशाली रत्न तुरंत जानें।',
+    title: 'शुभ मुहूर्त 2026-27 कैलेंडर — विवाह, मुंडन, गृह प्रवेश व वाहन',
+    desc: 'दृक पंचांग आधारित 2026-2027 के सर्वोत्तम विवाह, मुंडन, गृह प्रवेश, वाहन खरीद व नामकरण मुहूर्त तथा नाम राशि कैलकुलेटर — अभी निःशुल्क देखें ➔',
     cardTitle: 'SHUBH MUHURAT 2026 - 2027',
     cardSub: 'Vivah • Griha Pravesh • Mundan Sanskar • Vahan Kharid Muhurat',
     shortCard: 'SHUBH MUHURAT 2026-27\nVivah, Mundan & Vahan',
@@ -128,8 +180,8 @@ const ROUTE_DATA = {
     accent: '#eab308'
   },
   '/vivah-muhurat-2027': {
-    title: 'विवाह मुहूर्त 2026-2027 (Vivah Muhurat Dates) — शादी की सभी शुभ तिथियां, लग्न व नक्षत्र सारणी | पण्डित जी ऑनलाइन',
-    desc: 'वर्ष 2026 और 2027 (मई, जून, नवंबर, दिसंबर सहित) में शादी-विवाह के लिए 100% सटीक दृक गणित शुभ मुहूर्त तिथियां, शुभ नक्षत्र, तिथि और विवाह लग्न सारणी।',
+    title: 'विवाह मुहूर्त 2026-27 — शादी की सभी शुभ तिथियां व लग्न सारणी',
+    desc: 'साल 2026 और 2027 (नवंबर, दिसंबर व जनवरी से जून) के 100% शुद्ध विवाह मुहूर्त, शुभ लग्न समय व वर-कन्या नाम से तारा बल कैलकुलेटर — अभी जांचें ➔',
     cardTitle: 'SHUBH VIVAH MUHURAT 2026-27',
     cardSub: 'Auspicious Hindu Wedding Dates • Tara Bal & Chandra Bal Check',
     shortCard: 'VIVAH MUHURAT 2026-27\nShubh Shadi Dates by Name',
@@ -138,8 +190,8 @@ const ROUTE_DATA = {
     accent: '#f43f5e'
   },
   '/mundan-muhurat': {
-    title: 'मुंडन मुहूर्त 2026-2027 (Mundan Muhurat) — बच्चों के मुंडन संस्कार की सबसे शुभ तिथियां व नक्षत्र | पण्डित जी ऑनलाइन',
-    desc: 'शिशु मुंडन (चूड़ाकरण) संस्कार 2026-2027 की सबसे शुभ तिथियां: भद्रा-रहित शुभ चर करण (बव, बालव, कौलव, तैतिल), 12 शुभ नक्षत्र (अश्विनी, मृगशिरा, पुष्य, हस्त, श्रवण) और वर्जित काल की संपूर्ण सारणी।',
+    title: 'मुंडन मुहूर्त 2026-27 — बच्चों के मुंडन की सबसे शुभ तिथियां',
+    desc: 'शिशु मुंडन (चूड़ाकरण) संस्कार 2026-2027 की भद्रा-रहित शुभ तिथियां, शुभ नक्षत्र व बच्चे के नाम से मुंडन मुहूर्त कैलकुलेटर — अभी निःशुल्क देखें ➔',
     cardTitle: 'MUNDAN SANSKAR MUHURAT 2026-27',
     cardSub: 'Chudakaran Auspicious Dates • Baby Name Nakshatra & Tithi Check',
     shortCard: 'MUNDAN MUHURAT 2026-27\nShishu Chudakaran Dates',
@@ -148,8 +200,8 @@ const ROUTE_DATA = {
     accent: '#10b981'
   },
   '/vahan-kharidne-ka-muhurat': {
-    title: 'वाहन खरीदने का शुभ मुहूर्त 2026-2027 (Car & Bike Buying Muhurat) — रविवार व सभी 7 दिनों की शुभ तिथियां | पण्डित जी ऑनलाइन',
-    desc: 'कार, बाइक या स्कूटी खरीदने और डिलीवरी लेने के लिए सभी 7 दिनों व रविवार (Sunday) की सबसे शुभ तिथियां, रवि-पुष्य योग, सर्वार्थ सिद्धि योग, शुभ चौघड़िया समय और राहुकाल विचार।',
+    title: 'वाहन खरीदने का शुभ मुहूर्त 2026-27 — कार/बाइक की शुभ तिथियां',
+    desc: '2026-2027 में नई कार, बाइक या स्कूटी खरीदने के लिए रविवार व सभी 7 दिनों के सर्वोत्तम शुभ मुहूर्त, चौघड़िया व राशि अनुसार लकी वाहन रंग — अभी देखें ➔',
     cardTitle: 'VAHAN KHARIDNE KA MUHURAT 2026-27',
     cardSub: 'Best Car & Bike Buying Dates • Lucky Vehicle Color by Rashi',
     shortCard: 'VAHAN MUHURAT 2026-27\nCar & Bike Shubh Dates',
@@ -158,8 +210,8 @@ const ROUTE_DATA = {
     accent: '#3b82f6'
   },
   '/s-naam-rashi-swabhav': {
-    title: 'S नाम की राशि क्या है? (कुम्भ राशि) — S (स, श) नाम वालों का स्वभाव, करियर, प्रेम व शुभ रत्न | पण्डित जी ऑनलाइन',
-    desc: 'S नाम की राशि कुम्भ (Aquarius - स्वामी शनि देव) होती है। जानिए S (स, सा, सी, सू, से, सो, श) अक्षर से नाम शुरू होने वालों की सटीक वैदिक राशि, नक्षत्र, स्वभाव, करियर, वैवाहिक जीवन, शुभ रंग, शुभ अंक (8) और नीलम रत्न की संपूर्ण जानकारी।',
+    title: 'S नाम की राशि क्या है? (कुम्भ) स्वभाव, प्रेम व राजयोग जानें',
+    desc: 'S (स, श) नाम वालों की राशि कुम्भ (स्वामी शनि) होती है। जानें S नाम वालों का सच्चा प्यार, गुप्त स्वभाव, 2026-27 करियर राजयोग व लकी रत्न — अभी क्लिक करें ➔',
     cardTitle: 'S NAAM KI RASHI: KUMBH RASHI',
     cardSub: 'S Letter Zodiac (Aquarius) • Shani Dev • Swabhav, Career & Neelam',
     shortCard: 'S NAAM KI RASHI (KUMBH)\nRashi, Swabhav & Career',
@@ -168,8 +220,8 @@ const ROUTE_DATA = {
     accent: '#a855f7'
   },
   '/shani-sadesati-upay': {
-    title: 'शनि साढ़े साती और ढैय्या कैलकुलेटर (2025-2028) व अचूक उपाय | पण्डित जी ऑनलाइन',
-    desc: 'मीन राशि में शनि गोचर (2025-2028) के अनुसार अपने नाम से जानें शनि साढ़े साती व ढैय्या की स्थिति, पाया फल और सात्विक उपाय।',
+    title: 'शनि साढ़े साती व ढैय्या कैलकुलेटर 2026-28 — राशि फल व उपाय',
+    desc: 'मीन राशि में शनि गोचर (2025-2028) के अनुसार अपने नाम या राशि से जानें शनि साढ़े साती व ढैय्या का चरण, पाया फल और अचूक वैदिक उपाय — अभी जांचें ➔',
     cardTitle: 'SHANI SADESATI & DHAIYYA 2025-28',
     cardSub: 'Meen Rashi Shani Gochar • Gold/Silver/Iron Paya • Vedic Remedies',
     shortCard: 'SHANI SADESATI 2025-28\nGochar Check & Vedic Upay',
@@ -178,8 +230,8 @@ const ROUTE_DATA = {
     accent: '#6366f1'
   },
   '/shani-sadesati-calculator': {
-    title: 'शनि साढ़े साती कैलकुलेटर (Shani Sadesati Calculator) — मीन गोचर फल व उपाय | पण्डित जी ऑनलाइन',
-    desc: 'अपनी राशि या नाम से जानें शनि साढ़े साती व ढैय्या का चरण, लोहे/चांदी/तांबे/सोने का पाया और शनि शांति के अचूक वैदिक उपाय।',
+    title: 'शनि साढ़े साती कैलकुलेटर — नाम व राशि से जानें शनि का पाया',
+    desc: 'अपनी राशि या नाम से 1 सेकंड में जानें शनि साढ़े साती व ढैय्या का चरण, सोने/चांदी/तांबे/लोहे का पाया और शनि शांति के प्रामाणिक उपाय — अभी देखें ➔',
     cardTitle: 'SHANI SADESATI CALCULATOR',
     cardSub: 'Check Sade Sati Phase by Name or Rashi • Shani Shanti Upay',
     shortCard: 'SHANI SADESATI CHECK\nPaya & Shani Shanti Upay',
@@ -188,8 +240,8 @@ const ROUTE_DATA = {
     accent: '#6366f1'
   },
   '/manglik-dosh-nivaran': {
-    title: 'मांगलिक दोष (Manglik Dosh) जाँच कैलकुलेटर, परिहार नियम व वैदिक निवारण | पण्डित जी ऑनलाइन',
-    desc: 'क्या कुंडली में मंगल दोष सच में भयानक है? जानें आंशिक व पूर्ण मांगलिक दोष के शास्त्रोक्त परिहार नियम और निवारण।',
+    title: 'मांगलिक दोष कैलकुलेटर — कुंडली में मंगल दोष जांच व परिहार नियम',
+    desc: 'क्या कुंडली में मांगलिक दोष सच में भयानक है? जानिए आंशिक व पूर्ण मंगल दोष के 12 शास्त्रोक्त परिहार (रद्द होने के) नियम व वैदिक उपाय — अभी जांचें ➔',
     cardTitle: 'MANGLIK DOSH CHECK & PARIHAR',
     cardSub: '1st, 4th, 7th, 8th & 12th House Mangal Analysis • Shastrokta Upay',
     shortCard: 'MANGLIK DOSH CALCULATOR\nParihar Rules & Remedies',
@@ -198,8 +250,8 @@ const ROUTE_DATA = {
     accent: '#ef4444'
   },
   '/nadi-dosh-nuskhe': {
-    title: 'नाड़ी दोष परिहार व गुण मिलान 18 से कम होने के अचूक वैदिक उपाय | पण्डित जी ऑनलाइन',
-    desc: 'कुंडली मिलान में नाड़ी दोष (0/8 अंक) या 18 से कम गुण मिलने पर बृहत् पाराशर होरा शास्त्र के प्रामाणिक परिहार नियम।',
+    title: 'नाड़ी दोष परिहार व उपाय — 18 से कम गुण मिलने पर वैदिक समाधान',
+    desc: 'कुंडली मिलान में नाड़ी दोष (0/8 अंक) या 18 से कम गुण मिलने पर बृहत् पाराशर होरा शास्त्र के प्रामाणिक परिहार नियम व विवाह उपाय — अभी पढ़ें ➔',
     cardTitle: 'NADI DOSH PARIHAR & VIVAH UPAY',
     cardSub: 'Adi, Madhya & Antya Nadi Cancellation Rules • Low Gun Milan Upay',
     shortCard: 'NADI DOSH PARIHAR\nShastrokta Vivah Remedies',
@@ -208,8 +260,8 @@ const ROUTE_DATA = {
     accent: '#f97316'
   },
   '/dharm-gyan-kosh': {
-    title: 'वैदिक धर्म ज्ञान कोष — राम शलाका, आरती-चालीसा, पूजा सामग्री व वास्तु | पण्डित जी ऑनलाइन',
-    desc: 'श्री राम शलाका प्रश्नावली, शनि साढ़े साती कैलकुलेटर, पूजा सामग्री चेकलिस्ट, सम्पूर्ण आरती-चालीसा व वास्तु शास्त्र।',
+    title: 'वैदिक धर्म ज्ञान कोष — राम शलाका, आरती, पूजा सामग्री व वास्तु',
+    desc: 'श्री राम शलाका प्रश्नावली, शनि साढ़े साती कैलकुलेटर, पूजा सामग्री चेकलिस्ट, सम्पूर्ण आरती-चालीसा, वास्तु टिप्स व रत्न-रुद्राक्ष गाइड — अभी खोलें ➔',
     cardTitle: 'SANATAN DHARM GYAN KOSH',
     cardSub: 'Ram Shalaka • Aarti-Chalisa • Puja Samagri • Vastu • Ratna-Rudraksha',
     shortCard: 'SANATAN DHARM GYAN KOSH\nVedic Shastra & Tools',
@@ -218,8 +270,8 @@ const ROUTE_DATA = {
     accent: '#f59e0b'
   },
   '/ram-shalaka-prashnavali': {
-    title: 'श्री राम शलाका प्रश्नावली (Ram Shalaka Prashnavali) — तुलसीदास कृत चौपाई फल | पण्डित जी ऑनलाइन',
-    desc: 'गोस्वामी तुलसीदास कृत श्रीरामचरितमानस की दिव्य श्री राम शलाका प्रश्नावली से अपने मन के प्रश्न और कार्य सिद्धि का तुरंत उत्तर जानें।',
+    title: 'श्री राम शलाका प्रश्नावली — मन में प्रश्न सोचें और चौपाई फल जानें',
+    desc: 'गोस्वामी तुलसीदास कृत श्रीरामचरितमानस की दिव्य श्री राम शलाका प्रश्नावली से अपने मन के प्रश्न और कार्य सिद्धि का तुरंत उत्तर जानें — अभी स्पर्श करें ➔',
     cardTitle: 'SHRI RAM SHALAKA PRASHNAVALI',
     cardSub: 'Goswami Tulsidas Krit Ramcharitmanas Chaupai Guidance & Phal',
     shortCard: 'SHRI RAM SHALAKA\nRamcharitmanas Prashnavali',
@@ -228,8 +280,8 @@ const ROUTE_DATA = {
     accent: '#fb923c'
   },
   '/puja-samagri-list': {
-    title: 'पूजा सामग्री चेकलिस्ट (Puja Samagri List) — सत्यनारायण कथा, गृह प्रवेश व रुद्राभिषेक | पण्डित जी ऑनलाइन',
-    desc: 'श्री सत्यनारायण व्रत कथा, गृह प्रवेश, रुद्राभिषेक, नवग्रह शांति व दीपावली पूजन की संपूर्ण प्रामाणिक पूजा सामग्री सूची।',
+    title: 'पूजा सामग्री लिस्ट — सत्यनारायण कथा, गृह प्रवेश व रुद्राभिषेक',
+    desc: 'श्री सत्यनारायण व्रत कथा, नूतन गृह प्रवेश, रुद्राभिषेक व नवग्रह शांति हवन की संपूर्ण पूजा सामग्री चेकलिस्ट (टिक व शेयर सुविधा सहित) — अभी देखें ➔',
     cardTitle: 'COMPLETE VEDIC PUJA SAMAGRI LIST',
     cardSub: 'Satyanarayan Katha • Griha Pravesh • Rudrabhishek • Navgrah Shanti',
     shortCard: 'VEDIC PUJA SAMAGRI LIST\nComplete Checklist & PDF',
@@ -238,8 +290,8 @@ const ROUTE_DATA = {
     accent: '#f59e0b'
   },
   '/aarti-chalisa-sangrah': {
-    title: 'सम्पूर्ण आरती एवं चालीसा संग्रह (Aarti & Chalisa Lyrics) — हनुमान चालीसा, गणेश व लक्ष्मी आरती | पण्डित जी ऑनलाइन',
-    desc: 'श्री हनुमान चालीसा, बजरंग बाण, गणेश आरती, लक्ष्मी आरती, शिव तांडव स्तोत्र एवं नित्य पूजन के प्रामाणिक पाठ व ऑडियो।',
+    title: 'आरती एवं चालीसा संग्रह — हनुमान चालीसा, गणेश व लक्ष्मी आरती',
+    desc: 'श्री हनुमान चालीसा, बजरंग बाण, श्री गणेश आरती, लक्ष्मी आरती, शिव तांडव स्तोत्र एवं नित्य पूजन के प्रामाणिक पाठ व अर्थ — अभी पढ़ें ➔',
     cardTitle: 'SAMPURNA AARTI & CHALISA SANGRAH',
     cardSub: 'Hanuman Chalisa • Ganesh Aarti • Lakshmi Aarti • Shiv Tandav Stotra',
     shortCard: 'AARTI & CHALISA SANGRAH\nHanuman Chalisa & Aarti',
@@ -248,8 +300,8 @@ const ROUTE_DATA = {
     accent: '#facc15'
   },
   '/vrat-katha-paran-vidhi': {
-    title: 'एकादशी व्रत, प्रदोष व्रत कथा एवं शास्त्रोक्त पारण विधि नियम | पण्डित जी ऑनलाइन',
-    desc: 'एकादशी, प्रदोष, पूर्णिमा, करवा चौथ व महाशिवरात्रि व्रत के शास्त्रोक्त नियम, हरि वासर विचार एवं शुद्ध पारण विधि।',
+    title: 'एकादशी व प्रदोष व्रत कथा एवं शास्त्रोक्त पारण विधि नियम',
+    desc: 'एकादशी, प्रदोष, पूर्णिमा, करवा चौथ व महाशिवरात्रि व्रत के शास्त्रोक्त नियम, हरि वासर विचार एवं शुद्ध पारण विधि — अभी पूरी विधि पढ़ें ➔',
     cardTitle: 'EKADASHI & PRADOSH VRAT VIDHI',
     cardSub: 'Shastrokta Vrat Katha • Hari Vasar Rules • Exact Paran Timings',
     shortCard: 'EKADASHI & VRAT VIDHI\nKatha & Paran Niyam',
@@ -258,8 +310,8 @@ const ROUTE_DATA = {
     accent: '#fbbf24'
   },
   '/vastu-shastra-tips': {
-    title: 'वास्तु शास्त्र टिप्स एवं दिशा दोष निवारण (Vastu Shastra for Home) | पण्डित जी ऑनलाइन',
-    desc: 'ईशान कोण, आग्नेय, नैऋत्य व वायव्य दिशाओं के वास्तु नियम तथा बिना तोड़-फोड़ घर व दुकान के वास्तु दोष दूर करने के उपाय।',
+    title: 'वास्तु शास्त्र टिप्स — बिना तोड़-फोड़ घर व दुकान के वास्तु उपाय',
+    desc: 'ईशान कोण, आग्नेय, नैऋत्य व वायव्य दिशाओं के वास्तु नियम तथा बिना तोड़-फोड़ घर, रसोई, तिजोरी व दुकान के वास्तु दोष दूर करने के अचूक उपाय ➔',
     cardTitle: 'VASTU SHASTRA & DISHA DOSH UPAY',
     cardSub: 'Ishan, Agneya, Nairitya & Vayavya Rules • Home & Shop Remedies',
     shortCard: 'VASTU SHASTRA GUIDE\nHome & Shop Vastu Upay',
@@ -268,8 +320,8 @@ const ROUTE_DATA = {
     accent: '#10b981'
   },
   '/ratna-rudraksha-guide': {
-    title: 'रत्न एवं रुद्राक्ष मार्गदर्शिका (Gemstone & 1-14 Mukhi Rudraksha Guide) | पण्डित जी ऑनलाइन',
-    desc: 'राशि और लग्न अनुसार भाग्यशाली नवरत्न (पुखराज, नीलम, माणिक्य, पन्ना, मूंगा, मोती) तथा 1 से 14 मुखी रुद्राक्ष धारण विधि।',
+    title: 'रत्न एवं रुद्राक्ष गाइड — अपनी राशि अनुसार जानें भाग्यशाली रत्न',
+    desc: 'राशि और लग्न अनुसार भाग्यशाली नवरत्न (पुखराज, नीलम, माणिक्य, पन्ना, मूंगा, मोती) तथा 1 से 14 मुखी रुद्राक्ष धारण करने की प्रामाणिक विधि ➔',
     cardTitle: 'NAVRATNA & 1-14 MUKHI RUDRAKSHA',
     cardSub: 'Lucky Gemstone by Lagna & Rashi • Authentic Rudraksha Wearing Vidhi',
     shortCard: 'RATNA & RUDRAKSHA GUIDE\nNavratna & 1-14 Mukhi',
@@ -278,8 +330,8 @@ const ROUTE_DATA = {
     accent: '#f59e0b'
   },
   '/swapna-phal-shakun-shastra': {
-    title: 'स्वप्न फल एवं शकुन शास्त्र (Dream Meaning & Anga Sphuran) | पण्डित जी ऑनलाइन',
-    desc: 'स्वप्न शास्त्र के अनुसार सपनों का शुभ-अशुभ फल तथा शरीर के अंगों के फड़कने (अंग स्फुरण) का प्रामाणिक ज्योतिषीय अर्थ।',
+    title: 'स्वप्न फल एवं शकुन शास्त्र — सपनों का अर्थ व अंग फड़कने का फल',
+    desc: 'स्वप्न शास्त्र के अनुसार सपनों का शुभ-अशुभ फल तथा शरीर के अंगों (दाईं-बाईं आंख, हाथ) के फड़कने का प्रामाणिक ज्योतिषीय अर्थ — अभी जानें ➔',
     cardTitle: 'SWAPNA PHAL & SHAKUN SHASTRA',
     cardSub: 'Vedic Dream Interpretation • Auspicious Signs & Anga Sphuran Meaning',
     shortCard: 'SWAPNA & SHAKUN SHASTRA\nVedic Dream Meaning',
@@ -288,8 +340,8 @@ const ROUTE_DATA = {
     accent: '#a855f7'
   },
   '/swarodaya-vigyan': {
-    title: 'शिव स्वरोदय विज्ञान (Swarodaya Vigyan) — इड़ा, पिंगला व सुषुम्ना नाड़ी रहस्य | पण्डित जी ऑनलाइन',
-    desc: 'चन्द्र स्वर (इड़ा), सूर्य स्वर (पिंगला) और सुषुम्ना नाड़ी की पहचान कर शुभ कार्य, यात्रा व व्यापार में निश्चित कार्य सिद्धि पाएं।',
+    title: 'शिव स्वरोदय विज्ञान — इड़ा, पिंगला व सुषुम्ना नाड़ी से कार्य सिद्धि',
+    desc: 'चन्द्र स्वर (इड़ा), सूर्य स्वर (पिंगला) और सुषुम्ना नाड़ी की पहचान कर शुभ कार्य, यात्रा व व्यापार में निश्चित कार्य सिद्धि के गुप्त सूत्र — अभी पढ़ें ➔',
     cardTitle: 'SHIV SWARODAYA NADI VIGYAN',
     cardSub: 'Ida (Chandra), Pingala (Surya) & Sushumna Nadi Secrets for Success',
     shortCard: 'SHIV SWARODAYA VIGYAN\nIda, Pingala & Sushumna',
@@ -298,8 +350,8 @@ const ROUTE_DATA = {
     accent: '#38bdf8'
   },
   '/geeta-chanakya-niti': {
-    title: 'श्रीमद्भगवद्गीता के प्रमुख श्लोक एवं चाणक्य नीति सूत्र (हिंदी अर्थ सहित) | पण्डित जी ऑनलाइन',
-    desc: 'जीवन प्रबंधन, धर्म, कर्मयोग और सफलता के लिए श्रीमद्भगवद्गीता के अमर संस्कृत श्लोक और आचार्य चाणक्य की नीतियां।',
+    title: 'श्रीमद्भगवद्गीता के प्रमुख श्लोक एवं चाणक्य नीति सूत्र (अर्थ सहित)',
+    desc: 'जीवन प्रबंधन, धर्म, कर्मयोग और संकट में सही निर्णय लेने के लिए श्रीमद्भगवद्गीता के अमर श्लोक और आचार्य चाणक्य के नीति सूत्र — अभी पढ़ें ➔',
     cardTitle: 'SHRIMAD BHAGAVAD GEETA & CHANAKYA NITI',
     cardSub: 'Immortal Sanskrit Shlokas with Hindi Meaning • Life Management Sutras',
     shortCard: 'BHAGAVAD GEETA SHLOKAS\n& Chanakya Niti Sutras',
@@ -308,8 +360,8 @@ const ROUTE_DATA = {
     accent: '#f59e0b'
   },
   '/vedic-baby-names': {
-    title: 'वैदिक शिशु नामकरण (Vedic Baby Names by Rashi & Nakshatra) | पण्डित जी ऑनलाइन',
-    desc: 'नवजात शिशु (लड़के एवं लड़कियों) के लिए नक्षत्र चरण और राशि अक्षर के अनुसार अर्थपूर्ण एवं आधुनिक वैदिक नामों की सूची।',
+    title: 'वैदिक शिशु नामकरण — राशि व नक्षत्र अक्षर से बच्चों के शुभ नाम',
+    desc: 'नवजात शिशु (लड़के एवं लड़कियों) के लिए 27 नक्षत्र चरण और 12 राशि अक्षर के अनुसार अर्थपूर्ण एवं आधुनिक हिन्दू वैदिक नामों की सूची — अभी खोजें ➔',
     cardTitle: 'VEDIC BABY NAMES BY NAKSHATRA',
     cardSub: 'Meaningful Hindu Boy & Girl Names by Rashi Akshar & Nakshatra Charan',
     shortCard: 'VEDIC SHISHU NAAMKARAN\nBaby Names by Nakshatra',
@@ -318,8 +370,8 @@ const ROUTE_DATA = {
     accent: '#ec4899'
   },
   '/char-dham-tirth-darshan': {
-    title: 'चार धाम यात्रा एवं 12 ज्योतिर्लिंग तीर्थ दर्शन मार्गदर्शिका | पण्डित जी ऑनलाइन',
-    desc: 'श्री बद्रीनाथ, केदारनाथ, गंगोत्री, यमुनोत्री, काशी विश्वनाथ एवं द्वादश ज्योतिर्लिंगों का पौराणिक महत्व व दर्शन विधि।',
+    title: 'चार धाम यात्रा एवं 12 ज्योतिर्लिंग तीर्थ दर्शन मार्गदर्शिका',
+    desc: 'श्री बद्रीनाथ, केदारनाथ, गंगोत्री, यमुनोत्री एवं द्वादश ज्योतिर्लिंगों का पौराणिक महत्व, कपाट खुलने का समय व दर्शन विधि — अभी पूरी जानकारी देखें ➔',
     cardTitle: 'CHAR DHAM & 12 JYOTIRLINGA DARSHAN',
     cardSub: 'Badrinath • Kedarnath • Gangotri • Yamunotri • Dwadash Jyotirlinga',
     shortCard: 'CHAR DHAM & JYOTIRLINGA\nSacred Tirth Yatra Guide',
@@ -328,8 +380,8 @@ const ROUTE_DATA = {
     accent: '#f97316'
   },
   '/rashifal': {
-    title: 'आज का राशिफल (मेष से मीन 12 राशियां) | Daily Horoscope in Hindi | पण्डित जी ऑनलाइन',
-    desc: 'दैनिक ग्रह गोचर एवं नक्षत्र गणना पर आधारित मेष से मीन तक सभी 12 राशियों का आज का सटीक वैदिक राशिफल व उपाय।',
+    title: 'आज का राशिफल (मेष से मीन 12 राशियां) — Daily Horoscope Hindi',
+    desc: 'दैनिक ग्रह गोचर एवं चंद्र नक्षत्र गणना पर आधारित मेष से मीन तक सभी 12 राशियों का आज का सटीक वैदिक राशिफल, लकी नंबर व उपाय — अभी पढ़ें ➔',
     cardTitle: 'AAJ KA VEDIC RASHIFAL (12 RASHI)',
     cardSub: 'Mesh to Meen Daily Planetary Transit Prediction, Lucky Number & Upay',
     shortCard: 'AAJ KA VEDIC RASHIFAL\nMesh to Meen 12 Rashiyan',
@@ -338,8 +390,8 @@ const ROUTE_DATA = {
     accent: '#f59e0b'
   },
   '/jyotish-chat': {
-    title: 'निःशुल्क ज्योतिष चैट एवं वैदिक परामर्श | Free Jyotish Chat | पण्डित जी ऑनलाइन',
-    desc: 'आचार्य पण्डित शशांक शर्मा जी के मार्गदर्शन में जन्म कुंडली, विवाह, करियर व ग्रह शांति पर 24×7 निःशुल्क ज्योतिषीय परामर्श।',
+    title: 'निःशुल्क ज्योतिष चैट एवं वैदिक परामर्श — आचार्य शशांक शर्मा',
+    desc: 'आचार्य पण्डित शशांक शर्मा जी के मार्गदर्शन में अपनी जन्म कुंडली, विवाह, करियर, संतान योग व ग्रह शांति पर 24×7 वैदिक परामर्श पाएं — अभी प्रश्न पूछें ➔',
     cardTitle: '24x7 FREE VEDIC JYOTISH PARAMARSH',
     cardSub: 'Instant Kundali, Vivah, Career & Graha Shanti Guidance Chat',
     shortCard: 'FREE JYOTISH CHAT\n24x7 Vedic Consultation',
@@ -348,8 +400,8 @@ const ROUTE_DATA = {
     accent: '#fbbf24'
   },
   '/puja-services': {
-    title: 'वैदिक पूजा एवं अनुष्ठान बुकिंग (रुद्रपुर) | Online Puja Booking | पण्डित जी ऑनलाइन',
-    desc: 'रुद्रपुर (उत्तराखण्ड) में गृह प्रवेश, वास्तु शांति, सत्यनारायण कथा, रुद्राभिषेक एवं विवाह संस्कार हेतु प्रामाणिक वैदिक पूजा बुकिंग।',
+    title: 'वैदिक पूजा एवं अनुष्ठान बुकिंग (रुद्रपुर) — पण्डित शशांक शर्मा',
+    desc: 'रुद्रपुर (उत्तराखण्ड) में गृह प्रवेश, वास्तु शांति, सत्यनारायण कथा, महा रुद्राभिषेक व विवाह संस्कार हेतु प्रामाणिक वैदिक पूजा बुकिंग — अभी बुक करें ➔',
     cardTitle: 'VEDIC PUJA & ANUSHTHAN BOOKING',
     cardSub: 'Griha Pravesh • Rudrabhishek • Satyanarayan Katha • Navgrah Shanti',
     shortCard: 'VEDIC PUJA BOOKING\nAcharya Shashank Rudrapur',
@@ -358,8 +410,8 @@ const ROUTE_DATA = {
     accent: '#f97316'
   },
   '/mantra-jaap': {
-    title: '108 रुद्राक्ष डिजिटल मंत्र जप माला (Mantra Jaap Counter) | पण्डित जी ऑनलाइन',
-    desc: 'गायत्री मंत्र, महामृत्युंजय मंत्र, ॐ नमः शिवाय एवं नवग्रह मंत्रों के दैनिक 108 मनके जाप हेतु डिजिटल रुद्राक्ष माला।',
+    title: '108 रुद्राक्ष डिजिटल मंत्र जप माला — दैनिक मंत्र काउंटर व साधना',
+    desc: 'गायत्री मंत्र, महामृत्युंजय मंत्र, ॐ नमः शिवाय व नवग्रह बीज मंत्रों के दैनिक 108 मनके जाप हेतु इंटरैक्टिव डिजिटल रुद्राक्ष माला — अभी जाप शुरू करें ➔',
     cardTitle: '108 RUDRAKSHA DIGITAL JAAP MALA',
     cardSub: 'Gayatri Mantra • Mahamrityunjaya • Om Namah Shivaya • Daily Counter',
     shortCard: '108 RUDRAKSHA JAAP MALA\nDigital Mantra Counter',
@@ -368,8 +420,8 @@ const ROUTE_DATA = {
     accent: '#f59e0b'
   },
   '/vedic-videos': {
-    title: 'वैदिक ज्योतिष, मंत्र एवं धर्म ज्ञान वीडियो | Acharya Shashank Sharma | पण्डित जी ऑनलाइन',
-    desc: 'आचार्य पण्डित शशांक शर्मा द्वारा वैदिक कर्मकाण्ड, पर्व-त्योहार मुहूर्त एवं सनातन धर्म ज्ञान के प्रामाणिक वीडियो।',
+    title: 'वैदिक ज्योतिष, मंत्र एवं धर्म ज्ञान वीडियो — आचार्य शशांक शर्मा',
+    desc: 'आचार्य पण्डित शशांक शर्मा (रुद्रपुर) द्वारा वैदिक कर्मकाण्ड, पर्व-त्योहार मुहूर्त, राशिफल एवं सनातन धर्म ज्ञान के प्रामाणिक वीडियो — अभी देखें ➔',
     cardTitle: 'VEDIC JYOTISH & DHARM GYAN VIDEOS',
     cardSub: 'Authentic Mantra Path, Parva Muhurat & Remedies by Acharya Shashank',
     shortCard: 'VEDIC JYOTISH VIDEOS\nAcharya Shashank Sharma',
@@ -378,8 +430,8 @@ const ROUTE_DATA = {
     accent: '#ef4444'
   },
   '/puja/griha-pravesh': {
-    title: 'गृह प्रवेश पूजा एवं वास्तु शांति विधान (शुभ मुहूर्त 2026-27 व सामग्री) | पण्डित जी ऑनलाइन',
-    desc: 'नूतन गृह प्रवेश का शास्त्रोक्त विधान, वास्तु पुरुष पूजन, कलश स्थापना विधि एवं रुद्रपुर में वैदिक पण्डित बुकिंग।',
+    title: 'गृह प्रवेश एवं वास्तु शांति पूजा बुकिंग — विधि, सामग्री व मुहूर्त',
+    desc: 'नूतन गृह प्रवेश का शास्त्रोक्त विधान, 64-पद वास्तु पुरुष पूजन, कलश स्थापना, नवग्रह हवन एवं रुद्रपुर में वैदिक पण्डित बुकिंग — अभी विवरण देखें ➔',
     cardTitle: 'GRIHA PRAVESH & VASTU SHANTI PUJA',
     cardSub: 'Vastu Purush Pujan • Kalash Sthapana • Auspicious Muhurat & Booking',
     shortCard: 'GRIHA PRAVESH PUJA\nVastu Shanti & Muhurat',
@@ -388,8 +440,8 @@ const ROUTE_DATA = {
     accent: '#f97316'
   },
   '/puja/satyanarayan-katha': {
-    title: 'श्री सत्यनारायण व्रत कथा पूजन विधि, सामग्री एवं महत्व | पण्डित जी ऑनलाइन',
-    desc: 'स्कन्द पुराण के रेवाखण्ड अनुसार श्री सत्यनारायण भगवान की कथा के ५ अध्याय, पञ्चलोकपाल व नवग्रह पूजन विधि।',
+    title: 'श्री सत्यनारायण व्रत कथा पूजन विधि, 5 अध्याय महत्व व बुकिंग',
+    desc: 'स्कन्द पुराण के रेवाखण्ड अनुसार श्री सत्यनारायण भगवान की कथा के 5 अध्याय, पञ्चलोकपाल पूजन, सवाया प्रसाद नियम व पण्डित बुकिंग — अभी पढ़ें ➔',
     cardTitle: 'SHRI SATYANARAYAN VRAT KATHA PUJA',
     cardSub: 'Skanda Purana 5 Chapters Katha • Navgrah Pujan & Samagri Vidhi',
     shortCard: 'SATYANARAYAN VRAT KATHA\nPujan Vidhi & Samagri',
@@ -398,8 +450,8 @@ const ROUTE_DATA = {
     accent: '#fbbf24'
   },
   '/puja/rudrabhishek': {
-    title: 'महा रुद्राभिषेक पूजन विधि, शुक्ल यजुर्वेदीय रुद्राष्टाध्यायी एवं द्रव्य फल | पण्डित जी ऑनलाइन',
-    desc: 'भगवान आशुतोष शिव का शुक्ल यजुर्वेदीय रुद्राष्टाध्यायी से महा रुद्राभिषेक — गोदुग्ध, मधु, घृत व गन्ने के रस से अभिषेक के अचूक लाभ।',
+    title: 'महा रुद्राभिषेक पूजन विधि — रुद्राष्टाध्यायी पाठ व अभिषेक फल',
+    desc: 'भगवान आशुतोष शिव का शुक्ल यजुर्वेदीय रुद्राष्टाध्यायी से महा रुद्राभिषेक — गन्ने के रस, गोदुग्ध, मधु व घृत से अभिषेक के अचूक लाभ व बुकिंग ➔',
     cardTitle: 'SHUKLA YAJURVEDIYA RUDRABHISHEK',
     cardSub: 'Rudrashtadhyayi Path • Shiv Abhishek Dravya Benefits & Booking',
     shortCard: 'MAHA RUDRABHISHEK PUJA\nShukla Yajurvediya Path',
@@ -408,8 +460,8 @@ const ROUTE_DATA = {
     accent: '#f59e0b'
   },
   '/puja/mahamrityunjaya-jap': {
-    title: 'महामृत्युंजय मंत्र जाप अनुष्ठान, हवन विधि एवं अकाल मृत्यु निवारण | पण्डित जी ऑनलाइन',
-    desc: 'त्र्यम्बक महामृत्युंजय मंत्र का वैदिक पुरश्चरण विधान, गिलोय-अमृता दशांश हवन एवं असाध्य रोग निवारण।',
+    title: 'महामृत्युंजय मंत्र जाप अनुष्ठान एवं दशांश हवन — आरोग्य व रक्षा',
+    desc: 'त्र्यम्बक महामृत्युंजय मंत्र (11,000 या सवा लाख जप) का वैदिक पुरश्चरण विधान, गिलोय-अमृता दशांश हवन एवं अकाल मृत्यु/रोग निवारण — अभी जानें ➔',
     cardTitle: 'MAHAMRITYUNJAYA MANTRA JAAP & HAVAN',
     cardSub: 'Tryambakam Vedic Purashcharan • Health, Longevity & Graha Shanti',
     shortCard: 'MAHAMRITYUNJAYA JAAP\nVedic Purashcharan Havan',
@@ -418,8 +470,8 @@ const ROUTE_DATA = {
     accent: '#ef4444'
   },
   '/puja/navgrah-shanti': {
-    title: 'नवग्रह शांति एवं नक्षत्र हवन विधान (शनि, राहु-केतु व मंगल दोष निवारण) | पण्डित जी ऑनलाइन',
-    desc: 'सूर्य से केतु तक नवग्रह मंडल पूजन, ९ वैदिक समिधाओं से ग्रह शांति हवन, मूल नक्षत्र शांति एवं साढ़ेसाती निवारण अनुष्ठान।',
+    title: 'नवग्रह शांति एवं नक्षत्र हवन विधान — शनि, राहु-केतु व मंगल शांति',
+    desc: 'सूर्य से केतु तक नवग्रह मंडल पूजन, 9 वैदिक समिधाओं से ग्रह शांति हवन, गण्डमूल नक्षत्र शांति एवं साढ़ेसाती निवारण अनुष्ठान — अभी बुक करें ➔',
     cardTitle: 'NAVGRAH SHANTI & NAKSHATRA HAVAN',
     cardSub: '9 Planetary Mandala Pujan • 9 Vedic Samidha Havan • Dosh Nivaran',
     shortCard: 'NAVGRAH SHANTI HAVAN\n9 Graha Mandala Pujan',
@@ -428,8 +480,8 @@ const ROUTE_DATA = {
     accent: '#a855f7'
   },
   '/puja/kundali-paramarsh': {
-    title: 'व्यक्तिगत जन्म कुंडली परामर्श एवं ३६ गुण विवाह मिलान — आचार्य शशांक शर्मा | पण्डित जी ऑनलाइन',
-    desc: 'पराशरी, जैमिनी और नाड़ी ज्योतिष के ३-स्तरीय सूत्र से जन्म पत्रिका विश्लेषण, करियर, विवाह समय, संतान योग एवं रत्न-रुद्राक्ष परामर्श।',
+    title: 'व्यक्तिगत जन्म कुंडली परामर्श एवं 36 गुण मिलान — आचार्य शशांक शर्मा',
+    desc: 'पराशरी, जैमिनी और नाड़ी ज्योतिष के 3-स्तरीय सूत्र से जन्म पत्रिका विश्लेषण, करियर, विवाह समय, संतान योग एवं रत्न-रुद्राक्ष परामर्श — अभी बुक करें ➔',
     cardTitle: 'PERSONAL KUNDALI CONSULTATION',
     cardSub: 'Parashari, Jaimini & Nadi Jyotish Analysis by Acharya Shashank Sharma',
     shortCard: 'KUNDALI PARAMARSH\nAcharya Shashank Sharma',
@@ -438,8 +490,8 @@ const ROUTE_DATA = {
     accent: '#f59e0b'
   },
   '/rudrapur-jyotish': {
-    title: 'रुद्रपुर एवं उत्तराखण्ड ज्योतिष व वैदिक कर्मकाण्ड केंद्र — पण्डित शशांक शर्मा | पण्डित जी ऑनलाइन',
-    desc: 'रुद्रपुर (जिला ऊधम सिंह नगर), हल्द्वानी, पंतनगर, काशीपुर एवं कुमाऊँ क्षेत्र में प्रामाणिक वैदिक पूजा, कथा, अनुष्ठान एवं जन्मपत्री परामर्श।',
+    title: 'रुद्रपुर एवं उत्तराखण्ड ज्योतिष व वैदिक पूजा केंद्र — पण्डित शशांक शर्मा',
+    desc: 'रुद्रपुर (ऊधम सिंह नगर), हल्द्वानी, पंतनगर व काशीपुर में 15+ वर्ष अनुभवी आचार्य पण्डित शशांक शर्मा से जन्मपत्री परामर्श व वैदिक पूजा बुकिंग ➔',
     cardTitle: 'RUDRAPUR VEDIC JYOTISH & PUJA KENDRA',
     cardSub: 'Acharya Pandit Shashank Sharma • 15+ Yrs Experience in Kumaon & UK',
     shortCard: 'RUDRAPUR JYOTISH KENDRA\nAcharya Shashank Sharma',
@@ -448,8 +500,8 @@ const ROUTE_DATA = {
     accent: '#f97316'
   },
   '/kundali-dosh-upay': {
-    title: 'कुंडली दोष निवारण कोष — कालसर्प, पितृ दोष, गुरु चांडाल एवं ग्रहण दोष उपाय | पण्डित जी ऑनलाइन',
-    desc: 'बृहत् पराशर होरा शास्त्र के अनुसार कालसर्प योग, पितृ दोष, केमद्रुम दोष, अंगारक योग एवं विष योग के लक्षण, स्वतः भंग नियम और सात्विक उपाय।',
+    title: 'कुंडली दोष निवारण कोष — कालसर्प, पितृ दोष, गुरु चांडाल व केमद्रुम',
+    desc: 'बृहत् पाराशर होरा शास्त्र के अनुसार कालसर्प योग, पितृ दोष, गुरु चांडाल योग, ग्रहण दोष व केमद्रुम दोष के लक्षण, भंग नियम व सात्विक उपाय — अभी पढ़ें ➔',
     cardTitle: 'KUNDALI DOSH NIVARAN KOSH',
     cardSub: 'Kaalsarp • Pitra Dosh • Guru Chandal • Grahan & Kemadruma Remedies',
     shortCard: 'KUNDALI DOSH NIVARAN\nKaalsarp & Pitra Dosh Upay',
@@ -458,8 +510,8 @@ const ROUTE_DATA = {
     accent: '#ef4444'
   },
   '/mera-khata': {
-    title: 'मेरा खाता एवं सुरक्षित कुंडली रिकॉर्ड | Mera Khata | पण्डित जी ऑनलाइन',
-    desc: 'अपनी सुरक्षित जन्म कुंडली, 36 गुण मिलान रिपोर्ट, 108 मंत्र जाप माला रिकॉर्ड एवं पूजा बुकिंग विवरण देखें।',
+    title: 'मेरा खाता (Mera Khata) — सुरक्षित जन्म कुंडली एवं जप रिकॉर्ड',
+    desc: 'अपनी सुरक्षित जन्म कुंडली, 36 गुण मिलान रिपोर्ट, 108 मंत्र जाप माला रिकॉर्ड एवं पूजा बुकिंग विवरण एक ही स्थान पर देखें — अभी खोलें ➔',
     cardTitle: 'MERA KHATA & SAVED KUNDALI VAULT',
     cardSub: 'Saved Janam Kundali • 36 Gun Milan Reports • Mantra Jaap Streaks',
     shortCard: 'MERA KHATA VAULT\nSaved Kundali & Reports',
@@ -468,8 +520,8 @@ const ROUTE_DATA = {
     accent: '#f59e0b'
   },
   '/about-us': {
-    title: 'आचार्य पण्डित शशांक शर्मा — परिचय एवं वैदिक ज्योतिष संस्थान, रुद्रपुर | पण्डित जी ऑनलाइन',
-    desc: 'आचार्य पण्डित शशांक शर्मा (15+ वर्ष वैदिक कर्मकाण्ड एवं ज्योतिष अनुभव, रुद्रपुर, उत्तराखण्ड) का प्रामाणिक परिचय।',
+    title: 'हमारे बारे में — आचार्य पण्डित शशांक शर्मा, रुद्रपुर | पण्डित जी ऑनलाइन',
+    desc: 'आचार्य पण्डित शशांक शर्मा (15+ वर्ष वैदिक कर्मकाण्ड एवं ज्योतिष अनुभव, श्री ज्योतिष वैदिक संस्थान, रुद्रपुर, उत्तराखण्ड) का प्रामाणिक परिचय ➔',
     cardTitle: 'ACHARYA PANDIT SHASHANK SHARMA',
     cardSub: '15+ Years Vedic Jyotish & Karmakand Experience • Rudrapur, Uttarakhand',
     shortCard: 'ACHARYA SHASHANK SHARMA\nPandit Ji Online Rudrapur',
@@ -478,8 +530,8 @@ const ROUTE_DATA = {
     accent: '#f59e0b'
   },
   '/contact-us': {
-    title: 'संपर्क करें — आचार्य पण्डित शशांक शर्मा, रुद्रपुर (उत्तराखण्ड) | पण्डित जी ऑनलाइन',
-    desc: 'वैदिक पूजा बुकिंग, जन्मपत्री परामर्श एवं ज्योतिषीय समाधान हेतु सीधे संपर्क करें: +91 7017279043, रुद्रपुर।',
+    title: 'संपर्क करें — आचार्य पण्डित शशांक शर्मा, रुद्रपुर (+91 7017279043)',
+    desc: 'वैदिक पूजा बुकिंग, जन्मपत्री परामर्श एवं ज्योतिषीय समाधान हेतु सीधे संपर्क करें: आचार्य पण्डित शशांक शर्मा, रुद्रपुर, उत्तराखण्ड (+91 7017279043) ➔',
     cardTitle: 'CONTACT PANDIT JI ONLINE RUDRAPUR',
     cardSub: 'Direct Puja Booking & Horoscope Consultation • +91 7017279043',
     shortCard: 'CONTACT PANDIT JI ONLINE\nRudrapur +91 7017279043',
@@ -489,7 +541,7 @@ const ROUTE_DATA = {
   },
   '/privacy-policy': {
     title: 'गोपनीयता नीति (Privacy Policy) | पण्डित जी ऑनलाइन',
-    desc: 'पण्डित जी ऑनलाइन की आधिकारिक गोपनीयता नीति — जन्म विवरण, डेटा सुरक्षा एवं गूगल एडसेंस मानक।',
+    desc: 'पण्डित जी ऑनलाइन (www.panditjionline.online) की आधिकारिक गोपनीयता नीति — जन्म विवरण सुरक्षा, कुकीज़ एवं डेटा गोपनीयता मानक ➔',
     cardTitle: 'PRIVACY POLICY & DATA SECURITY',
     cardSub: '100% Confidential Birth Details & Secure Vedic Astrology Portal',
     shortCard: 'PRIVACY POLICY\nPandit Ji Online',
@@ -499,7 +551,7 @@ const ROUTE_DATA = {
   },
   '/terms-and-conditions': {
     title: 'नियम एवं शर्तें (Terms & Conditions) | पण्डित जी ऑनलाइन',
-    desc: 'पण्डित जी ऑनलाइन पोर्टल के उपयोग, वैदिक ज्योतिष गणना, पूजा बुकिंग एवं परामर्श से जुड़े नियम व शर्तें।',
+    desc: 'पण्डित जी ऑनलाइन पोर्टल के उपयोग, वैदिक ज्योतिष गणना, पंचांग एवं पूजा बुकिंग सेवाओं से जुड़े आधिकारिक नियम एवं शर्तें ➔',
     cardTitle: 'TERMS & CONDITIONS • PANDIT JI ONLINE',
     cardSub: 'Official Portal Guidelines, Puja Booking Rules & Vedic Standards',
     shortCard: 'TERMS & CONDITIONS\nPandit Ji Online',
@@ -508,8 +560,8 @@ const ROUTE_DATA = {
     accent: '#f59e0b'
   },
   '/disclaimer': {
-    title: 'अस्वीकरण (Disclaimer) — वैदिक ज्योतिष एवं आध्यात्मिक परामर्श सूचना | पण्डित जी ऑनलाइन',
-    desc: 'पण्डित जी ऑनलाइन की आधिकारिक वैदिक ज्योतिष एवं आध्यात्मिक परामर्श अस्वीकरण सूचना।',
+    title: 'अस्वीकरण (Disclaimer) — वैदिक ज्योतिष परामर्श सूचना | पण्डित जी ऑनलाइन',
+    desc: 'पण्डित जी ऑनलाइन पर प्रस्तुत वैदिक ज्योतिषीय गणनाओं, राशिफल एवं आध्यात्मिक उपायों से संबंधित आधिकारिक अस्वीकरण (Disclaimer) ➔',
     cardTitle: 'OFFICIAL ASTROLOGICAL DISCLAIMER',
     cardSub: 'Vedic Shastra Advisory & Spiritual Guidance Standards',
     shortCard: 'OFFICIAL DISCLAIMER\nPandit Ji Online',
@@ -518,8 +570,8 @@ const ROUTE_DATA = {
     accent: '#f59e0b'
   },
   '/a-naam-rashi-swabhav': {
-    title: 'A नाम की राशि क्या है? (मेष राशि) — स्वभाव, करियर, प्रेम व शुभ रत्न | पण्डित जी ऑनलाइन',
-    desc: 'जानिए A (अ, आ, ल) अक्षर से नाम वाले लोगों की वैदिक राशि (मेष - Aries), स्वामी मंगल, स्वभाव, करियर, प्रेम विवाह, भाग्यशाली मूंगा रत्न और अचूक वैदिक उपाय।',
+    title: 'A नाम की राशि क्या है? (मेष) स्वभाव, प्रेम व करियर राजयोग',
+    desc: 'A (अ, आ, ल) नाम वालों की राशि मेष (स्वामी मंगल) होती है। जानें A नाम वालों का निडर स्वभाव, लव लाइफ, सरकारी नौकरी योग व मूंगा रत्न — अभी पढ़ें ➔',
     cardTitle: 'A NAAM KI RASHI: MESH (ARIES)',
     cardSub: 'Swami Mangal • Swabhav • Career • Love Life & Lucky Moonga Ratna',
     shortCard: 'A NAAM KI RASHI (MESH)\nSwabhav, Career & Ratna',
@@ -528,8 +580,8 @@ const ROUTE_DATA = {
     accent: '#ef4444'
   },
   '/r-naam-rashi-swabhav': {
-    title: 'R नाम की राशि क्या है? (तुला राशि) — स्वभाव, करियर, विवाह व शुभ रत्न | पण्डित जी ऑनलाइन',
-    desc: 'जानिए R (र, त) अक्षर से नाम वाले लोगों की वैदिक राशि (तुला - Libra), स्वामी शुक्र, आकर्षक व्यक्तित्व, करियर, वैवाहिक जीवन, शुभ ओपल/हीरा रत्न और अचूक उपाय।',
+    title: 'R नाम की राशि क्या है? (तुला) स्वभाव, विवाह व राजयोग जानें',
+    desc: 'R (र, त) नाम वालों की राशि तुला (स्वामी शुक्र) होती है। जानें R नाम वालों का आकर्षक स्वभाव, सच्चा प्यार, 2026-27 धन योग व लकी रत्न — अभी देखें ➔',
     cardTitle: 'R NAAM KI RASHI: TULA (LIBRA)',
     cardSub: 'Swami Shukra • Swabhav • Career • Marriage & Lucky Opal Ratna',
     shortCard: 'R NAAM KI RASHI (TULA)\nSwabhav, Vivah & Ratna',
@@ -538,8 +590,8 @@ const ROUTE_DATA = {
     accent: '#ec4899'
   },
   '/m-naam-rashi-swabhav': {
-    title: 'M नाम की राशि क्या है? (सिंह राशि) — स्वभाव, राजयोग, करियर व माणिक्य रत्न | पण्डित जी ऑनलाइन',
-    desc: 'जानिए M (म, ट) अक्षर से नाम वाले लोगों की वैदिक राशि (सिंह - Leo), स्वामी सूर्य, राजसी स्वभाव, सरकारी नौकरी/व्यापार राजयोग, प्रेम जीवन और शुभ माणिक्य रत्न।',
+    title: 'M नाम की राशि क्या है? (सिंह) राजयोग, स्वभाव व माणिक्य रत्न',
+    desc: 'M (म, ट) नाम वालों की राशि सिंह (स्वामी सूर्य) होती है। जानें M नाम वालों का शाही स्वभाव, सरकारी राजयोग, प्रेम व लकी रत्न — तुरंत चेक करें ➔',
     cardTitle: 'M NAAM KI RASHI: SINGH (LEO)',
     cardSub: 'Swami Surya • Royal Nature • Rajyoga • Career & Lucky Ruby Ratna',
     shortCard: 'M NAAM KI RASHI (SINGH)\nRajyoga, Career & Manikya',
@@ -548,8 +600,8 @@ const ROUTE_DATA = {
     accent: '#f59e0b'
   },
   '/p-naam-rashi-swabhav': {
-    title: 'P नाम की राशि क्या है? (कन्या राशि) — स्वभाव, करियर, व्यापार व पन्ना रत्न | पण्डित जी ऑनलाइन',
-    desc: 'जानिए P (प, ष, ण) अक्षर से नाम वाले लोगों की वैदिक राशि (कन्या - Virgo), स्वामी बुध, तीव्र बुद्धि, व्यापार व करियर सफलता, प्रेम जीवन और शुभ पन्ना रत्न।',
+    title: 'P नाम की राशि क्या है? (कन्या) स्वभाव, धन योग व पन्ना रत्न',
+    desc: 'P (प, ष, ण) नाम वालों की राशि कन्या (स्वामी बुध) होती है। जानें P नाम वालों की तीव्र बुद्धि, व्यापार सफलता, प्रेम व पन्ना रत्न — अभी जानें ➔',
     cardTitle: 'P NAAM KI RASHI: KANYA (VIRGO)',
     cardSub: 'Swami Budh • Sharp Intellect • Business • Career & Emerald Ratna',
     shortCard: 'P NAAM KI RASHI (KANYA)\nSwabhav, Vyapar & Panna',
@@ -558,8 +610,8 @@ const ROUTE_DATA = {
     accent: '#10b981'
   },
   '/griha-pravesh-muhurat-2027': {
-    title: 'गृह प्रवेश मुहूर्त 2026-2027 — नूतन गृह प्रवेश की शुभ तिथियां, वास्तु नियम व पूजा विधि | पण्डित जी ऑनलाइन',
-    desc: 'साल 2026 और 2027 में नए घर में प्रवेश (नूतन, सपूर्व व जीर्ण गृह प्रवेश) के सभी सर्वोत्तम शुभ मुहूर्त, स्थिर लग्न सारणी, वास्तु कलश स्थापना विधि और वर्जित मास।',
+    title: 'गृह प्रवेश मुहूर्त 2026-27 — नए घर में प्रवेश की शुभ तिथियां',
+    desc: 'साल 2026 और 2027 में नूतन गृह प्रवेश की सर्वोत्तम शुभ तिथियां, स्थिर लग्न सारणी, वास्तु कलश स्थापना विधि व वर्जित मास — अभी पूरी सूची देखें ➔',
     cardTitle: 'GRIHA PRAVESH MUHURAT 2026-2027',
     cardSub: 'Auspicious Dates • Sthir Lagna Table • Vastu Kalash Sthapana Vidhi',
     shortCard: 'GRIHA PRAVESH 2026-27\nShubh Tithi & Vastu Vidhi',
@@ -568,8 +620,8 @@ const ROUTE_DATA = {
     accent: '#f97316'
   },
   '/ekadashi-vrat-list-2027': {
-    title: 'एकादशी व्रत कैलेंडर एवं पारण समय सारणी 2026-2027 (सभी 24 एकादशी तिथि) | पण्डित जी ऑनलाइन',
-    desc: 'वर्ष 2026-2027 की सभी 24 एकादशी (निर्जला, देवउठनी, देवशयनी, पुत्रदा, मोक्षदा एकादशी) की सटीक व्रत तिथि, हरि वासर नियम, द्वादशी पारण का शुभ समय एवं व्रत विधि।',
+    title: 'एकादशी व्रत कैलेंडर 2026-27 — सभी 24 एकादशी तिथि व पारण समय',
+    desc: 'वर्ष 2026-2027 की सभी 24 एकादशी (निर्जला, देवउठनी, देवशयनी, पुत्रदा) की सटीक व्रत तिथि, स्मार्त-वैष्णव नियम व द्वादशी पारण समय — अभी देखें ➔',
     cardTitle: 'EKADASHI VRAT & PARANA LIST 2026-27',
     cardSub: 'All 24 Ekadashi Dates • Smarta & Vaishnava • Hari Vasar Parana Time',
     shortCard: '24 EKADASHI CALENDAR\nVrat Tithi & Parana Time',
@@ -578,8 +630,8 @@ const ROUTE_DATA = {
     accent: '#fbbf24'
   },
   '/kaalsarp-dosh-nivaran': {
-    title: 'कालसर्प दोष क्या है? 12 प्रकार (अनंत से शेषनाग), कुंडली जांच एवं अचूक वैदिक उपाय | पण्डित जी ऑनलाइन',
-    desc: 'जानिए जन्म कुंडली में राहु-केतु से बनने वाले 12 प्रकार के कालसर्प दोष (अनंत, कुलिक, वासुकि, तक्षक, कर्कोटक, शेषनाग आदि) के लक्षण, स्वतः भंग नियम और अचूक वैदिक शांति उपाय।',
+    title: 'कालसर्प दोष कैलकुलेटर — 12 प्रकार (अनंत से शेषनाग) व उपाय',
+    desc: 'जानिए कुंडली में राहु-केतु से बनने वाले 12 प्रकार के कालसर्प दोष के लक्षण, स्वतः भंग नियम और रुद्राभिषेक शांति के अचूक उपाय — अभी जांचें ➔',
     cardTitle: 'KAALSARP DOSH CHECKER & 12 TYPES',
     cardSub: 'Anant to Sheshnag 12 Kaalsarp • Cancellation Rules & Rudrabhishek Upay',
     shortCard: 'KAALSARP DOSH NIVARAN\n12 Types & Kundali Check',
@@ -588,8 +640,8 @@ const ROUTE_DATA = {
     accent: '#a855f7'
   },
   '/sapne-me-saap-dekhna': {
-    title: 'सपने में सांप देखना (स्वप्न शास्त्र) — काले, सफेद, पीले व नाग-नागिन दिखने के 21 शुभ-अशुभ संकेत | पण्डित जी ऑनलाइन',
-    desc: 'स्वप्न शास्त्र और अग्नि पुराण के अनुसार सपने में सांप देखना, सांप का काटना, शिवलिंग पर नाग दिखना, सफेद या काला सांप दिखने के 21 गूढ़ रहस्य, धन लाभ संकेत और वैदिक उपाय।',
+    title: 'सपने में सांप देखना शुभ या अशुभ? — स्वप्न शास्त्र के 21 संकेत',
+    desc: 'स्वप्न शास्त्र के अनुसार सपने में काला, सफेद या पीला सांप देखना, सांप का काटना या शिवलिंग पर नाग दिखने के 21 शुभ-अशुभ संकेत व उपाय — अभी पढ़ें ➔',
     cardTitle: 'SAPNE ME SAAP DEKHNA (SWAPNA SHASTRA)',
     cardSub: '21 Auspicious & Warning Snake Dream Signs • Shivling Nag & Remedies',
     shortCard: 'SAPNE ME SAAP DEKHNA\n21 Swapna Shastra Signs',
@@ -598,8 +650,8 @@ const ROUTE_DATA = {
     accent: '#14b8a6'
   },
   '/aaj-ka-panchang': {
-    title: 'आज का पंचांग (Aaj Ka Panchang) — तिथि, वार, नक्षत्र, योग, करण व सूर्योदय-सूर्यास्त | पण्डित जी ऑनलाइन',
-    desc: 'आज का शुद्ध दृक गणित हिन्दू पंचांग — आज की सटीक तिथि, नक्षत्र, योग, करण, चंद्र राशि, सूर्योदय-सूर्यास्त, अभिजित मुहूर्त, राहुकाल और व्रत-त्योहार।',
+    title: 'आज का पंचांग (Aaj Ka Panchang) — आज की तिथि, नक्षत्र व मुहूर्त',
+    desc: 'लाहिड़ी चित्रापक्ष अयनांश आधारित आज का संपूर्ण हिन्दू पंचांग — आज की सटीक तिथि, पक्ष, नक्षत्र, चंद्र राशि, अभिजित मुहूर्त व राहुकाल तुरंत देखें ➔',
     cardTitle: 'AAJ KA SHUDDH DRIK PANCHANG',
     cardSub: 'Daily Tithi • Nakshatra • Yoga • Karana • Sunrise & Abhijit Muhurat',
     shortCard: 'AAJ KA PANCHANG\nTithi, Nakshatra & Muhurat',
@@ -608,8 +660,8 @@ const ROUTE_DATA = {
     accent: '#f59e0b'
   },
   '/aaj-ka-choghadiya': {
-    title: 'आज का चौघड़िया (Aaj Ka Choghadiya) — दिन और रात के शुभ चौघड़िया मुहूर्त (अमृत, शुभ, लाभ, चर) | पण्डित जी ऑनलाइन',
-    desc: 'स्थानीय सूर्योदय और सूर्यास्त पर आधारित आज का दिन और रात का चौघड़िया मुहूर्त — जानिए अमृत, शुभ, लाभ, चर, उद्वेग, काल व रोग चौघड़िया का सटीक समय।',
+    title: 'आज का चौघड़िया — दिन और रात के शुभ चौघड़िया मुहूर्त (अमृत, शुभ)',
+    desc: 'स्थानीय सूर्योदय पर आधारित आज का दिन और रात का लाइव चौघड़िया मुहूर्त — जानिए अमृत, शुभ, लाभ व चर चौघड़िया का सटीक समय — अभी देखें ➔',
     cardTitle: 'AAJ KA DIN & RAAT CHOGHADIYA',
     cardSub: 'Amrit • Shubh • Labh • Char Muhurat • Daily Live Choghadiya Table',
     shortCard: 'AAJ KA CHOGHADIYA\nAmrit, Shubh & Labh Time',
@@ -618,8 +670,8 @@ const ROUTE_DATA = {
     accent: '#10b981'
   },
   '/aaj-ka-rahukaal': {
-    title: 'आज का राहुकाल (Aaj Ka Rahukaal) — राहुकाल, यमगण्ड, गुलिक काल व अभिजित मुहूर्त समय | पण्डित जी ऑनलाइन',
-    desc: 'जानिए आज का सटीक राहुकाल समय, यमगण्ड काल, गुलिक काल और दुर्मुहूर्त का समय तथा राहुकाल में यात्रा व आवश्यक कार्य करने के शास्त्रीय नियम और उपाय।',
+    title: 'आज का राहुकाल समय — राहुकाल, यमगण्ड व अभिजित मुहूर्त सारणी',
+    desc: 'जानिए आज का सटीक राहुकाल समय, यमगण्ड काल, गुलिक काल और अभिजित मुहूर्त तथा राहुकाल में आवश्यक कार्य करने के शास्त्रीय उपाय — अभी देखें ➔',
     cardTitle: 'AAJ KA RAHUKAAL & YAMAGANDAM',
     cardSub: 'Daily Rahu Kaal Time • Gulika Kaal • Abhijit Muhurat & Vedic Remedies',
     shortCard: 'AAJ KA RAHUKAAL\nTime & Shastrokta Rules',
@@ -628,8 +680,8 @@ const ROUTE_DATA = {
     accent: '#f43f5e'
   },
   '/naam-rashi': {
-    title: 'नाम से राशि जानें (Naam Rashi Calculator A to Z) — अक्षर से वैदिक राशि, नक्षत्र, स्वामी ग्रह व शुभ रत्न | पण्डित जी ऑनलाइन',
-    desc: 'अपने हिंदी या अंग्रेजी नाम के पहले अक्षर (A से Z) से जानिए अपनी सटीक वैदिक चंद्र राशि, नक्षत्र चरण, राशि स्वामी, स्वभाव, करियर, लकी नंबर और भाग्यशाली रत्न।',
+    title: 'नाम से राशि जानें (A to Z Calculator) — अक्षर से अपनी राशि देखें',
+    desc: 'अपने हिंदी या अंग्रेजी नाम के पहले अक्षर (A से Z) से जानें अपनी सटीक वैदिक चंद्र राशि, नक्षत्र, स्वामी ग्रह, स्वभाव व शुभ रत्न — अभी निःशुल्क जांचें ➔',
     cardTitle: 'NAAM RASHI CALCULATOR (A TO Z)',
     cardSub: 'Find Vedic Rashi by Name • 27 Nakshatra Pada • Lucky Ratna & Number',
     shortCard: 'NAAM RASHI CALCULATOR\nRashi, Nakshatra & Ratna',
@@ -638,8 +690,8 @@ const ROUTE_DATA = {
     accent: '#a855f7'
   },
   '/mesh-rashifal': {
-    title: 'मेष राशिफल (Mesh Rashifal - Aries) — आज का मेष राशिफल, स्वभाव, करियर, प्रेम व मूंगा रत्न | पण्डित जी ऑनलाइन',
-    desc: 'मेष राशि (चू, चे, चो, ला, ली, लू, ले, लो, अ) का आज का वैदिक राशिफल, स्वामी मंगल का गोचर फल, व्यक्तित्व, करियर, विवाह सामंजस्य, शुभ मूंगा रत्न और अचूक उपाय।',
+    title: 'मेष राशिफल आज का (Mesh Rashifal) — स्वभाव, करियर व मूंगा रत्न',
+    desc: 'मेष राशि (चू, चे, चो, ला, ली, लू, ले, लो, अ) का आज का वैदिक राशिफल, स्वामी मंगल का गोचर फल, करियर, विवाह व शुभ मूंगा रत्न — अभी देखें ➔',
     cardTitle: 'MESH RASHIFAL (ARIES HOROSCOPE)',
     cardSub: 'Swami Mangal • Daily Gochar • Career, Love & Red Coral (Moonga) Upay',
     shortCard: 'MESH RASHIFAL (ARIES)\nDaily Horoscope & Upay',
@@ -648,8 +700,8 @@ const ROUTE_DATA = {
     accent: '#ef4444'
   },
   '/vrishabh-rashifal': {
-    title: 'वृषभ राशिफल (Vrishabh Rashifal - Taurus) — आज का वृषभ राशिफल, स्वभाव, करियर व हीरा/ओपल रत्न | पण्डित जी ऑनलाइन',
-    desc: 'वृषभ राशि (ई, ऊ, ए, ओ, वा, वी, वू, वे, वो) का आज का वैदिक राशिफल, स्वामी शुक्र का गोचर प्रभाव, स्वभाव, धन-संपत्ति, दांपत्य जीवन, शुभ रत्न और वैदिक उपाय।',
+    title: 'वृषभ राशिफल आज का (Vrishabh Rashifal) — धन, करियर व शुभ रत्न',
+    desc: 'वृषभ राशि (ई, ऊ, ए, ओ, वा, वी, वू, वे, वो) का आज का वैदिक राशिफल, स्वामी शुक्र का गोचर प्रभाव, धन योग, परिवार व ओपल रत्न — अभी पढ़ें ➔',
     cardTitle: 'VRISHABH RASHIFAL (TAURUS)',
     cardSub: 'Swami Shukra • Daily Gochar • Wealth, Family & Diamond/Opal Ratna',
     shortCard: 'VRISHABH RASHIFAL\nDaily Horoscope & Upay',
@@ -658,8 +710,8 @@ const ROUTE_DATA = {
     accent: '#ec4899'
   },
   '/mithun-rashifal': {
-    title: 'मिथुन राशिफल (Mithun Rashifal - Gemini) — आज का मिथुन राशिफल, स्वभाव, व्यापार व पन्ना रत्न | पण्डित जी ऑनलाइन',
-    desc: 'मिथुन राशि (का, की, कू, घ, ङ, छ, के, को, ह) का आज का वैदिक राशिफल, स्वामी बुध का गोचर फल, बौद्धिक क्षमता, व्यापार, करियर, शुभ पन्ना रत्न और गणपति उपाय।',
+    title: 'मिथुन राशिफल आज का (Mithun Rashifal) — व्यापार, करियर व पन्ना',
+    desc: 'मिथुन राशि (का, की, कू, घ, ङ, छ, के, को, ह) का आज का वैदिक राशिफल, स्वामी बुध का गोचर फल, व्यापार सफलता व शुभ पन्ना रत्न — अभी देखें ➔',
     cardTitle: 'MITHUN RASHIFAL (GEMINI)',
     cardSub: 'Swami Budh • Daily Gochar • Business, Intellect & Emerald (Panna)',
     shortCard: 'MITHUN RASHIFAL\nDaily Horoscope & Upay',
@@ -668,8 +720,8 @@ const ROUTE_DATA = {
     accent: '#10b981'
   },
   '/kark-rashifal': {
-    title: 'कर्क राशिफल (Kark Rashifal - Cancer) — आज का कर्क राशिफल, स्वभाव, परिवार व मोती रत्न | पण्डित जी ऑनलाइन',
-    desc: 'कर्क राशि (ही, हू, हे, हो, डा, डी, डू, डे, डो) का आज का वैदिक राशिफल, स्वामी चंद्रमा का गोचर फल, भावुक स्वभाव, पारिवारिक सुख, शुभ मोती रत्न और शिव आराधना उपाय।',
+    title: 'कर्क राशिफल आज का (Kark Rashifal) — परिवार, धन व मोती रत्न',
+    desc: 'कर्क राशि (ही, हू, हे, हो, डा, डी, डू, डे, डो) का आज का वैदिक राशिफल, स्वामी चंद्रमा का गोचर फल, पारिवारिक सुख व शुभ मोती रत्न — अभी पढ़ें ➔',
     cardTitle: 'KARK RASHIFAL (CANCER HOROSCOPE)',
     cardSub: 'Swami Chandra • Daily Gochar • Family, Peace & Natural Pearl (Moti)',
     shortCard: 'KARK RASHIFAL (CANCER)\nDaily Horoscope & Upay',
@@ -678,8 +730,8 @@ const ROUTE_DATA = {
     accent: '#38bdf8'
   },
   '/simha-rashifal': {
-    title: 'सिंह राशिफल (Simha Rashifal - Leo) — आज का सिंह राशिफल, राजयोग, करियर व माणिक्य रत्न | पण्डित जी ऑनलाइन',
-    desc: 'सिंह राशि (मा, मी, मू, मे, मो, टा, टी, टू, टे) का आज का वैदिक राशिफल, स्वामी सूर्य देव का गोचर फल, नेतृत्व क्षमता, सरकारी नौकरी योग, माणिक्य रत्न और सूर्य अर्घ्य उपाय।',
+    title: 'सिंह राशिफल आज का (Simha Rashifal) — राजयोग, करियर व माणिक्य',
+    desc: 'सिंह राशि (मा, मी, मू, मे, मो, टा, टी, टू, टे) का आज का वैदिक राशिफल, स्वामी सूर्य देव का गोचर फल, सरकारी नौकरी योग व माणिक्य रत्न — अभी देखें ➔',
     cardTitle: 'SIMHA RASHIFAL (LEO HOROSCOPE)',
     cardSub: 'Swami Surya • Daily Gochar • Leadership, Rajyoga & Ruby (Manikya)',
     shortCard: 'SIMHA RASHIFAL (LEO)\nDaily Horoscope & Upay',
@@ -688,8 +740,8 @@ const ROUTE_DATA = {
     accent: '#f59e0b'
   },
   '/kanya-rashifal': {
-    title: 'कन्या राशिफल (Kanya Rashifal - Virgo) — आज का कन्या राशिफल, स्वभाव, करियर व पन्ना रत्न | पण्डित जी ऑनलाइन',
-    desc: 'कन्या राशि (टो, पा, पी, पू, ष, ण, ठ, पे, पो) का आज का वैदिक राशिफल, उच्च के बुध का गोचर फल, विश्लेषणात्मक बुद्धि, व्यापार, स्वास्थ्य, पन्ना रत्न और वैदिक उपाय।',
+    title: 'कन्या राशिफल आज का (Kanya Rashifal) — करियर, व्यापार व पन्ना',
+    desc: 'कन्या राशि (टो, पा, पी, पू, ष, ण, ठ, पे, पो) का आज का वैदिक राशिफल, उच्च के बुध का गोचर फल, व्यापार वृद्धि, स्वास्थ्य व पन्ना रत्न — अभी पढ़ें ➔',
     cardTitle: 'KANYA RASHIFAL (VIRGO HOROSCOPE)',
     cardSub: 'Swami Budh • Daily Gochar • Finance, Career & Emerald (Panna) Upay',
     shortCard: 'KANYA RASHIFAL (VIRGO)\nDaily Horoscope & Upay',
@@ -698,8 +750,8 @@ const ROUTE_DATA = {
     accent: '#10b981'
   },
   '/tula-rashifal': {
-    title: 'तुला राशिफल (Tula Rashifal - Libra) — आज का तुला राशिफल, स्वभाव, दांपत्य व हीरा/ओपल रत्न | पण्डित जी ऑनलाइन',
-    desc: 'तुला राशि (रा, री, रू, रे, रो, ता, ती, तू, ते) का आज का वैदिक राशिफल, स्वामी शुक्र का गोचर फल, न्यायप्रिय स्वभाव, व्यापारिक साझेदारी, ऐश्वर्य, ओपल रत्न और लक्ष्मी उपाय।',
+    title: 'तुला राशिफल आज का (Tula Rashifal) — धन, दांपत्य व ओपल रत्न',
+    desc: 'तुला राशि (रा, री, रू, रे, रो, ता, ती, तू, ते) का आज का वैदिक राशिफल, स्वामी शुक्र का गोचर फल, व्यापार, दांपत्य सुख व ओपल/हीरा रत्न — अभी देखें ➔',
     cardTitle: 'TULA RASHIFAL (LIBRA HOROSCOPE)',
     cardSub: 'Swami Shukra • Daily Gochar • Harmony, Business & Opal/Diamond Upay',
     shortCard: 'TULA RASHIFAL (LIBRA)\nDaily Horoscope & Upay',
@@ -708,8 +760,8 @@ const ROUTE_DATA = {
     accent: '#ec4899'
   },
   '/vrishchik-rashifal': {
-    title: 'वृश्चिक राशिफल (Vrishchik Rashifal - Scorpio) — आज का वृश्चिक राशिफल, स्वभाव, करियर व मूंगा रत्न | पण्डित जी ऑनलाइन',
-    desc: 'वृश्चिक राशि (तो, ना, नी, नू, ने, नो, या, यी, यू) का आज का वैदिक राशिफल, स्वामी मंगल का गोचर फल, दृढ़ संकल्प, शोध व प्रशासन योग, मूंगा रत्न और हनुमान जी के उपाय।',
+    title: 'वृश्चिक राशिफल आज का (Vrishchik Rashifal) — करियर व मूंगा रत्न',
+    desc: 'वृश्चिक राशि (तो, ना, नी, नू, ने, नो, या, यी, यू) का आज का वैदिक राशिफल, स्वामी मंगल का गोचर फल, करियर सफलता, मूंगा रत्न व उपाय — अभी पढ़ें ➔',
     cardTitle: 'VRISHCHIK RASHIFAL (SCORPIO)',
     cardSub: 'Swami Mangal • Daily Gochar • Determination, Career & Moonga Ratna',
     shortCard: 'VRISHCHIK RASHIFAL\nDaily Horoscope & Upay',
@@ -718,8 +770,8 @@ const ROUTE_DATA = {
     accent: '#dc2626'
   },
   '/dhanu-rashifal': {
-    title: 'धनु राशिफल (Dhanu Rashifal - Sagittarius) — आज का धनु राशिफल, धर्म, करियर व पुखराज रत्न | पण्डित जी ऑनलाइन',
-    desc: 'धनु राशि (ये, यो, भा, भी, भू, धा, फा, ढा, भे) का आज का वैदिक राशिफल, देवगुरु बृहस्पति का गोचर फल, आध्यात्मिक तेज, उच्च शिक्षा, पुखराज रत्न और विष्णु सहस्रनाम उपाय।',
+    title: 'धनु राशिफल आज का (Dhanu Rashifal) — भाग्य, करियर व पुखराज रत्न',
+    desc: 'धनु राशि (ये, यो, भा, भी, भू, धा, फा, ढा, भे) का आज का वैदिक राशिफल, देवगुरु बृहस्पति का गोचर फल, उच्च पद योग व पुखराज रत्न — अभी देखें ➔',
     cardTitle: 'DHANU RASHIFAL (SAGITTARIUS)',
     cardSub: 'Swami Guru Brihaspati • Daily Gochar • Wisdom, Fortune & Pukhraj',
     shortCard: 'DHANU RASHIFAL\nDaily Horoscope & Upay',
@@ -728,8 +780,8 @@ const ROUTE_DATA = {
     accent: '#eab308'
   },
   '/makar-rashifal': {
-    title: 'मकर राशिफल (Makar Rashifal - Capricorn) — आज का मकर राशिफल, कर्मयोग, करियर व नीलम रत्न | पण्डित जी ऑनलाइन',
-    desc: 'मकर राशि (भो, जा, जी, खी, खू, खे, खो, गा, गी) का आज का वैदिक राशिफल, कर्मफलदाता शनि देव का गोचर फल, अनुशासन, उद्योग व प्रशासन योग, नीलम रत्न और शनि शांति उपाय।',
+    title: 'मकर राशिफल आज का (Makar Rashifal) — कर्मयोग, धन व नीलम रत्न',
+    desc: 'मकर राशि (भो, जा, जी, खी, खू, खे, खो, गा, गी) का आज का वैदिक राशिफल, स्वामी शनि देव का गोचर फल, करियर उन्नति व शुभ नीलम रत्न — अभी पढ़ें ➔',
     cardTitle: 'MAKAR RASHIFAL (CAPRICORN)',
     cardSub: 'Swami Shani Dev • Daily Gochar • Hard Work, Success & Blue Sapphire',
     shortCard: 'MAKAR RASHIFAL\nDaily Horoscope & Upay',
@@ -738,8 +790,8 @@ const ROUTE_DATA = {
     accent: '#6366f1'
   },
   '/kumbh-rashifal': {
-    title: 'कुम्भ राशिफल (Kumbh Rashifal - Aquarius) — आज का कुम्भ राशिफल, साढ़ेसाती फल, करियर व नीलम रत्न | पण्डित जी ऑनलाइन',
-    desc: 'कुम्भ राशि (गू, गे, गो, सा, सी, सू, से, सो, दा) का आज का वैदिक राशिफल, मूलत्रिकोण स्वामी शनि का गोचर फल, नवाचार, समाज सेवा, साढ़ेसाती उपाय और शुभ नीलम रत्न।',
+    title: 'कुम्भ राशिफल आज का (Kumbh Rashifal) — साढ़ेसाती फल, धन व नीलम',
+    desc: 'कुम्भ राशि (गू, गे, गो, सा, सी, सू, से, सो, दा) का आज का वैदिक राशिफल, स्वामी शनि का गोचर फल, करियर राजयोग, साढ़ेसाती उपाय व नीलम रत्न — अभी देखें ➔',
     cardTitle: 'KUMBH RASHIFAL (AQUARIUS)',
     cardSub: 'Swami Shani Dev • Daily Gochar • Innovation, Sadesati & Neelam Upay',
     shortCard: 'KUMBH RASHIFAL\nDaily Horoscope & Upay',
@@ -748,8 +800,8 @@ const ROUTE_DATA = {
     accent: '#818cf8'
   },
   '/meen-rashifal': {
-    title: 'मीन राशिफल (Meen Rashifal - Pisces) — आज का मीन राशिफल, आध्यात्मिक योग, करियर व पुखराज रत्न | पण्डित जी ऑनलाइन',
-    desc: 'मीन राशि (दी, दू, थ, झ, ञ, दे, दो, चा, ची) का आज का वैदिक राशिफल, देवगुरु बृहस्पति का गोचर फल, सात्विक स्वभाव, शिक्षा, विदेश योग, पुखराज रत्न और वैदिक उपाय।',
+    title: 'मीन राशिफल आज का (Meen Rashifal) — भाग्य, करियर व पुखराज रत्न',
+    desc: 'मीन राशि (दी, दू, थ, झ, ञ, दे, दो, चा, ची) का आज का वैदिक राशिफल, देवगुरु बृहस्पति का गोचर फल, करियर, विदेश योग व पुखराज रत्न — अभी पढ़ें ➔',
     cardTitle: 'MEEN RASHIFAL (PISCES HOROSCOPE)',
     cardSub: 'Swami Guru Brihaspati • Daily Gochar • Spirituality & Yellow Sapphire',
     shortCard: 'MEEN RASHIFAL (PISCES)\nDaily Horoscope & Upay',
@@ -1649,6 +1701,300 @@ function isBrandedSocialAssetRequest(pathname, url, ua) {
   return false;
 }
 
+function getEdgeIstDateInfo() {
+  const nowUtc = new Date();
+  const istTime = new Date(nowUtc.getTime() + 5.5 * 60 * 60 * 1000);
+  const y = istTime.getUTCFullYear();
+  const m = String(istTime.getUTCMonth() + 1).padStart(2, '0');
+  const d = String(istTime.getUTCDate()).padStart(2, '0');
+  const todayStr = `${y}-${m}-${d}`;
+  return {
+    todayStr,
+    datePublishedIso: `${todayStr}T05:30:00+05:30`,
+    dateModifiedIso: nowUtc.toISOString()
+  };
+}
+
+function buildEdgeAuthorBox() {
+  return `<div style="margin-top:20px;padding:15px;background:rgba(30,41,59,0.75);border:1px solid rgba(245,158,11,0.42);border-radius:14px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;">
+    <div style="width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#f59e0b,#d97706);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">🕉️</div>
+    <div style="flex:1;min-width:220px;">
+      <div style="font-size:11px;font-weight:700;color:#fbbf24;text-transform:uppercase;letter-spacing:0.8px;">प्रकाशक एवं मुख्य ज्योतिषाचार्य (E-E-A-T Verified Publisher)</div>
+      <div style="font-size:15px;font-weight:800;color:#fef3c7;margin-top:2px;">आचार्य पण्डित शशांक शर्मा (Acharya Pandit Shashank Sharma)</div>
+      <div style="font-size:12px;color:#cbd5e1;margin-top:2px;">श्री ज्योतिष वैदिक संस्थान • १५+ वर्ष प्रामाणिक वैदिक कर्मकाण्ड एवं ज्योतिष अनुभव</div>
+      <div style="font-size:11px;color:#94a3b8;margin-top:4px;">📍 रुद्रपुर, जिला ऊधम सिंह नगर, उत्तराखण्ड - 263153, भारत | 📞 +91 7017279043 | ✉️ shashanksharma0456@gmail.com</div>
+    </div>
+  </div>`;
+}
+
+function buildEdgeRouteArticleHtml(canonicalPath, info, seoEntry) {
+  const rawTitle = (seoEntry && seoEntry.title) || info.title || '';
+  const rawH1 = (seoEntry && seoEntry.h1) || String(rawTitle).split('|')[0].trim() || rawTitle;
+  const rawDesc = (seoEntry && seoEntry.description) || info.desc || '';
+  const cleanTitle = xmlEscape(rawH1);
+  const cleanDesc = xmlEscape(rawDesc);
+  const badge = xmlEscape(info.badge || 'VEDIC JYOTISH SANSTHAN • RUDRAPUR');
+  const slug = canonicalPath.replace(/^\/+/, '').replace(/\//g, '-').toLowerCase() || 'home';
+  const discoverHeroImg = `${SITE_ORIGIN}/og-card/${slug}-discover-${VERSION_TAG}.jpg`;
+  const { todayStr, datePublishedIso } = getEdgeIstDateInfo();
+  const faqList = seoEntry && Array.isArray(seoEntry.faq) ? seoEntry.faq : [];
+
+  const faqHtmlSection =
+    faqList.length > 0
+      ? `<section style="margin-bottom:16px;background:rgba(30,41,59,0.65);border:1px solid rgba(245,158,11,0.38);border-radius:14px;padding:16px;">
+      <h2 style="font-size:16px;font-weight:800;color:#fde047;margin:0 0 12px 0;">४. अक्सर पूछे जाने वाले प्रश्न (FAQs — ${cleanTitle})</h2>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        ${faqList
+          .map(
+            (item) => `<div style="border-bottom:1px solid rgba(245,158,11,0.2);padding-bottom:10px;">
+          <h3 style="font-size:14px;font-weight:800;color:#fef3c7;margin:0 0 4px 0;">प्रश्न: ${xmlEscape(item.q)}</h3>
+          <p style="font-size:13px;color:#e2e8f0;margin:0;"><strong>उत्तर:</strong> ${xmlEscape(item.a)}</p>
+        </div>`
+          )
+          .join('')}
+      </div>
+    </section>`
+      : '';
+
+  if (canonicalPath === '/privacy-policy') {
+    return `<article id="pj-route-static-article" style="background:rgba(15,23,42,0.95);border:1px solid rgba(245,158,11,0.45);border-radius:18px;padding:22px;margin-bottom:16px;color:#f1f5f9;line-height:1.75;font-family:system-ui,-apple-system,sans-serif;">
+      <nav style="font-size:12px;color:#fbbf24;margin-bottom:12px;"><a href="/" style="color:#fbbf24;text-decoration:none;font-weight:600;">← मुख्य पृष्ठ (Home)</a> / <span>गोपनीयता नीति (Privacy Policy)</span></nav>
+      <header style="border-bottom:1px solid rgba(245,158,11,0.3);padding-bottom:14px;margin-bottom:18px;">
+        <span style="font-size:11px;font-weight:800;color:#34d399;text-transform:uppercase;letter-spacing:1px;background:rgba(16,185,129,0.15);padding:3px 10px;border-radius:20px;border:1px solid rgba(16,185,129,0.3);">कानूनी एवं सुरक्षा मानक • 100% Google AdSense Compliant</span>
+        <h1 style="font-size:22px;font-weight:900;color:#fef3c7;margin:10px 0 6px 0;">गोपनीयता नीति (Privacy Policy) — पण्डित जी ऑनलाइन</h1>
+        <p style="font-size:13px;color:#cbd5e1;margin:0;">प्रकाशक: आचार्य पण्डित शशांक शर्मा, श्री ज्योतिष वैदिक संस्थान, रुद्रपुर (उत्तराखण्ड) • Publisher ID: ca-pub-9661029896137686</p>
+      </header>
+      <section style="margin-bottom:18px;">
+        <h2 style="font-size:16px;font-weight:800;color:#fde047;margin:0 0 8px 0;">१. प्रस्तावना एवं डेटा गोपनीयता (Introduction &amp; Data Privacy)</h2>
+        <p style="font-size:13px;color:#e2e8f0;margin:0 0 8px 0;">यह गोपनीयता नीति <strong>www.panditjionline.online</strong> ("पण्डित जी ऑनलाइन") पर लागू होती है। यजमानों द्वारा दर्ज जन्म तिथि, जन्म समय, जन्म स्थान एवं नाम केवल वैदिक लग्न कुंडली, नवमांश (D-9), ३६ गुण मिलान और विंशोत्तरी महादशा की गणितीय गणना हेतु उपयोग किए जाते हैं।</p>
+        <p style="font-size:13px;color:#cbd5e1;margin:0;">हम किसी भी परिस्थिति में यजमानों का व्यक्तिगत डेटा किसी तृतीय-पक्ष मार्केटिंग एजेंसी या डेटा ब्रोकर को नहीं बेचते हैं।</p>
+      </section>
+      <section style="margin-bottom:18px;background:rgba(40,24,10,0.55);border:1px solid rgba(245,158,11,0.5);border-radius:14px;padding:16px;">
+        <h2 style="font-size:16px;font-weight:800;color:#fde047;margin:0 0 8px 0;">२. Google AdSense एवं DoubleClick DART Cookie नीति</h2>
+        <p style="font-size:13px;color:#fef3c7;margin:0 0 8px 0;">हमारी वेबसाइट पर निःशुल्क वैदिक सेवाएं संचालित रखने हेतु <strong>Google AdSense (ca-pub-9661029896137686)</strong> का उपयोग किया जाता है:</p>
+        <ul style="font-size:13px;color:#e2e8f0;padding-left:18px;margin:0;display:flex;flex-direction:column;gap:6px;">
+          <li><strong>तृतीय-पक्ष वेंडर के रूप में Google:</strong> Google हमारी वेबसाइट पर विज्ञापन प्रदर्शित करने के लिए कुकीज़ (DART Cookies) का उपयोग करता है।</li>
+          <li><strong>DoubleClick DART Cookie:</strong> DART कुकी के माध्यम से Google उपयोगकर्ताओं को हमारी वेबसाइट और इंटरनेट पर अन्य साइटों के पूर्व विज़िट के आधार पर प्रासंगिक विज्ञापन दिखाता है।</li>
+          <li><strong>Opt-Out विकल्प:</strong> उपयोगकर्ता किसी भी समय <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" style="color:#fbbf24;text-decoration:underline;">Google Ad Settings</a> अथवा <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" style="color:#fbbf24;text-decoration:underline;">www.aboutads.info</a> पर जाकर पर्सनलाइज्ड विज्ञापनों से Opt-Out कर सकते हैं।</li>
+        </ul>
+      </section>
+      <section style="margin-bottom:14px;">
+        <h2 style="font-size:16px;font-weight:800;color:#fde047;margin:0 0 8px 0;">३. शिकायत निवारण एवं संपर्क अधिकारी (Grievance Redressal)</h2>
+        <p style="font-size:13px;color:#e2e8f0;margin:0;">आचार्य पण्डित शशांक शर्मा, श्री ज्योतिष वैदिक संस्थान, रुद्रपुर, जिला ऊधम सिंह नगर, उत्तराखण्ड - 263153, भारत | दूरभाष: +91 7017279043 | ईमेल: shashanksharma0456@gmail.com</p>
+      </section>
+      ${faqHtmlSection}
+      ${buildEdgeAuthorBox()}
+    </article>`;
+  }
+
+  if (canonicalPath === '/terms-and-conditions') {
+    return `<article id="pj-route-static-article" style="background:rgba(15,23,42,0.95);border:1px solid rgba(245,158,11,0.45);border-radius:18px;padding:22px;margin-bottom:16px;color:#f1f5f9;line-height:1.75;font-family:system-ui,-apple-system,sans-serif;">
+      <nav style="font-size:12px;color:#fbbf24;margin-bottom:12px;"><a href="/" style="color:#fbbf24;text-decoration:none;font-weight:600;">← मुख्य पृष्ठ (Home)</a> / <span>नियम एवं शर्तें (Terms &amp; Conditions)</span></nav>
+      <header style="border-bottom:1px solid rgba(245,158,11,0.3);padding-bottom:14px;margin-bottom:18px;">
+        <span style="font-size:11px;font-weight:800;color:#38bdf8;text-transform:uppercase;letter-spacing:1px;background:rgba(56,189,248,0.15);padding:3px 10px;border-radius:20px;border:1px solid rgba(56,189,248,0.3);">उपयोग की विधिक शर्तें • Terms of Service</span>
+        <h1 style="font-size:22px;font-weight:900;color:#fef3c7;margin:10px 0 6px 0;">नियम एवं शर्तें (Terms &amp; Conditions) — पण्डित जी ऑनलाइन</h1>
+        <p style="font-size:13px;color:#cbd5e1;margin:0;">श्री ज्योतिष वैदिक संस्थान, रुद्रपुर (उत्तराखण्ड) द्वारा संचालित वैदिक ज्योतिष मंच के उपयोग की शर्तें</p>
+      </header>
+      <section style="margin-bottom:16px;">
+        <h2 style="font-size:16px;font-weight:800;color:#fde047;margin:0 0 6px 0;">१. सेवा की प्रकृति एवं शास्त्रीय आधार</h2>
+        <p style="font-size:13px;color:#e2e8f0;margin:0;">पण्डित जी ऑनलाइन पर उपलब्ध समस्त ज्योतिषीय गणनाएं (जन्म कुंडली, ३६ गुण मिलान, दृक पंचांग, राशिफल एवं मुहूर्त) बृहत् पाराशर होरा शास्त्र, सूर्य सिद्धांत और लाहिड़ी चित्रापक्ष अयनांश के गणितीय सिद्धांतों पर आधारित आध्यात्मिक मार्गदर्शन हेतु हैं।</p>
+      </section>
+      <section style="margin-bottom:16px;">
+        <h2 style="font-size:16px;font-weight:800;color:#fde047;margin:0 0 6px 0;">२. बौद्धिक संपदा एवं विधिक क्षेत्राधिकार</h2>
+        <p style="font-size:13px;color:#e2e8f0;margin:0;">इस मंच पर प्रकाशित सभी लेख, पंचांग एल्गोरिदम और वैदिक शोध सामग्री श्री ज्योतिष वैदिक संस्थान एवं आचार्य पण्डित शशांक शर्मा की बौद्धिक संपदा हैं। किसी भी विवाद का अनन्य विधिक क्षेत्राधिकार रुद्रपुर (जिला ऊधम सिंह नगर, उत्तराखण्ड) के अधीन होगा।</p>
+      </section>
+      ${faqHtmlSection}
+      ${buildEdgeAuthorBox()}
+    </article>`;
+  }
+
+  if (canonicalPath === '/disclaimer') {
+    return `<article id="pj-route-static-article" style="background:rgba(15,23,42,0.95);border:1px solid rgba(245,158,11,0.45);border-radius:18px;padding:22px;margin-bottom:16px;color:#f1f5f9;line-height:1.75;font-family:system-ui,-apple-system,sans-serif;">
+      <nav style="font-size:12px;color:#fbbf24;margin-bottom:12px;"><a href="/" style="color:#fbbf24;text-decoration:none;font-weight:600;">← मुख्य पृष्ठ (Home)</a> / <span>अस्वीकरण (Disclaimer)</span></nav>
+      <header style="border-bottom:1px solid rgba(245,158,11,0.3);padding-bottom:14px;margin-bottom:18px;">
+        <span style="font-size:11px;font-weight:800;color:#fb7185;text-transform:uppercase;letter-spacing:1px;background:rgba(244,63,94,0.15);padding:3px 10px;border-radius:20px;border:1px solid rgba(244,63,94,0.3);">ज्योतिषीय एवं विधिक अस्वीकरण • Official Disclaimer</span>
+        <h1 style="font-size:22px;font-weight:900;color:#fef3c7;margin:10px 0 6px 0;">ज्योतिषीय अस्वीकरण (Disclaimer) — पण्डित जी ऑनलाइन</h1>
+      </header>
+      <section style="margin-bottom:16px;">
+        <h2 style="font-size:16px;font-weight:800;color:#fde047;margin:0 0 6px 0;">१. आध्यात्मिक एवं सांस्कृतिक मार्गदर्शन</h2>
+        <p style="font-size:13px;color:#e2e8f0;margin:0;">पण्डित जी ऑनलाइन पर प्रस्तुत जन्म कुंडली विश्लेषण, राशिफल, गुण मिलान एवं सात्विक वैदिक उपाय भारतीय सनातन ज्योतिष शास्त्र की मान्यताओं पर आधारित हैं। इन्हें किसी चिकित्सक (Doctor), वकील (Advocate) या वित्तीय सलाहकार की पेशेवर सलाह का विकल्प न माना जाए।</p>
+      </section>
+      ${faqHtmlSection}
+      ${buildEdgeAuthorBox()}
+    </article>`;
+  }
+
+  if (canonicalPath === '/about-us' || canonicalPath === '/contact-us') {
+    return `<article id="pj-route-static-article" style="background:rgba(15,23,42,0.95);border:1px solid rgba(245,158,11,0.45);border-radius:18px;padding:22px;margin-bottom:16px;color:#f1f5f9;line-height:1.75;font-family:system-ui,-apple-system,sans-serif;">
+      <nav style="font-size:12px;color:#fbbf24;margin-bottom:12px;"><a href="/" style="color:#fbbf24;text-decoration:none;font-weight:600;">← मुख्य पृष्ठ (Home)</a> / <span>${cleanTitle}</span></nav>
+      <header style="border-bottom:1px solid rgba(245,158,11,0.3);padding-bottom:14px;margin-bottom:18px;">
+        <span style="font-size:11px;font-weight:800;color:#f59e0b;text-transform:uppercase;letter-spacing:1px;background:rgba(245,158,11,0.15);padding:3px 10px;border-radius:20px;border:1px solid rgba(245,158,11,0.3);">${badge}</span>
+        <h1 style="font-size:22px;font-weight:900;color:#fef3c7;margin:10px 0 6px 0;">${cleanTitle}</h1>
+        <p style="font-size:13px;color:#cbd5e1;margin:0;">${cleanDesc}</p>
+      </header>
+      <section style="margin-bottom:16px;">
+        <h2 style="font-size:16px;font-weight:800;color:#fde047;margin:0 0 8px 0;">१. आचार्य पण्डित शशांक शर्मा एवं श्री ज्योतिष वैदिक संस्थान</h2>
+        <p style="font-size:13px;color:#e2e8f0;margin:0 0 8px 0;">आचार्य पण्डित शशांक शर्मा सनातन वैदिक परम्परा, शुक्ल यजुर्वेदीय कर्मकाण्ड, षोडश संस्कार, वास्तु शांति एवं फलित ज्योतिष के अनुभवी विद्वान हैं। विगत १५+ वर्षों से आप रुद्रपुर (जिला ऊधम सिंह नगर, उत्तराखण्ड) एवं संपूर्ण भारत के यजमानों को प्रामाणिक ज्योतिषीय मार्गदर्शन व वैदिक अनुष्ठान सेवाएं प्रदान कर रहे हैं।</p>
+        <p style="font-size:13px;color:#cbd5e1;margin:0;"><strong>सीधा संपर्क सूत्र:</strong> रुद्रपुर, जिला ऊधम सिंह नगर, उत्तराखण्ड - 263153 | फ़ोन व WhatsApp: <a href="tel:+917017279043" style="color:#fde047;">+91 7017279043</a>, <a href="tel:+918958499979" style="color:#fde047;">+91 8958499979</a> | ईमेल: <a href="mailto:shashanksharma0456@gmail.com" style="color:#fde047;">shashanksharma0456@gmail.com</a></p>
+      </section>
+      ${faqHtmlSection}
+      ${buildEdgeAuthorBox()}
+    </article>`;
+  }
+
+  return `<article id="pj-route-static-article" itemscope itemtype="https://schema.org/Article" style="background:rgba(15,23,42,0.95);border:1px solid rgba(245,158,11,0.45);border-radius:18px;padding:22px;margin-bottom:16px;color:#f1f5f9;line-height:1.75;font-family:system-ui,-apple-system,sans-serif;">
+    <nav style="font-size:12px;color:#fbbf24;margin-bottom:12px;"><a href="/" style="color:#fbbf24;text-decoration:none;font-weight:600;">← मुख्य पृष्ठ (Home)</a> / <span>${cleanTitle}</span></nav>
+    <header style="border-bottom:1px solid rgba(245,158,11,0.3);padding-bottom:14px;margin-bottom:18px;">
+      <span style="font-size:11px;font-weight:800;color:#f59e0b;text-transform:uppercase;letter-spacing:1px;background:rgba(245,158,11,0.15);padding:3px 10px;border-radius:20px;border:1px solid rgba(245,158,11,0.3);">${badge}</span>
+      <h1 itemprop="headline" style="font-size:22px;font-weight:900;color:#fef3c7;margin:10px 0 6px 0;">${cleanTitle}</h1>
+      <p itemprop="description" style="font-size:13px;color:#cbd5e1;margin:0 0 8px 0;">${cleanDesc}</p>
+      <div style="font-size:11.5px;color:#94a3b8;display:flex;flex-wrap:wrap;gap:12px;align-items:center;">
+        <span>✍️ लेखक एवं ज्योतिषाचार्य: <strong itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name" style="color:#fde047;">आचार्य पण्डित शशांक शर्मा</span></strong> (रुद्रपुर, उत्तराखण्ड)</span>
+        <span>•</span>
+        <span>📅 अद्यतन (Updated): <time itemprop="dateModified" datetime="${datePublishedIso}" style="color:#cbd5e1;">${todayStr} (IST)</time></span>
+      </div>
+    </header>
+    <figure style="margin:0 0 18px 0;padding:0;">
+      <img itemprop="image" src="${xmlEscape(discoverHeroImg)}" alt="${cleanTitle}" width="1200" height="630" loading="lazy" decoding="async" style="width:100%;height:auto;aspect-ratio:1200/630;border-radius:14px;border:1px solid rgba(245,158,11,0.4);display:block;" />
+      <figcaption style="font-size:11px;color:#94a3b8;margin-top:6px;text-align:center;">${cleanTitle} — आचार्य पण्डित शशांक शर्मा, श्री ज्योतिष वैदिक संस्थान (रुद्रपुर)</figcaption>
+    </figure>
+    <section style="margin-bottom:16px;">
+      <h2 style="font-size:16px;font-weight:800;color:#fde047;margin:0 0 8px 0;">१. शास्त्रीय महत्व एवं प्रामाणिक वैदिक सिद्धांत (Vedic Shastra Foundation)</h2>
+      <p style="font-size:13px;color:#e2e8f0;margin:0 0 8px 0;"><strong>${cleanTitle}</strong> भारतीय सनातन ज्योतिष शास्त्र के मूल ग्रंथों — महर्षि पाराशर कृत <em>'बृहत् पाराशर होरा शास्त्र'</em>, <em>'जैमिनी सूत्र'</em>, <em>'सूर्य सिद्धांत'</em> एवं <em>'मुहूर्त चिंतामणि'</em> — के प्रामाणिक गणितीय नियमों पर आधारित है। ${cleanDesc}</p>
+      <p style="font-size:13px;color:#cbd5e1;margin:0;">आचार्य पण्डित शशांक शर्मा (श्री ज्योतिष वैदिक संस्थान, रुद्रपुर, उत्तराखण्ड) के १५+ वर्षों के वैदिक कर्मकाण्ड एवं जन्मपत्री विश्लेषण अनुभव से यह विस्तृत मार्गदर्शिका यजमानों के आध्यात्मिक व व्यावहारिक कल्याण हेतु तैयार की गई है।</p>
+    </section>
+    <section style="margin-bottom:16px;">
+      <h2 style="font-size:16px;font-weight:800;color:#fde047;margin:0 0 8px 0;">२. लाहिड़ी चित्रापक्ष अयनांश एवं सूक्ष्म दृक गणितीय गणना</h2>
+      <p style="font-size:13px;color:#e2e8f0;margin:0;">पण्डित जी ऑनलाइन पर प्रदर्शित समस्त गणनाएं भारत सरकार के राष्ट्रीय पंचांग द्वारा मान्यता प्राप्त <strong>लाहिड़ी चित्रापक्ष अयनांश (Lahiri Chitrapaksha Ayanamsha)</strong> पर आधारित हैं। इसमें २७ नक्षत्रों के १०८ चरण, चन्द्र बल, तारा बल, विंशोत्तरी महादशा-अंतर्दशा और दैनिक ग्रह गोचर (Transit) का सूक्ष्म समन्वय किया जाता है जिससे प्रत्येक जातक को १००% शुद्ध परिणाम प्राप्त हों।</p>
+    </section>
+    <section style="margin-bottom:16px;">
+      <h2 style="font-size:16px;font-weight:800;color:#fde047;margin:0 0 8px 0;">३. सात्विक वैदिक उपाय, मंत्र उपासना एवं व्यावहारिक मार्गदर्शन</h2>
+      <p style="font-size:13px;color:#e2e8f0;margin:0;">वैदिक ज्योतिष का उद्देश्य किसी प्रकार का भय उत्पन्न करना या महंगे व्यावसायिक रत्न थोपना नहीं है। कुंडली या गोचर में किसी भी ग्रह की प्रतिकूलता होने पर वैदिक बीज मंत्र जाप, इष्टदेव व कुलदेवता उपासना, श्री हनुमान चालीसा पाठ, रुद्राभिषेक, घर पर सरल हवन एवं प्रकृति-सम्मत दान-पुण्य (गौ सेवा, अन्न दान) सबसे अचूक और सात्विक उपाय हैं।</p>
+    </section>
+    ${faqHtmlSection}
+    ${buildEdgeAuthorBox()}
+  </article>`;
+}
+
+function injectEdgeRouteSeo(rawHtml, canonicalPath, info, seoEntry) {
+  if (!rawHtml || canonicalPath === '/') return rawHtml;
+  const canonicalUrl = `${SITE_ORIGIN}${canonicalPath}`;
+  const slug = canonicalPath.replace(/^\/+/, '').replace(/\//g, '-').toLowerCase() || 'home';
+  const socialImg = `${SITE_ORIGIN}/og-card/${slug}-discover-${VERSION_TAG}.jpg`;
+  const finalTitle = (seoEntry && seoEntry.title) || info.title;
+  const finalDesc = (seoEntry && seoEntry.description) || info.desc;
+  const finalKeywords = (seoEntry && seoEntry.keywords) || '';
+  const faqList = seoEntry && Array.isArray(seoEntry.faq) ? seoEntry.faq : [];
+  const safeTitle = xmlEscape(finalTitle);
+  const safeDesc = xmlEscape(finalDesc);
+  const safeKeywords = xmlEscape(finalKeywords);
+  const safeCanonical = xmlEscape(canonicalUrl);
+  const safeImg = xmlEscape(socialImg);
+  const articleHtml = buildEdgeRouteArticleHtml(canonicalPath, info, seoEntry);
+  const { datePublishedIso, dateModifiedIso } = getEdgeIstDateInfo();
+
+  const discoverArticleSchema = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    '@id': `${canonicalUrl}#discover-article`,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': canonicalUrl
+    },
+    headline: finalTitle,
+    description: finalDesc,
+    inLanguage: 'hi-IN',
+    datePublished: datePublishedIso,
+    dateModified: dateModifiedIso,
+    image: [
+      {
+        '@type': 'ImageObject',
+        url: socialImg,
+        width: 1200,
+        height: 630
+      }
+    ],
+    author: {
+      '@type': 'Person',
+      name: 'Acharya Pandit Shashank Sharma',
+      alternateName: 'आचार्य पण्डित शशांक शर्मा',
+      jobTitle: 'Chief Vedic Astrologer & Dharmacharya',
+      url: `${SITE_ORIGIN}/about-us`
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Pandit Ji Online',
+      alternateName: 'पण्डित जी ऑनलाइन — श्री ज्योतिष वैदिक संस्थान, रुद्रपुर',
+      url: `${SITE_ORIGIN}/`,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${SITE_ORIGIN}/pwa-512x512.png`,
+        width: 512,
+        height: 512
+      }
+    }
+  });
+
+  const faqSchemaScript =
+    faqList.length > 0
+      ? `\n  <script type="application/ld+json" id="pj-edge-faq-jsonld">${JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          '@id': `${canonicalUrl}#faq`,
+          mainEntity: faqList.map((item) => ({
+            '@type': 'Question',
+            name: item.q,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: item.a
+            }
+          }))
+        })}</script>`
+      : '';
+
+  let html = rawHtml;
+  html = html.replace(/<title>[\s\S]*?<\/title>/i, () => `<title>${safeTitle}</title>`);
+  html = html.replace(/<meta\s+name="title"\s+content="[^"]*"\s*\/?>/i, () => `<meta name="title" content="${safeTitle}" />`);
+  html = html.replace(/<meta\s+name="description"\s+content="[^"]*"\s*\/?>/i, () => `<meta name="description" content="${safeDesc}" />`);
+  if (safeKeywords) {
+    html = html.replace(/<meta\s+name="keywords"\s+content="[^"]*"\s*\/?>/i, () => `<meta name="keywords" content="${safeKeywords}" />`);
+  }
+  html = html.replace(/<link\s+rel="canonical"[^>]*href="[^"]*"[^>]*\/?>/i, () => `<link rel="canonical" id="pj-canonical-link" href="${safeCanonical}" />`);
+  html = html.replace(/<meta\s+property="og:title"\s+content="[^"]*"\s*\/?>/i, () => `<meta property="og:title" content="${safeTitle}" />`);
+  html = html.replace(/<meta\s+property="og:description"\s+content="[^"]*"\s*\/?>/i, () => `<meta property="og:description" content="${safeDesc}" />`);
+  html = html.replace(/<meta\s+property="og:url"[^>]*\/?>/i, () => `<meta property="og:url" id="pj-og-url" content="${safeCanonical}" />`);
+  html = html.replace(/<meta\s+property="og:image"\s+content="[^"]*"\s*\/?>/i, () => `<meta property="og:image" content="${safeImg}" />`);
+  html = html.replace(/<meta\s+property="og:image:url"\s+content="[^"]*"\s*\/?>/i, () => `<meta property="og:image:url" content="${safeImg}" />`);
+  html = html.replace(/<meta\s+property="og:image:secure_url"\s+content="[^"]*"\s*\/?>/i, () => `<meta property="og:image:secure_url" content="${safeImg}" />`);
+  html = html.replace(/<meta\s+property="og:image:alt"\s+content="[^"]*"\s*\/?>/i, () => `<meta property="og:image:alt" content="${safeTitle}" />`);
+  html = html.replace(/<link\s+rel="image_src"\s+href="[^"]*"\s*\/?>/i, () => `<link rel="image_src" href="${safeImg}" />`);
+  html = html.replace(/<meta\s+name="twitter:title"\s+content="[^"]*"\s*\/?>/i, () => `<meta name="twitter:title" content="${safeTitle}" />`);
+  html = html.replace(/<meta\s+name="twitter:description"\s+content="[^"]*"\s*\/?>/i, () => `<meta name="twitter:description" content="${safeDesc}" />`);
+  html = html.replace(/<meta\s+name="twitter:url"\s+content="[^"]*"\s*\/?>/i, () => `<meta name="twitter:url" content="${safeCanonical}" />`);
+  html = html.replace(/<meta\s+name="twitter:image"\s+content="[^"]*"\s*\/?>/i, () => `<meta name="twitter:image" content="${safeImg}" />`);
+  html = html.replace(/<meta\s+name="twitter:image:src"\s+content="[^"]*"\s*\/?>/i, () => `<meta name="twitter:image:src" content="${safeImg}" />`);
+  html = html.replace(/<meta\s+name="twitter:image:alt"\s+content="[^"]*"\s*\/?>/i, () => `<meta name="twitter:image:alt" content="${safeTitle}" />`);
+  html = html.replace(/<\/head>/i, () => `  <script type="application/ld+json" id="pj-edge-discover-jsonld">${discoverArticleSchema}</script>${faqSchemaScript}\n  </head>`);
+
+  // Demote top navbar brand H1 to DIV on subpages so the article H1 is the sole H1 on the page
+  html = html.replace(
+    /<h1\s+id="pj-shell-brand-h1"([^>]*)>([\s\S]*?)<\/h1>/i,
+    (_m, attrs, inner) => `<div id="pj-shell-brand-h1"${attrs}>${inner}</div>`
+  );
+
+  // Hide homepage-only cards on subroutes and prepend the dedicated server-rendered route article
+  html = html.replace(
+    /<div\s+id="pj-shell-home-only-content"\s+style="[^"]*">/i,
+    () => `<div id="pj-shell-home-only-content" style="display:none;">`
+  );
+  html = html.replace(
+    /<main\s+class="pj-shell-main"\s+id="pj-shell-main-area">/i,
+    () => `<main class="pj-shell-main" id="pj-shell-main-area">\n${articleHtml}`
+  );
+
+  return html;
+}
+
 async function middleware(request, event) {
   if (request.headers && typeof request.headers.get === 'function' && request.headers.get('x-pj-internal-shell') === '1') {
     return new Response(null, {
@@ -1906,258 +2252,6 @@ ${itemsXml}
     }
   }
 
-function getEdgeIstDateInfo() {
-  const nowUtc = new Date();
-  const istTime = new Date(nowUtc.getTime() + 5.5 * 60 * 60 * 1000);
-  const y = istTime.getUTCFullYear();
-  const m = String(istTime.getUTCMonth() + 1).padStart(2, '0');
-  const d = String(istTime.getUTCDate()).padStart(2, '0');
-  const todayStr = `${y}-${m}-${d}`;
-  return {
-    todayStr,
-    datePublishedIso: `${todayStr}T05:30:00+05:30`,
-    dateModifiedIso: nowUtc.toISOString()
-  };
-}
-
-function buildEdgeAuthorBox() {
-  return `<div style="margin-top:20px;padding:15px;background:rgba(30,41,59,0.75);border:1px solid rgba(245,158,11,0.42);border-radius:14px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;">
-    <div style="width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#f59e0b,#d97706);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">🕉️</div>
-    <div style="flex:1;min-width:220px;">
-      <div style="font-size:11px;font-weight:700;color:#fbbf24;text-transform:uppercase;letter-spacing:0.8px;">प्रकाशक एवं मुख्य ज्योतिषाचार्य (E-E-A-T Verified Publisher)</div>
-      <div style="font-size:15px;font-weight:800;color:#fef3c7;margin-top:2px;">आचार्य पण्डित शशांक शर्मा (Acharya Pandit Shashank Sharma)</div>
-      <div style="font-size:12px;color:#cbd5e1;margin-top:2px;">श्री ज्योतिष वैदिक संस्थान • १५+ वर्ष प्रामाणिक वैदिक कर्मकाण्ड एवं ज्योतिष अनुभव</div>
-      <div style="font-size:11px;color:#94a3b8;margin-top:4px;">📍 रुद्रपुर, जिला ऊधम सिंह नगर, उत्तराखण्ड - 263153, भारत | 📞 +91 7017279043 | ✉️ shashanksharma0456@gmail.com</div>
-    </div>
-  </div>`;
-}
-
-function buildEdgeRouteArticleHtml(canonicalPath, info) {
-  const cleanTitle = xmlEscape(String(info.title || '').split('|')[0].trim() || info.title);
-  const cleanDesc = xmlEscape(info.desc || '');
-  const badge = xmlEscape(info.badge || 'VEDIC JYOTISH SANSTHAN • RUDRAPUR');
-  const slug = canonicalPath.replace(/^\/+/, '').replace(/\//g, '-').toLowerCase() || 'home';
-  const discoverHeroImg = `${SITE_ORIGIN}/og-card/${slug}-discover-${VERSION_TAG}.jpg`;
-  const { todayStr, datePublishedIso } = getEdgeIstDateInfo();
-
-  if (canonicalPath === '/privacy-policy') {
-    return `<article id="pj-route-static-article" style="background:rgba(15,23,42,0.95);border:1px solid rgba(245,158,11,0.45);border-radius:18px;padding:22px;margin-bottom:16px;color:#f1f5f9;line-height:1.75;font-family:system-ui,-apple-system,sans-serif;">
-      <nav style="font-size:12px;color:#fbbf24;margin-bottom:12px;"><a href="/" style="color:#fbbf24;text-decoration:none;font-weight:600;">← मुख्य पृष्ठ (Home)</a> / <span>गोपनीयता नीति (Privacy Policy)</span></nav>
-      <header style="border-bottom:1px solid rgba(245,158,11,0.3);padding-bottom:14px;margin-bottom:18px;">
-        <span style="font-size:11px;font-weight:800;color:#34d399;text-transform:uppercase;letter-spacing:1px;background:rgba(16,185,129,0.15);padding:3px 10px;border-radius:20px;border:1px solid rgba(16,185,129,0.3);">कानूनी एवं सुरक्षा मानक • 100% Google AdSense Compliant</span>
-        <h1 style="font-size:22px;font-weight:900;color:#fef3c7;margin:10px 0 6px 0;">गोपनीयता नीति (Privacy Policy) — पण्डित जी ऑनलाइन</h1>
-        <p style="font-size:13px;color:#cbd5e1;margin:0;">प्रकाशक: आचार्य पण्डित शशांक शर्मा, श्री ज्योतिष वैदिक संस्थान, रुद्रपुर (उत्तराखण्ड) • Publisher ID: ca-pub-9661029896137686</p>
-      </header>
-      <section style="margin-bottom:18px;">
-        <h2 style="font-size:16px;font-weight:800;color:#fde047;margin:0 0 8px 0;">१. प्रस्तावना एवं डेटा गोपनीयता (Introduction &amp; Data Privacy)</h2>
-        <p style="font-size:13px;color:#e2e8f0;margin:0 0 8px 0;">यह गोपनीयता नीति <strong>www.panditjionline.online</strong> ("पण्डित जी ऑनलाइन") पर लागू होती है। यजमानों द्वारा दर्ज जन्म तिथि, जन्म समय, जन्म स्थान एवं नाम केवल वैदिक लग्न कुंडली, नवमांश (D-9), ३६ गुण मिलान और विंशोत्तरी महादशा की गणितीय गणना हेतु उपयोग किए जाते हैं।</p>
-        <p style="font-size:13px;color:#cbd5e1;margin:0;">हम किसी भी परिस्थिति में यजमानों का व्यक्तिगत डेटा किसी तृतीय-पक्ष मार्केटिंग एजेंसी या डेटा ब्रोकर को नहीं बेचते हैं।</p>
-      </section>
-      <section style="margin-bottom:18px;background:rgba(40,24,10,0.55);border:1px solid rgba(245,158,11,0.5);border-radius:14px;padding:16px;">
-        <h2 style="font-size:16px;font-weight:800;color:#fde047;margin:0 0 8px 0;">२. Google AdSense एवं DoubleClick DART Cookie नीति</h2>
-        <p style="font-size:13px;color:#fef3c7;margin:0 0 8px 0;">हमारी वेबसाइट पर निःशुल्क वैदिक सेवाएं संचालित रखने हेतु <strong>Google AdSense (ca-pub-9661029896137686)</strong> का उपयोग किया जाता है:</p>
-        <ul style="font-size:13px;color:#e2e8f0;padding-left:18px;margin:0;display:flex;flex-direction:column;gap:6px;">
-          <li><strong>तृतीय-पक्ष वेंडर के रूप में Google:</strong> Google हमारी वेबसाइट पर विज्ञापन प्रदर्शित करने के लिए कुकीज़ (DART Cookies) का उपयोग करता है।</li>
-          <li><strong>DoubleClick DART Cookie:</strong> DART कुकी के माध्यम से Google उपयोगकर्ताओं को हमारी वेबसाइट और इंटरनेट पर अन्य साइटों के पूर्व विज़िट के आधार पर प्रासंगिक विज्ञापन दिखाता है।</li>
-          <li><strong>Opt-Out विकल्प:</strong> उपयोगकर्ता किसी भी समय <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" style="color:#fbbf24;text-decoration:underline;">Google Ad Settings</a> अथवा <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" style="color:#fbbf24;text-decoration:underline;">www.aboutads.info</a> पर जाकर पर्सनलाइज्ड विज्ञापनों से Opt-Out कर सकते हैं।</li>
-        </ul>
-      </section>
-      <section style="margin-bottom:14px;">
-        <h2 style="font-size:16px;font-weight:800;color:#fde047;margin:0 0 8px 0;">३. शिकायत निवारण एवं संपर्क अधिकारी (Grievance Redressal)</h2>
-        <p style="font-size:13px;color:#e2e8f0;margin:0;">आचार्य पण्डित शशांक शर्मा, श्री ज्योतिष वैदिक संस्थान, रुद्रपुर, जिला ऊधम सिंह नगर, उत्तराखण्ड - 263153, भारत | दूरभाष: +91 7017279043 | ईमेल: shashanksharma0456@gmail.com</p>
-      </section>
-      ${buildEdgeAuthorBox()}
-    </article>`;
-  }
-
-  if (canonicalPath === '/terms-and-conditions') {
-    return `<article id="pj-route-static-article" style="background:rgba(15,23,42,0.95);border:1px solid rgba(245,158,11,0.45);border-radius:18px;padding:22px;margin-bottom:16px;color:#f1f5f9;line-height:1.75;font-family:system-ui,-apple-system,sans-serif;">
-      <nav style="font-size:12px;color:#fbbf24;margin-bottom:12px;"><a href="/" style="color:#fbbf24;text-decoration:none;font-weight:600;">← मुख्य पृष्ठ (Home)</a> / <span>नियम एवं शर्तें (Terms &amp; Conditions)</span></nav>
-      <header style="border-bottom:1px solid rgba(245,158,11,0.3);padding-bottom:14px;margin-bottom:18px;">
-        <span style="font-size:11px;font-weight:800;color:#38bdf8;text-transform:uppercase;letter-spacing:1px;background:rgba(56,189,248,0.15);padding:3px 10px;border-radius:20px;border:1px solid rgba(56,189,248,0.3);">उपयोग की विधिक शर्तें • Terms of Service</span>
-        <h1 style="font-size:22px;font-weight:900;color:#fef3c7;margin:10px 0 6px 0;">नियम एवं शर्तें (Terms &amp; Conditions) — पण्डित जी ऑनलाइन</h1>
-        <p style="font-size:13px;color:#cbd5e1;margin:0;">श्री ज्योतिष वैदिक संस्थान, रुद्रपुर (उत्तराखण्ड) द्वारा संचालित वैदिक ज्योतिष मंच के उपयोग की शर्तें</p>
-      </header>
-      <section style="margin-bottom:16px;">
-        <h2 style="font-size:16px;font-weight:800;color:#fde047;margin:0 0 6px 0;">१. सेवा की प्रकृति एवं शास्त्रीय आधार</h2>
-        <p style="font-size:13px;color:#e2e8f0;margin:0;">पण्डित जी ऑनलाइन पर उपलब्ध समस्त ज्योतिषीय गणनाएं (जन्म कुंडली, ३६ गुण मिलान, दृक पंचांग, राशिफल एवं मुहूर्त) बृहत् पाराशर होरा शास्त्र, सूर्य सिद्धांत और लाहिड़ी चित्रापक्ष अयनांश के गणितीय सिद्धांतों पर आधारित आध्यात्मिक मार्गदर्शन हेतु हैं।</p>
-      </section>
-      <section style="margin-bottom:16px;">
-        <h2 style="font-size:16px;font-weight:800;color:#fde047;margin:0 0 6px 0;">२. बौद्धिक संपदा एवं विधिक क्षेत्राधिकार</h2>
-        <p style="font-size:13px;color:#e2e8f0;margin:0;">इस मंच पर प्रकाशित सभी लेख, पंचांग एल्गोरिदम और वैदिक शोध सामग्री श्री ज्योतिष वैदिक संस्थान एवं आचार्य पण्डित शशांक शर्मा की बौद्धिक संपदा हैं। किसी भी विवाद का अनन्य विधिक क्षेत्राधिकार रुद्रपुर (जिला ऊधम सिंह नगर, उत्तराखण्ड) के अधीन होगा।</p>
-      </section>
-      ${buildEdgeAuthorBox()}
-    </article>`;
-  }
-
-  if (canonicalPath === '/disclaimer') {
-    return `<article id="pj-route-static-article" style="background:rgba(15,23,42,0.95);border:1px solid rgba(245,158,11,0.45);border-radius:18px;padding:22px;margin-bottom:16px;color:#f1f5f9;line-height:1.75;font-family:system-ui,-apple-system,sans-serif;">
-      <nav style="font-size:12px;color:#fbbf24;margin-bottom:12px;"><a href="/" style="color:#fbbf24;text-decoration:none;font-weight:600;">← मुख्य पृष्ठ (Home)</a> / <span>अस्वीकरण (Disclaimer)</span></nav>
-      <header style="border-bottom:1px solid rgba(245,158,11,0.3);padding-bottom:14px;margin-bottom:18px;">
-        <span style="font-size:11px;font-weight:800;color:#fb7185;text-transform:uppercase;letter-spacing:1px;background:rgba(244,63,94,0.15);padding:3px 10px;border-radius:20px;border:1px solid rgba(244,63,94,0.3);">ज्योतिषीय एवं विधिक अस्वीकरण • Official Disclaimer</span>
-        <h1 style="font-size:22px;font-weight:900;color:#fef3c7;margin:10px 0 6px 0;">ज्योतिषीय अस्वीकरण (Disclaimer) — पण्डित जी ऑनलाइन</h1>
-      </header>
-      <section style="margin-bottom:16px;">
-        <h2 style="font-size:16px;font-weight:800;color:#fde047;margin:0 0 6px 0;">१. आध्यात्मिक एवं सांस्कृतिक मार्गदर्शन</h2>
-        <p style="font-size:13px;color:#e2e8f0;margin:0;">पण्डित जी ऑनलाइन पर प्रस्तुत जन्म कुंडली विश्लेषण, राशिफल, गुण मिलान एवं सात्विक वैदिक उपाय भारतीय सनातन ज्योतिष शास्त्र की मान्यताओं पर आधारित हैं। इन्हें किसी चिकित्सक (Doctor), वकील (Advocate) या वित्तीय सलाहकार की पेशेवर सलाह का विकल्प न माना जाए।</p>
-      </section>
-      ${buildEdgeAuthorBox()}
-    </article>`;
-  }
-
-  if (canonicalPath === '/about-us' || canonicalPath === '/contact-us') {
-    return `<article id="pj-route-static-article" style="background:rgba(15,23,42,0.95);border:1px solid rgba(245,158,11,0.45);border-radius:18px;padding:22px;margin-bottom:16px;color:#f1f5f9;line-height:1.75;font-family:system-ui,-apple-system,sans-serif;">
-      <nav style="font-size:12px;color:#fbbf24;margin-bottom:12px;"><a href="/" style="color:#fbbf24;text-decoration:none;font-weight:600;">← मुख्य पृष्ठ (Home)</a> / <span>${cleanTitle}</span></nav>
-      <header style="border-bottom:1px solid rgba(245,158,11,0.3);padding-bottom:14px;margin-bottom:18px;">
-        <span style="font-size:11px;font-weight:800;color:#f59e0b;text-transform:uppercase;letter-spacing:1px;background:rgba(245,158,11,0.15);padding:3px 10px;border-radius:20px;border:1px solid rgba(245,158,11,0.3);">${badge}</span>
-        <h1 style="font-size:22px;font-weight:900;color:#fef3c7;margin:10px 0 6px 0;">${cleanTitle}</h1>
-        <p style="font-size:13px;color:#cbd5e1;margin:0;">${cleanDesc}</p>
-      </header>
-      <section style="margin-bottom:16px;">
-        <h2 style="font-size:16px;font-weight:800;color:#fde047;margin:0 0 8px 0;">१. आचार्य पण्डित शशांक शर्मा एवं श्री ज्योतिष वैदिक संस्थान</h2>
-        <p style="font-size:13px;color:#e2e8f0;margin:0 0 8px 0;">आचार्य पण्डित शशांक शर्मा सनातन वैदिक परम्परा, शुक्ल यजुर्वेदीय कर्मकाण्ड, षोडश संस्कार, वास्तु शांति एवं फलित ज्योतिष के अनुभवी विद्वान हैं। विगत १५+ वर्षों से आप रुद्रपुर (जिला ऊधम सिंह नगर, उत्तराखण्ड) एवं संपूर्ण भारत के यजमानों को प्रामाणिक ज्योतिषीय मार्गदर्शन व वैदिक अनुष्ठान सेवाएं प्रदान कर रहे हैं।</p>
-        <p style="font-size:13px;color:#cbd5e1;margin:0;"><strong>सीधा संपर्क सूत्र:</strong> रुद्रपुर, जिला ऊधम सिंह नगर, उत्तराखण्ड - 263153 | फ़ोन व WhatsApp: <a href="tel:+917017279043" style="color:#fde047;">+91 7017279043</a>, <a href="tel:+918958499979" style="color:#fde047;">+91 8958499979</a> | ईमेल: <a href="mailto:shashanksharma0456@gmail.com" style="color:#fde047;">shashanksharma0456@gmail.com</a></p>
-      </section>
-      ${buildEdgeAuthorBox()}
-    </article>`;
-  }
-
-  return `<article id="pj-route-static-article" itemscope itemtype="https://schema.org/Article" style="background:rgba(15,23,42,0.95);border:1px solid rgba(245,158,11,0.45);border-radius:18px;padding:22px;margin-bottom:16px;color:#f1f5f9;line-height:1.75;font-family:system-ui,-apple-system,sans-serif;">
-    <nav style="font-size:12px;color:#fbbf24;margin-bottom:12px;"><a href="/" style="color:#fbbf24;text-decoration:none;font-weight:600;">← मुख्य पृष्ठ (Home)</a> / <span>${cleanTitle}</span></nav>
-    <header style="border-bottom:1px solid rgba(245,158,11,0.3);padding-bottom:14px;margin-bottom:18px;">
-      <span style="font-size:11px;font-weight:800;color:#f59e0b;text-transform:uppercase;letter-spacing:1px;background:rgba(245,158,11,0.15);padding:3px 10px;border-radius:20px;border:1px solid rgba(245,158,11,0.3);">${badge}</span>
-      <h1 itemprop="headline" style="font-size:22px;font-weight:900;color:#fef3c7;margin:10px 0 6px 0;">${cleanTitle}</h1>
-      <p itemprop="description" style="font-size:13px;color:#cbd5e1;margin:0 0 8px 0;">${cleanDesc}</p>
-      <div style="font-size:11.5px;color:#94a3b8;display:flex;flex-wrap:wrap;gap:12px;align-items:center;">
-        <span>✍️ लेखक एवं ज्योतिषाचार्य: <strong itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name" style="color:#fde047;">आचार्य पण्डित शशांक शर्मा</span></strong> (रुद्रपुर, उत्तराखण्ड)</span>
-        <span>•</span>
-        <span>📅 अद्यतन (Updated): <time itemprop="dateModified" datetime="${datePublishedIso}" style="color:#cbd5e1;">${todayStr} (IST)</time></span>
-      </div>
-    </header>
-    <figure style="margin:0 0 18px 0;padding:0;">
-      <img itemprop="image" src="${xmlEscape(discoverHeroImg)}" alt="${cleanTitle}" width="1200" height="630" loading="lazy" decoding="async" style="width:100%;height:auto;aspect-ratio:1200/630;border-radius:14px;border:1px solid rgba(245,158,11,0.4);display:block;" />
-      <figcaption style="font-size:11px;color:#94a3b8;margin-top:6px;text-align:center;">${cleanTitle} — आचार्य पण्डित शशांक शर्मा, श्री ज्योतिष वैदिक संस्थान (रुद्रपुर)</figcaption>
-    </figure>
-    <section style="margin-bottom:16px;">
-      <h2 style="font-size:16px;font-weight:800;color:#fde047;margin:0 0 8px 0;">१. शास्त्रीय महत्व एवं प्रामाणिक वैदिक सिद्धांत (Vedic Shastra Foundation)</h2>
-      <p style="font-size:13px;color:#e2e8f0;margin:0 0 8px 0;"><strong>${cleanTitle}</strong> भारतीय सनातन ज्योतिष शास्त्र के मूल ग्रंथों — महर्षि पाराशर कृत <em>'बृहत् पाराशर होरा शास्त्र'</em>, <em>'जैमिनी सूत्र'</em>, <em>'सूर्य सिद्धांत'</em> एवं <em>'मुहूर्त चिंतामणि'</em> — के प्रामाणिक गणितीय नियमों पर आधारित है। ${cleanDesc}</p>
-      <p style="font-size:13px;color:#cbd5e1;margin:0;">आचार्य पण्डित शशांक शर्मा (श्री ज्योतिष वैदिक संस्थान, रुद्रपुर, उत्तराखण्ड) के १५+ वर्षों के वैदिक कर्मकाण्ड एवं जन्मपत्री विश्लेषण अनुभव से यह विस्तृत मार्गदर्शिका यजमानों के आध्यात्मिक व व्यावहारिक कल्याण हेतु तैयार की गई है।</p>
-    </section>
-    <section style="margin-bottom:16px;">
-      <h2 style="font-size:16px;font-weight:800;color:#fde047;margin:0 0 8px 0;">२. लाहिड़ी चित्रापक्ष अयनांश एवं सूक्ष्म दृक गणितीय गणना</h2>
-      <p style="font-size:13px;color:#e2e8f0;margin:0;">पण्डित जी ऑनलाइन पर प्रदर्शित समस्त गणनाएं भारत सरकार के राष्ट्रीय पंचांग द्वारा मान्यता प्राप्त <strong>लाहिड़ी चित्रापक्ष अयनांश (Lahiri Chitrapaksha Ayanamsha)</strong> पर आधारित हैं। इसमें २७ नक्षत्रों के १०८ चरण, चन्द्र बल, तारा बल, विंशोत्तरी महादशा-अंतर्दशा और दैनिक ग्रह गोचर (Transit) का सूक्ष्म समन्वय किया जाता है जिससे प्रत्येक जातक को १००% शुद्ध परिणाम प्राप्त हों।</p>
-    </section>
-    <section style="margin-bottom:16px;">
-      <h2 style="font-size:16px;font-weight:800;color:#fde047;margin:0 0 8px 0;">३. सात्विक वैदिक उपाय, मंत्र उपासना एवं व्यावहारिक मार्गदर्शन</h2>
-      <p style="font-size:13px;color:#e2e8f0;margin:0;">वैदिक ज्योतिष का उद्देश्य किसी प्रकार का भय उत्पन्न करना या महंगे व्यावसायिक रत्न थोपना नहीं है। कुंडली या गोचर में किसी भी ग्रह की प्रतिकूलता होने पर वैदिक बीज मंत्र जाप, इष्टदेव व कुलदेवता उपासना, श्री हनुमान चालीसा पाठ, रुद्राभिषेक, घर पर सरल हवन एवं प्रकृति-सम्मत दान-पुण्य (गौ सेवा, अन्न दान) सबसे अचूक और सात्विक उपाय हैं।</p>
-    </section>
-    ${buildEdgeAuthorBox()}
-  </article>`;
-}
-
-function injectEdgeRouteSeo(rawHtml, canonicalPath, info) {
-  if (!rawHtml || canonicalPath === '/') return rawHtml;
-  const canonicalUrl = `${SITE_ORIGIN}${canonicalPath}`;
-  const slug = canonicalPath.replace(/^\/+/, '').replace(/\//g, '-').toLowerCase() || 'home';
-  const socialImg = `${SITE_ORIGIN}/og-card/${slug}-discover-${VERSION_TAG}.jpg`;
-  const safeTitle = xmlEscape(info.title);
-  const safeDesc = xmlEscape(info.desc);
-  const safeCanonical = xmlEscape(canonicalUrl);
-  const safeImg = xmlEscape(socialImg);
-  const articleHtml = buildEdgeRouteArticleHtml(canonicalPath, info);
-  const { datePublishedIso, dateModifiedIso } = getEdgeIstDateInfo();
-
-  const discoverArticleSchema = JSON.stringify({
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    '@id': `${canonicalUrl}#discover-article`,
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': canonicalUrl
-    },
-    headline: info.title,
-    description: info.desc,
-    inLanguage: 'hi-IN',
-    datePublished: datePublishedIso,
-    dateModified: dateModifiedIso,
-    image: [
-      {
-        '@type': 'ImageObject',
-        url: socialImg,
-        width: 1200,
-        height: 630
-      }
-    ],
-    author: {
-      '@type': 'Person',
-      name: 'Acharya Pandit Shashank Sharma',
-      alternateName: 'आचार्य पण्डित शशांक शर्मा',
-      jobTitle: 'Chief Vedic Astrologer & Dharmacharya',
-      url: `${SITE_ORIGIN}/about-us`
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'Pandit Ji Online',
-      alternateName: 'पण्डित जी ऑनलाइन — श्री ज्योतिष वैदिक संस्थान, रुद्रपुर',
-      url: `${SITE_ORIGIN}/`,
-      logo: {
-        '@type': 'ImageObject',
-        url: `${SITE_ORIGIN}/pwa-512x512.png`,
-        width: 512,
-        height: 512
-      }
-    }
-  });
-
-  let html = rawHtml;
-  html = html.replace(/<title>[\s\S]*?<\/title>/i, () => `<title>${safeTitle}</title>`);
-  html = html.replace(/<meta\s+name="title"\s+content="[^"]*"\s*\/?>/i, () => `<meta name="title" content="${safeTitle}" />`);
-  html = html.replace(/<meta\s+name="description"\s+content="[^"]*"\s*\/?>/i, () => `<meta name="description" content="${safeDesc}" />`);
-  html = html.replace(/<link\s+rel="canonical"[^>]*href="[^"]*"[^>]*\/?>/i, () => `<link rel="canonical" id="pj-canonical-link" href="${safeCanonical}" />`);
-  html = html.replace(/<meta\s+property="og:title"\s+content="[^"]*"\s*\/?>/i, () => `<meta property="og:title" content="${safeTitle}" />`);
-  html = html.replace(/<meta\s+property="og:description"\s+content="[^"]*"\s*\/?>/i, () => `<meta property="og:description" content="${safeDesc}" />`);
-  html = html.replace(/<meta\s+property="og:url"[^>]*\/?>/i, () => `<meta property="og:url" id="pj-og-url" content="${safeCanonical}" />`);
-  html = html.replace(/<meta\s+property="og:image"\s+content="[^"]*"\s*\/?>/i, () => `<meta property="og:image" content="${safeImg}" />`);
-  html = html.replace(/<meta\s+property="og:image:url"\s+content="[^"]*"\s*\/?>/i, () => `<meta property="og:image:url" content="${safeImg}" />`);
-  html = html.replace(/<meta\s+property="og:image:secure_url"\s+content="[^"]*"\s*\/?>/i, () => `<meta property="og:image:secure_url" content="${safeImg}" />`);
-  html = html.replace(/<meta\s+property="og:image:alt"\s+content="[^"]*"\s*\/?>/i, () => `<meta property="og:image:alt" content="${safeTitle}" />`);
-  html = html.replace(/<link\s+rel="image_src"\s+href="[^"]*"\s*\/?>/i, () => `<link rel="image_src" href="${safeImg}" />`);
-  html = html.replace(/<meta\s+name="twitter:title"\s+content="[^"]*"\s*\/?>/i, () => `<meta name="twitter:title" content="${safeTitle}" />`);
-  html = html.replace(/<meta\s+name="twitter:description"\s+content="[^"]*"\s*\/?>/i, () => `<meta name="twitter:description" content="${safeDesc}" />`);
-  html = html.replace(/<meta\s+name="twitter:url"\s+content="[^"]*"\s*\/?>/i, () => `<meta name="twitter:url" content="${safeCanonical}" />`);
-  html = html.replace(/<meta\s+name="twitter:image"\s+content="[^"]*"\s*\/?>/i, () => `<meta name="twitter:image" content="${safeImg}" />`);
-  html = html.replace(/<meta\s+name="twitter:image:src"\s+content="[^"]*"\s*\/?>/i, () => `<meta name="twitter:image:src" content="${safeImg}" />`);
-  html = html.replace(/<meta\s+name="twitter:image:alt"\s+content="[^"]*"\s*\/?>/i, () => `<meta name="twitter:image:alt" content="${safeTitle}" />`);
-  html = html.replace(/<\/head>/i, () => `  <script type="application/ld+json" id="pj-edge-discover-jsonld">${discoverArticleSchema}</script>\n  </head>`);
-
-  // Demote top navbar brand H1 to DIV on subpages so the article H1 is the sole H1 on the page
-  html = html.replace(
-    /<h1\s+id="pj-shell-brand-h1"([^>]*)>([\s\S]*?)<\/h1>/i,
-    (_m, attrs, inner) => `<div id="pj-shell-brand-h1"${attrs}>${inner}</div>`
-  );
-
-  // Hide homepage-only cards on subroutes and prepend the dedicated server-rendered route article
-  html = html.replace(
-    /<div\s+id="pj-shell-home-only-content"\s+style="[^"]*">/i,
-    () => `<div id="pj-shell-home-only-content" style="display:none;">`
-  );
-  html = html.replace(
-    /<main\s+class="pj-shell-main"\s+id="pj-shell-main-area">/i,
-    () => `<main class="pj-shell-main" id="pj-shell-main-area">\n${articleHtml}`
-  );
-
-  return html;
-}
-
-  // 0. Pass-through internal shell fetch immediately to avoid recursion
-  if (request.headers.get('x-pj-internal-shell') === '1') {
-    return new Response(null, {
-      headers: {
-        'x-middleware-next': '1'
-      }
-    });
-  }
-
   // 7. 301 Permanent Redirect for Duplicate Short Alias URLs & Query-String Tab Links
   const normalizedPath = pathname.replace(/\/+$/, '').toLowerCase() || '/';
   if (ROUTE_ALIASES[normalizedPath]) {
@@ -2170,22 +2264,25 @@ function injectEdgeRouteSeo(rawHtml, canonicalPath, info) {
     }
   }
 
-  // 8. Edge SSR for All 67 Canonical Subroutes (Self-Referencing Canonical + Dedicated Article HTML)
+  // 8. Edge SSR for All 68 Canonical Subroutes (Self-Referencing Canonical + Dedicated Article HTML + FAQ Schema)
   const isKnownCanonicalRoute = Boolean(ROUTE_DATA[normalizedPath]);
   if (isKnownCanonicalRoute && normalizedPath !== '/') {
     const info = resolveRouteInfo(normalizedPath, url.searchParams);
     try {
       const shellUrl = new URL('/', url.origin);
-      const shellRes = await fetch(shellUrl.toString(), {
-        headers: {
-          'x-pj-internal-shell': '1',
-          'accept': 'text/html'
-        }
-      });
+      const [shellRes, seoEntry] = await Promise.all([
+        fetch(shellUrl.toString(), {
+          headers: {
+            'x-pj-internal-shell': '1',
+            'accept': 'text/html'
+          }
+        }),
+        loadSeoDataForRoute(url.origin, normalizedPath, info)
+      ]);
       if (shellRes.ok) {
         const rawShellHtml = await shellRes.text();
         if (rawShellHtml && rawShellHtml.includes('<main')) {
-          const transformedHtml = injectEdgeRouteSeo(rawShellHtml, normalizedPath, info);
+          const transformedHtml = injectEdgeRouteSeo(rawShellHtml, normalizedPath, info, seoEntry);
           return new Response(transformedHtml, {
             status: 200,
             headers: {
