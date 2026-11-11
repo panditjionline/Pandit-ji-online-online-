@@ -24,6 +24,7 @@ import {
 } from './src/server/visitorCounterHandler';
 import {
   generateDynamicSitemapXml,
+  generateDynamicRssFeedXml,
   generateDynamicRobotsTxt,
   generateAiCatalogJson,
   generateLlmsTxt,
@@ -32,6 +33,8 @@ import {
   buildDynamicSitemapEntries,
   injectRouteSeoIntoHtml,
   getAllCanonicalSubpagePaths,
+  getISTSeoTimestamps,
+  pingSearchEnginesWithSitemap,
   GOOGLE_SITE_VERIFICATION_TOKEN,
   GOOGLE_HTML_VERIFICATION_FILENAME,
   GOOGLE_HTML_VERIFICATION_CONTENT,
@@ -128,13 +131,18 @@ const CANONICAL_301_REDIRECTS: Record<string, string> = {
   '/home': '/',
   '/index.html': '/',
   '/index': '/',
+  '/404.html': '/',
+  '/404': '/',
+  '/8': '/',
+  '/media': '/vedic-videos',
+  '/fit]': '/',
+  '/&': '/',
   '/kundli': '/janam-kundali',
   '/kundali': '/janam-kundali',
   '/milan': '/kundali-milan',
   '/gun-milan': '/kundali-milan',
   '/mandir': '/digital-mandir',
   '/muhurat': '/shubh-muhurat',
-  '/naam-rashi': '/shubh-muhurat',
   '/rashi': '/rashifal',
   '/dainik-rashifal': '/rashifal',
   '/chat': '/jyotish-chat',
@@ -187,8 +195,40 @@ app.use((req, res, next) => {
   next();
 });
 
-// Sync static fallback SEO files into /public on startup
-syncStaticSeoFilesToPublic(path.join(__dirname, 'public'));
+// Initial sync of static fallback SEO files into /public and root
+setTimeout(() => {
+  try {
+    syncStaticSeoFilesToPublic(path.join(__dirname, 'public'));
+  } catch {
+    // ignore
+  }
+}, 2000);
+
+// Automated Daily 04:30 AM IST Freshness Engine & Search Engine Ping
+// Checks every 15 minutes. When IST clock passes 04:30 AM each morning,
+// it refreshes static sitemap copies and notifies Google WebSub Hub & IndexNow
+let lastIstCronDateStr = '';
+setInterval(() => {
+  try {
+    const istNow = new Date(Date.now() + 5.5 * 3600 * 1000);
+    const dateStr = istNow.toISOString().slice(0, 10);
+    const hour = istNow.getUTCHours();
+    const minute = istNow.getUTCMinutes();
+
+    if (dateStr !== lastIstCronDateStr && (hour > 4 || (hour === 4 && minute >= 30))) {
+      lastIstCronDateStr = dateStr;
+      console.log(`[SEO Freshness Engine] Running daily 04:30 AM IST sitemap refresh for ${dateStr}...`);
+      syncStaticSeoFilesToPublic(path.join(__dirname, 'public'));
+      pingSearchEnginesWithSitemap().then((results) => {
+        console.log('[SEO Freshness Engine] Ping results:', results);
+      }).catch((e) => {
+        console.warn('[SEO Freshness Engine] Ping error:', e);
+      });
+    }
+  } catch (err) {
+    console.warn('[SEO Freshness Engine] Cron check error:', err);
+  }
+}, 15 * 60 * 1000);
 
 // Top-level unsandboxed Download Center route: if ?file= is passed, stream binary attachment directly so no HTML page stays open
 app.get('/download-center', (req, res) => {
@@ -333,9 +373,63 @@ app.get(`/${GOOGLE_HTML_VERIFICATION_FILENAME}`, (_req, res) => {
 // Autonomous Dynamic Sitemap Endpoint (/sitemap.xml & /api/sitemap.xml)
 app.get(['/sitemap.xml', '/api/sitemap.xml'], (req, res) => {
   const baseOrigin = resolveBaseOrigin(req.headers as Record<string, string | string[] | undefined>);
-  const xml = generateDynamicSitemapXml(baseOrigin, new Date());
+  const now = new Date();
+  const { dailyBrahmaMuhuratLastMod } = getISTSeoTimestamps(now);
+  const xml = generateDynamicSitemapXml(baseOrigin, now);
+
+  // Set W3C Last-Modified header so Googlebot accurately detects changes between crawl visits
+  const lastModDate = new Date(dailyBrahmaMuhuratLastMod);
+  if (!isNaN(lastModDate.getTime())) {
+    res.setHeader('Last-Modified', lastModDate.toUTCString());
+  }
+
+  // Handle If-Modified-Since HTTP caching
+  const ifModifiedSince = req.headers['if-modified-since'];
+  if (ifModifiedSince) {
+    const imsDate = new Date(ifModifiedSince);
+    if (!isNaN(imsDate.getTime()) && imsDate >= lastModDate) {
+      res.status(304).end();
+      return;
+    }
+  }
+
   res.setHeader('Content-Type', 'application/xml; charset=utf-8');
   res.setHeader('Cache-Control', 'public, max-age=1800, s-maxage=1800');
+  res.status(200).send(xml);
+});
+
+// IndexNow Key Verification Endpoint for Bing / Yandex Crawler Authorization
+app.get('/indexnow.txt', (_req, res) => {
+  res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+  res.setHeader('Cache-Control', 'public, max-age=86400');
+  res.status(200).send('panditjionline2026indexnow\n');
+});
+
+// Real-time Search Engine Ping Endpoint (Google WebSub Hub & IndexNow)
+app.get('/api/seo/ping-sitemap', async (req, res) => {
+  const baseOrigin = resolveBaseOrigin(req.headers as Record<string, string | string[] | undefined>);
+  try {
+    const results = await pingSearchEnginesWithSitemap(baseOrigin);
+    res.status(200).json({
+      success: true,
+      timestamp: new Date().toISOString(),
+      results,
+    });
+  } catch (err: any) {
+    res.status(500).json({
+      success: false,
+      error: err?.message || 'Failed to ping search engines',
+    });
+  }
+});
+
+// Autonomous Dynamic Google Discover & Search Console RSS 2.0 + Media RSS Feed (/feed.xml & /rss.xml)
+app.get(['/feed.xml', '/rss.xml', '/api/feed.xml'], (req, res) => {
+  const baseOrigin = resolveBaseOrigin(req.headers as Record<string, string | string[] | undefined>);
+  const xml = generateDynamicRssFeedXml(baseOrigin, new Date());
+  res.setHeader('Content-Type', 'application/xml; charset=utf-8');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Cache-Control', 'public, max-age=900, s-maxage=900, stale-while-revalidate=3600');
   res.status(200).send(xml);
 });
 
@@ -1181,7 +1275,10 @@ function isKnownHtmlRoute(urlPath: string): boolean {
   return KNOWN_CANONICAL_PATHS.has(clean);
 }
 
-async function setupFrontend() {
+let viteMiddlewareInstance: express.RequestHandler | null = null;
+let frontendInitPromise: Promise<void> | null = null;
+
+function mountStaticAndFallbackRoutes() {
   // Mount public directory for static assets without trailing-slash directory redirects
   app.use(express.static(path.join(__dirname, 'public'), { index: false, redirect: false }));
 
@@ -1212,7 +1309,44 @@ async function setupFrontend() {
     next();
   });
 
-  let viteMounted = false;
+  // Dynamic Vite middleware wrapper (waits if Vite is still warming up in the first 1-2s)
+  app.use(async (req, res, next) => {
+    if (!viteMiddlewareInstance && frontendInitPromise) {
+      try {
+        await frontendInitPromise;
+      } catch {
+        // ignore
+      }
+    }
+    if (viteMiddlewareInstance) {
+      return viteMiddlewareInstance(req, res, next);
+    }
+    next();
+  });
+
+  // Fallback SPA / static route handler
+  app.get('*', (req, res) => {
+    if (isStaticAssetRequest(req.path || req.url || '')) {
+      res.status(404).type('text/plain').send('Asset not found');
+      return;
+    }
+    const isKnown = isKnownHtmlRoute(req.path || '/');
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+    if (!isKnown) {
+      res.setHeader('X-Robots-Tag', 'noindex, nofollow');
+    }
+    const targetFile = fs.existsSync(distIndexPath)
+      ? distIndexPath
+      : path.join(__dirname, 'index.html');
+    const rawHtml = fs.readFileSync(targetFile, 'utf-8');
+    const baseOrigin = resolveBaseOrigin(req.headers as Record<string, string | string[] | undefined>);
+    const injectedHtml = injectRouteSeoIntoHtml(rawHtml, req.path || '/', baseOrigin);
+    res.status(isKnown ? 200 : 404).send(injectedHtml);
+  });
+}
+
+async function initViteMiddlewareInBackground() {
   if (process.env.NODE_ENV !== 'production' || !fs.existsSync(distIndexPath)) {
     try {
       const { createServer: createViteServer } = await import('vite');
@@ -1220,34 +1354,10 @@ async function setupFrontend() {
         server: { middlewareMode: true, hmr: false, ws: false },
         appType: 'spa',
       });
-      app.use(vite.middlewares);
-      viteMounted = true;
+      viteMiddlewareInstance = vite.middlewares;
     } catch (e) {
       console.error('Failed to mount Vite middleware, falling back to static dist:', e);
     }
-  }
-
-  if (!viteMounted) {
-    app.get('*', (req, res) => {
-      // Never return HTML for a missing JS/TS/CSS/image file (prevents Uncaught SyntaxError: Unexpected token '<')
-      if (isStaticAssetRequest(req.path || req.url || '')) {
-        res.status(404).type('text/plain').send('Asset not found');
-        return;
-      }
-      const isKnown = isKnownHtmlRoute(req.path || '/');
-      res.setHeader('Content-Type', 'text/html; charset=utf-8');
-      res.setHeader('X-Content-Type-Options', 'nosniff');
-      if (!isKnown) {
-        res.setHeader('X-Robots-Tag', 'noindex, nofollow');
-      }
-      const targetFile = fs.existsSync(distIndexPath)
-        ? distIndexPath
-        : path.join(__dirname, 'index.html');
-      const rawHtml = fs.readFileSync(targetFile, 'utf-8');
-      const baseOrigin = resolveBaseOrigin(req.headers as Record<string, string | string[] | undefined>);
-      const injectedHtml = injectRouteSeoIntoHtml(rawHtml, req.path || '/', baseOrigin);
-      res.status(isKnown ? 200 : 404).send(injectedHtml);
-    });
   }
 }
 
@@ -1328,7 +1438,7 @@ const isMainServerInstance =
 if (isMainServerInstance) {
   (globalThis as Record<string, unknown>).__PANDITJI_SERVER_STARTED__ = true;
   terminateStaleServerProcesses();
-  await setupFrontend();
+  mountStaticAndFallbackRoutes();
 
   const numericPort = Number(port) || 3000;
   const server = http.createServer(app);
@@ -1379,8 +1489,10 @@ if (isMainServerInstance) {
   process.once('SIGTERM', gracefulShutdown);
   process.once('SIGINT', gracefulShutdown);
 
+  // Bind port 3000 IMMEDIATELY so AI Studio Preview connects in <100ms
   server.listen(numericPort, '0.0.0.0', () => {
     console.log(`Pandit Ji Online server running on port ${numericPort}`);
+    frontendInitPromise = initViteMiddlewareInBackground();
   });
 }
 
