@@ -12,7 +12,7 @@ Allow: /
 User-agent: AdsBot-Google-Mobile
 Allow: /
 
-# 3. General Search Engines, AI Agents & Standard Crawlers (All 68 Canonical Pages)
+# 3. General Search Engines, AI Agents & Standard Crawlers (All 93 Canonical Pages)
 User-agent: *
 Allow: /
 Allow: /ads.txt
@@ -38,11 +38,34 @@ Allow: /mundan-muhurat
 Allow: /vahan-kharidne-ka-muhurat
 Allow: /griha-pravesh-muhurat-2027
 Allow: /ekadashi-vrat-list-2027
+Allow: /bhumi-pujan-muhurat-2026
+Allow: /naamkaran-muhurat-2026
+Allow: /annaprashan-muhurat-2026
+Allow: /vyapar-dukan-muhurat-2026
+Allow: /sona-kharidne-ka-muhurat
+Allow: /purnima-vrat-2026
+Allow: /amavasya-2026
+Allow: /pradosh-vrat-2026
+Allow: /sankashti-chaturthi-2026
+Allow: /panchak-kaal-2026
+Allow: /bhadra-vichar
+Allow: /hora-chakra
+Allow: /gauri-panchangam
+Allow: /rahu-ketu-gochar-2026
+Allow: /guru-gochar-2026
 Allow: /s-naam-rashi-swabhav
 Allow: /a-naam-rashi-swabhav
 Allow: /r-naam-rashi-swabhav
 Allow: /m-naam-rashi-swabhav
 Allow: /p-naam-rashi-swabhav
+Allow: /k-naam-rashi-swabhav
+Allow: /v-naam-rashi-swabhav
+Allow: /n-naam-rashi-swabhav
+Allow: /d-naam-rashi-swabhav
+Allow: /b-naam-rashi-swabhav
+Allow: /g-naam-rashi-swabhav
+Allow: /l-naam-rashi-swabhav
+Allow: /y-naam-rashi-swabhav
 Allow: /shani-sadesati-upay
 Allow: /manglik-dosh-nivaran
 Allow: /nadi-dosh-nuskhe
