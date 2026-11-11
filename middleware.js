@@ -200,7 +200,7 @@ const ROUTE_DATA = {
     accent: '#10b981'
   },
   '/vahan-kharidne-ka-muhurat': {
-    title: 'वाहन खरीदने का शुभ मुहूर्त 2026-27 — कार/बाइक की शुभ तिथियां',
+    title: 'वाहन खरीदने का शुभ मुहूर्त 2026-27 (Vahan Muhurat) — कार/बाइक तिथि',
     desc: '2026-2027 में नई कार, बाइक या स्कूटी खरीदने के लिए रविवार व सभी 7 दिनों के सर्वोत्तम शुभ मुहूर्त, चौघड़िया व राशि अनुसार लकी वाहन रंग — अभी देखें ➔',
     cardTitle: 'VAHAN KHARIDNE KA MUHURAT 2026-27',
     cardSub: 'Best Car & Bike Buying Dates • Lucky Vehicle Color by Rashi',
@@ -210,8 +210,8 @@ const ROUTE_DATA = {
     accent: '#3b82f6'
   },
   '/s-naam-rashi-swabhav': {
-    title: 'S नाम की राशि क्या है? (कुम्भ) स्वभाव, प्रेम व राजयोग जानें',
-    desc: 'S (स, श) नाम वालों की राशि कुम्भ (स्वामी शनि) होती है। जानें S नाम वालों का सच्चा प्यार, गुप्त स्वभाव, 2026-27 करियर राजयोग व लकी रत्न — अभी क्लिक करें ➔',
+    title: 'S नाम की राशि क्या है? (S Naam Ki Rashi) कुम्भ स्वभाव व राजयोग',
+    desc: 'S (स, सा, सी, श) नाम वालों की राशि कुम्भ (S Naam Ki Rashi Kumbh) और स्वामी शनि देव हैं। जानें S नाम वालों का स्वभाव, सच्चा प्यार, 2026-27 राजयोग व लकी रत्न ➔',
     cardTitle: 'S NAAM KI RASHI: KUMBH RASHI',
     cardSub: 'S Letter Zodiac (Aquarius) • Shani Dev • Swabhav, Career & Neelam',
     shortCard: 'S NAAM KI RASHI (KUMBH)\nRashi, Swabhav & Career',
@@ -570,8 +570,8 @@ const ROUTE_DATA = {
     accent: '#f59e0b'
   },
   '/a-naam-rashi-swabhav': {
-    title: 'A नाम की राशि क्या है? (मेष) स्वभाव, प्रेम व करियर राजयोग',
-    desc: 'A (अ, आ, ल) नाम वालों की राशि मेष (स्वामी मंगल) होती है। जानें A नाम वालों का निडर स्वभाव, लव लाइफ, सरकारी नौकरी योग व मूंगा रत्न — अभी पढ़ें ➔',
+    title: 'A नाम की राशि क्या है? (A Naam Ki Rashi) मेष स्वभाव व राजयोग',
+    desc: 'A (अ, आ, ल) नाम वालों की राशि मेष (A Naam Ki Rashi Mesh) और स्वामी मंगल हैं। जानें A नाम वालों का निडर स्वभाव, लव लाइफ, सरकारी राजयोग व मूंगा रत्न ➔',
     cardTitle: 'A NAAM KI RASHI: MESH (ARIES)',
     cardSub: 'Swami Mangal • Swabhav • Career • Love Life & Lucky Moonga Ratna',
     shortCard: 'A NAAM KI RASHI (MESH)\nSwabhav, Career & Ratna',
@@ -580,8 +580,8 @@ const ROUTE_DATA = {
     accent: '#ef4444'
   },
   '/r-naam-rashi-swabhav': {
-    title: 'R नाम की राशि क्या है? (तुला) स्वभाव, विवाह व राजयोग जानें',
-    desc: 'R (र, त) नाम वालों की राशि तुला (स्वामी शुक्र) होती है। जानें R नाम वालों का आकर्षक स्वभाव, सच्चा प्यार, 2026-27 धन योग व लकी रत्न — अभी देखें ➔',
+    title: 'R नाम की राशि क्या है? (R Name Rashi) तुला स्वभाव, प्रेम व धन योग',
+    desc: 'R (र, रा, री, त) नाम वालों की राशि तुला (R Naam Ki Rashi Tula) और स्वामी शुक्र हैं। जानें R नाम वालों का स्वभाव, विवाह, 2026-27 धन राजयोग व लकी रत्न ➔',
     cardTitle: 'R NAAM KI RASHI: TULA (LIBRA)',
     cardSub: 'Swami Shukra • Swabhav • Career • Marriage & Lucky Opal Ratna',
     shortCard: 'R NAAM KI RASHI (TULA)\nSwabhav, Vivah & Ratna',
@@ -590,8 +590,8 @@ const ROUTE_DATA = {
     accent: '#ec4899'
   },
   '/m-naam-rashi-swabhav': {
-    title: 'M नाम की राशि क्या है? (सिंह) राजयोग, स्वभाव व माणिक्य रत्न',
-    desc: 'M (म, ट) नाम वालों की राशि सिंह (स्वामी सूर्य) होती है। जानें M नाम वालों का शाही स्वभाव, सरकारी राजयोग, प्रेम व लकी रत्न — तुरंत चेक करें ➔',
+    title: 'M नाम की राशि क्या है? (M Naam Ki Rashi) सिंह स्वभाव व राजयोग',
+    desc: 'M (म, मा, मी, ट) नाम वालों की राशि सिंह (M Naam Ki Rashi Singh) और स्वामी सूर्य हैं। जानें M नाम वालों का शाही स्वभाव, सरकारी राजयोग, प्रेम व माणिक्य रत्न ➔',
     cardTitle: 'M NAAM KI RASHI: SINGH (LEO)',
     cardSub: 'Swami Surya • Royal Nature • Rajyoga • Career & Lucky Ruby Ratna',
     shortCard: 'M NAAM KI RASHI (SINGH)\nRajyoga, Career & Manikya',
@@ -600,8 +600,8 @@ const ROUTE_DATA = {
     accent: '#f59e0b'
   },
   '/p-naam-rashi-swabhav': {
-    title: 'P नाम की राशि क्या है? (कन्या) स्वभाव, धन योग व पन्ना रत्न',
-    desc: 'P (प, ष, ण) नाम वालों की राशि कन्या (स्वामी बुध) होती है। जानें P नाम वालों की तीव्र बुद्धि, व्यापार सफलता, प्रेम व पन्ना रत्न — अभी जानें ➔',
+    title: 'P नाम की राशि क्या है? (P / Pi Naam Ki Rashi) कन्या स्वभाव व धन योग',
+    desc: 'P (प, पा, पी, पू) नाम वालों की राशि कन्या (P Naam Ki Rashi Kanya) और स्वामी बुध हैं। जानें P नाम वालों की बुद्धि, व्यापार धन योग, प्रेम व पन्ना रत्न ➔',
     cardTitle: 'P NAAM KI RASHI: KANYA (VIRGO)',
     cardSub: 'Swami Budh • Sharp Intellect • Business • Career & Emerald Ratna',
     shortCard: 'P NAAM KI RASHI (KANYA)\nSwabhav, Vyapar & Panna',
@@ -808,6 +808,256 @@ const ROUTE_DATA = {
     badge: 'VEDIC RASHIFAL • MEEN (PISCES)',
     art: 'rashi',
     accent: '#fbbf24'
+  },
+  '/ank-jyotish-mulank-calculator': {
+    title: 'अंक ज्योतिष कैलकुलेटर | पण्डित जी ऑनलाइन',
+    desc: 'जन्म तिथि से जानें अपना मूलांक (1-9), भाग्यांक, स्वामी ग्रह, लकी मोबाइल नंबर और गाड़ी का भाग्यशाली नंबर — अभी निःशुल्क जांचें ➔',
+    cardTitle: 'ANK JYOTISH MULANK CALCULATOR',
+    cardSub: 'Mulank 1-9 • Bhagyank • Lucky Mobile & Vehicle Number Check',
+    shortCard: 'MULANK & BHAGYANK\nLucky Number Calculator',
+    badge: 'VEDIC NUMEROLOGY • MULANK 1-9',
+    art: 'kundli',
+    accent: '#f59e0b'
+  },
+  '/naam-se-kundali-milan': {
+    title: 'सिर्फ नाम से 36 गुण कुंडली मिलान | पण्डित जी ऑनलाइन',
+    desc: 'जन्म समय याद न होने पर केवल वर और कन्या के प्रचलित नाम से करें अष्टकूट 36 गुण विवाह मिलान एवं नाड़ी-भकूट दोष परिहार — अभी मिलाएं ➔',
+    cardTitle: 'NAAM SE 36 GUN KUNDALI MILAN',
+    cardSub: 'No Birth Time Needed • Var-Kanya Name Ashtakoot Matching',
+    shortCard: 'NAAM SE 36 GUN MILAN\nVivah Matching by Name',
+    badge: 'NAME BASED 36 GUN MARRIAGE MATCHING',
+    art: 'milan',
+    accent: '#f43f5e'
+  },
+  '/vivah-yog-calculator': {
+    title: 'मेरी शादी कब और किस दिशा में होगी? — विवाह योग कैलकुलेटर',
+    desc: 'जन्म तिथि या नाम राशि से जानें आपके विवाह का सटीक शुभ वर्ष, जीवनसाथी का स्वभाव, ससुराल की शुभ दिशा व शीघ्र विवाह के उपाय — अभी देखें ➔',
+    cardTitle: 'VIVAH YOG & DIRECTION CALCULATOR',
+    cardSub: 'Marriage Year • Spouse Nature • Sasural Direction & Vivah Upay',
+    shortCard: 'VIVAH YOG CALCULATOR\nShadi Kab & Kis Disha Me',
+    badge: '7TH HOUSE MARRIAGE PREDICTION TOOL',
+    art: 'milan',
+    accent: '#ec4899'
+  },
+  '/sarkari-naukri-rajyog': {
+    title: 'सरकारी नौकरी एवं धन राजयोग कैलकुलेटर | पण्डित जी ऑनलाइन',
+    desc: 'कुंडली व नाम राशि में सूर्य, गुरु, शनि और मंगल की स्थिति से जानें सरकारी नौकरी (IAS/PCS/Police/Bank/Teacher) व उच्च राजयोग — अभी जांचें ➔',
+    cardTitle: 'SARKARI NAUKRI & RAJYOG CHECK',
+    cardSub: 'Surya, Guru & Shani Analysis • Govt Job Yoga & Career Remedies',
+    shortCard: 'SARKARI NAUKRI RAJYOG\nGovt Job & Wealth Check',
+    badge: '10TH HOUSE CAREER & RAJYOG CALCULATOR',
+    art: 'kundli',
+    accent: '#10b981'
+  },
+  '/bhumi-pujan-muhurat': {
+    title: 'भूमि पूजन मुहूर्त 2026-27 | पण्डित जी ऑनलाइन',
+    desc: 'साल 2026-2027 में नए मकान या प्लॉट के भूमि पूजन व शिलान्यास की सर्वोत्तम शुभ तिथियां, नाग फण दिशा विचार व कलश स्थापना विधि — अभी देखें ➔',
+    cardTitle: 'BHUMI PUJAN MUHURAT 2026-2027',
+    cardSub: 'Foundation Laying Dates • Vastu Nag Phan Direction & Puja Vidhi',
+    shortCard: 'BHUMI PUJAN 2026-27\nNeev Rakhne Ki Shubh Tithi',
+    badge: 'VASTU SHILANYAS & BHUMI PUJAN MUHURAT',
+    art: 'panchang',
+    accent: '#f59e0b'
+  },
+  '/dukan-vyapar-muhurat': {
+    title: 'नया व्यापार व दुकान खोलने का शुभ मुहूर्त 2026-27 | पण्डित जी ऑनलाइन',
+    desc: '2026-2027 में नई दुकान, ऑफिस, शोरूम या फैक्ट्री उद्घाटन के लिए सर्वोत्तम शुभ मुहूर्त, अमृत-लाभ चौघड़िया व गल्ला पूजन विधि — अभी पढ़ें ➔',
+    cardTitle: 'DUKAN & VYAPAR MUHURAT 2026-27',
+    cardSub: 'New Business & Shop Opening Dates • Shubh Choghadiya & Lagna',
+    shortCard: 'VYAPAR MUHURAT 2026-27\nDukan & Office Opening',
+    badge: 'AUSPICIOUS BUSINESS OPENING MUHURAT',
+    art: 'panchang',
+    accent: '#10b981'
+  },
+  '/naamkaran-muhurat': {
+    title: 'नामकरण संस्कार मुहूर्त 2026-27 | पण्डित जी ऑनलाइन',
+    desc: 'नवजात शिशु के नामकरण संस्कार हेतु 2026-2027 की शुभ तिथियां, 11वें/12वें दिन का शास्त्रीय नियम व 27 नक्षत्र नामाक्षर चक्र — अभी देखें ➔',
+    cardTitle: 'SHISHU NAAMKARAN MUHURAT 2026-27',
+    cardSub: 'Baby Naming Ceremony Dates • 27 Nakshatra Syllable Guide',
+    shortCard: 'NAAMKARAN MUHURAT\nBaby Naming Shubh Tithi',
+    badge: 'VEDIC SHISHU NAAMKARAN SANSKAR',
+    art: 'panchang',
+    accent: '#38bdf8'
+  },
+  '/annaprashan-muhurat': {
+    title: 'अन्नप्राशन मुहूर्त 2026-27 | पण्डित जी ऑनलाइन',
+    desc: 'साल 2026-2027 में शिशु के अन्नप्राशन संस्कार (मुंहजुठी) की सबसे शुभ तिथियां, छठे/सातवें मास का नियम व खीर पूजन विधि — अभी जांचें ➔',
+    cardTitle: 'ANNAPRASHAN MUHURAT 2026-2027',
+    cardSub: 'Baby First Solid Food Ceremony • Even/Odd Month Vedic Rules',
+    shortCard: 'ANNAPRASHAN 2026-27\nShishu First Food Dates',
+    badge: 'SHISHU ANNAPRASHAN SANSKAR MUHURAT',
+    art: 'panchang',
+    accent: '#f97316'
+  },
+  '/surya-chandra-grahan-2027': {
+    title: 'सूर्य ग्रहण और चंद्र ग्रहण 2026-27 | पण्डित जी ऑनलाइन',
+    desc: 'वर्ष 2026 और 2027 में लगने वाले सभी सूर्य ग्रहण व चंद्र ग्रहण की तिथियां, भारत में दृश्यता, सूतक काल समय व गर्भवती महिलाओं के नियम ➔',
+    cardTitle: 'SURYA & CHANDRA GRAHAN 2026-27',
+    cardSub: 'Solar & Lunar Eclipse Timings in India • Sutak Kaal & Rashi Phal',
+    shortCard: 'GRAHAN LIST 2026-27\nSutak Time & Rashi Effect',
+    badge: 'DRIK GANIT ECLIPSE CALENDAR 2026-27',
+    art: 'shani',
+    accent: '#818cf8'
+  },
+  '/purnima-vrat-2027': {
+    title: 'पूर्णिमा व्रत कैलेंडर 2026-27 | पण्डित जी ऑनलाइन',
+    desc: 'साल 2026-2027 की सभी 12 पूर्णिमा व्रत तिथियां, सत्यनारायण कथा मुहूर्त, चंद्रोदय अर्घ्य समय व स्नान-दान का शास्त्रीय महत्व — अभी देखें ➔',
+    cardTitle: 'PURNIMA VRAT CALENDAR 2026-2027',
+    cardSub: 'All 12 Purnima Tithi • Satyanarayan Katha & Chandrodaya Time',
+    shortCard: 'PURNIMA VRAT 2026-27\nSnan-Daan & Puja Dates',
+    badge: 'SANATAN PURNIMA VRAT PANCHANG',
+    art: 'panchang',
+    accent: '#fbbf24'
+  },
+  '/amavasya-2027': {
+    title: 'अमावस्या तिथि कैलेंडर 2026-27 | पण्डित जी ऑनलाइन',
+    desc: 'वर्ष 2026-2027 की सभी अमावस्या तिथियां (सोमवती, मौनी, शनिश्चरी, महालया अमावस्या), पितृ तर्पण समय व पीपल पूजन के अचूक उपाय — अभी पढ़ें ➔',
+    cardTitle: 'AMAVASYA TITHI LIST 2026-2027',
+    cardSub: 'Somvati, Mauni & Shani Amavasya • Pitra Tarpan & Peepal Puja',
+    shortCard: 'AMAVASYA LIST 2026-27\nPitra Tarpan & Snan Dates',
+    badge: 'VEDIC AMAVASYA & PITRA SHANTI GUIDE',
+    art: 'panchang',
+    accent: '#6366f1'
+  },
+  '/pradosh-vrat-2027': {
+    title: 'प्रदोष व्रत कैलेंडर 2026-27 | पण्डित जी ऑनलाइन',
+    desc: 'साल 2026-2027 के सभी 24 प्रदोष व्रत (सोम प्रदोष, भौम प्रदोष, शनि प्रदोष) की तिथियां, सायंकाल शिव अभिषेक मुहूर्त व प्रदोष व्रत कथा ➔',
+    cardTitle: 'PRADOSH VRAT CALENDAR 2026-2027',
+    cardSub: 'Som, Bhaum & Shani Pradosh Dates • Evening Shiva Puja Time',
+    shortCard: 'PRADOSH VRAT 2026-27\nShiva Abhishek Muhurat',
+    badge: 'SHIVA PRADOSH KAAL PUJA PANCHANG',
+    art: 'puja',
+    accent: '#f97316'
+  },
+  '/sankashti-chaturthi-2027': {
+    title: 'संकष्टी चतुर्थी 2026-27 | पण्डित जी ऑनलाइन',
+    desc: 'वर्ष 2026-2027 की सभी संकष्टी गणेश चतुर्थी, माघी सकट चौथ व अंगारकी चौथ व्रत तिथियां, चंद्रोदय अर्घ्य समय व श्री गणेश पूजा विधि ➔',
+    cardTitle: 'SANKASHTI CHATURTHI 2026-2027',
+    cardSub: 'Sakat Chauth & Angarki Chaturthi • Moonrise Time & Ganesh Puja',
+    shortCard: 'SANKASHTI VRAT 2026-27\nChandrodaya & Ganesh Puja',
+    badge: 'GANESH SANKASHTI VRAT CALENDAR',
+    art: 'puja',
+    accent: '#ef4444'
+  },
+  '/k-naam-rashi-swabhav': {
+    title: 'K नाम की राशि क्या है? (K Naam Ki Rashi) मिथुन राशि, स्वभाव व प्रेम | पण्डित जी ऑनलाइन',
+    desc: 'K (क, का, की, कू, के, को) नाम वालों की राशि मिथुन (स्वामी बुध) होती है। जानें K नाम वालों का स्वभाव, लव लाइफ, करियर व पन्ना रत्न — अभी देखें ➔',
+    cardTitle: 'K NAAM KI RASHI: MITHUN (GEMINI)',
+    cardSub: 'Swami Budh • Intelligent Nature • Career, Love & Panna Ratna',
+    shortCard: 'K NAAM KI RASHI\nMithun Rashi & Swabhav',
+    badge: 'K LETTER ZODIAC & PERSONALITY GUIDE',
+    art: 'rashi',
+    accent: '#10b981'
+  },
+  '/n-naam-rashi-swabhav': {
+    title: 'N नाम की राशि क्या है? (N Naam Ki Rashi) वृश्चिक राशि, स्वभाव व प्यार | पण्डित जी ऑनलाइन',
+    desc: 'N (न, ना, नी, नू, ने, नो) नाम वालों की राशि वृश्चिक (स्वामी मंगल) होती है। जानें N नाम वालों का निडर स्वभाव, सच्चा प्यार, करियर व मूंगा रत्न ➔',
+    cardTitle: 'N NAAM KI RASHI: VRISHCHIK (SCORPIO)',
+    cardSub: 'Swami Mangal • Fearless Nature • Love, Career & Moonga Ratna',
+    shortCard: 'N NAAM KI RASHI\nVrishchik Rashi & Swabhav',
+    badge: 'N LETTER ZODIAC & PERSONALITY GUIDE',
+    art: 'rashi',
+    accent: '#ef4444'
+  },
+  '/v-naam-rashi-swabhav': {
+    title: 'V नाम की राशि क्या है? (V Naam Ki Rashi) वृषभ राशि, स्वभाव व धन योग | पण्डित जी ऑनलाइन',
+    desc: 'V (व, वा, वी, वू, वे, वो) नाम वालों की राशि वृषभ (स्वामी शुक्र) होती है। जानें V नाम वालों का आकर्षक स्वभाव, धन राजयोग, प्रेम व ओपल रत्न ➔',
+    cardTitle: 'V NAAM KI RASHI: VRISHABH (TAURUS)',
+    cardSub: 'Swami Shukra • Wealth & Luxury • Career, Marriage & Opal Ratna',
+    shortCard: 'V NAAM KI RASHI\nVrishabh Rashi & Swabhav',
+    badge: 'V LETTER ZODIAC & PERSONALITY GUIDE',
+    art: 'rashi',
+    accent: '#ec4899'
+  },
+  '/b-naam-rashi-swabhav': {
+    title: 'B नाम की राशि क्या है? (B Naam Ki Rashi) धनु व वृषभ, स्वभाव व भाग्य | पण्डित जी ऑनलाइन',
+    desc: 'B (ब, बा, बी, बू, भ, भा, भी, भू) नाम वालों की राशि वृषभ व धनु होती है। जानें B नाम वालों का सच्चा स्वभाव, विवाह, करियर व लकी रत्न — अभी देखें ➔',
+    cardTitle: 'B NAAM KI RASHI: VRISHABH & DHANU',
+    cardSub: 'Swami Shukra & Guru • Honest Nature • Career, Love & Lucky Ratna',
+    shortCard: 'B NAAM KI RASHI\nSwabhav, Vivah & Career',
+    badge: 'B LETTER ZODIAC & PERSONALITY GUIDE',
+    art: 'rashi',
+    accent: '#f59e0b'
+  },
+  '/d-naam-rashi-swabhav': {
+    title: 'D नाम की राशि क्या है? (D Naam Ki Rashi) मीन व कर्क, स्वभाव व करियर | पण्डित जी ऑनलाइन',
+    desc: 'D (द, दी, दू, दे, दो, ड, डी, डू) नाम वालों की राशि मीन, कुम्भ व कर्क होती है। जानें D नाम वालों का स्वभाव, प्रेम, भाग्योदय व पुखराज रत्न ➔',
+    cardTitle: 'D NAAM KI RASHI: MEEN & KARK',
+    cardSub: 'Swami Guru & Chandra • Kind Nature • Career, Marriage & Pukhraj',
+    shortCard: 'D NAAM KI RASHI\nSwabhav, Career & Ratna',
+    badge: 'D LETTER ZODIAC & PERSONALITY GUIDE',
+    art: 'rashi',
+    accent: '#fbbf24'
+  },
+  '/g-naam-rashi-swabhav': {
+    title: 'G नाम की राशि क्या है? (G Naam Ki Rashi) कुम्भ व मकर, स्वभाव व कर्म | पण्डित जी ऑनलाइन',
+    desc: 'G (ग, गा, गी, गू, गे, गो) नाम वालों की राशि कुम्भ व मकर (स्वामी शनि) होती है। जानें G नाम वालों का मेहनती स्वभाव, धन योग, प्रेम व नीलम रत्न ➔',
+    cardTitle: 'G NAAM KI RASHI: KUMBH & MAKAR',
+    cardSub: 'Swami Shani Dev • Disciplined Nature • Career, Wealth & Neelam',
+    shortCard: 'G NAAM KI RASHI\nKumbh/Makar & Swabhav',
+    badge: 'G LETTER ZODIAC & PERSONALITY GUIDE',
+    art: 'shani',
+    accent: '#6366f1'
+  },
+  '/h-naam-rashi-swabhav': {
+    title: 'H नाम की राशि क्या है? (H Naam Ki Rashi) कर्क व मिथुन, स्वभाव व प्रेम | पण्डित जी ऑनलाइन',
+    desc: 'H (ह, ही, हू, हे, हो) नाम वालों की राशि कर्क (स्वामी चंद्रमा) व मिथुन होती है। जानें H नाम वालों का भावुक स्वभाव, परिवार प्रेम, धन व मोती रत्न ➔',
+    cardTitle: 'H NAAM KI RASHI: KARK (CANCER)',
+    cardSub: 'Swami Chandra • Caring Nature • Family, Wealth & Pearl (Moti)',
+    shortCard: 'H NAAM KI RASHI\nKark Rashi & Swabhav',
+    badge: 'H LETTER ZODIAC & PERSONALITY GUIDE',
+    art: 'rashi',
+    accent: '#38bdf8'
+  },
+  '/j-naam-rashi-swabhav': {
+    title: 'J नाम की राशि क्या है? (J Naam Ki Rashi) मकर राशि, स्वभाव व राजयोग | पण्डित जी ऑनलाइन',
+    desc: 'J (ज, जा, जी, खी, खू, खे, खो) नाम वालों की राशि मकर (स्वामी शनि देव) होती है। जानें J नाम वालों का दृढ़ स्वभाव, प्रशासनिक योग, प्रेम व नीलम रत्न ➔',
+    cardTitle: 'J NAAM KI RASHI: MAKAR (CAPRICORN)',
+    cardSub: 'Swami Shani Dev • Ambitious Nature • Career, Love & Neelam Ratna',
+    shortCard: 'J NAAM KI RASHI\nMakar Rashi & Swabhav',
+    badge: 'J LETTER ZODIAC & PERSONALITY GUIDE',
+    art: 'shani',
+    accent: '#818cf8'
+  },
+  '/t-naam-rashi-swabhav': {
+    title: 'T नाम की राशि क्या है? (T Naam Ki Rashi) तुला व सिंह, स्वभाव व करियर | पण्डित जी ऑनलाइन',
+    desc: 'T (त, ता, ती, तू, ते, ट, टा, टी, टू) नाम वालों की राशि तुला व सिंह होती है। जानें T नाम वालों का नेतृत्व स्वभाव, प्रेम, धन योग व लकी रत्न ➔',
+    cardTitle: 'T NAAM KI RASHI: TULA & SINGH',
+    cardSub: 'Swami Shukra & Surya • Dynamic Nature • Career, Love & Ratna',
+    shortCard: 'T NAAM KI RASHI\nTula/Singh & Swabhav',
+    badge: 'T LETTER ZODIAC & PERSONALITY GUIDE',
+    art: 'rashi',
+    accent: '#f43f5e'
+  },
+  '/y-naam-rashi-swabhav': {
+    title: 'Y नाम की राशि क्या है? (Y Naam Ki Rashi) वृश्चिक व धनु, स्वभाव व भाग्य | पण्डित जी ऑनलाइन',
+    desc: 'Y (य, या, यी, यू, ये, यो) नाम वालों की राशि वृश्चिक व धनु होती है। जानें Y नाम वालों का स्पष्टवादी स्वभाव, करियर सफलता, विवाह व लकी रत्न ➔',
+    cardTitle: 'Y NAAM KI RASHI: VRISHCHIK & DHANU',
+    cardSub: 'Swami Mangal & Guru •Focused Nature • Career, Marriage & Ratna',
+    shortCard: 'Y NAAM KI RASHI\nSwabhav, Vivah & Career',
+    badge: 'Y LETTER ZODIAC & PERSONALITY GUIDE',
+    art: 'rashi',
+    accent: '#eab308'
+  },
+  '/l-naam-rashi-swabhav': {
+    title: 'L नाम की राशि क्या है? (L Naam Ki Rashi) मेष राशि, स्वभाव व प्रेम | पण्डित जी ऑनलाइन',
+    desc: 'L (ल, ला, ली, लू, ले, लो) नाम वालों की राशि मेष (स्वामी मंगल) होती है। जानें L नाम वालों का ऊर्जावान स्वभाव, सच्चा प्यार, करियर व मूंगा रत्न ➔',
+    cardTitle: 'L NAAM KI RASHI: MESH (ARIES)',
+    cardSub: 'Swami Mangal • Energetic Nature • Love Life, Career & Moonga',
+    shortCard: 'L NAAM KI RASHI\nMesh Rashi & Swabhav',
+    badge: 'L LETTER ZODIAC & PERSONALITY GUIDE',
+    art: 'rashi',
+    accent: '#ef4444'
+  },
+  '/c-naam-rashi-swabhav': {
+    title: 'C नाम की राशि क्या है? (C Naam Ki Rashi) मेष व मीन, स्वभाव व धन योग | पण्डित जी ऑनलाइन',
+    desc: 'C (च, चू, चे, चो, चा, ची, छ) नाम वालों की राशि मेष, मीन व मिथुन होती है। जानें C नाम वालों का आकर्षक स्वभाव, करियर, प्रेम व भाग्यशाली रत्न ➔',
+    cardTitle: 'C NAAM KI RASHI: MESH & MEEN',
+    cardSub: 'Swami Mangal & Guru • Creative Nature • Career, Love & Ratna',
+    shortCard: 'C NAAM KI RASHI\nMesh/Meen & Swabhav',
+    badge: 'C LETTER ZODIAC & PERSONALITY GUIDE',
+    art: 'rashi',
+    accent: '#f97316'
   }
 };
 
@@ -1701,17 +1951,97 @@ function isBrandedSocialAssetRequest(pathname, url, ua) {
   return false;
 }
 
-function getEdgeIstDateInfo() {
+const DAILY_DYNAMIC_EDGE_PATHS = new Set([
+  '/',
+  '/panchang',
+  '/aaj-ka-panchang',
+  '/aaj-ka-choghadiya',
+  '/aaj-ka-rahukaal',
+  '/rashifal',
+  '/mesh-rashifal',
+  '/vrishabh-rashifal',
+  '/mithun-rashifal',
+  '/kark-rashifal',
+  '/simha-rashifal',
+  '/kanya-rashifal',
+  '/tula-rashifal',
+  '/vrishchik-rashifal',
+  '/dhanu-rashifal',
+  '/makar-rashifal',
+  '/kumbh-rashifal',
+  '/meen-rashifal'
+]);
+
+const TOOL_CALCULATOR_EDGE_PATHS = new Set([
+  '/janam-kundali',
+  '/kundali-milan',
+  '/shani-sadesati-calculator',
+  '/digital-mandir',
+  '/ram-shalaka-prashnavali',
+  '/shubh-muhurat',
+  '/jyotish-chat',
+  '/mantra-jaap',
+  '/puja-services',
+  '/naam-rashi',
+  '/kundali-dosh-upay',
+  '/dharm-gyan-kosh',
+  '/ank-jyotish-mulank-calculator',
+  '/naam-se-kundali-milan',
+  '/vivah-yog-calculator',
+  '/sarkari-naukri-rajyog'
+]);
+
+const LEGAL_POLICY_EDGE_PATHS = new Set([
+  '/about-us',
+  '/contact-us',
+  '/privacy-policy',
+  '/terms-and-conditions',
+  '/disclaimer'
+]);
+
+function getEdgeIstDateInfo(canonicalPath) {
   const nowUtc = new Date();
   const istTime = new Date(nowUtc.getTime() + 5.5 * 60 * 60 * 1000);
   const y = istTime.getUTCFullYear();
   const m = String(istTime.getUTCMonth() + 1).padStart(2, '0');
   const d = String(istTime.getUTCDate()).padStart(2, '0');
   const todayStr = `${y}-${m}-${d}`;
+  const dailyBrahmaIso = `${todayStr}T04:30:00+05:30`;
+  const toolsMonthIso = `${y}-${m}-01T04:30:00+05:30`;
+  const staticKnowledgeIso = '2026-10-15T00:00:00+05:30';
+  const legalPolicyIso = '2026-08-01T00:00:00+05:30';
+
+  const p = canonicalPath || '/';
+  const isDaily = DAILY_DYNAMIC_EDGE_PATHS.has(p);
+  const isTool = TOOL_CALCULATOR_EDGE_PATHS.has(p);
+  const isLegal = LEGAL_POLICY_EDGE_PATHS.has(p);
+
+  const datePublishedIso = isDaily
+    ? dailyBrahmaIso
+    : isTool
+      ? toolsMonthIso
+      : isLegal
+        ? legalPolicyIso
+        : staticKnowledgeIso;
+  const dateModifiedIso = isDaily
+    ? dailyBrahmaIso
+    : isTool
+      ? toolsMonthIso
+      : isLegal
+        ? legalPolicyIso
+        : staticKnowledgeIso;
+
   return {
     todayStr,
-    datePublishedIso: `${todayStr}T05:30:00+05:30`,
-    dateModifiedIso: nowUtc.toISOString()
+    dailyBrahmaIso,
+    toolsMonthIso,
+    staticKnowledgeIso,
+    legalPolicyIso,
+    isDaily,
+    isTool,
+    isLegal,
+    datePublishedIso,
+    dateModifiedIso
   };
 }
 
@@ -1877,8 +2207,9 @@ function buildEdgeRouteArticleHtml(canonicalPath, info, seoEntry) {
 }
 
 function injectEdgeRouteSeo(rawHtml, canonicalPath, info, seoEntry) {
-  if (!rawHtml || canonicalPath === '/') return rawHtml;
-  const canonicalUrl = `${SITE_ORIGIN}${canonicalPath}`;
+  if (!rawHtml) return rawHtml;
+  const isHome = canonicalPath === '/';
+  const canonicalUrl = isHome ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}${canonicalPath}`;
   const slug = canonicalPath.replace(/^\/+/, '').replace(/\//g, '-').toLowerCase() || 'home';
   const socialImg = `${SITE_ORIGIN}/og-card/${slug}-discover-${VERSION_TAG}.jpg`;
   const finalTitle = (seoEntry && seoEntry.title) || info.title;
@@ -1890,12 +2221,11 @@ function injectEdgeRouteSeo(rawHtml, canonicalPath, info, seoEntry) {
   const safeKeywords = xmlEscape(finalKeywords);
   const safeCanonical = xmlEscape(canonicalUrl);
   const safeImg = xmlEscape(socialImg);
-  const articleHtml = buildEdgeRouteArticleHtml(canonicalPath, info, seoEntry);
-  const { datePublishedIso, dateModifiedIso } = getEdgeIstDateInfo();
+  const { datePublishedIso, dateModifiedIso, isDaily, isTool } = getEdgeIstDateInfo(canonicalPath);
 
   const discoverArticleSchema = JSON.stringify({
     '@context': 'https://schema.org',
-    '@type': 'Article',
+    '@type': isDaily || isTool ? ['NewsArticle', 'Article'] : 'Article',
     '@id': `${canonicalUrl}#discover-article`,
     mainEntityOfPage: {
       '@type': 'WebPage',
@@ -1912,6 +2242,12 @@ function injectEdgeRouteSeo(rawHtml, canonicalPath, info, seoEntry) {
         url: socialImg,
         width: 1200,
         height: 630
+      },
+      {
+        '@type': 'ImageObject',
+        url: `${SITE_ORIGIN}/pwa-512x512.png`,
+        width: 512,
+        height: 512
       }
     ],
     author: {
@@ -1934,6 +2270,15 @@ function injectEdgeRouteSeo(rawHtml, canonicalPath, info, seoEntry) {
       }
     }
   });
+
+  if (isHome) {
+    return rawHtml.replace(
+      /<\/head>/i,
+      () => `  <script type="application/ld+json" id="pj-edge-discover-jsonld">${discoverArticleSchema}</script>\n  </head>`
+    );
+  }
+
+  const articleHtml = buildEdgeRouteArticleHtml(canonicalPath, info, seoEntry);
 
   const faqSchemaScript =
     faqList.length > 0
@@ -2081,12 +2426,116 @@ async function middleware(request, event) {
     });
   }
 
-  // 2b. Google Discover, Google Search Console & Follow Live RSS 2.0 + Media RSS Feed (/feed.xml & /rss.xml)
+  // 2b. Dynamic 4-Tier SEO Freshness Sitemap (/sitemap.xml) — 93 Canonical URLs
+  // Category 1 (18 Daily URLs): Current IST Date at 04:30:00+05:30, daily, 0.95-1.0
+  // Category 2 (16 Tool/Calculator URLs): Month-start IST Date, weekly, 0.80-0.85
+  // Category 3 (54 Static Knowledge/Swabhav/Muhurat URLs): 2026-10-15T00:00:00+05:30, monthly, 0.70-0.75
+  // Category 4 (5 Legal & Policy URLs): 2026-08-01T00:00:00+05:30, yearly, 0.30-0.40
+  if (pathname === '/sitemap.xml') {
+    const reqOrigin = SITE_ORIGIN;
+    const {
+      dailyBrahmaIso,
+      toolsMonthIso,
+      staticKnowledgeIso,
+      legalPolicyIso
+    } = getEdgeIstDateInfo('/');
+
+    const allPaths = Object.keys(ROUTE_DATA);
+    const cat1 = [];
+    const cat2 = [];
+    const cat3 = [];
+    const cat4 = [];
+
+    for (const p of allPaths) {
+      const locUrl = p === '/' ? `${reqOrigin}/` : `${reqOrigin}${p}`;
+      if (DAILY_DYNAMIC_EDGE_PATHS.has(p)) {
+        cat1.push({
+          loc: locUrl,
+          lastmod: dailyBrahmaIso,
+          changefreq: 'daily',
+          priority: p === '/' ? '1.0' : '0.95'
+        });
+      } else if (TOOL_CALCULATOR_EDGE_PATHS.has(p)) {
+        const isTopTool =
+          p === '/janam-kundali' ||
+          p === '/kundali-milan' ||
+          p === '/shani-sadesati-calculator' ||
+          p === '/digital-mandir' ||
+          p === '/ram-shalaka-prashnavali' ||
+          p === '/shubh-muhurat' ||
+          p === '/ank-jyotish-mulank-calculator' ||
+          p === '/naam-se-kundali-milan' ||
+          p === '/vivah-yog-calculator' ||
+          p === '/sarkari-naukri-rajyog';
+        cat2.push({
+          loc: locUrl,
+          lastmod: toolsMonthIso,
+          changefreq: 'weekly',
+          priority: isTopTool ? '0.85' : '0.80'
+        });
+      } else if (LEGAL_POLICY_EDGE_PATHS.has(p)) {
+        const isHighLegal = p === '/about-us' || p === '/contact-us';
+        cat4.push({
+          loc: locUrl,
+          lastmod: legalPolicyIso,
+          changefreq: 'yearly',
+          priority: isHighLegal ? '0.40' : '0.30'
+        });
+      } else {
+        const isHighKnowledge =
+          p.includes('-swabhav') ||
+          p.includes('-dosh-') ||
+          p.includes('-muhurat') ||
+          p.includes('ekadashi') ||
+          p.includes('grahan') ||
+          p.includes('purnima') ||
+          p.includes('amavasya') ||
+          p.includes('pradosh') ||
+          p.includes('chaturthi') ||
+          p === '/rudrapur-jyotish' ||
+          p === '/sapne-me-saap-dekhna';
+        cat3.push({
+          loc: locUrl,
+          lastmod: staticKnowledgeIso,
+          changefreq: 'monthly',
+          priority: isHighKnowledge ? '0.75' : '0.70'
+        });
+      }
+    }
+
+    const orderedEntries = [...cat1, ...cat2, ...cat3, ...cat4];
+    const urlXmlBlocks = orderedEntries
+      .map(
+        (e) => `  <url>
+    <loc>${xmlEscape(e.loc)}</loc>
+    <lastmod>${xmlEscape(e.lastmod)}</lastmod>
+    <changefreq>${e.changefreq}</changefreq>
+    <priority>${e.priority}</priority>
+  </url>`
+      )
+      .join('\n');
+
+    const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+${urlXmlBlocks}
+</urlset>`;
+
+    return new Response(sitemapXml, {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/xml; charset=utf-8',
+        'Access-Control-Allow-Origin': '*',
+        'X-Robots-Tag': 'index, follow',
+        'Cache-Control': 'public, max-age=900, s-maxage=900, stale-while-revalidate=3600'
+      }
+    });
+  }
+
+  // 2c. Google Discover, Google Search Console & Follow Live RSS 2.0 + Media RSS Feed (/feed.xml & /rss.xml)
   if (pathname === '/feed.xml' || pathname === '/rss.xml') {
-    const reqOrigin =
-      url.hostname === 'panditjionline.online' || url.hostname === 'www.panditjionline.online'
-        ? `https://${url.hostname}`
-        : SITE_ORIGIN;
+    const reqOrigin = SITE_ORIGIN;
     const nowUtc = new Date();
     const istMs = nowUtc.getTime() + 5.5 * 60 * 60 * 1000;
     const istDate = new Date(istMs);
@@ -2094,24 +2543,40 @@ async function middleware(request, event) {
     const mm = String(istDate.getUTCMonth() + 1).padStart(2, '0');
     const dd = String(istDate.getUTCDate()).padStart(2, '0');
     const todayIstStr = `${yyyy}-${mm}-${dd}`;
-    const pubDateRfc = nowUtc.toUTCString();
 
-    // Exact 00:00:00 IST midnight RFC timestamp for daily items
-    const midnightIstDate = new Date(Date.UTC(yyyy, istDate.getUTCMonth(), istDate.getUTCDate(), 0, 0, 0) - 5.5 * 60 * 60 * 1000);
-    const midnightIstRfc = midnightIstDate.toUTCString();
+    // Exact 04:30:00 IST Brahma Muhurat RFC timestamp for daily items
+    const brahmaMuhuratIstDate = new Date(
+      Date.UTC(yyyy, istDate.getUTCMonth(), istDate.getUTCDate(), 4, 30, 0) - 5.5 * 60 * 60 * 1000
+    );
+    const dailyBrahmaRfc = brahmaMuhuratIstDate.toUTCString();
+    const toolsMonthRfc = new Date(
+      Date.UTC(yyyy, istDate.getUTCMonth(), 1, 4, 30, 0) - 5.5 * 60 * 60 * 1000
+    ).toUTCString();
+    const staticArticleRfc = new Date('2026-10-15T00:00:00+05:30').toUTCString();
 
-    const discoverFeedPaths = Object.keys(ROUTE_DATA);
+    const allRouteKeys = Object.keys(ROUTE_DATA);
+    const orderedFeedPaths = [
+      ...allRouteKeys.filter((p) => DAILY_DYNAMIC_EDGE_PATHS.has(p)),
+      ...allRouteKeys.filter((p) => TOOL_CALCULATOR_EDGE_PATHS.has(p)),
+      ...allRouteKeys.filter(
+        (p) =>
+          !DAILY_DYNAMIC_EDGE_PATHS.has(p) &&
+          !TOOL_CALCULATOR_EDGE_PATHS.has(p) &&
+          !LEGAL_POLICY_EDGE_PATHS.has(p)
+      )
+    ];
 
-    const itemsXml = discoverFeedPaths
+    const itemsXml = orderedFeedPaths
       .map((p) => {
         const itemInfo = ROUTE_DATA[p];
         if (!itemInfo) return '';
         const itemUrl = p === '/' ? `${reqOrigin}/` : `${reqOrigin}${p}`;
         const itemSlug = p === '/' ? 'home' : p.replace(/^\/+/, '').replace(/\//g, '-');
         const itemImg = `${reqOrigin}/og-card/${itemSlug}-discover-${VERSION_TAG}.jpg`;
-        const isDaily = p === '/' || p.includes('panchang') || p.includes('choghadiya') || p.includes('rahukaal') || p.includes('rashifal');
+        const isDaily = DAILY_DYNAMIC_EDGE_PATHS.has(p);
+        const isTool = TOOL_CALCULATOR_EDGE_PATHS.has(p);
         const itemGuid = isDaily ? `${itemUrl}#${todayIstStr}` : itemUrl;
-        const itemPubDate = isDaily ? midnightIstRfc : pubDateRfc;
+        const itemPubDate = isDaily ? dailyBrahmaRfc : isTool ? toolsMonthRfc : staticArticleRfc;
         return `    <item>
       <title>${xmlEscape(itemInfo.title)}</title>
       <link>${xmlEscape(itemUrl)}</link>
@@ -2138,7 +2603,7 @@ async function middleware(request, event) {
     <link>${reqOrigin}/</link>
     <description>आचार्य पण्डित शशांक शर्मा (रुद्रपुर, उत्तराखण्ड) द्वारा प्रतिदिन अपडेटेड शुद्ध दृक पंचांग, दैनिक राशिफल, शुभ मुहूर्त एवं वैदिक ज्योतिष लेख।</description>
     <language>hi-IN</language>
-    <lastBuildDate>${pubDateRfc}</lastBuildDate>
+    <lastBuildDate>${dailyBrahmaRfc}</lastBuildDate>
     <atom:link href="${reqOrigin}${pathname}" rel="self" type="application/rss+xml" />
     <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
     <image>
