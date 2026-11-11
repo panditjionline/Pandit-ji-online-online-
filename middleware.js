@@ -2049,7 +2049,7 @@ function buildEdgeAuthorBox() {
   return `<div style="margin-top:20px;padding:15px;background:rgba(30,41,59,0.75);border:1px solid rgba(245,158,11,0.42);border-radius:14px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;">
     <div style="width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#f59e0b,#d97706);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">🕉️</div>
     <div style="flex:1;min-width:220px;">
-      <div style="font-size:11px;font-weight:700;color:#fbbf24;text-transform:uppercase;letter-spacing:0.8px;">प्रकाशक एवं मुख्य ज्योतिषाचार्य (E-E-A-T Verified Publisher)</div>
+      <div style="font-size:11px;font-weight:700;color:#fbbf24;text-transform:uppercase;letter-spacing:0.8px;">प्रकाशक एवं मुख्य ज्योतिषाचार्य • श्री ज्योतिष वैदिक संस्थान</div>
       <div style="font-size:15px;font-weight:800;color:#fef3c7;margin-top:2px;">आचार्य पण्डित शशांक शर्मा (Acharya Pandit Shashank Sharma)</div>
       <div style="font-size:12px;color:#cbd5e1;margin-top:2px;">श्री ज्योतिष वैदिक संस्थान • १५+ वर्ष प्रामाणिक वैदिक कर्मकाण्ड एवं ज्योतिष अनुभव</div>
       <div style="font-size:11px;color:#94a3b8;margin-top:4px;">📍 रुद्रपुर, जिला ऊधम सिंह नगर, उत्तराखण्ड - 263153, भारत | 📞 +91 7017279043 | ✉️ shashanksharma0456@gmail.com</div>
@@ -2440,7 +2440,7 @@ async function middleware(request, event) {
       legalPolicyIso
     } = getEdgeIstDateInfo('/');
 
-    const allPaths = Object.keys(ROUTE_DATA);
+    const allPaths = Object.keys(ROUTE_DATA).filter((p) => p !== '/mera-khata');
     const cat1 = [];
     const cat2 = [];
     const cat3 = [];
@@ -2554,7 +2554,7 @@ ${urlXmlBlocks}
     ).toUTCString();
     const staticArticleRfc = new Date('2026-10-15T00:00:00+05:30').toUTCString();
 
-    const allRouteKeys = Object.keys(ROUTE_DATA);
+    const allRouteKeys = Object.keys(ROUTE_DATA).filter((p) => p !== '/mera-khata');
     const orderedFeedPaths = [
       ...allRouteKeys.filter((p) => DAILY_DYNAMIC_EDGE_PATHS.has(p)),
       ...allRouteKeys.filter((p) => TOOL_CALCULATOR_EDGE_PATHS.has(p)),
@@ -2563,7 +2563,8 @@ ${urlXmlBlocks}
           !DAILY_DYNAMIC_EDGE_PATHS.has(p) &&
           !TOOL_CALCULATOR_EDGE_PATHS.has(p) &&
           !LEGAL_POLICY_EDGE_PATHS.has(p)
-      )
+      ),
+      ...allRouteKeys.filter((p) => LEGAL_POLICY_EDGE_PATHS.has(p))
     ];
 
     const itemsXml = orderedFeedPaths
