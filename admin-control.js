@@ -83,7 +83,7 @@
     "hairlineSpeed": "normal",
     "showToran": false,
     "sandhyaAutoGlow": true,
-    "updatedAt": 1794483121224,
+    "updatedAt": 1794486679746,
     "customBadgeHi": "",
     "customGreetingHi": "",
     "customSubtitleHi": "",
@@ -98,7 +98,7 @@
       "AQ.Ab8••••••••keVg"
     ],
     "count": 4,
-    "updatedAt": 1794483409396
+    "updatedAt": 1794486884263
   }
 } /*__PANDITJI_EMBEDDED_ADMIN_STATE_END__*/;
 
