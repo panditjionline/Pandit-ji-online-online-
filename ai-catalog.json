@@ -10,22 +10,22 @@
       "displayName": "Pandit Ji Online — Jyotish Chat & Vedic Astrology Consultation",
       "type": "application/a2a-agent-card+json",
       "url": "https://www.panditjionline.online/jyotish-chat",
-      "description": "Authentic Vedic Astrology consultation by Acharya Pandit Shashank Sharma (Rudrapur, Uttarakhand) offering Drik Ganit Panchang, 36 Gun Kundli Milan, Janam Kundli, Shubh Muhurat 2026-2027, Naam Rashi calculator, and Vedic remedies.",
+      "description": "Authentic Vedic Astrology consultation by Acharya Pandit Shashank Sharma (Rudrapur, Uttarakhand) offering Drik Ganit Panchang, 36 Gun Kundli Milan, Janam Kundli, Shubh Muhurat 2026-2027, 18 Evergreen Sanatan Festival Muhurat hubs, 18 A-Z Naam Rashi Avakhada Chakra calculator, and Vedic remedies.",
       "representativeQueries": [
         "Check Vivah Muhurat 2026-2027 and शुभ विवाह मुहूर्त by name",
         "Calculate 36 Gun Kundli Milan and Manglik or Nadi Dosh remedies",
         "Find Rashi, Nakshatra, Swabhav, and Shani Sadesati phase from name",
-        "View today Drik Ganit Hindu Panchang, Rahukaal, and Abhijit Muhurat"
+        "View today Drik Ganit Hindu Panchang, Samvatsar (Raudra & Parabhava), Rahukaal, and Abhijit Muhurat"
       ]
     },
     {
       "identifier": "urn:air:panditjionline.online:skill:vedic-muhurat-kundli",
-      "displayName": "Drik Ganit Panchang, Muhurat & Kundli Calculators",
+      "displayName": "Drik Ganit Panchang, Muhurat, 18 Evergreen Festivals & Kundli Calculators",
       "type": "text/markdown; profile=\"urn:air:agent-skills\"",
       "url": "https://www.panditjionline.online/llms.txt",
-      "description": "Structured reference of all 93 Vedic Astrology tools, interactive name-based calculators (Vivah Muhurat 2027, Mundan Muhurat, Vehicle Muhurat, A-Z Naam Rashi Swabhav, Shani Sadesati, Manglik Dosh, Nadi Dosh, Ank Jyotish, Sarkari Naukri Rajyog), Digital Mandir, and Panchang routes.",
+      "description": "Structured reference of all 111 Vedic Astrology tools, interactive name-based calculators (Vivah Muhurat 2027, Mundan Muhurat, Vehicle Muhurat, 18 Deep Classical A-Z Naam Rashi Avakhada Chakra guides, 18 Evergreen Hindu Festival Muhurat & Puja Vidhi assets, Shani Sadesati, Manglik Dosh, Nadi Dosh, Ank Jyotish, Sarkari Naukri Rajyog), Digital Mandir, and Panchang routes.",
       "representativeQueries": [
-        "What Vedic astrology calculators and muhurat pages are available on Pandit Ji Online?",
+        "What Vedic astrology calculators, festival muhurats, and Naam Rashi pages are available on Pandit Ji Online?",
         "Check vehicle buying muhurat or mundan sanskar muhurat by name",
         "Generate free online Janam Kundali with Lahiri Ayanamsha"
       ]
