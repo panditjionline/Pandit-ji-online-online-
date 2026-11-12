@@ -1,5 +1,5 @@
 # Pandit Ji Online (पण्डित जी ऑनलाइन)
-> Authentic Vedic Astrology, Lahiri Chitra Paksha Drik Ganit Panchang, 36 Gun Kundli Milan, Sampurn Janam Kundli, Digital Mandir, and Shastrokta Muhurat & Dosha Remedies by Acharya Pandit Shashank Sharma (Rudrapur, Uttarakhand, India).
+> Authentic Vedic Astrology, Lahiri Chitra Paksha Drik Ganit Panchang (Vikram Samvat 2083 'Raudra' & Shaka Samvat 1948 'Parabhava'), 36 Gun Kundli Milan, Sampurn Janam Kundli, 18 Deep Classical A-Z Naam Rashi Avakhada Chakra Guides, 18 Evergreen Hindu Festival Muhurat Assets, Digital Mandir, and Shastrokta Muhurat & Dosha Remedies by Acharya Pandit Shashank Sharma (Rudrapur, Uttarakhand, India).
 
 ## Core Interactive Vedic Calculators & Services
 - [Home & Live Drik Ganit Panchang](https://www.panditjionline.online/): Daily Tithi, Nakshatra, Yoga, Karana, Rahukaal, Abhijit Muhurat, and Choghadiya.
@@ -19,14 +19,34 @@
 - [Vahan Kharidne Ka Muhurat](https://www.panditjionline.online/vahan-kharidne-ka-muhurat): Auspicious car/bike buying dates and lucky vehicle colors by name.
 - [Griha Pravesh Muhurat 2026-2027](https://www.panditjionline.online/griha-pravesh-muhurat-2027): Auspicious housewarming dates and Vastu rules.
 - [Ekadashi Vrat Calendar 2026-2027](https://www.panditjionline.online/ekadashi-vrat-list-2027): All 24 Ekadashi dates and Parana timings.
-- [Naam Rashi & Swabhav Calculator](https://www.panditjionline.online/s-naam-rashi-swabhav): A-to-Z name letter Rashi, Nakshatra, Lord, and personality traits.
+- [Naam Rashi & Swabhav Calculator (A to Z Hub)](https://www.panditjionline.online/naam-rashi): A-to-Z name letter Rashi, Nakshatra, Charan, Lord, and personality traits.
 - [Shani Sadesati & Dhaiya Upay](https://www.panditjionline.online/shani-sadesati-upay): Live Saturn transit (Meen Rashi) Sadesati/Dhaiya check and Vedic remedies.
 - [Manglik Dosh Nivaran](https://www.panditjionline.online/manglik-dosh-nivaran): Mars dosha analysis, Shastrokta cancellation rules, and Kumbh Vivah remedies.
 - [Nadi Dosh Nuskhe & Parihar](https://www.panditjionline.online/nadi-dosh-nuskhe): Ashtakoot Nadi Dosha cancellation rules and remedies when Gun Milan is low.
 - [Kaalsarp Dosh Nivaran](https://www.panditjionline.online/kaalsarp-dosh-nivaran): 12 types of Kaalsarp Yoga analysis and Vedic remedies.
 - [Swapna Shastra Snake Dream Meaning](https://www.panditjionline.online/sapne-me-saap-dekhna): 21 signs of seeing a snake in dreams and remedies.
 
-## 53 Sanatan Dharm Gyan Kosh & Sadhana Tools
+## 18 Evergreen Sanatan Festival Muhurat & Puja Vidhi Digital Assets
+- [Makar Sankranti Punyakaal & Puja Vidhi](https://www.panditjionline.online/makar-sankranti-muhurat-puja-vidhi)
+- [Vasant Panchami & Saraswati Puja Muhurat](https://www.panditjionline.online/vasant-panchami-saraswati-puja-muhurat)
+- [Maha Shivratri 4 Prahar & Nishita Kaal Muhurat](https://www.panditjionline.online/maha-shivratri-puja-vidhi-muhurat)
+- [Holika Dahan Bhadra-Free Shubh Muhurat](https://www.panditjionline.online/holika-dahan-shubh-muhurat-vidhi)
+- [Chaitra Navratri Ghatasthapana Muhurat](https://www.panditjionline.online/chaitra-navratri-ghatasthapana-muhurat)
+- [Shri Ram Navami Madhyahna Puja Muhurat](https://www.panditjionline.online/shri-ram-navami-puja-shubh-muhurat)
+- [Hanuman Jayanti Puja Vidhi & Shubh Muhurat](https://www.panditjionline.online/hanuman-jayanti-puja-vidhi-shubh-muhurat)
+- [Akshaya Tritiya Gold Buying & Puja Muhurat](https://www.panditjionline.online/akshaya-tritiya-shubh-muhurat-sona-kharidne)
+- [Nirjala Ekadashi Vrat Katha, Muhurat & Paran](https://www.panditjionline.online/nirjala-ekadashi-vrat-katha-shubh-muhurat)
+- [Guru Purnima Puja Vidhi & Mahatmya](https://www.panditjionline.online/guru-purnima-puja-vidhi-mahatmya)
+- [Nag Panchami Puja Vidhi & Kaalsarp Upay](https://www.panditjionline.online/nag-panchami-puja-vidhi-kaalsarp-upay)
+- [Raksha Bandhan Bhadra-Free Rakhi Muhurat](https://www.panditjionline.online/raksha-bandhan-shubh-muhurat-bhadra-kaal)
+- [Shri Krishna Janmashtami Nishita Kaal Muhurat](https://www.panditjionline.online/shri-krishna-janmashtami-puja-muhurat)
+- [Ganesh Chaturthi Murti Sthapana Muhurat](https://www.panditjionline.online/ganesh-chaturthi-sthapana-shubh-muhurat)
+- [Sharad Purnima Chandrodaya & Amrit Kheer Muhurat](https://www.panditjionline.online/sharad-purnima-kheer-amrit-snan-muhurat)
+- [Karwa Chauth Puja Vidhi & Moonrise Arghya Time](https://www.panditjionline.online/karwa-chauth-puja-vidhi-chandrama-arghya-time)
+- [Diwali Laxmi-Ganesh Puja Shubh Muhurat](https://www.panditjionline.online/diwali-laxmi-puja-shubh-muhurat-vidhi)
+- [Chhath Puja Nahay-Khay, Kharna & Surya Arghya Time](https://www.panditjionline.online/chhath-puja-arghya-surya-time-vidhi)
+
+## 54 Sanatan Dharm Gyan Kosh, Sadhana Tools & 18 Deep Classical A-Z Naam Rashi Guides
 - [Shri Ram Shalaka Prashnavali](https://www.panditjionline.online/ram-shalaka-prashnavali): Interactive Ramcharitmanas Chaupai oracle by Goswami Tulsidas.
 - [Shani Sadesati & Dhaiya Calculator](https://www.panditjionline.online/shani-sadesati-calculator): Rashi-wise Saturn transit phases, Paya analysis, and remedies.
 - [Puja Samagri Checklist](https://www.panditjionline.online/puja-samagri-list): Complete interactive checklist for Satyanarayan Katha, Griha Pravesh, and Rudrabhishek.
@@ -48,4 +68,4 @@
 - [Amavasya Tithi Calendar 2026-2027](https://www.panditjionline.online/amavasya-2027): Somvati, Shani, and Mauni Amavasya Pitru Tarpan dates.
 - [Pradosh Vrat Calendar 2026-2027](https://www.panditjionline.online/pradosh-vrat-2027): Som, Bhaum, and Shani Pradosh Kaal Shiva Puja timings.
 - [Sankashti Chaturthi Calendar 2026-2027](https://www.panditjionline.online/sankashti-chaturthi-2027): Monthly Chaturthi Vrat and Moonrise (Chandrodaya) timings.
-- [A to Z Naam Rashi Swabhav (17 Dedicated Pages)](https://www.panditjionline.online/k-naam-rashi-swabhav): Unified personality, career, marriage, and lucky gemstone guides for A, B, C, D, G, H, J, K, L, M, N, P, R, S, T, V, and Y name initials.
+- [A to Z Naam Rashi Swabhav (18 Dedicated Classical Avakhada Chakra Pages)](https://www.panditjionline.online/s-naam-rashi-swabhav): Complete Brihat Parashara Hora Shastra phonetic Nakshatra-Charan division, personality, career, marriage, and lucky gemstone guides for A, B, C, D, G, H, J, K, L, M, N, P, R, S, T, V, Y, and Vedic Baby Names.

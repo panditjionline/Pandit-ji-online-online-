@@ -12,7 +12,7 @@ Allow: /
 User-agent: AdsBot-Google-Mobile
 Allow: /
 
-# 3. General Search Engines, AI Agents & Standard Crawlers (All 93 Canonical Pages)
+# 3. General Search Engines, AI Agents & Standard Crawlers (All 111 Canonical Pages)
 User-agent: *
 Allow: /
 Allow: /ads.txt
@@ -111,6 +111,24 @@ Allow: /puja/navgrah-shanti
 Allow: /puja/kundali-paramarsh
 Allow: /rudrapur-jyotish
 Allow: /kundali-dosh-upay
+Allow: /makar-sankranti-muhurat-puja-vidhi
+Allow: /vasant-panchami-saraswati-puja-muhurat
+Allow: /maha-shivratri-puja-vidhi-muhurat
+Allow: /holika-dahan-shubh-muhurat-vidhi
+Allow: /chaitra-navratri-ghatasthapana-muhurat
+Allow: /shri-ram-navami-puja-shubh-muhurat
+Allow: /hanuman-jayanti-puja-vidhi-shubh-muhurat
+Allow: /akshaya-tritiya-shubh-muhurat-sona-kharidne
+Allow: /nirjala-ekadashi-vrat-katha-shubh-muhurat
+Allow: /guru-purnima-puja-vidhi-mahatmya
+Allow: /nag-panchami-puja-vidhi-kaalsarp-upay
+Allow: /raksha-bandhan-shubh-muhurat-bhadra-kaal
+Allow: /shri-krishna-janmashtami-puja-muhurat
+Allow: /ganesh-chaturthi-sthapana-shubh-muhurat
+Allow: /sharad-purnima-kheer-amrit-snan-muhurat
+Allow: /karwa-chauth-puja-vidhi-chandrama-arghya-time
+Allow: /diwali-laxmi-puja-shubh-muhurat-vidhi
+Allow: /chhath-puja-arghya-surya-time-vidhi
 Allow: /about-us
 Allow: /privacy-policy
 Allow: /terms-and-conditions
