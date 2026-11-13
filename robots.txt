@@ -26,7 +26,6 @@ Allow: /llms.txt
 Allow: /googlea0e64484b80e13d1.html
 Allow: /janam-kundali
 Allow: /panchang
-Allow: /aaj-ka-panchang
 Allow: /aaj-ka-choghadiya
 Allow: /aaj-ka-rahukaal
 Allow: /digital-mandir
