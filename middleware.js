@@ -690,7 +690,7 @@ const ROUTE_DATA = {
     accent: '#a855f7'
   },
   '/mesh-rashifal': {
-    title: 'मेष राशिफल आज का (Mesh Rashifal) — स्वभाव, करियर व मूंगा रत्न',
+    title: 'मेष राशिफल आज का (Mesh Rashifal Today): मेष राशि का स्वभाव, करियर, धन व मूंगा रत्न',
     desc: 'मेष राशि (चू, चे, चो, ला, ली, लू, ले, लो, अ) का आज का वैदिक राशिफल, स्वामी मंगल का गोचर फल, करियर, विवाह व शुभ मूंगा रत्न — अभी देखें ➔',
     cardTitle: 'MESH RASHIFAL (ARIES HOROSCOPE)',
     cardSub: 'Swami Mangal • Daily Gochar • Career, Love & Red Coral (Moonga) Upay',
@@ -700,7 +700,7 @@ const ROUTE_DATA = {
     accent: '#ef4444'
   },
   '/vrishabh-rashifal': {
-    title: 'वृषभ राशिफल आज का (Vrishabh Rashifal) — धन, करियर व शुभ रत्न',
+    title: 'वृषभ राशिफल आज का (Vrishabh Rashifal Today): वृषभ राशि का धन योग, करियर व शुभ रत्न',
     desc: 'वृषभ राशि (ई, ऊ, ए, ओ, वा, वी, वू, वे, वो) का आज का वैदिक राशिफल, स्वामी शुक्र का गोचर प्रभाव, धन योग, परिवार व ओपल रत्न — अभी पढ़ें ➔',
     cardTitle: 'VRISHABH RASHIFAL (TAURUS)',
     cardSub: 'Swami Shukra • Daily Gochar • Wealth, Family & Diamond/Opal Ratna',
@@ -710,7 +710,7 @@ const ROUTE_DATA = {
     accent: '#ec4899'
   },
   '/mithun-rashifal': {
-    title: 'मिथुन राशिफल आज का (Mithun Rashifal) — व्यापार, करियर व पन्ना',
+    title: 'मिथुन राशिफल आज का (Mithun Rashifal Today): मिथुन राशि का व्यापार, करियर व पन्ना रत्न',
     desc: 'मिथुन राशि (का, की, कू, घ, ङ, छ, के, को, ह) का आज का वैदिक राशिफल, स्वामी बुध का गोचर फल, व्यापार सफलता व शुभ पन्ना रत्न — अभी देखें ➔',
     cardTitle: 'MITHUN RASHIFAL (GEMINI)',
     cardSub: 'Swami Budh • Daily Gochar • Business, Intellect & Emerald (Panna)',
@@ -720,7 +720,7 @@ const ROUTE_DATA = {
     accent: '#10b981'
   },
   '/kark-rashifal': {
-    title: 'कर्क राशिफल आज का (Kark Rashifal) — परिवार, धन व मोती रत्न',
+    title: 'कर्क राशिफल आज का (Kark Rashifal Today): कर्क राशि का परिवार, धन योग व शुभ मोती रत्न',
     desc: 'कर्क राशि (ही, हू, हे, हो, डा, डी, डू, डे, डो) का आज का वैदिक राशिफल, स्वामी चंद्रमा का गोचर फल, पारिवारिक सुख व शुभ मोती रत्न — अभी पढ़ें ➔',
     cardTitle: 'KARK RASHIFAL (CANCER HOROSCOPE)',
     cardSub: 'Swami Chandra • Daily Gochar • Family, Peace & Natural Pearl (Moti)',
@@ -730,7 +730,7 @@ const ROUTE_DATA = {
     accent: '#38bdf8'
   },
   '/simha-rashifal': {
-    title: 'सिंह राशिफल आज का (Simha Rashifal) — राजयोग, करियर व माणिक्य',
+    title: 'सिंह राशिफल आज का (Simha / Singh Rashifal Today): सिंह राशि का राजयोग, करियर व माणिक्य रत्न',
     desc: 'सिंह राशि (मा, मी, मू, मे, मो, टा, टी, टू, टे) का आज का वैदिक राशिफल, स्वामी सूर्य देव का गोचर फल, सरकारी नौकरी योग व माणिक्य रत्न — अभी देखें ➔',
     cardTitle: 'SIMHA RASHIFAL (LEO HOROSCOPE)',
     cardSub: 'Swami Surya • Daily Gochar • Leadership, Rajyoga & Ruby (Manikya)',
@@ -740,7 +740,7 @@ const ROUTE_DATA = {
     accent: '#f59e0b'
   },
   '/kanya-rashifal': {
-    title: 'कन्या राशिफल आज का (Kanya Rashifal) — करियर, व्यापार व पन्ना',
+    title: 'कन्या राशिफल आज का (Kanya Rashifal Today): कन्या राशि का करियर, व्यापार व पन्ना रत्न',
     desc: 'कन्या राशि (टो, पा, पी, पू, ष, ण, ठ, पे, पो) का आज का वैदिक राशिफल, उच्च के बुध का गोचर फल, व्यापार वृद्धि, स्वास्थ्य व पन्ना रत्न — अभी पढ़ें ➔',
     cardTitle: 'KANYA RASHIFAL (VIRGO HOROSCOPE)',
     cardSub: 'Swami Budh • Daily Gochar • Finance, Career & Emerald (Panna) Upay',
@@ -750,7 +750,7 @@ const ROUTE_DATA = {
     accent: '#10b981'
   },
   '/tula-rashifal': {
-    title: 'तुला राशिफल आज का (Tula Rashifal) — धन, दांपत्य व ओपल रत्न',
+    title: 'तुला राशिफल आज का (Tula Rashifal Today): तुला राशि का धन योग, दांपत्य व ओपल रत्न',
     desc: 'तुला राशि (रा, री, रू, रे, रो, ता, ती, तू, ते) का आज का वैदिक राशिफल, स्वामी शुक्र का गोचर फल, व्यापार, दांपत्य सुख व ओपल/हीरा रत्न — अभी देखें ➔',
     cardTitle: 'TULA RASHIFAL (LIBRA HOROSCOPE)',
     cardSub: 'Swami Shukra • Daily Gochar • Harmony, Business & Opal/Diamond Upay',
@@ -760,7 +760,7 @@ const ROUTE_DATA = {
     accent: '#ec4899'
   },
   '/vrishchik-rashifal': {
-    title: 'वृश्चिक राशिफल आज का (Vrishchik Rashifal) — करियर व मूंगा रत्न',
+    title: 'वृश्चिक राशिफल आज का (Vrishchik Rashifal Today): वृश्चिक राशि का साहस, करियर व मूंगा रत्न',
     desc: 'वृश्चिक राशि (तो, ना, नी, नू, ने, नो, या, यी, यू) का आज का वैदिक राशिफल, स्वामी मंगल का गोचर फल, करियर सफलता, मूंगा रत्न व उपाय — अभी पढ़ें ➔',
     cardTitle: 'VRISHCHIK RASHIFAL (SCORPIO)',
     cardSub: 'Swami Mangal • Daily Gochar • Determination, Career & Moonga Ratna',
@@ -770,7 +770,7 @@ const ROUTE_DATA = {
     accent: '#dc2626'
   },
   '/dhanu-rashifal': {
-    title: 'धनु राशिफल आज का (Dhanu Rashifal) — भाग्य, करियर व पुखराज रत्न',
+    title: 'धनु राशिफल आज का (Dhanu Rashifal Today): धनु राशि का भाग्य, करियर व पुखराज रत्न',
     desc: 'धनु राशि (ये, यो, भा, भी, भू, धा, फा, ढा, भे) का आज का वैदिक राशिफल, देवगुरु बृहस्पति का गोचर फल, उच्च पद योग व पुखराज रत्न — अभी देखें ➔',
     cardTitle: 'DHANU RASHIFAL (SAGITTARIUS)',
     cardSub: 'Swami Guru Brihaspati • Daily Gochar • Wisdom, Fortune & Pukhraj',
@@ -780,7 +780,7 @@ const ROUTE_DATA = {
     accent: '#eab308'
   },
   '/makar-rashifal': {
-    title: 'मकर राशिफल आज का (Makar Rashifal) — कर्मयोग, धन व नीलम रत्न',
+    title: 'मकर राशिफल आज का (Makar Rashifal Today): मकर राशि का कर्मयोग, धन व शुभ नीलम रत्न',
     desc: 'मकर राशि (भो, जा, जी, खी, खू, खे, खो, गा, गी) का आज का वैदिक राशिफल, स्वामी शनि देव का गोचर फल, करियर उन्नति व शुभ नीलम रत्न — अभी पढ़ें ➔',
     cardTitle: 'MAKAR RASHIFAL (CAPRICORN)',
     cardSub: 'Swami Shani Dev • Daily Gochar • Hard Work, Success & Blue Sapphire',
@@ -790,7 +790,7 @@ const ROUTE_DATA = {
     accent: '#6366f1'
   },
   '/kumbh-rashifal': {
-    title: 'कुम्भ राशिफल आज का (Kumbh Rashifal) — साढ़ेसाती फल, धन व नीलम',
+    title: 'कुम्भ राशिफल आज का (Kumbh Rashifal Today): कुम्भ राशि का साढ़ेसाती फल, धन व नीलम रत्न',
     desc: 'कुम्भ राशि (गू, गे, गो, सा, सी, सू, से, सो, दा) का आज का वैदिक राशिफल, स्वामी शनि का गोचर फल, करियर राजयोग, साढ़ेसाती उपाय व नीलम रत्न — अभी देखें ➔',
     cardTitle: 'KUMBH RASHIFAL (AQUARIUS)',
     cardSub: 'Swami Shani Dev • Daily Gochar • Innovation, Sadesati & Neelam Upay',
@@ -800,7 +800,7 @@ const ROUTE_DATA = {
     accent: '#818cf8'
   },
   '/meen-rashifal': {
-    title: 'मीन राशिफल आज का (Meen Rashifal) — भाग्य, करियर व पुखराज रत्न',
+    title: 'मीन राशिफल आज का (Meen Rashifal Today): मीन राशि का सात्विक ज्ञान, भाग्य व पुखराज रत्न',
     desc: 'मीन राशि (दी, दू, थ, झ, ञ, दे, दो, चा, ची) का आज का वैदिक राशिफल, देवगुरु बृहस्पति का गोचर फल, करियर, विदेश योग व पुखराज रत्न — अभी पढ़ें ➔',
     cardTitle: 'MEEN RASHIFAL (PISCES HOROSCOPE)',
     cardSub: 'Swami Guru Brihaspati • Daily Gochar • Spirituality & Yellow Sapphire',
@@ -1483,30 +1483,58 @@ function truncateClean(str, maxLen) {
   return s.slice(0, maxLen - 1).trim() + '…';
 }
 
+function extractHindiHeadline(routeInfo) {
+  const rawTitle = String((routeInfo && routeInfo.title) || '').trim();
+  if (!rawTitle) return 'पण्डित जी ऑनलाइन • वैदिक ज्योतिष';
+  const firstSegment = rawTitle.split(/[—|•:]/)[0].trim();
+  const cleaned = firstSegment
+    .replace(/\(\d{4}\)/g, '')
+    .replace(/\b(Online|Free|PDF|Calculator|in Hindi|2026|2027)\b/gi, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  return truncateClean(cleaned || 'पण्डित जी ऑनलाइन • वैदिक ज्योतिष', 34);
+}
+
+function renderSmallCornerLotus(cx, cy, rot) {
+  return `<g transform="translate(${cx}, ${cy}) rotate(${rot})">
+    <path d="M 0,0 L 38,0 C 24,6 16,14 12,26 C 8,14 4,6 0,0 Z" fill="url(#goldGrad)"/>
+    <path d="M 0,0 L 0,38 C 6,24 14,16 26,12 C 14,8 6,4 0,0 Z" fill="url(#goldGrad)"/>
+    <circle cx="10" cy="10" r="4" fill="#fef08a"/>
+  </g>`;
+}
+
 function buildOgCardSvg(routeInfo, isSquare) {
   const lines = splitTitleToLines(routeInfo.cardTitle || 'PANDIT JI ONLINE');
   const lineCount = lines.length;
+  const hindiHeadline = xmlEscape(extractHindiHeadline(routeInfo));
 
   let titleBlock = '';
-  let sepY = 368;
+  let sepY = 382;
   if (lineCount === 1) {
-    const fontSize = lines[0].length > 17 ? 34 : 38;
-    titleBlock = `<text x="600" y="336" font-family="Arial, Helvetica, system-ui, sans-serif" font-size="${fontSize}" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="0.6">${xmlEscape(lines[0])}</text>`;
-    sepY = 360;
+    const fontSize = lines[0].length > 17 ? 32 : 36;
+    titleBlock = `
+      <rect x="336" y="274" width="528" height="36" rx="18" fill="#3b0d03" stroke="#f59e0b" stroke-width="1.5"/>
+      <text x="600" y="299" font-family="'Noto Sans Devanagari', Arial, Helvetica, sans-serif" font-size="22" font-weight="900" fill="#fde047" text-anchor="middle">${hindiHeadline}</text>
+      <text x="600" y="352" font-family="Arial, Helvetica, system-ui, sans-serif" font-size="${fontSize}" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="0.6">${xmlEscape(lines[0])}</text>`;
+    sepY = 374;
   } else if (lineCount === 2) {
     const maxLineLen = Math.max(lines[0].length, lines[1].length);
-    const f1 = maxLineLen > 20 ? 31 : 35;
-    const f2 = maxLineLen > 20 ? 30 : 34;
+    const f1 = maxLineLen > 20 ? 27 : 30;
+    const f2 = maxLineLen > 20 ? 26 : 29;
     titleBlock = `
-      <text x="600" y="314" font-family="Arial, Helvetica, system-ui, sans-serif" font-size="${f1}" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="0.5">${xmlEscape(lines[0])}</text>
-      <text x="600" y="356" font-family="Arial, Helvetica, system-ui, sans-serif" font-size="${f2}" font-weight="900" fill="#fde047" text-anchor="middle" letter-spacing="0.5">${xmlEscape(lines[1])}</text>`;
-    sepY = 376;
+      <rect x="336" y="268" width="528" height="34" rx="17" fill="#3b0d03" stroke="#f59e0b" stroke-width="1.5"/>
+      <text x="600" y="291" font-family="'Noto Sans Devanagari', Arial, Helvetica, sans-serif" font-size="20.5" font-weight="900" fill="#fde047" text-anchor="middle">${hindiHeadline}</text>
+      <text x="600" y="331" font-family="Arial, Helvetica, system-ui, sans-serif" font-size="${f1}" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="0.5">${xmlEscape(lines[0])}</text>
+      <text x="600" y="365" font-family="Arial, Helvetica, system-ui, sans-serif" font-size="${f2}" font-weight="900" fill="#fef08a" text-anchor="middle" letter-spacing="0.5">${xmlEscape(lines[1])}</text>`;
+    sepY = 381;
   } else {
     titleBlock = `
-      <text x="600" y="302" font-family="Arial, Helvetica, system-ui, sans-serif" font-size="27" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="0.4">${xmlEscape(lines[0])}</text>
-      <text x="600" y="335" font-family="Arial, Helvetica, system-ui, sans-serif" font-size="27" font-weight="900" fill="#fde047" text-anchor="middle" letter-spacing="0.4">${xmlEscape(lines[1])}</text>
-      <text x="600" y="368" font-family="Arial, Helvetica, system-ui, sans-serif" font-size="25" font-weight="900" fill="#fed7aa" text-anchor="middle" letter-spacing="0.4">${xmlEscape(lines[2])}</text>`;
-    sepY = 384;
+      <rect x="336" y="266" width="528" height="32" rx="16" fill="#3b0d03" stroke="#f59e0b" stroke-width="1.4"/>
+      <text x="600" y="288" font-family="'Noto Sans Devanagari', Arial, Helvetica, sans-serif" font-size="19.5" font-weight="900" fill="#fde047" text-anchor="middle">${hindiHeadline}</text>
+      <text x="600" y="322" font-family="Arial, Helvetica, system-ui, sans-serif" font-size="23.5" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="0.4">${xmlEscape(lines[0])}</text>
+      <text x="600" y="350" font-family="Arial, Helvetica, system-ui, sans-serif" font-size="23.5" font-weight="900" fill="#fef08a" text-anchor="middle" letter-spacing="0.4">${xmlEscape(lines[1])}</text>
+      <text x="600" y="376" font-family="Arial, Helvetica, system-ui, sans-serif" font-size="21.5" font-weight="900" fill="#fed7aa" text-anchor="middle" letter-spacing="0.4">${xmlEscape(lines[2])}</text>`;
+    sepY = 388;
   }
 
   const subText = String(routeInfo.cardSub || '');
@@ -1514,32 +1542,43 @@ function buildOgCardSvg(routeInfo, isSquare) {
   const subLine1 = truncateClean(subParts.slice(0, 2).map((s) => '★ ' + s).join('   '), 48);
   const subLine2 = truncateClean(subParts.slice(2, 4).map((s) => '★ ' + s).join('   '), 48);
 
-  const badge = xmlEscape(truncateClean(routeInfo.badge || 'VEDIC JYOTISH SANSTHAN • RUDRAPUR', 38));
+  const badge = xmlEscape(truncateClean(routeInfo.badge || 'VEDIC JYOTISH SANSTHAN • RUDRAPUR', 36));
   const photoUrl = PANDIT_PORTRAIT_DATA_URI;
   const svgW = isSquare ? 800 : 1200;
   const svgH = isSquare ? 800 : 630;
   const viewBox = isSquare ? '285 0 630 630' : '0 0 1200 630';
 
+  let haloPetals = '';
+  for (let a = 0; a < 360; a += 30) {
+    haloPetals += `<path d="M 600,114 C 588,58 612,58 600,14 C 588,58 612,58 600,114 Z" fill="#fde047" fill-opacity="0.28" transform="rotate(${a} 600 114)"/>`;
+  }
+
+  let bgRays = '';
+  for (let a = 0; a < 360; a += 20) {
+    bgRays += `<line x1="600" y1="315" x2="${(600 + Math.cos((a * Math.PI) / 180) * 680).toFixed(1)}" y2="${(315 + Math.sin((a * Math.PI) / 180) * 680).toFixed(1)}" stroke="#f59e0b" stroke-width="1.2" stroke-opacity="0.1"/>`;
+  }
+
   return `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${svgW}" height="${svgH}" viewBox="${viewBox}">
   <defs>
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#3b0d03"/>
-      <stop offset="50%" stop-color="#1c0502"/>
-      <stop offset="100%" stop-color="#350b03"/>
+      <stop offset="0%" stop-color="#450d04"/>
+      <stop offset="50%" stop-color="#1e0502"/>
+      <stop offset="100%" stop-color="#3b0a03"/>
     </linearGradient>
-    <radialGradient id="centerSpotlight" cx="50%" cy="38%" r="52%">
-      <stop offset="0%" stop-color="#9a3412" stop-opacity="0.55"/>
-      <stop offset="70%" stop-color="#431407" stop-opacity="0.25"/>
-      <stop offset="100%" stop-color="#180502" stop-opacity="0"/>
+    <radialGradient id="centerSpotlight" cx="50%" cy="38%" r="55%">
+      <stop offset="0%" stop-color="#b45309" stop-opacity="0.58"/>
+      <stop offset="65%" stop-color="#451a03" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#140301" stop-opacity="0"/>
     </radialGradient>
     <radialGradient id="portraitAura" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#fef08a" stop-opacity="0.95"/>
-      <stop offset="48%" stop-color="#f59e0b" stop-opacity="0.55"/>
-      <stop offset="82%" stop-color="#d97706" stop-opacity="0.22"/>
+      <stop offset="0%" stop-color="#fef08a" stop-opacity="0.98"/>
+      <stop offset="48%" stop-color="#f59e0b" stop-opacity="0.62"/>
+      <stop offset="82%" stop-color="#d97706" stop-opacity="0.24"/>
       <stop offset="100%" stop-color="#d97706" stop-opacity="0"/>
     </radialGradient>
     <radialGradient id="wingGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.32"/>
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.45"/>
+      <stop offset="65%" stop-color="#b45309" stop-opacity="0.18"/>
       <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
     </radialGradient>
     <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -1548,110 +1587,152 @@ function buildOgCardSvg(routeInfo, isSquare) {
       <stop offset="100%" stop-color="#fef08a"/>
     </linearGradient>
     <linearGradient id="ctaGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#ea580c"/>
-      <stop offset="50%" stop-color="#d97706"/>
-      <stop offset="100%" stop-color="#f59e0b"/>
+      <stop offset="0%" stop-color="#dc2626"/>
+      <stop offset="50%" stop-color="#ea580c"/>
+      <stop offset="100%" stop-color="#d97706"/>
     </linearGradient>
     <clipPath id="panditPhotoClip">
-      <circle cx="600" cy="118" r="74"/>
+      <circle cx="600" cy="114" r="71"/>
     </clipPath>
   </defs>
 
-  <!-- 1. Widescreen 1200x630 Royal Background -->
+  <!-- 1. Widescreen 1200x630 Royal Temple Background -->
   <rect width="1200" height="630" fill="url(#bgGrad)"/>
   <rect width="1200" height="630" fill="url(#centerSpotlight)"/>
+  ${bgRays}
 
-  <!-- Outer Widescreen Golden Border -->
-  <rect x="14" y="14" width="1172" height="602" rx="22" fill="none" stroke="url(#goldGrad)" stroke-width="3.5" stroke-opacity="0.9"/>
-  <rect x="24" y="24" width="1152" height="582" rx="16" fill="none" stroke="#fde047" stroke-width="1.2" stroke-dasharray="8 6" stroke-opacity="0.45"/>
+  <!-- Outer Widescreen Golden Border & Corner Ornaments -->
+  <rect x="12" y="12" width="1176" height="606" rx="22" fill="none" stroke="url(#goldGrad)" stroke-width="3.8" stroke-opacity="0.95"/>
+  <rect x="20" y="20" width="1160" height="590" rx="16" fill="none" stroke="#fde047" stroke-width="1.3" stroke-dasharray="8 6" stroke-opacity="0.5"/>
+  ${renderSmallCornerLotus(24, 24, 0)}
+  ${renderSmallCornerLotus(1176, 24, 90)}
+  ${renderSmallCornerLotus(1176, 606, 180)}
+  ${renderSmallCornerLotus(24, 606, 270)}
 
-  <!-- 2. LEFT WING DECORATIVE VEDIC KUNDLI MANDALA (Visible on 1200x630 Facebook/Twitter) -->
-  <g transform="translate(152, 265)">
-    <circle cx="0" cy="0" r="126" fill="url(#wingGlow)"/>
-    <circle cx="0" cy="0" r="106" fill="#240803" stroke="#fde047" stroke-width="2.8" stroke-opacity="0.85"/>
-    <circle cx="0" cy="0" r="94" fill="none" stroke="#f59e0b" stroke-width="1.4" stroke-dasharray="5 5"/>
-    <rect x="-64" y="-64" width="128" height="128" fill="#320c04" stroke="#facc15" stroke-width="2.6"/>
-    <line x1="-64" y1="-64" x2="64" y2="64" stroke="#fbbf24" stroke-width="1.8"/>
-    <line x1="64" y1="-64" x2="-64" y2="64" stroke="#fbbf24" stroke-width="1.8"/>
-    <polygon points="0,-64 64,0 0,64 -64,0" fill="#541c06" fill-opacity="0.5" stroke="#fde047" stroke-width="2.2"/>
-    <text x="0" y="-22" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="900" fill="#fef08a" text-anchor="middle">LAGNA</text>
-    <text x="0" y="4" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="900" fill="#fb923c" text-anchor="middle">D-1 • D-9</text>
-    <text x="0" y="34" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="900" fill="#fde68a" text-anchor="middle">36 GUN</text>
-    <rect x="-82" y="122" width="164" height="28" rx="14" fill="#451a03" stroke="#fde047" stroke-width="1.8"/>
-    <text x="0" y="140" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="900" fill="#fef08a" text-anchor="middle" letter-spacing="1">JANAM KUNDALI</text>
+  <!-- 2. LEFT WING ROYAL NAVAGRAHA KUNDALI MANDALA (Visible on 1200x630 Facebook/Twitter) -->
+  <g transform="translate(148, 285)">
+    <rect x="-102" y="-215" width="204" height="32" rx="16" fill="#3b0d03" stroke="#fde047" stroke-width="1.8"/>
+    <text x="0" y="-194" font-family="'Noto Sans Devanagari', Arial, sans-serif" font-size="13.5" font-weight="900" fill="#fef08a" text-anchor="middle">✦ १००% शुद्ध दृक गणित</text>
+
+    <circle cx="0" cy="-22" r="134" fill="url(#wingGlow)"/>
+    <circle cx="0" cy="-22" r="112" fill="#240702" stroke="url(#goldGrad)" stroke-width="3.2"/>
+    <circle cx="0" cy="-22" r="98" fill="none" stroke="#fde047" stroke-width="1.5" stroke-dasharray="6 5"/>
+    <!-- 8 Navagraha Gem Nodes -->
+    <circle cx="0" cy="-134" r="6.5" fill="#fde047" stroke="#ffffff" stroke-width="1.5"/>
+    <circle cx="79" cy="-101" r="5.5" fill="#f43f5e" stroke="#fef08a" stroke-width="1.2"/>
+    <circle cx="112" cy="-22" r="6" fill="#10b981" stroke="#fef08a" stroke-width="1.2"/>
+    <circle cx="79" cy="57" r="5.5" fill="#fbbf24" stroke="#ffffff" stroke-width="1.2"/>
+    <circle cx="0" cy="90" r="6.5" fill="#38bdf8" stroke="#fef08a" stroke-width="1.5"/>
+    <circle cx="-79" cy="57" r="5.5" fill="#c084fc" stroke="#fef08a" stroke-width="1.2"/>
+    <circle cx="-112" cy="-22" r="6" fill="#fb923c" stroke="#fef08a" stroke-width="1.2"/>
+    <circle cx="-79" cy="-101" r="5.5" fill="#f472b6" stroke="#fef08a" stroke-width="1.2"/>
+
+    <!-- North-Indian Diamond Kundali Chart -->
+    <rect x="-68" y="-90" width="136" height="136" fill="#380c04" stroke="#facc15" stroke-width="2.8"/>
+    <line x1="-68" y1="-90" x2="68" y2="46" stroke="#fbbf24" stroke-width="2"/>
+    <line x1="68" y1="-90" x2="-68" y2="46" stroke="#fbbf24" stroke-width="2"/>
+    <polygon points="0,-90 68,-22 0,46 -68,-22" fill="#5c1906" fill-opacity="0.65" stroke="#fef08a" stroke-width="2.4"/>
+    <text x="0" y="-44" font-family="'Noto Sans Devanagari', Arial, sans-serif" font-size="14" font-weight="900" fill="#fef08a" text-anchor="middle">लग्न कुंडली</text>
+    <text x="0" y="-17" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="900" fill="#fb923c" text-anchor="middle">D-1 • D-9 • 36 GUN</text>
+    <text x="0" y="14" font-family="'Noto Sans Devanagari', Arial, sans-serif" font-size="13.5" font-weight="900" fill="#fde68a" text-anchor="middle">राजयोग • महादशा</text>
+
+    <rect x="-106" y="114" width="212" height="36" rx="18" fill="url(#ctaGrad)" stroke="#fef08a" stroke-width="2"/>
+    <text x="0" y="137" font-family="'Noto Sans Devanagari', Arial, sans-serif" font-size="14.5" font-weight="900" fill="#ffffff" text-anchor="middle">जन्म कुंडली एवं ३६ गुण</text>
+
+    <rect x="-98" y="162" width="196" height="28" rx="14" fill="#1a0402" stroke="#f59e0b" stroke-width="1.4"/>
+    <text x="0" y="180" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="900" fill="#fcd34d" text-anchor="middle" letter-spacing="0.8">JANAM KUNDALI &amp; MILAN</text>
   </g>
 
-  <!-- 3. RIGHT WING DECORATIVE DRIK PANCHANG SURYA-CHANDRA MANDALA (Visible on 1200x630 Facebook/Twitter) -->
-  <g transform="translate(1048, 265)">
-    <circle cx="0" cy="0" r="126" fill="url(#wingGlow)"/>
-    <circle cx="0" cy="0" r="106" fill="#240803" stroke="#fde047" stroke-width="2.8" stroke-opacity="0.85"/>
-    <circle cx="0" cy="0" r="94" fill="none" stroke="#f59e0b" stroke-width="1.4" stroke-dasharray="5 5"/>
-    <polygon points="0,-76 19,-26 70,-26 29,5 44,55 0,25 -44,55 -29,5 -70,-26 -19,-26" fill="#f59e0b" fill-opacity="0.28" stroke="#fde047" stroke-width="1.8"/>
-    <circle cx="0" cy="-6" r="42" fill="#3b1105" stroke="#facc15" stroke-width="3"/>
-    <circle cx="0" cy="-6" r="25" fill="#fde047"/>
-    <circle cx="10" cy="-12" r="20" fill="#3b1105"/>
-    <text x="0" y="54" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="900" fill="#fef08a" text-anchor="middle" letter-spacing="1">12 RASHI</text>
-    <rect x="-82" y="122" width="164" height="28" rx="14" fill="#451a03" stroke="#fde047" stroke-width="1.8"/>
-    <text x="0" y="140" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="900" fill="#fef08a" text-anchor="middle" letter-spacing="1">DRIK PANCHANG</text>
+  <!-- 3. RIGHT WING ROYAL SURYA-CHANDRA PANCHANG & RASHI CHAKRA (Visible on 1200x630 Facebook/Twitter) -->
+  <g transform="translate(1052, 285)">
+    <rect x="-102" y="-215" width="204" height="32" rx="16" fill="#3b0d03" stroke="#fde047" stroke-width="1.8"/>
+    <text x="0" y="-194" font-family="'Noto Sans Devanagari', Arial, sans-serif" font-size="13.5" font-weight="900" fill="#fef08a" text-anchor="middle">✦ श्री ज्योतिष वैदिक संस्थान</text>
+
+    <circle cx="0" cy="-22" r="134" fill="url(#wingGlow)"/>
+    <circle cx="0" cy="-22" r="112" fill="#240702" stroke="url(#goldGrad)" stroke-width="3.2"/>
+    <circle cx="0" cy="-22" r="98" fill="none" stroke="#fde047" stroke-width="1.5" stroke-dasharray="6 5"/>
+    <!-- 12-Pointed Surya-Rashi Star -->
+    <polygon points="0,-106 22,-46 84,-68 42,-16 84,34 22,14 0,72 -22,14 -84,34 -42,-16 -84,-68 -22,-46" fill="#f59e0b" fill-opacity="0.32" stroke="#fde047" stroke-width="2"/>
+    <circle cx="0" cy="-22" r="46" fill="#3b1105" stroke="#facc15" stroke-width="3.2"/>
+    <circle cx="0" cy="-22" r="28" fill="#fde047"/>
+    <circle cx="11" cy="-28" r="22" fill="#3b1105"/>
+    <text x="0" y="48" font-family="'Noto Sans Devanagari', Arial, sans-serif" font-size="13.5" font-weight="900" fill="#fef08a" text-anchor="middle">१२ राशि • नक्षत्र</text>
+
+    <rect x="-106" y="114" width="212" height="36" rx="18" fill="url(#ctaGrad)" stroke="#fef08a" stroke-width="2"/>
+    <text x="0" y="137" font-family="'Noto Sans Devanagari', Arial, sans-serif" font-size="14.5" font-weight="900" fill="#ffffff" text-anchor="middle">आज का पंचांग व राशिफल</text>
+
+    <rect x="-98" y="162" width="196" height="28" rx="14" fill="#1a0402" stroke="#f59e0b" stroke-width="1.4"/>
+    <text x="0" y="180" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="900" fill="#fcd34d" text-anchor="middle" letter-spacing="0.8">DRIK PANCHANG &amp; RASHI</text>
   </g>
 
   <!-- ========================================================================= -->
   <!-- 4. UNIVERSAL SAFE-CENTER CARD (x = 290..910, width = 620px)               -->
   <!-- 100% visible inside WhatsApp Status 1:1 Center Crop AND 1200x630 Feed!    -->
   <!-- ========================================================================= -->
-  <rect x="292" y="12" width="616" height="606" rx="22" fill="#210602" fill-opacity="0.92" stroke="url(#goldGrad)" stroke-width="3.2"/>
-  <rect x="300" y="20" width="600" height="590" rx="18" fill="none" stroke="#fde047" stroke-width="1.1" stroke-dasharray="6 5" stroke-opacity="0.55"/>
+  <rect x="290" y="10" width="620" height="610" rx="22" fill="#1e0502" fill-opacity="0.95" stroke="url(#goldGrad)" stroke-width="3.5"/>
+  <rect x="298" y="18" width="604" height="594" rx="18" fill="none" stroke="#fde047" stroke-width="1.2" stroke-dasharray="6 5" stroke-opacity="0.58"/>
 
   <!-- Top Left & Top Right Trust Pills Inside Safe Zone -->
-  <rect x="312" y="34" width="176" height="30" rx="15" fill="#065f46" stroke="#6ee7b7" stroke-width="1.6"/>
-  <text x="400" y="53" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="900" fill="#ecfdf5" text-anchor="middle" letter-spacing="0.6">★ 100% SATIK DRIK</text>
+  <rect x="308" y="28" width="184" height="30" rx="15" fill="#065f46" stroke="#6ee7b7" stroke-width="1.8"/>
+  <text x="400" y="48" font-family="'Noto Sans Devanagari', Arial, sans-serif" font-size="12.5" font-weight="900" fill="#ecfdf5" text-anchor="middle">★ १००% सटीक दृक गणित</text>
 
-  <rect x="712" y="34" width="176" height="30" rx="15" fill="#451a03" stroke="#fde047" stroke-width="1.6"/>
-  <text x="800" y="53" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="900" fill="#fef08a" text-anchor="middle" letter-spacing="0.6">✓ SIDDH JYOTISH PEETH</text>
+  <rect x="708" y="28" width="184" height="30" rx="15" fill="#451a03" stroke="#fde047" stroke-width="1.8"/>
+  <text x="800" y="48" font-family="'Noto Sans Devanagari', Arial, sans-serif" font-size="12.5" font-weight="900" fill="#fef08a" text-anchor="middle">✓ सिद्ध ज्योतिष पीठ</text>
 
-  <!-- ACHARYA PANDIT SHASHANK SHARMA PORTRAIT MEDALLION (Centered at cx=600, cy=118) -->
-  <circle cx="600" cy="118" r="102" fill="url(#portraitAura)"/>
-  <circle cx="600" cy="118" r="88" fill="none" stroke="#fde047" stroke-width="1.6" stroke-dasharray="5 4" stroke-opacity="0.85"/>
-  <circle cx="600" cy="118" r="80" fill="none" stroke="url(#goldGrad)" stroke-width="6"/>
-  <circle cx="600" cy="118" r="75" fill="#3b1105"/>
+  <!-- ACHARYA PANDIT SHASHANK SHARMA PORTRAIT MEDALLION (Centered at cx=600, cy=114) -->
+  <circle cx="600" cy="114" r="102" fill="url(#portraitAura)"/>
+  ${haloPetals}
+  <circle cx="600" cy="114" r="85" fill="none" stroke="#fde047" stroke-width="1.8" stroke-dasharray="5 4" stroke-opacity="0.9"/>
+  <circle cx="600" cy="114" r="77" fill="none" stroke="url(#goldGrad)" stroke-width="6"/>
+  <circle cx="600" cy="114" r="72" fill="#3b1105"/>
 
   <!-- High-Res Circular Portrait Photo of Acharya Ji -->
-  <image href="${photoUrl}" xlink:href="${photoUrl}" x="526" y="44" width="148" height="148" clip-path="url(#panditPhotoClip)" preserveAspectRatio="xMidYMid slice"/>
-  <circle cx="600" cy="118" r="74" fill="none" stroke="#fde047" stroke-width="2.2"/>
+  <image href="${photoUrl}" xlink:href="${photoUrl}" x="529" y="43" width="142" height="142" clip-path="url(#panditPhotoClip)" preserveAspectRatio="xMidYMid slice"/>
+  <circle cx="600" cy="114" r="71" fill="none" stroke="#fde047" stroke-width="2.2"/>
 
-  <!-- Green Verified Badge on Portrait -->
-  <g transform="translate(654, 170)">
-    <circle cx="0" cy="0" r="16" fill="#047857" stroke="#fde047" stroke-width="2.8"/>
+  <!-- Left Sacred Om Crest on Portrait -->
+  <g transform="translate(546, 165)">
+    <circle cx="0" cy="0" r="15" fill="#9a3412" stroke="#fde047" stroke-width="2.4"/>
+    <text x="0" y="5" font-family="'Noto Sans Devanagari', Arial, sans-serif" font-size="14" font-weight="900" fill="#fef08a" text-anchor="middle">ॐ</text>
+  </g>
+
+  <!-- Right Green Verified Badge on Portrait -->
+  <g transform="translate(654, 165)">
+    <circle cx="0" cy="0" r="15" fill="#047857" stroke="#fde047" stroke-width="2.6"/>
     <path d="M-5.5 0 L-1.5 4 L6.5 -4.5" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 
-  <!-- Official Nameplate Pill Below Portrait -->
-  <rect x="355" y="206" width="490" height="32" rx="16" fill="#451a03" stroke="#fde047" stroke-width="2"/>
-  <text x="600" y="227" font-family="Arial, Helvetica, sans-serif" font-size="14.5" font-weight="900" fill="#fef08a" text-anchor="middle" letter-spacing="0.9">ACHARYA PANDIT SHASHANK SHARMA • RUDRAPUR</text>
+  <!-- Official Hindi + English Nameplate Pill Below Portrait -->
+  <rect x="336" y="198" width="528" height="32" rx="16" fill="#451a03" stroke="url(#goldGrad)" stroke-width="2.2"/>
+  <text x="600" y="219" font-family="'Noto Sans Devanagari', Arial, Helvetica, sans-serif" font-size="15.5" font-weight="900" fill="#fef08a" text-anchor="middle">आचार्य पण्डित शशांक शर्मा • रुद्रपुर (उत्तराखण्ड)</text>
 
   <!-- Route Category Badge -->
-  <rect x="380" y="246" width="440" height="26" rx="13" fill="#120401" stroke="#f59e0b" stroke-width="1.3"/>
-  <text x="600" y="263" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="900" fill="#fcd34d" text-anchor="middle" letter-spacing="1.2">${badge}</text>
+  <rect x="368" y="236" width="464" height="24" rx="12" fill="#120401" stroke="#f59e0b" stroke-width="1.3"/>
+  <text x="600" y="252" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="900" fill="#fcd34d" text-anchor="middle" letter-spacing="1.1">${badge}</text>
 
-  <!-- Dynamic Center-Aligned Title Block (Never Cut Off on WhatsApp Status or Facebook!) -->
+  <!-- Dynamic Center-Aligned Hindi + English Title Block -->
   ${titleBlock}
 
-  <!-- Golden Divider Line -->
-  <rect x="345" y="${sepY}" width="510" height="3.8" rx="1.9" fill="url(#goldGrad)"/>
+  <!-- Golden Lotus Jewel Divider Line -->
+  <rect x="342" y="${sepY}" width="516" height="3.5" rx="1.8" fill="url(#goldGrad)"/>
+  <polygon points="600,${sepY - 6} 608,${sepY + 1.7} 600,${sepY + 9.5} 592,${sepY + 1.7}" fill="#fef08a"/>
 
   <!-- Subtitle Features -->
-  <text x="600" y="${sepY + 30}" font-family="Arial, Helvetica, sans-serif" font-size="17.5" font-weight="800" fill="#fef3c7" text-anchor="middle">${xmlEscape(subLine1)}</text>
-  ${subLine2 ? `<text x="600" y="${sepY + 56}" font-family="Arial, Helvetica, sans-serif" font-size="16.5" font-weight="800" fill="#fed7aa" text-anchor="middle">${xmlEscape(subLine2)}</text>` : ''}
+  <text x="600" y="${sepY + 26}" font-family="'Noto Sans Devanagari', Arial, Helvetica, sans-serif" font-size="16.5" font-weight="800" fill="#fef3c7" text-anchor="middle">${xmlEscape(subLine1)}</text>
+  ${subLine2 ? `<text x="600" y="${sepY + 49}" font-family="'Noto Sans Devanagari', Arial, Helvetica, sans-serif" font-size="15.5" font-weight="800" fill="#fed7aa" text-anchor="middle">${xmlEscape(subLine2)}</text>` : ''}
 
-  <!-- High-CTR Irresistible Call To Action Button (For WhatsApp & Facebook Social Cards Only) -->
-  <rect x="370" y="446" width="460" height="48" rx="24" fill="url(#ctaGrad)" stroke="#fef08a" stroke-width="2.6"/>
-  <text x="600" y="476" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="0.8">अभी तुरंत अपना सटीक फल देखें • FREE ➔</text>
+  <!-- High-CTR Irresistible Call To Action Button -->
+  <rect x="336" y="444" width="528" height="50" rx="25" fill="url(#ctaGrad)" stroke="#fef08a" stroke-width="2.8"/>
+  <rect x="342" y="448" width="516" height="20" rx="10" fill="#ffffff" fill-opacity="0.14"/>
+  <text x="600" y="476" font-family="'Noto Sans Devanagari', Arial, Helvetica, sans-serif" font-size="19.5" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="0.4">अभी तुरंत अपना सटीक फल देखें • 100% FREE ➔</text>
 
   <!-- Bottom Brand Safe Footer Inside Center Safe Zone -->
-  <rect x="296" y="508" width="608" height="106" rx="18" fill="#120401" fill-opacity="0.97"/>
-  <line x1="296" y1="508" x2="904" y2="508" stroke="url(#goldGrad)" stroke-width="2.4"/>
-  <text x="600" y="546" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="900" fill="#fde047" text-anchor="middle" letter-spacing="0.8">PANDIT JI ONLINE — RUDRAPUR</text>
-  <text x="600" y="578" font-family="Arial, Helvetica, sans-serif" font-size="15.5" font-weight="800" fill="#fed7aa" text-anchor="middle" letter-spacing="0.4">Vedic Jyotish Sansthan (Uttarakhand) • www.panditjionline.online</text>
+  <rect x="294" y="504" width="612" height="112" rx="18" fill="#120301" fill-opacity="0.98"/>
+  <line x1="294" y1="504" x2="906" y2="504" stroke="url(#goldGrad)" stroke-width="2.6"/>
+  <text x="600" y="536" font-family="'Noto Sans Devanagari', Arial, Helvetica, sans-serif" font-size="21.5" font-weight="900" fill="#fde047" text-anchor="middle">पण्डित जी ऑनलाइन — श्री ज्योतिष वैदिक संस्थान</text>
+  <text x="600" y="564" font-family="'Noto Sans Devanagari', Arial, Helvetica, sans-serif" font-size="14.5" font-weight="800" fill="#fed7aa" text-anchor="middle">रुद्रपुर (उत्तराखण्ड) • १५+ वर्ष वैदिक अनुभव • www.panditjionline.online</text>
+  <rect x="334" y="576" width="532" height="26" rx="13" fill="#240702" stroke="#f59e0b" stroke-width="1.2"/>
+  <text x="600" y="594" font-family="'Noto Sans Devanagari', Arial, Helvetica, sans-serif" font-size="12.5" font-weight="900" fill="#6ee7b7" text-anchor="middle">★ निःशुल्क कुंडली   ★ ३६ गुण मिलान   ★ दैनिक पंचांग   ★ १२ राशिफल</text>
 </svg>`;
 }
 
@@ -1659,7 +1740,7 @@ function buildOgCardSvg(routeInfo, isSquare) {
  * 100% Clean, Text-Free, Logo-Free, Badge-Free, Frame-Free, Button-Free 1200x630 Hero Artwork
  * Strictly engineered for Google Discover, RSS feed.xml (<media:content>), Article JSON-LD,
  * and <article><figure><img> so Google Vision OCR detects ZERO promotional text or ad overlays
- * while maximizing visual vibrancy, sacred lighting, and instant human click-through rate.
+ * while maximizing 3D sacred visual richness, temple lighting, and instant human click-through rate.
  */
 function buildDiscoverCleanHeroSvg(routeInfo, slug) {
   const art = (routeInfo && routeInfo.art) || 'gyan';
@@ -1670,304 +1751,347 @@ function buildDiscoverCleanHeroSvg(routeInfo, slug) {
     seed = (seed * 31 + s.charCodeAt(i)) % 10007;
   }
 
-  let bgTop = '#14052b';
-  let bgMid = '#2c081a';
-  let bgBot = '#0f030d';
+  let bgTop = '#120428';
+  let bgMid = '#32091e';
+  let bgBot = '#0d020b';
   let glowPrimary = '#f59e0b';
   let glowSecondary = '#ec4899';
 
   if (art === 'mandir') {
-    bgTop = '#180624';
-    bgMid = '#451206';
-    bgBot = '#120409';
+    bgTop = '#1a0526';
+    bgMid = '#4a1205';
+    bgBot = '#120308';
     glowPrimary = '#fbbf24';
     glowSecondary = '#f97316';
   } else if (art === 'milan') {
-    bgTop = '#28041c';
-    bgMid = '#540b24';
+    bgTop = '#2b041d';
+    bgMid = '#5c0b26';
     bgBot = '#16030d';
     glowPrimary = '#fb7185';
     glowSecondary = '#facc15';
   } else if (art === 'shani') {
-    bgTop = '#05081c';
-    bgMid = '#15194a';
-    bgBot = '#060714';
+    bgTop = '#05081f';
+    bgMid = '#171c54';
+    bgBot = '#050614';
     glowPrimary = '#818cf8';
     glowSecondary = '#fbbf24';
   } else if (art === 'kundli') {
-    bgTop = '#1a0726';
-    bgMid = '#3d1206';
-    bgBot = '#0e0414';
+    bgTop = '#1c0629';
+    bgMid = '#451406';
+    bgBot = '#0f0314';
     glowPrimary = '#f97316';
     glowSecondary = '#fde047';
   } else if (art === 'panchang') {
-    bgTop = '#1f071e';
-    bgMid = '#4a1504';
-    bgBot = '#14050a';
+    bgTop = '#220720';
+    bgMid = '#521704';
+    bgBot = '#140409';
     glowPrimary = '#f59e0b';
     glowSecondary = '#ef4444';
   } else if (art === 'rashi') {
-    bgTop = '#13052e';
-    bgMid = '#2e1065';
+    bgTop = '#150533';
+    bgMid = '#341170';
     bgBot = '#0b031a';
     glowPrimary = '#c084fc';
     glowSecondary = '#fde047';
   } else if (art === 'puja') {
-    bgTop = '#1c0617';
-    bgMid = '#431407';
+    bgTop = '#1f0619';
+    bgMid = '#4a1507';
     bgBot = '#110406';
     glowPrimary = '#fb923c';
     glowSecondary = '#fde047';
   } else {
-    bgTop = '#061a26';
-    bgMid = '#0f2942';
-    bgBot = '#050d1a';
+    bgTop = '#06192e';
+    bgMid = '#102e4a';
+    bgBot = '#040c18';
     glowPrimary = '#38bdf8';
     glowSecondary = '#facc15';
   }
 
   let starsSvg = '';
-  for (let i = 0; i < 42; i++) {
-    const sx = ((seed + i * 173) % 1140) + 30;
-    const sy = ((seed * 3 + i * 97) % 440) + 20;
-    const sr = (i % 4 === 0) ? 2.6 : (i % 2 === 0) ? 1.8 : 1.2;
+  for (let i = 0; i < 58; i++) {
+    const sx = ((seed + i * 173) % 1150) + 25;
+    const sy = ((seed * 3 + i * 97) % 450) + 18;
+    const sr = (i % 5 === 0) ? 3.2 : (i % 3 === 0) ? 2.1 : 1.3;
     const sop = (0.35 + ((i % 6) * 0.1)).toFixed(2);
     const col = i % 3 === 0 ? '#fef08a' : i % 3 === 1 ? '#ffffff' : accent;
     starsSvg += `<circle cx="${sx}" cy="${sy}" r="${sr}" fill="${col}" fill-opacity="${sop}"/>`;
-    if (i % 7 === 0) {
-      starsSvg += `<path d="M ${sx - 7},${sy} L ${sx + 7},${sy} M ${sx},${sy - 7} L ${sx},${sy + 7}" stroke="#fef08a" stroke-width="1" stroke-opacity="0.65"/>`;
+    if (i % 6 === 0) {
+      starsSvg += `<path d="M ${sx - 9},${sy} L ${sx + 9},${sy} M ${sx},${sy - 9} L ${sx},${sy + 9}" stroke="#fef08a" stroke-width="1.2" stroke-opacity="0.72"/>`;
     }
   }
 
   let raysSvg = '';
-  for (let a = 0; a < 360; a += 15) {
-    const rad1 = ((a - 3.5) * Math.PI) / 180;
-    const rad2 = ((a + 3.5) * Math.PI) / 180;
-    const x1 = (600 + Math.cos(rad1) * 720).toFixed(1);
-    const y1 = (275 + Math.sin(rad1) * 720).toFixed(1);
-    const x2 = (600 + Math.cos(rad2) * 720).toFixed(1);
-    const y2 = (275 + Math.sin(rad2) * 720).toFixed(1);
-    raysSvg += `<polygon points="600,275 ${x1},${y1} ${x2},${y2}" fill="url(#rayGrad)" fill-opacity="0.18"/>`;
+  for (let a = 0; a < 360; a += 12) {
+    const rad1 = ((a - 2.8) * Math.PI) / 180;
+    const rad2 = ((a + 2.8) * Math.PI) / 180;
+    const x1 = (600 + Math.cos(rad1) * 740).toFixed(1);
+    const y1 = (265 + Math.sin(rad1) * 740).toFixed(1);
+    const x2 = (600 + Math.cos(rad2) * 740).toFixed(1);
+    const y2 = (265 + Math.sin(rad2) * 740).toFixed(1);
+    raysSvg += `<polygon points="600,265 ${x1},${y1} ${x2},${y2}" fill="url(#rayGrad)" fill-opacity="0.22"/>`;
   }
+
+  // Sacred 16-Petal Golden Ashtadal Mandala Aura in Sky
+  let mandalaPetals = '';
+  for (let a = 0; a < 360; a += 22.5) {
+    mandalaPetals += `<path d="M 600,265 C 572,140 628,140 600,38 C 572,140 628,140 600,265 Z" fill="url(#brassGrad)" fill-opacity="0.13" stroke="#fde047" stroke-width="1" stroke-opacity="0.32" transform="rotate(${a} 600 265)"/>`;
+  }
+
+  // Festive Temple Marigold Toran & Hanging Brass Bells at Top
+  let toranSvg = '<g>';
+  for (let tx = 0; tx < 1200; tx += 120) {
+    toranSvg += `
+      <path d="M ${tx},0 Q ${tx + 60},54 ${tx + 120},0 Z" fill="#9a3412" fill-opacity="0.85" stroke="#fde047" stroke-width="2"/>
+      <path d="M ${tx + 12},0 Q ${tx + 60},38 ${tx + 108},0 Z" fill="#ea580c" fill-opacity="0.9" stroke="#fef08a" stroke-width="1.4"/>
+      <circle cx="${tx + 60}" cy="34" r="6" fill="#fef08a"/>
+      <circle cx="${tx + 60}" cy="48" r="4" fill="#fb7185"/>`;
+  }
+  const bellPositions = [
+    [95, 135, 0.88],
+    [225, 95, 0.72],
+    [975, 95, 0.72],
+    [1105, 135, 0.88],
+  ];
+  for (const [bx, bh, bscale] of bellPositions) {
+    toranSvg += `
+      <g transform="translate(${bx}, 0)">
+        <line x1="0" y1="0" x2="0" y2="${bh}" stroke="#fde047" stroke-width="3.5" stroke-dasharray="7 4"/>
+        <g transform="translate(0, ${bh}) scale(${bscale})">
+          <circle cx="0" cy="-6" r="8" fill="none" stroke="#fef08a" stroke-width="3"/>
+          <path d="M -24,0 Q 0,-18 24,0 L 38,48 Q 0,58 -38,48 Z" fill="url(#brassGrad)" stroke="#fef08a" stroke-width="2.2"/>
+          <ellipse cx="0" cy="48" rx="38" ry="7" fill="#78350f" stroke="#fde047" stroke-width="1.8"/>
+          <circle cx="0" cy="55" r="8" fill="#fef08a"/>
+        </g>
+      </g>`;
+  }
+  toranSvg += '</g>';
 
   function renderDiya(dx, dy, scale) {
     return `<g transform="translate(${dx}, ${dy}) scale(${scale})">
-      <circle cx="0" cy="-22" r="46" fill="url(#flameAura)"/>
-      <path d="M 0,-56 C -18,-30 -16,-6 0,2 C 16,-6 18,-30 0,-56 Z" fill="#f97316"/>
-      <path d="M 0,-46 C -11,-24 -10,-6 0,0 C 10,-6 11,-24 0,-46 Z" fill="#facc15"/>
-      <path d="M 0,-32 C -6,-16 -5,-5 0,-1 C 5,-5 6,-16 0,-32 Z" fill="#ffffff"/>
-      <path d="M -42,0 Q 0,14 42,0 L 30,24 Q 0,34 -30,24 Z" fill="url(#brassGrad)" stroke="#fef08a" stroke-width="1.8"/>
-      <ellipse cx="0" cy="0" rx="42" ry="7" fill="#78350f" stroke="#fde047" stroke-width="1.5"/>
+      <circle cx="0" cy="-24" r="52" fill="url(#flameAura)"/>
+      <path d="M 0,-60 C -20,-32 -18,-6 0,2 C 18,-6 20,-32 0,-60 Z" fill="#f97316"/>
+      <path d="M 0,-48 C -12,-25 -10,-6 0,0 C 10,-6 12,-25 0,-48 Z" fill="#facc15"/>
+      <path d="M 0,-34 C -6,-16 -5,-5 0,-1 C 5,-5 6,-16 0,-34 Z" fill="#ffffff"/>
+      <path d="M -44,0 Q 0,15 44,0 L 32,25 Q 0,36 -32,25 Z" fill="url(#brassGrad)" stroke="#fef08a" stroke-width="2"/>
+      <ellipse cx="0" cy="0" rx="44" ry="7.5" fill="#78350f" stroke="#fde047" stroke-width="1.6"/>
+      <circle cx="-18" cy="12" r="2.5" fill="#fef08a"/>
+      <circle cx="0" cy="15" r="3" fill="#fef08a"/>
+      <circle cx="18" cy="12" r="2.5" fill="#fef08a"/>
     </g>`;
   }
 
   function renderLotus(lx, ly, scale) {
     return `<g transform="translate(${lx}, ${ly}) scale(${scale})">
-      <ellipse cx="0" cy="18" rx="68" ry="14" fill="#047857" fill-opacity="0.65" stroke="#34d399" stroke-width="1.2"/>
-      <path d="M -54,10 Q -62,-28 -26,-16 Q -10,0 0,12 Z" fill="#db2777" stroke="#fbcfe8" stroke-width="1.2"/>
-      <path d="M 54,10 Q 62,-28 26,-16 Q 10,0 0,12 Z" fill="#db2777" stroke="#fbcfe8" stroke-width="1.2"/>
-      <path d="M -38,12 Q -42,-42 -12,-28 Q -4,-6 0,12 Z" fill="#ec4899" stroke="#fce7f3" stroke-width="1.3"/>
-      <path d="M 38,12 Q 42,-42 12,-28 Q 4,-6 0,12 Z" fill="#ec4899" stroke="#fce7f3" stroke-width="1.3"/>
-      <path d="M 0,14 C -24,-10 -22,-48 0,-64 C 22,-48 24,-10 0,14 Z" fill="#f472b6" stroke="#fef08a" stroke-width="1.6"/>
-      <circle cx="0" cy="-14" r="10" fill="#fde047" fill-opacity="0.85"/>
+      <ellipse cx="0" cy="18" rx="72" ry="15" fill="#065f46" fill-opacity="0.78" stroke="#34d399" stroke-width="1.5"/>
+      <path d="M -62,10 Q -74,-26 -30,-16 Q -12,0 0,12 Z" fill="#be185d" stroke="#fbcfe8" stroke-width="1.3"/>
+      <path d="M 62,10 Q 74,-26 30,-16 Q 12,0 0,12 Z" fill="#be185d" stroke="#fbcfe8" stroke-width="1.3"/>
+      <path d="M -46,12 Q -52,-44 -16,-30 Q -5,-6 0,12 Z" fill="#db2777" stroke="#fce7f3" stroke-width="1.4"/>
+      <path d="M 46,12 Q 52,-44 16,-30 Q 5,-6 0,12 Z" fill="#db2777" stroke="#fce7f3" stroke-width="1.4"/>
+      <path d="M -26,13 Q -28,-54 -6,-42 Q -2,-12 0,13 Z" fill="#ec4899" stroke="#fef08a" stroke-width="1.4"/>
+      <path d="M 26,13 Q 28,-54 6,-42 Q 2,-12 0,13 Z" fill="#ec4899" stroke="#fef08a" stroke-width="1.4"/>
+      <path d="M 0,15 C -24,-12 -22,-54 0,-70 C 22,-54 24,-12 0,15 Z" fill="#f472b6" stroke="#fef08a" stroke-width="1.8"/>
+      <circle cx="0" cy="-16" r="11" fill="#fde047" fill-opacity="0.92"/>
     </g>`;
   }
 
   let centerPiece = '';
   if (art === 'mandir') {
     centerPiece = `
-      <g transform="translate(600, 275)">
-        <circle cx="0" cy="0" r="245" fill="url(#centerGlow)"/>
-        <!-- Hanging Brass Temple Bells -->
-        <g transform="translate(-310, -275)">
-          <line x1="0" y1="0" x2="0" y2="140" stroke="#fde047" stroke-width="4" stroke-dasharray="8 4"/>
-          <path d="M -28,140 Q 0,115 28,140 L 42,195 L -42,195 Z" fill="url(#brassGrad)" stroke="#fef08a" stroke-width="2.2"/>
-          <circle cx="0" cy="202" r="9" fill="#fef08a"/>
-        </g>
-        <g transform="translate(310, -275)">
-          <line x1="0" y1="0" x2="0" y2="140" stroke="#fde047" stroke-width="4" stroke-dasharray="8 4"/>
-          <path d="M -28,140 Q 0,115 28,140 L 42,195 L -42,195 Z" fill="url(#brassGrad)" stroke="#fef08a" stroke-width="2.2"/>
-          <circle cx="0" cy="202" r="9" fill="#fef08a"/>
-        </g>
-        <!-- Grand Golden Temple Shikharas -->
-        <polygon points="-175,85 -110,-85 -45,85" fill="#78350f" stroke="#fde047" stroke-width="3"/>
-        <polygon points="45,85 110,-85 175,85" fill="#78350f" stroke="#fde047" stroke-width="3"/>
-        <polygon points="0,-195 -135,85 135,85" fill="url(#brassGrad)" stroke="#fef08a" stroke-width="4"/>
-        <polygon points="0,-150 -95,85 95,85" fill="#9a3412" fill-opacity="0.7" stroke="#fde047" stroke-width="2.5"/>
-        <!-- Kalash & Saffron Dharma Dhwaja -->
-        <circle cx="0" cy="-208" r="14" fill="#fef08a"/>
-        <path d="M 0,-222 L 0,-260 L 78,-240 L 0,-220 Z" fill="#ef4444" stroke="#fef08a" stroke-width="2"/>
-        <!-- Illuminated Garbhagriha Sanctum Arch -->
-        <rect x="-155" y="85" width="310" height="110" rx="8" fill="#451a03" stroke="#fde047" stroke-width="3.5"/>
-        <path d="M -68,195 L -68,120 A 68,68 0 0,1 68,120 L 68,195 Z" fill="url(#flameAura)" stroke="#fef08a" stroke-width="3"/>
-        <!-- Sacred Jyotirlinga & Aura Inside Sanctum -->
-        <path d="M -22,185 L -22,142 A 22,22 0 0,1 22,142 L 22,185 Z" fill="#1c1917" stroke="#fde047" stroke-width="2"/>
-        <line x1="-14" y1="152" x2="14" y2="152" stroke="#fef08a" stroke-width="2.2"/>
-        <line x1="-16" y1="158" x2="16" y2="158" stroke="#fef08a" stroke-width="2.2"/>
-        <line x1="-14" y1="164" x2="14" y2="164" stroke="#fef08a" stroke-width="2.2"/>
+      <g transform="translate(600, 270)">
+        <circle cx="0" cy="0" r="255" fill="url(#centerGlow)"/>
+        <circle cx="0" cy="-10" r="215" fill="none" stroke="#fde047" stroke-width="2.2" stroke-dasharray="10 6" stroke-opacity="0.65"/>
+        <!-- Side Shikharas -->
+        <polygon points="-210,95 -145,-65 -80,95" fill="#7c2d12" stroke="#fde047" stroke-width="3"/>
+        <polygon points="80,95 145,-65 210,95" fill="#7c2d12" stroke="#fde047" stroke-width="3"/>
+        <circle cx="-145" cy="-75" r="9" fill="#fef08a"/>
+        <circle cx="145" cy="-75" r="9" fill="#fef08a"/>
+        <!-- Grand Central Golden Nagara Shikhara -->
+        <polygon points="0,-205 -145,95 145,95" fill="url(#brassGrad)" stroke="#fef08a" stroke-width="4.5"/>
+        <polygon points="0,-160 -102,95 102,95" fill="#9a3412" fill-opacity="0.72" stroke="#fde047" stroke-width="2.5"/>
+        <polygon points="0,-115 -64,95 64,95" fill="#451a03" fill-opacity="0.65" stroke="#fef08a" stroke-width="2"/>
+        <!-- Amalaka, Kalash & Fluttering Dharma Dhwaja -->
+        <ellipse cx="0" cy="-210" rx="22" ry="8" fill="#d97706" stroke="#fef08a" stroke-width="2"/>
+        <circle cx="0" cy="-224" r="13" fill="#fef08a"/>
+        <path d="M 0,-237 L 0,-275 L 88,-254 L 0,-235 Z" fill="#ef4444" stroke="#fef08a" stroke-width="2.2"/>
+        <!-- Illuminated Garbhagriha Sanctum Arch & Pillars -->
+        <rect x="-185" y="95" width="370" height="110" rx="10" fill="#451a03" stroke="url(#brassGrad)" stroke-width="4"/>
+        <rect x="-165" y="105" width="22" height="92" fill="url(#brassGrad)"/>
+        <rect x="143" y="105" width="22" height="92" fill="url(#brassGrad)"/>
+        <path d="M -76,205 L -76,122 A 76,76 0 0,1 76,122 L 76,205 Z" fill="url(#flameAura)" stroke="#fef08a" stroke-width="3.5"/>
+        <!-- Sacred Jyotirlinga Inside Sanctum -->
+        <path d="M -24,192 L -24,142 A 24,24 0 0,1 24,142 L 24,192 Z" fill="#1c1917" stroke="#fde047" stroke-width="2.5"/>
+        <line x1="-15" y1="152" x2="15" y2="152" stroke="#fef08a" stroke-width="2.4"/>
+        <line x1="-17" y1="159" x2="17" y2="159" stroke="#fef08a" stroke-width="2.4"/>
+        <line x1="-15" y1="166" x2="15" y2="166" stroke="#fef08a" stroke-width="2.4"/>
+        <circle cx="0" cy="159" r="4.5" fill="#ef4444"/>
       </g>`;
   } else if (art === 'milan') {
     centerPiece = `
-      <g transform="translate(600, 285)">
-        <circle cx="0" cy="-20" r="250" fill="url(#centerGlow)"/>
-        <!-- Intertwined Golden & Rose Varmala Rings -->
-        <circle cx="-68" cy="-55" r="95" fill="none" stroke="url(#brassGrad)" stroke-width="12" stroke-opacity="0.9"/>
-        <circle cx="-68" cy="-55" r="95" fill="none" stroke="#fef08a" stroke-width="3" stroke-dasharray="10 8"/>
-        <circle cx="68" cy="-55" r="95" fill="none" stroke="#fb7185" stroke-width="12" stroke-opacity="0.9"/>
-        <circle cx="68" cy="-55" r="95" fill="none" stroke="#ffe4e6" stroke-width="3" stroke-dasharray="10 8"/>
+      <g transform="translate(600, 280)">
+        <circle cx="0" cy="-20" r="255" fill="url(#centerGlow)"/>
+        <circle cx="0" cy="-25" r="210" fill="none" stroke="#fde047" stroke-width="2" stroke-dasharray="8 6" stroke-opacity="0.6"/>
+        <!-- Intertwined Golden & Rose Varmala Rings with Lotus Beads -->
+        <circle cx="-72" cy="-58" r="98" fill="none" stroke="url(#brassGrad)" stroke-width="14" stroke-opacity="0.92"/>
+        <circle cx="-72" cy="-58" r="98" fill="none" stroke="#fef08a" stroke-width="3.5" stroke-dasharray="10 8"/>
+        <circle cx="72" cy="-58" r="98" fill="none" stroke="#fb7185" stroke-width="14" stroke-opacity="0.92"/>
+        <circle cx="72" cy="-58" r="98" fill="none" stroke="#ffe4e6" stroke-width="3.5" stroke-dasharray="10 8"/>
         <!-- Sacred Vedic Vivah Agni Flames -->
-        <path d="M 0,-185 C -65,-105 -58,-15 0,40 C 58,-15 65,-105 0,-185 Z" fill="#ea580c" fill-opacity="0.9"/>
-        <path d="M -32,-130 C -75,-70 -50,5 0,40 C 50,5 75,-70 32,-130 C 12,-85 -12,-85 -32,-130 Z" fill="#f97316"/>
-        <path d="M 0,-145 C -38,-85 -34,-15 0,32 C 34,-15 38,-85 0,-145 Z" fill="#facc15"/>
-        <path d="M 0,-95 C -18,-55 -16,-10 0,24 C 16,-10 18,-55 0,-95 Z" fill="#ffffff"/>
-        <!-- Stepped Copper-Gold Havan Kund -->
-        <polygon points="-115,35 115,35 92,75 -92,75" fill="url(#brassGrad)" stroke="#fef08a" stroke-width="3"/>
-        <polygon points="-138,75 138,75 118,112 -118,112" fill="#7c2d12" stroke="#fde047" stroke-width="3"/>
-        <rect x="-155" y="112" width="310" height="22" rx="6" fill="url(#brassGrad)" stroke="#fef08a" stroke-width="2.5"/>
+        <path d="M 0,-195 C -70,-110 -62,-15 0,42 C 62,-15 70,-110 0,-195 Z" fill="#ea580c" fill-opacity="0.92"/>
+        <path d="M -36,-135 C -82,-72 -54,5 0,42 C 54,5 82,-72 36,-135 C 14,-88 -14,-88 -36,-135 Z" fill="#f97316"/>
+        <path d="M 0,-152 C -42,-88 -36,-15 0,34 C 36,-15 42,-88 0,-152 Z" fill="#facc15"/>
+        <path d="M 0,-100 C -20,-58 -18,-10 0,25 C 18,-10 20,-58 0,-100 Z" fill="#ffffff"/>
+        <!-- Stepped Copper-Gold Havan Kund & Twin Mangal Kalash -->
+        <polygon points="-122,36 122,36 96,78 -96,78" fill="url(#brassGrad)" stroke="#fef08a" stroke-width="3.2"/>
+        <polygon points="-146,78 146,78 124,116 -124,116" fill="#7c2d12" stroke="#fde047" stroke-width="3.2"/>
+        <rect x="-165" y="116" width="330" height="24" rx="8" fill="url(#brassGrad)" stroke="#fef08a" stroke-width="2.8"/>
       </g>`;
   } else if (art === 'shani') {
     centerPiece = `
       <g transform="translate(600, 260)">
-        <circle cx="0" cy="0" r="255" fill="url(#centerGlow)"/>
-        <!-- Outer Sacred Planetary Orbit Halo -->
-        <circle cx="0" cy="0" r="195" fill="none" stroke="#818cf8" stroke-width="2" stroke-dasharray="10 8" stroke-opacity="0.65"/>
-        <circle cx="0" cy="0" r="160" fill="none" stroke="#fde047" stroke-width="1.5" stroke-opacity="0.45"/>
+        <circle cx="0" cy="0" r="260" fill="url(#centerGlow)"/>
+        <circle cx="0" cy="0" r="205" fill="none" stroke="#818cf8" stroke-width="2.5" stroke-dasharray="10 8" stroke-opacity="0.72"/>
+        <circle cx="0" cy="0" r="172" fill="none" stroke="#fde047" stroke-width="1.8" stroke-opacity="0.52"/>
         <!-- Majestic 3D Ringed Saturn (Shani Graha) -->
         <g transform="rotate(-18)">
-          <ellipse cx="0" cy="0" rx="225" ry="64" fill="none" stroke="#fde047" stroke-width="14" stroke-opacity="0.85"/>
-          <ellipse cx="0" cy="0" rx="195" ry="52" fill="none" stroke="#818cf8" stroke-width="10" stroke-opacity="0.9"/>
-          <ellipse cx="0" cy="0" rx="168" ry="42" fill="none" stroke="#f59e0b" stroke-width="6" stroke-opacity="0.8"/>
+          <ellipse cx="0" cy="0" rx="236" ry="68" fill="none" stroke="#fde047" stroke-width="15" stroke-opacity="0.88"/>
+          <ellipse cx="0" cy="0" rx="205" ry="56" fill="none" stroke="#818cf8" stroke-width="11" stroke-opacity="0.92"/>
+          <ellipse cx="0" cy="0" rx="176" ry="45" fill="none" stroke="#f59e0b" stroke-width="7" stroke-opacity="0.85"/>
         </g>
-        <circle cx="0" cy="0" r="96" fill="#0f172a" stroke="#fde047" stroke-width="5"/>
-        <circle cx="-18" cy="-18" r="82" fill="#1e1b4b" fill-opacity="0.85"/>
-        <path d="M -88,-28 Q 0,-52 88,-28" fill="none" stroke="#818cf8" stroke-width="5" stroke-opacity="0.55"/>
-        <path d="M -94,8 Q 0,-14 94,8" fill="none" stroke="#fbbf24" stroke-width="4" stroke-opacity="0.5"/>
-        <path d="M -84,42 Q 0,24 84,42" fill="none" stroke="#6366f1" stroke-width="5" stroke-opacity="0.55"/>
-        <!-- Foreground Half of Rings Overlapping Sphere -->
+        <circle cx="0" cy="0" r="102" fill="#0f172a" stroke="url(#brassGrad)" stroke-width="5.5"/>
+        <circle cx="-18" cy="-18" r="86" fill="#1e1b4b" fill-opacity="0.88"/>
+        <path d="M -92,-30 Q 0,-56 92,-30" fill="none" stroke="#818cf8" stroke-width="5.5" stroke-opacity="0.6"/>
+        <path d="M -98,8 Q 0,-15 98,8" fill="none" stroke="#fbbf24" stroke-width="4.5" stroke-opacity="0.55"/>
+        <path d="M -88,44 Q 0,25 88,44" fill="none" stroke="#6366f1" stroke-width="5.5" stroke-opacity="0.6"/>
         <g transform="rotate(-18)">
-          <path d="M -225,0 A 225,64 0 0,0 225,0" fill="none" stroke="#fef08a" stroke-width="14"/>
-          <path d="M -195,0 A 195,52 0 0,0 195,0" fill="none" stroke="#a5b4fc" stroke-width="10"/>
+          <path d="M -236,0 A 236,68 0 0,0 236,0" fill="none" stroke="#fef08a" stroke-width="15"/>
+          <path d="M -205,0 A 205,56 0 0,0 205,0" fill="none" stroke="#a5b4fc" stroke-width="11"/>
         </g>
+        <!-- Golden Royal Crown Above Shani Mandal -->
+        <polygon points="-48,-112 -26,-152 0,-125 26,-152 48,-112" fill="url(#brassGrad)" stroke="#fef08a" stroke-width="2.5"/>
       </g>`;
   } else if (art === 'kundli') {
     centerPiece = `
-      <g transform="translate(600, 265)">
-        <circle cx="0" cy="0" r="250" fill="url(#centerGlow)"/>
-        <!-- Sacred 3D Golden Kundali Mandala & Navagraha Orbits -->
-        <circle cx="0" cy="0" r="205" fill="none" stroke="#fde047" stroke-width="2.5" stroke-opacity="0.75"/>
-        <circle cx="0" cy="0" r="182" fill="none" stroke="#f97316" stroke-width="2" stroke-dasharray="8 6"/>
-        <rect x="-128" y="-128" width="256" height="256" fill="#2b0904" fill-opacity="0.78" stroke="url(#brassGrad)" stroke-width="5"/>
-        <rect x="-128" y="-128" width="256" height="256" fill="none" stroke="#fde047" stroke-width="3" transform="rotate(45)"/>
-        <line x1="-128" y1="-128" x2="128" y2="128" stroke="#fbbf24" stroke-width="3"/>
-        <line x1="128" y1="-128" x2="-128" y2="128" stroke="#fbbf24" stroke-width="3"/>
-        <polygon points="0,-128 128,0 0,128 -128,0" fill="#451a03" fill-opacity="0.55" stroke="#fef08a" stroke-width="3.5"/>
-        <!-- 8 Glowing Planetary Spheres on Outer Ring -->
-        <circle cx="0" cy="-205" r="14" fill="#fde047" stroke="#ffffff" stroke-width="2"/>
-        <circle cx="145" cy="-145" r="12" fill="#f43f5e" stroke="#fef08a" stroke-width="2"/>
-        <circle cx="205" cy="0" r="13" fill="#10b981" stroke="#fef08a" stroke-width="2"/>
-        <circle cx="145" cy="145" r="14" fill="#fbbf24" stroke="#ffffff" stroke-width="2"/>
-        <circle cx="0" cy="205" r="13" fill="#6366f1" stroke="#fef08a" stroke-width="2"/>
-        <circle cx="-145" cy="145" r="12" fill="#ec4899" stroke="#fef08a" stroke-width="2"/>
-        <circle cx="-205" cy="0" r="13" fill="#38bdf8" stroke="#fef08a" stroke-width="2"/>
-        <circle cx="-145" cy="-145" r="12" fill="#a855f7" stroke="#fef08a" stroke-width="2"/>
-        <!-- Center Golden Lotus Core -->
-        <circle cx="0" cy="0" r="54" fill="url(#flameAura)" stroke="#fef08a" stroke-width="3.5"/>
-        <polygon points="0,-42 12,-12 42,0 12,12 0,42 -12,12 -42,0 -12,-12" fill="#fef08a"/>
+      <g transform="translate(600, 262)">
+        <circle cx="0" cy="0" r="255" fill="url(#centerGlow)"/>
+        <circle cx="0" cy="0" r="212" fill="none" stroke="#fde047" stroke-width="2.8" stroke-opacity="0.8"/>
+        <circle cx="0" cy="0" r="188" fill="none" stroke="#f97316" stroke-width="2.2" stroke-dasharray="8 6"/>
+        <rect x="-134" y="-134" width="268" height="268" fill="#2b0904" fill-opacity="0.82" stroke="url(#brassGrad)" stroke-width="5.5"/>
+        <rect x="-134" y="-134" width="268" height="268" fill="none" stroke="#fde047" stroke-width="3.2" transform="rotate(45)"/>
+        <line x1="-134" y1="-134" x2="134" y2="134" stroke="#fbbf24" stroke-width="3.2"/>
+        <line x1="134" y1="-134" x2="-134" y2="134" stroke="#fbbf24" stroke-width="3.2"/>
+        <polygon points="0,-134 134,0 0,134 -134,0" fill="#451a03" fill-opacity="0.6" stroke="#fef08a" stroke-width="3.8"/>
+        <!-- 8 Glowing Planetary Gem Spheres on Outer Ring -->
+        <circle cx="0" cy="-212" r="15" fill="#fde047" stroke="#ffffff" stroke-width="2.5"/>
+        <circle cx="150" cy="-150" r="13" fill="#f43f5e" stroke="#fef08a" stroke-width="2.2"/>
+        <circle cx="212" cy="0" r="14" fill="#10b981" stroke="#fef08a" stroke-width="2.2"/>
+        <circle cx="150" cy="150" r="15" fill="#fbbf24" stroke="#ffffff" stroke-width="2.5"/>
+        <circle cx="0" cy="212" r="14" fill="#6366f1" stroke="#fef08a" stroke-width="2.2"/>
+        <circle cx="-150" cy="150" r="13" fill="#ec4899" stroke="#fef08a" stroke-width="2.2"/>
+        <circle cx="-212" cy="0" r="14" fill="#38bdf8" stroke="#fef08a" stroke-width="2.2"/>
+        <circle cx="-150" cy="-150" r="13" fill="#a855f7" stroke="#fef08a" stroke-width="2.2"/>
+        <!-- Center Golden Ashtadal Lotus Core -->
+        <circle cx="0" cy="0" r="58" fill="url(#flameAura)" stroke="#fef08a" stroke-width="3.8"/>
+        <polygon points="0,-46 14,-14 46,0 14,14 0,46 -14,14 -46,0 -14,-14" fill="#fef08a"/>
+        <circle cx="0" cy="0" r="16" fill="#ea580c" stroke="#fef08a" stroke-width="2.5"/>
       </g>`;
   } else if (art === 'panchang') {
     centerPiece = `
-      <g transform="translate(600, 260)">
-        <circle cx="0" cy="0" r="250" fill="url(#centerGlow)"/>
-        <!-- Blazing 24-Point Surya Mandala & Silver-Gold Chandra -->
-        <circle cx="0" cy="-20" r="185" fill="none" stroke="#fde047" stroke-width="2.2" stroke-dasharray="10 6" stroke-opacity="0.7"/>
-        <polygon points="0,-175 34,-62 142,-102 62,-8 155,68 42,52 68,162 -15,78 -98,158 -58,45 -168,48 -68,-22 -135,-118 -28,-62" fill="#f59e0b" fill-opacity="0.38" stroke="#fde047" stroke-width="2.8"/>
-        <circle cx="0" cy="-20" r="96" fill="url(#brassGrad)" stroke="#fef08a" stroke-width="4.5"/>
-        <circle cx="0" cy="-20" r="72" fill="#fef08a"/>
+      <g transform="translate(600, 258)">
+        <circle cx="0" cy="0" r="255" fill="url(#centerGlow)"/>
+        <circle cx="0" cy="-20" r="195" fill="none" stroke="#fde047" stroke-width="2.5" stroke-dasharray="10 6" stroke-opacity="0.75"/>
+        <polygon points="0,-185 36,-66 150,-108 66,-8 164,72 44,55 72,170 -16,82 -104,166 -62,48 -176,50 -72,-24 -142,-124 -30,-66" fill="#f59e0b" fill-opacity="0.42" stroke="#fde047" stroke-width="3"/>
+        <circle cx="0" cy="-20" r="102" fill="url(#brassGrad)" stroke="#fef08a" stroke-width="5"/>
+        <circle cx="0" cy="-20" r="76" fill="#fef08a"/>
         <!-- Luminous Crescent Moon Embrace -->
-        <path d="M 22,-72 A 56,56 0 1,0 22,32 A 42,42 0 1,1 22,-72 Z" fill="#3b0d03"/>
+        <path d="M 24,-76 A 58,58 0 1,0 24,36 A 44,44 0 1,1 24,-76 Z" fill="#3b0d03"/>
         <!-- Sacred Mangal Kalash in Foreground -->
-        <g transform="translate(0, 125)">
-          <path d="M -38,-42 Q -62,-68 -82,-35 Q -48,-22 -24,-28 Z" fill="#15803d" stroke="#fde047" stroke-width="1.5"/>
-          <path d="M 38,-42 Q 62,-68 82,-35 Q 48,-22 24,-28 Z" fill="#15803d" stroke="#fde047" stroke-width="1.5"/>
-          <ellipse cx="0" cy="-48" rx="28" ry="34" fill="#92400e" stroke="#fde047" stroke-width="2.2"/>
-          <path d="M -45,-24 L 45,-24 L 68,32 Q 0,68 -68,32 Z" fill="url(#brassGrad)" stroke="#fef08a" stroke-width="3"/>
-          <rect x="-52" y="45" width="104" height="14" rx="6" fill="#fde047"/>
+        <g transform="translate(0, 128)">
+          <path d="M -42,-44 Q -68,-72 -90,-38 Q -52,-22 -26,-30 Z" fill="#15803d" stroke="#fde047" stroke-width="1.8"/>
+          <path d="M 42,-44 Q 68,-72 90,-38 Q 52,-22 26,-30 Z" fill="#15803d" stroke="#fde047" stroke-width="1.8"/>
+          <ellipse cx="0" cy="-50" rx="30" ry="36" fill="#92400e" stroke="#fde047" stroke-width="2.5"/>
+          <path d="M -48,-25 L 48,-25 L 74,34 Q 0,72 -74,34 Z" fill="url(#brassGrad)" stroke="#fef08a" stroke-width="3.5"/>
+          <rect x="-56" y="48" width="112" height="15" rx="7" fill="#fde047"/>
         </g>
       </g>`;
   } else if (art === 'rashi') {
     centerPiece = `
       <g transform="translate(600, 260)">
-        <circle cx="0" cy="0" r="255" fill="url(#centerGlow)"/>
-        <!-- 12-Spoked Luminous Celestial Wheel -->
-        <circle cx="0" cy="0" r="198" fill="#1e0938" fill-opacity="0.65" stroke="url(#brassGrad)" stroke-width="5"/>
-        <circle cx="0" cy="0" r="162" fill="none" stroke="#fde047" stroke-width="2.5" stroke-dasharray="8 6"/>
-        <circle cx="0" cy="0" r="112" fill="#2e1065" fill-opacity="0.8" stroke="#facc15" stroke-width="3.5"/>
-        <line x1="0" y1="-198" x2="0" y2="198" stroke="#fde047" stroke-width="2" stroke-opacity="0.65"/>
-        <line x1="-198" y1="0" x2="198" y2="0" stroke="#fde047" stroke-width="2" stroke-opacity="0.65"/>
-        <line x1="-140" y1="-140" x2="140" y2="140" stroke="#fde047" stroke-width="2" stroke-opacity="0.65"/>
-        <line x1="140" y1="-140" x2="-140" y2="140" stroke="#fde047" stroke-width="2" stroke-opacity="0.65"/>
-        <!-- Constellation Star Nodes -->
-        <polyline points="-130,-75 -65,-135 25,-145 115,-85 145,15 85,115 -35,135 -125,65 -130,-75" fill="none" stroke="#fef08a" stroke-width="2.2" stroke-dasharray="5 4"/>
-        <circle cx="-130" cy="-75" r="7" fill="#ffffff"/>
-        <circle cx="-65" cy="-135" r="8" fill="#fde047"/>
-        <circle cx="25" cy="-145" r="7" fill="#ffffff"/>
-        <circle cx="115" cy="-85" r="8" fill="#f472b6"/>
-        <circle cx="145" cy="15" r="7" fill="#fde047"/>
-        <circle cx="85" cy="115" r="8" fill="#38bdf8"/>
-        <circle cx="-35" cy="135" r="7" fill="#fde047"/>
-        <circle cx="-125" cy="65" r="8" fill="#ffffff"/>
-        <!-- Radiant Starburst Core -->
-        <polygon points="0,-78 20,-20 78,0 20,20 0,78 -20,20 -78,0 -20,-20" fill="url(#brassGrad)" stroke="#ffffff" stroke-width="2"/>
-        <circle cx="0" cy="0" r="22" fill="#ffffff"/>
+        <circle cx="0" cy="0" r="260" fill="url(#centerGlow)"/>
+        <circle cx="0" cy="0" r="204" fill="#1e0938" fill-opacity="0.7" stroke="url(#brassGrad)" stroke-width="5.5"/>
+        <circle cx="0" cy="0" r="168" fill="none" stroke="#fde047" stroke-width="2.8" stroke-dasharray="8 6"/>
+        <circle cx="0" cy="0" r="118" fill="#2e1065" fill-opacity="0.85" stroke="#facc15" stroke-width="3.8"/>
+        <line x1="0" y1="-204" x2="0" y2="204" stroke="#fde047" stroke-width="2.2" stroke-opacity="0.7"/>
+        <line x1="-204" y1="0" x2="204" y2="0" stroke="#fde047" stroke-width="2.2" stroke-opacity="0.7"/>
+        <line x1="-144" y1="-144" x2="144" y2="144" stroke="#fde047" stroke-width="2.2" stroke-opacity="0.7"/>
+        <line x1="144" y1="-144" x2="-144" y2="144" stroke="#fde047" stroke-width="2.2" stroke-opacity="0.7"/>
+        <polyline points="-135,-78 -68,-140 26,-150 120,-88 150,16 88,120 -36,140 -130,68 -135,-78" fill="none" stroke="#fef08a" stroke-width="2.5" stroke-dasharray="5 4"/>
+        <circle cx="-135" cy="-78" r="8" fill="#ffffff"/>
+        <circle cx="-68" cy="-140" r="9" fill="#fde047"/>
+        <circle cx="26" cy="-150" r="8" fill="#ffffff"/>
+        <circle cx="120" cy="-88" r="9" fill="#f472b6"/>
+        <circle cx="150" cy="16" r="8" fill="#fde047"/>
+        <circle cx="88" cy="120" r="9" fill="#38bdf8"/>
+        <circle cx="-36" cy="140" r="8" fill="#fde047"/>
+        <circle cx="-130" cy="68" r="9" fill="#ffffff"/>
+        <polygon points="0,-84 22,-22 84,0 22,22 0,84 -22,22 -84,0 -22,-22" fill="url(#brassGrad)" stroke="#ffffff" stroke-width="2.4"/>
+        <circle cx="0" cy="0" r="24" fill="#ffffff"/>
       </g>`;
   } else if (art === 'puja') {
     centerPiece = `
-      <g transform="translate(600, 275)">
-        <circle cx="0" cy="-15" r="250" fill="url(#centerGlow)"/>
-        <!-- Sacred Golden Trishul Behind Jyotirlinga -->
-        <g transform="translate(-115, -35)">
-          <line x1="0" y1="-150" x2="0" y2="145" stroke="url(#brassGrad)" stroke-width="7"/>
-          <path d="M 0,-165 L -14,-120 L 0,-132 L 14,-120 Z" fill="#fef08a"/>
-          <path d="M -44,-135 C -48,-75 -12,-68 0,-72 C 12,-68 48,-75 44,-135" fill="none" stroke="url(#brassGrad)" stroke-width="6" stroke-linecap="round"/>
+      <g transform="translate(600, 272)">
+        <circle cx="0" cy="-15" r="255" fill="url(#centerGlow)"/>
+        <g transform="translate(-122, -35)">
+          <line x1="0" y1="-155" x2="0" y2="150" stroke="url(#brassGrad)" stroke-width="7.5"/>
+          <path d="M 0,-172 L -15,-124 L 0,-136 L 15,-124 Z" fill="#fef08a"/>
+          <path d="M -46,-140 C -50,-78 -14,-70 0,-74 C 14,-70 50,-78 46,-140" fill="none" stroke="url(#brassGrad)" stroke-width="6.5" stroke-linecap="round"/>
         </g>
-        <!-- Upper Abhishek Kalash Pouring Golden Milk Stream -->
-        <path d="M -32,-205 L 32,-205 L 46,-162 Q 0,-140 -46,-162 Z" fill="url(#brassGrad)" stroke="#fef08a" stroke-width="2.5"/>
-        <path d="M -4,-148 L 4,-148 L 8,-52 L -8,-52 Z" fill="#fef9c3" fill-opacity="0.88"/>
-        <!-- Sacred Black-Stone Shiva Lingam & Golden Tripundra -->
-        <path d="M -56,65 L -56,-25 A 56,56 0 0,1 56,-25 L 56,65 Z" fill="#1c1917" stroke="#fde047" stroke-width="3.5"/>
-        <line x1="-34" y1="-18" x2="34" y2="-18" stroke="#fef08a" stroke-width="4" stroke-linecap="round"/>
-        <line x1="-38" y1="-4" x2="38" y2="-4" stroke="#fef08a" stroke-width="4" stroke-linecap="round"/>
-        <line x1="-34" y1="10" x2="34" y2="10" stroke="#fef08a" stroke-width="4" stroke-linecap="round"/>
-        <circle cx="0" cy="-4" r="9" fill="#ef4444" stroke="#fef08a" stroke-width="2"/>
-        <!-- Pedestal (Yoni Base) -->
-        <path d="M -135,65 L 155,65 L 135,96 L -115,96 Z" fill="#292524" stroke="#fde047" stroke-width="3"/>
-        <rect x="-105" y="96" width="210" height="32" rx="8" fill="url(#brassGrad)" stroke="#fef08a" stroke-width="2.5"/>
+        <path d="M -34,-210 L 34,-210 L 48,-165 Q 0,-142 -48,-165 Z" fill="url(#brassGrad)" stroke="#fef08a" stroke-width="2.8"/>
+        <path d="M -4.5,-150 L 4.5,-150 L 9,-52 L -9,-52 Z" fill="#fef9c3" fill-opacity="0.9"/>
+        <path d="M -60,68 L -60,-26 A 60,60 0 0,1 60,-26 L 60,68 Z" fill="#1c1917" stroke="#fde047" stroke-width="3.8"/>
+        <line x1="-36" y1="-18" x2="36" y2="-18" stroke="#fef08a" stroke-width="4.2" stroke-linecap="round"/>
+        <line x1="-40" y1="-4" x2="40" y2="-4" stroke="#fef08a" stroke-width="4.2" stroke-linecap="round"/>
+        <line x1="-36" y1="10" x2="36" y2="10" stroke="#fef08a" stroke-width="4.2" stroke-linecap="round"/>
+        <circle cx="0" cy="-4" r="9.5" fill="#ef4444" stroke="#fef08a" stroke-width="2.2"/>
+        <path d="M -142,68 L 162,68 L 142,100 L -122,100 Z" fill="#292524" stroke="#fde047" stroke-width="3.2"/>
+        <rect x="-110" y="100" width="220" height="34" rx="8" fill="url(#brassGrad)" stroke="#fef08a" stroke-width="2.8"/>
       </g>`;
   } else {
     centerPiece = `
-      <g transform="translate(600, 265)">
-        <circle cx="0" cy="0" r="250" fill="url(#centerGlow)"/>
-        <!-- Sacred Thousand-Petal Golden Mandal & Divine Flute / Mor Pankh -->
-        <circle cx="0" cy="0" r="190" fill="none" stroke="#fde047" stroke-width="2.5" stroke-dasharray="10 6" stroke-opacity="0.75"/>
-        <circle cx="0" cy="0" r="148" fill="#0c4a6e" fill-opacity="0.55" stroke="url(#brassGrad)" stroke-width="4"/>
-        <!-- Golden Bansuri (Flute) -->
-        <g transform="rotate(-22)">
-          <rect x="-195" y="-12" width="390" height="24" rx="12" fill="url(#brassGrad)" stroke="#fef08a" stroke-width="2.5"/>
-          <circle cx="-90" cy="0" r="4.5" fill="#451a03"/>
-          <circle cx="-50" cy="0" r="4.5" fill="#451a03"/>
-          <circle cx="-10" cy="0" r="4.5" fill="#451a03"/>
-          <circle cx="30" cy="0" r="4.5" fill="#451a03"/>
-          <circle cx="70" cy="0" r="4.5" fill="#451a03"/>
-          <circle cx="110" cy="0" r="4.5" fill="#451a03"/>
+      <g transform="translate(600, 262)">
+        <circle cx="0" cy="0" r="258" fill="url(#centerGlow)"/>
+        <!-- Outer 24-Spoked Sudarshan-Surya Chakra -->
+        <circle cx="0" cy="0" r="205" fill="none" stroke="#fde047" stroke-width="2.8" stroke-dasharray="10 6" stroke-opacity="0.82"/>
+        <circle cx="0" cy="0" r="172" fill="#082f49" fill-opacity="0.65" stroke="url(#brassGrad)" stroke-width="4.5"/>
+        <polygon points="0,-168 32,-56 146,-96 62,-4 152,72 40,52 68,162 -14,76 -98,158 -56,42 -164,46 -64,-22 -136,-116 -26,-58" fill="#f59e0b" fill-opacity="0.28" stroke="#fde047" stroke-width="2.2"/>
+        <!-- Sacred Illuminated Vedic Granth on Golden Vyas-Peeth -->
+        <g transform="translate(0, 74)">
+          <path d="M -135,-16 C -68,-38 -15,-22 0,-4 C 15,-22 68,-38 135,-16 L 122,42 C 62,22 15,34 0,48 C -15,34 -62,22 -122,42 Z" fill="#fef3c7" stroke="url(#brassGrad)" stroke-width="4"/>
+          <path d="M -112,-4 Q -56,-20 -14,-6 M 14,-6 Q 56,-20 112,-4" fill="none" stroke="#d97706" stroke-width="2.5"/>
+          <path d="M -105,14 Q -52,-2 -14,10 M 14,10 Q 52,-2 105,14" fill="none" stroke="#d97706" stroke-width="2.5"/>
+          <line x1="0" y1="-6" x2="0" y2="48" stroke="#b45309" stroke-width="3.5"/>
         </g>
-        <!-- Iridescent Peacock Feather (Mor Pankh) -->
-        <g transform="translate(35, -35) rotate(18)">
-          <path d="M 0,130 C -85,40 -78,-95 0,-145 C 78,-95 85,40 0,130 Z" fill="#047857" stroke="#34d399" stroke-width="3"/>
-          <path d="M 0,95 C -58,25 -52,-70 0,-112 C 52,-70 58,25 0,95 Z" fill="#0d9488" stroke="#fde047" stroke-width="2.2"/>
-          <ellipse cx="0" cy="-35" rx="34" ry="44" fill="#f59e0b" stroke="#fef08a" stroke-width="2"/>
-          <ellipse cx="0" cy="-35" rx="22" ry="30" fill="#1d4ed8"/>
-          <ellipse cx="0" cy="-30" rx="12" ry="16" fill="#1e1b4b"/>
-          <circle cx="-4" cy="-36" r="4" fill="#ffffff"/>
+        <!-- Jeweled Golden Bansuri (Flute) with Hanging Pearl Tassels -->
+        <g transform="translate(0, -18) rotate(-20)">
+          <rect x="-215" y="-14" width="430" height="28" rx="14" fill="url(#brassGrad)" stroke="#ffffff" stroke-width="2.5"/>
+          <rect x="-185" y="-14" width="16" height="28" fill="#dc2626"/>
+          <rect x="165" y="-14" width="16" height="28" fill="#dc2626"/>
+          <circle cx="-105" cy="0" r="5" fill="#451a03"/>
+          <circle cx="-65" cy="0" r="5" fill="#451a03"/>
+          <circle cx="-25" cy="0" r="5" fill="#451a03"/>
+          <circle cx="15" cy="0" r="5" fill="#451a03"/>
+          <circle cx="55" cy="0" r="5" fill="#451a03"/>
+          <circle cx="95" cy="0" r="5" fill="#451a03"/>
+          <circle cx="-195" cy="28" r="5" fill="#fef08a"/>
+          <circle cx="-180" cy="36" r="4.5" fill="#fde047"/>
+        </g>
+        <!-- Multi-Layered Iridescent Mor Pankh (Peacock Feather) -->
+        <g transform="translate(32, -52) rotate(16)">
+          <path d="M 0,138 C -94,44 -86,-104 0,-158 C 86,-104 94,44 0,138 Z" fill="#065f46" stroke="#6ee7b7" stroke-width="3.2"/>
+          <path d="M 0,104 C -64,28 -58,-76 0,-122 C 58,-76 64,28 0,104 Z" fill="#0d9488" stroke="#fde047" stroke-width="2.5"/>
+          <ellipse cx="0" cy="-38" rx="38" ry="48" fill="#f59e0b" stroke="#fef08a" stroke-width="2.4"/>
+          <ellipse cx="0" cy="-38" rx="25" ry="33" fill="#1d4ed8"/>
+          <ellipse cx="0" cy="-33" rx="14" ry="18" fill="#1e1b4b"/>
+          <circle cx="-5" cy="-39" r="5" fill="#ffffff"/>
         </g>
       </g>`;
   }
@@ -1980,52 +2104,61 @@ function buildDiscoverCleanHeroSvg(routeInfo, slug) {
       <stop offset="100%" stop-color="${bgBot}"/>
     </linearGradient>
     <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="${glowPrimary}" stop-opacity="0.62"/>
-      <stop offset="50%" stop-color="${glowSecondary}" stop-opacity="0.28"/>
+      <stop offset="0%" stop-color="${glowPrimary}" stop-opacity="0.68"/>
+      <stop offset="52%" stop-color="${glowSecondary}" stop-opacity="0.32"/>
       <stop offset="100%" stop-color="${bgBot}" stop-opacity="0"/>
     </radialGradient>
     <radialGradient id="flameAura" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#fef08a" stop-opacity="0.95"/>
-      <stop offset="45%" stop-color="#f97316" stop-opacity="0.55"/>
+      <stop offset="0%" stop-color="#fef08a" stop-opacity="0.98"/>
+      <stop offset="45%" stop-color="#f97316" stop-opacity="0.58"/>
       <stop offset="100%" stop-color="#f97316" stop-opacity="0"/>
     </radialGradient>
     <linearGradient id="rayGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#fef08a" stop-opacity="0.9"/>
+      <stop offset="0%" stop-color="#fef08a" stop-opacity="0.95"/>
       <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
     </linearGradient>
     <linearGradient id="brassGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#fcd34d"/>
+      <stop offset="0%" stop-color="#fde047"/>
       <stop offset="50%" stop-color="#d97706"/>
       <stop offset="100%" stop-color="#fef08a"/>
     </linearGradient>
     <linearGradient id="waterGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="${bgMid}" stop-opacity="0.25"/>
-      <stop offset="100%" stop-color="#050208" stop-opacity="0.95"/>
+      <stop offset="0%" stop-color="${bgMid}" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#040107" stop-opacity="0.96"/>
     </linearGradient>
   </defs>
 
-  <!-- Full-Bleed Atmospheric Sky & Cosmic Nebula (Zero Border Frame) -->
+  <!-- Full-Bleed Atmospheric Sky & Cosmic Nebula (Zero Promotional Text / Zero Frame) -->
   <rect width="1200" height="630" fill="url(#skyGrad)"/>
   ${raysSvg}
+  ${mandalaPetals}
   ${starsSvg}
+
+  <!-- Festive Temple Hanging Toran & Brass Bells -->
+  ${toranSvg}
 
   <!-- Main Theme Sacred Centerpiece -->
   ${centerPiece}
 
   <!-- Shimmering Sacred Ghat / Reflective Sanctum Foreground -->
-  <rect x="0" y="485" width="1200" height="145" fill="url(#waterGrad)"/>
-  <ellipse cx="600" cy="525" rx="420" ry="12" fill="#fde047" fill-opacity="0.22"/>
-  <ellipse cx="600" cy="560" rx="310" ry="8" fill="#f97316" fill-opacity="0.18"/>
-  <ellipse cx="600" cy="592" rx="220" ry="6" fill="#fef08a" fill-opacity="0.15"/>
+  <rect x="0" y="482" width="1200" height="148" fill="url(#waterGrad)"/>
+  <ellipse cx="600" cy="522" rx="460" ry="13" fill="#fde047" fill-opacity="0.26"/>
+  <ellipse cx="600" cy="558" rx="340" ry="9" fill="#f97316" fill-opacity="0.22"/>
+  <ellipse cx="600" cy="592" rx="240" ry="6.5" fill="#fef08a" fill-opacity="0.18"/>
 
-  <!-- Blooming Sacred Lotuses & Glowing Brass Diyas in Foreground -->
-  ${renderLotus(330, 520, 0.92)}
-  ${renderLotus(600, 505, 1.15)}
-  ${renderLotus(870, 520, 0.92)}
-  ${renderDiya(165, 548, 0.95)}
-  ${renderDiya(455, 562, 0.85)}
-  ${renderDiya(745, 562, 0.85)}
-  ${renderDiya(1035, 548, 0.95)}
+  <!-- 5 Blooming Sacred Lotuses & 7 Glowing Brass Diyas in Foreground -->
+  ${renderLotus(185, 535, 0.72)}
+  ${renderLotus(375, 518, 0.94)}
+  ${renderLotus(600, 502, 1.18)}
+  ${renderLotus(825, 518, 0.94)}
+  ${renderLotus(1015, 535, 0.72)}
+  ${renderDiya(95, 560, 0.85)}
+  ${renderDiya(275, 552, 0.92)}
+  ${renderDiya(485, 565, 0.85)}
+  ${renderDiya(600, 582, 0.98)}
+  ${renderDiya(715, 565, 0.85)}
+  ${renderDiya(925, 552, 0.92)}
+  ${renderDiya(1105, 560, 0.85)}
 </svg>`;
 }
 
@@ -2424,9 +2557,9 @@ function buildEdgeRouteArticleHtml(canonicalPath, info, seoEntry) {
     return `<article id="pj-route-static-article" style="background:rgba(15,23,42,0.95);border:1px solid rgba(245,158,11,0.45);border-radius:18px;padding:22px;margin-bottom:16px;color:#f1f5f9;line-height:1.75;font-family:system-ui,-apple-system,sans-serif;">
       <nav style="font-size:12px;color:#fbbf24;margin-bottom:12px;"><a href="/" style="color:#fbbf24;text-decoration:none;font-weight:600;">← मुख्य पृष्ठ (Home)</a> / <span>गोपनीयता नीति (Privacy Policy)</span></nav>
       <header style="border-bottom:1px solid rgba(245,158,11,0.3);padding-bottom:14px;margin-bottom:18px;">
-        <span style="font-size:11px;font-weight:800;color:#34d399;text-transform:uppercase;letter-spacing:1px;background:rgba(16,185,129,0.15);padding:3px 10px;border-radius:20px;border:1px solid rgba(16,185,129,0.3);">आधिकारिक गोपनीयता एवं डेटा सुरक्षा नीति</span>
+        <span style="font-size:11px;font-weight:800;color:#34d399;text-transform:uppercase;letter-spacing:1px;background:rgba(16,185,129,0.15);padding:3px 10px;border-radius:20px;border:1px solid rgba(16,185,129,0.3);">कानूनी एवं सुरक्षा मानक • 100% Google AdSense Compliant</span>
         <h1 style="font-size:22px;font-weight:900;color:#fef3c7;margin:10px 0 6px 0;">गोपनीयता नीति (Privacy Policy) — पण्डित जी ऑनलाइन</h1>
-        <p style="font-size:13px;color:#cbd5e1;margin:0;">प्रकाशक: आचार्य पण्डित शशांक शर्मा, श्री ज्योतिष वैदिक संस्थान, रुद्रपुर (उत्तराखण्ड) • अंतिम अद्यतन: १२ नवंबर २०२६</p>
+        <p style="font-size:13px;color:#cbd5e1;margin:0;">प्रकाशक: आचार्य पण्डित शशांक शर्मा, श्री ज्योतिष वैदिक संस्थान, रुद्रपुर (उत्तराखण्ड) • Publisher ID: ca-pub-9661029896137686</p>
       </header>
       <section style="margin-bottom:18px;">
         <h2 style="font-size:16px;font-weight:800;color:#fde047;margin:0 0 8px 0;">1. प्रस्तावना एवं डेटा गोपनीयता (Introduction &amp; Data Privacy)</h2>
@@ -2719,6 +2852,7 @@ async function middleware(request, event) {
       status: 200,
       headers: {
         'Content-Type': 'text/plain; charset=utf-8',
+        'X-Robots-Tag': 'noindex, nofollow',
         'Cache-Control': 'public, max-age=3600'
       }
     });
@@ -3120,15 +3254,20 @@ ${itemsXml}
     }
   }
 
-  // 7. 301 Permanent Redirect for Duplicate Short Alias URLs & Query-String Tab Links
+  // 7. 301 Permanent Redirect for Duplicate Short Alias URLs & Query-String Tab/Category Links
   const normalizedPath = pathname.replace(/\/+$/, '').toLowerCase() || '/';
   if (ROUTE_ALIASES[normalizedPath]) {
     return Response.redirect(`${SITE_ORIGIN}${ROUTE_ALIASES[normalizedPath]}`, 301);
   }
-  if (normalizedPath === '/' && (url.searchParams.has('tab') || url.searchParams.has('category'))) {
-    const qInfo = resolveRouteInfo('/', url.searchParams);
-    if (qInfo && qInfo.path && qInfo.path !== '/') {
-      return Response.redirect(`${SITE_ORIGIN}${qInfo.path}`, 301);
+  if (url.searchParams.has('tab') || url.searchParams.has('category')) {
+    if (normalizedPath === '/') {
+      const qInfo = resolveRouteInfo('/', url.searchParams);
+      if (qInfo && qInfo.path && qInfo.path !== '/') {
+        return Response.redirect(`${SITE_ORIGIN}${qInfo.path}`, 301);
+      }
+    } else if (ROUTE_DATA[normalizedPath] && normalizedPath !== '/dharm-gyan-kosh') {
+      // Strip redundant ?category= or ?tab= on dedicated canonical paths (e.g. /d-naam-rashi-swabhav?category=d-naam-rashi-swabhav)
+      return Response.redirect(`${SITE_ORIGIN}${normalizedPath}`, 301);
     }
   }
 
