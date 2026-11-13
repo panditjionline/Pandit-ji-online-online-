@@ -70,7 +70,9 @@ const ROUTE_ALIASES = {
   '/fit]': '/',
   '/&': '/',
   '/404.html': '/',
-  '/404': '/'
+  '/404': '/',
+  '/aaj-ka-panchang': '/panchang',
+  '/rashi': '/rashifal'
 };
 
 let _SEO_DATA_CACHE = null;
@@ -509,16 +511,6 @@ const ROUTE_DATA = {
     art: 'kundli',
     accent: '#ef4444'
   },
-  '/mera-khata': {
-    title: 'मेरा खाता (Mera Khata) — सुरक्षित जन्म कुंडली एवं जप रिकॉर्ड',
-    desc: 'अपनी सुरक्षित जन्म कुंडली, 36 गुण मिलान रिपोर्ट, 108 मंत्र जाप माला रिकॉर्ड एवं पूजा बुकिंग विवरण एक ही स्थान पर देखें — अभी खोलें ➔',
-    cardTitle: 'MERA KHATA & SAVED KUNDALI VAULT',
-    cardSub: 'Saved Janam Kundali • 36 Gun Milan Reports • Mantra Jaap Streaks',
-    shortCard: 'MERA KHATA VAULT\nSaved Kundali & Reports',
-    badge: 'YAJMAN PERSONAL VEDIC VAULT',
-    art: 'kundli',
-    accent: '#f59e0b'
-  },
   '/about-us': {
     title: 'हमारे बारे में — आचार्य पण्डित शशांक शर्मा, रुद्रपुर | पण्डित जी ऑनलाइन',
     desc: 'आचार्य पण्डित शशांक शर्मा (15+ वर्ष वैदिक कर्मकाण्ड एवं ज्योतिष अनुभव, श्री ज्योतिष वैदिक संस्थान, रुद्रपुर, उत्तराखण्ड) का प्रामाणिक परिचय ➔',
@@ -648,16 +640,6 @@ const ROUTE_DATA = {
     badge: 'STAGE 3 • VIRAL SWAPNA SHASTRA GUIDE',
     art: 'gyan',
     accent: '#14b8a6'
-  },
-  '/aaj-ka-panchang': {
-    title: 'आज का पंचांग (Aaj Ka Panchang) — आज की तिथि, नक्षत्र व मुहूर्त',
-    desc: 'लाहिड़ी चित्रापक्ष अयनांश आधारित आज का संपूर्ण हिन्दू पंचांग — आज की सटीक तिथि, पक्ष, नक्षत्र, चंद्र राशि, अभिजित मुहूर्त व राहुकाल तुरंत देखें ➔',
-    cardTitle: 'AAJ KA SHUDDH DRIK PANCHANG',
-    cardSub: 'Daily Tithi • Nakshatra • Yoga • Karana • Sunrise & Abhijit Muhurat',
-    shortCard: 'AAJ KA PANCHANG\nTithi, Nakshatra & Muhurat',
-    badge: 'DAILY VEDIC PANCHANG • RUDRAPUR',
-    art: 'panchang',
-    accent: '#f59e0b'
   },
   '/aaj-ka-choghadiya': {
     title: 'आज का चौघड़िया — दिन और रात के शुभ चौघड़िया मुहूर्त (अमृत, शुभ)',
@@ -1261,8 +1243,8 @@ function resolveRouteInfo(rawPath, searchParams) {
     .toLowerCase() || '/';
   if (clean === '/index.html' || clean === '/index') clean = '/';
 
-  // Support ?tab= or ?category= deep links when path is /
-  if (clean === '/' && searchParams) {
+  // Support ?tab= or ?category= deep links when path is / or /dharm-gyan-kosh
+  if ((clean === '/' || clean === '/dharm-gyan-kosh' || clean === '/dharma-gyan' || clean === '/gyan-kosh') && searchParams) {
     const cat = (searchParams.get('category') || '').trim().toLowerCase();
     if (cat) {
       const catPath = '/' + cat.replace(/^\/+/, '');
@@ -1270,7 +1252,7 @@ function resolveRouteInfo(rawPath, searchParams) {
       else if (ROUTE_DATA[catPath]) clean = catPath;
     }
     const tab = (searchParams.get('tab') || '').trim().toLowerCase();
-    if (tab && tab !== 'home' && clean === '/') {
+    if (tab && tab !== 'home' && (clean === '/' || clean === '/dharm-gyan-kosh')) {
       const tabPath = '/' + tab.replace(/^\/+/, '');
       if (ROUTE_ALIASES[tabPath]) clean = ROUTE_ALIASES[tabPath];
       else if (ROUTE_DATA[tabPath]) clean = tabPath;
@@ -2267,7 +2249,6 @@ function isBrandedSocialAssetRequest(pathname, url, ua) {
 const DAILY_DYNAMIC_EDGE_PATHS = new Set([
   '/',
   '/panchang',
-  '/aaj-ka-panchang',
   '/aaj-ka-choghadiya',
   '/aaj-ka-rahukaal',
   '/rashifal',
@@ -2456,8 +2437,28 @@ function buildEdgeInternalLinkHub(currentPath) {
     ['/ekadashi-vrat-list-2027', 'एकादशी कैलेंडर 2026-27']
   ];
 
-  return `<nav aria-label="संबंधित वैदिक ज्योतिष, नाम राशि एवं पर्व मुहूर्त पृष्ठ" style="margin-top:18px;padding:15px;background:rgba(15,23,42,0.82);border:1px solid rgba(245,158,11,0.38);border-radius:14px;">
-    <h2 style="font-size:15px;font-weight:800;color:#fde047;margin:0 0 10px 0;">🔗 संबंधित शास्त्रीय पृष्ठ एवं वैदिक टूल्स (Explore All 111 Vedic Pages)</h2>
+  const rashifalLinks = [
+    ['/rashifal', 'दैनिक राशिफल मुख्य'],
+    ['/mesh-rashifal', 'मेष राशिफल'],
+    ['/vrishabh-rashifal', 'वृषभ राशिफल'],
+    ['/mithun-rashifal', 'मिथुन राशिफल'],
+    ['/kark-rashifal', 'कर्क राशिफल'],
+    ['/simha-rashifal', 'सिंह राशिफल'],
+    ['/kanya-rashifal', 'कन्या राशिफल'],
+    ['/tula-rashifal', 'तुला राशिफल'],
+    ['/vrishchik-rashifal', 'वृश्चिक राशिफल'],
+    ['/dhanu-rashifal', 'धनु राशिफल'],
+    ['/makar-rashifal', 'मकर राशिफल'],
+    ['/kumbh-rashifal', 'कुम्भ राशिफल'],
+    ['/meen-rashifal', 'मीन राशिफल']
+  ];
+
+  return `<nav aria-label="संबंधित वैदिक ज्योतिष, 12 राशिफल, नाम राशि एवं पर्व मुहूर्त पृष्ठ" style="margin-top:18px;padding:15px;background:rgba(15,23,42,0.82);border:1px solid rgba(245,158,11,0.38);border-radius:14px;">
+    <h2 style="font-size:15px;font-weight:800;color:#fde047;margin:0 0 10px 0;">🔗 संबंधित शास्त्रीय पृष्ठ एवं वैदिक टूल्स (Explore All Canonical Vedic Pages)</h2>
+    <div style="margin-bottom:10px;">
+      <div style="font-size:11.5px;font-weight:800;color:#fbbf24;margin-bottom:6px;">🔮 12 राशियों का आज का दैनिक राशिफल (Mesh to Meen Daily Horoscope):</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">${rashifalLinks.map(([h, l]) => linkChip(h, l)).join('')}</div>
+    </div>
     <div style="margin-bottom:10px;">
       <div style="font-size:11.5px;font-weight:800;color:#fbbf24;margin-bottom:6px;">🔤 अक्षर अनुसार नाम राशि व स्वभाव (Avakhada Chakra A–Z):</div>
       <div style="display:flex;flex-wrap:wrap;gap:6px;">${naamRashiLinks.map(([h, l]) => linkChip(h, l)).join('')}</div>
@@ -3254,21 +3255,24 @@ ${itemsXml}
     }
   }
 
-  // 7. 301 Permanent Redirect for Duplicate Short Alias URLs & Query-String Tab/Category Links
+  // 7. 301 Permanent Redirect for Broken/Invalid Symbol URLs, Duplicate Short Alias URLs & Query-String Tab/Category Links
+  if (pathname.includes('//') || /[&$%^*{}[\]|\\<>~`]/.test(pathname)) {
+    return Response.redirect(`${SITE_ORIGIN}/`, 301);
+  }
   const normalizedPath = pathname.replace(/\/+$/, '').toLowerCase() || '/';
   if (ROUTE_ALIASES[normalizedPath]) {
     return Response.redirect(`${SITE_ORIGIN}${ROUTE_ALIASES[normalizedPath]}`, 301);
   }
   if (url.searchParams.has('tab') || url.searchParams.has('category')) {
-    if (normalizedPath === '/') {
-      const qInfo = resolveRouteInfo('/', url.searchParams);
-      if (qInfo && qInfo.path && qInfo.path !== '/') {
-        return Response.redirect(`${SITE_ORIGIN}${qInfo.path}`, 301);
-      }
-    } else if (ROUTE_DATA[normalizedPath] && normalizedPath !== '/dharm-gyan-kosh') {
-      // Strip redundant ?category= or ?tab= on dedicated canonical paths (e.g. /d-naam-rashi-swabhav?category=d-naam-rashi-swabhav)
+    const qInfo = resolveRouteInfo('/', url.searchParams);
+    if (qInfo && qInfo.path && qInfo.path !== '/' && ROUTE_DATA[qInfo.path]) {
+      return Response.redirect(`${SITE_ORIGIN}${qInfo.path}`, 301);
+    }
+    if (ROUTE_DATA[normalizedPath]) {
+      // Strip any remaining ?category= or ?tab= query parameters on canonical paths
       return Response.redirect(`${SITE_ORIGIN}${normalizedPath}`, 301);
     }
+    return Response.redirect(`${SITE_ORIGIN}/`, 301);
   }
 
   // 8. Edge SSR for All 68 Canonical Subroutes (Self-Referencing Canonical + Dedicated Article HTML + FAQ Schema)
