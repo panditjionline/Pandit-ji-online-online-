@@ -110,7 +110,7 @@
       ]
     },
     {
-      "source": "/(robots\\.txt|ads\\.txt|llms\\.txt|seo-data\\.json|ai-catalog\\.json|\\.well-known/.*|manifest\\.json|sw\\.js|middleware\\.js|app-engine\\..*|panditji-app\\.bundle\\.js|admin-control\\.js)",
+      "source": "/(robots\\.txt|404\\.html|404|ads\\.txt|llms\\.txt|seo-data\\.json|ai-catalog\\.json|\\.well-known/.*|manifest\\.json|sw\\.js|middleware\\.js|app-engine\\..*|panditji-app\\.bundle\\.js|admin-control\\.js)",
       "headers": [
         { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
       ]
@@ -121,7 +121,10 @@
     { "source": "/index.html", "destination": "/", "permanent": true },
     { "source": "/index", "destination": "/", "permanent": true },
     { "source": "/404.html", "destination": "/", "permanent": true },
+    { "source": "/404", "destination": "/", "permanent": true },
+    { "source": "/&", "destination": "/", "permanent": true },
     { "source": "/8", "destination": "/", "permanent": true },
+    { "source": "/aaj-ka-panchang", "destination": "/panchang", "permanent": true },
     { "source": "/media", "destination": "/vedic-videos", "permanent": true },
     { "source": "/kundli", "destination": "/janam-kundali", "permanent": true },
     { "source": "/kundali", "destination": "/janam-kundali", "permanent": true },
