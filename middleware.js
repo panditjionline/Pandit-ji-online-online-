@@ -2364,7 +2364,7 @@ function buildEdgeAuthorBox() {
       <div style="font-size:11px;font-weight:700;color:#fbbf24;text-transform:uppercase;letter-spacing:0.8px;">प्रकाशक एवं मुख्य ज्योतिषाचार्य • श्री ज्योतिष वैदिक संस्थान</div>
       <div style="font-size:15px;font-weight:800;color:#fef3c7;margin-top:2px;">आचार्य पण्डित शशांक शर्मा (Acharya Pandit Shashank Sharma)</div>
       <div style="font-size:12px;color:#cbd5e1;margin-top:2px;">श्री ज्योतिष वैदिक संस्थान • 15+ वर्ष प्रामाणिक वैदिक कर्मकाण्ड एवं ज्योतिष अनुभव</div>
-      <div style="font-size:11px;color:#94a3b8;margin-top:4px;">📍 रुद्रपुर, जिला ऊधम सिंह नगर, उत्तराखण्ड - 263153, भारत | 📞 +91 7017279043 | ✉️ shashanksharma0456@gmail.com</div>
+      <div style="font-size:11px;color:#94a3b8;margin-top:4px;">📍 रुद्रपुर, जिला ऊधम सिंह नगर, उत्तराखण्ड - 263153, भारत | 📞 +91 7017279043 | ✉️ internetwebhelp24@gmail.com</div>
     </div>
   </div>`;
 }
@@ -2578,7 +2578,7 @@ function buildEdgeRouteArticleHtml(canonicalPath, info, seoEntry) {
       </section>
       <section style="margin-bottom:14px;">
         <h2 style="font-size:16px;font-weight:800;color:#fde047;margin:0 0 8px 0;">3. शिकायत निवारण एवं संपर्क अधिकारी (Grievance Redressal)</h2>
-        <p style="font-size:13px;color:#e2e8f0;margin:0;">आचार्य पण्डित शशांक शर्मा, श्री ज्योतिष वैदिक संस्थान, रुद्रपुर, जिला ऊधम सिंह नगर, उत्तराखण्ड - 263153, भारत | दूरभाष: +91 7017279043 | ईमेल: shashanksharma0456@gmail.com</p>
+        <p style="font-size:13px;color:#e2e8f0;margin:0;">आचार्य पण्डित शशांक शर्मा, श्री ज्योतिष वैदिक संस्थान, रुद्रपुर, जिला ऊधम सिंह नगर, उत्तराखण्ड - 263153, भारत | दूरभाष: +91 7017279043 | ईमेल: internetwebhelp24@gmail.com</p>
       </section>
       ${faqHtmlSection}
       ${buildEdgeAuthorBox()}
@@ -2633,7 +2633,7 @@ function buildEdgeRouteArticleHtml(canonicalPath, info, seoEntry) {
       <section style="margin-bottom:16px;">
         <h2 style="font-size:16px;font-weight:800;color:#fde047;margin:0 0 8px 0;">1. आचार्य पण्डित शशांक शर्मा एवं श्री ज्योतिष वैदिक संस्थान</h2>
         <p style="font-size:13px;color:#e2e8f0;margin:0 0 8px 0;">आचार्य पण्डित शशांक शर्मा सनातन वैदिक परम्परा, शुक्ल यजुर्वेदीय कर्मकाण्ड, षोडश संस्कार, वास्तु शांति एवं फलित ज्योतिष के अनुभवी विद्वान हैं। विगत 15+ वर्षों से आप रुद्रपुर (जिला ऊधम सिंह नगर, उत्तराखण्ड) एवं संपूर्ण भारत के यजमानों को प्रामाणिक ज्योतिषीय मार्गदर्शन व वैदिक अनुष्ठान सेवाएं प्रदान कर रहे हैं।</p>
-        <p style="font-size:13px;color:#cbd5e1;margin:0;"><strong>सीधा संपर्क सूत्र:</strong> रुद्रपुर, जिला ऊधम सिंह नगर, उत्तराखण्ड - 263153 | फ़ोन व WhatsApp: <a href="tel:+917017279043" style="color:#fde047;">+91 7017279043</a>, <a href="tel:+918958499979" style="color:#fde047;">+91 8958499979</a> | ईमेल: <a href="mailto:shashanksharma0456@gmail.com" style="color:#fde047;">shashanksharma0456@gmail.com</a></p>
+        <p style="font-size:13px;color:#cbd5e1;margin:0;"><strong>सीधा संपर्क सूत्र:</strong> रुद्रपुर, जिला ऊधम सिंह नगर, उत्तराखण्ड - 263153 | फ़ोन व WhatsApp: <a href="tel:+917017279043" style="color:#fde047;">+91 7017279043</a>, <a href="tel:+918958499979" style="color:#fde047;">+91 8958499979</a> | ईमेल: <a href="mailto:internetwebhelp24@gmail.com" style="color:#fde047;">internetwebhelp24@gmail.com</a></p>
       </section>
       ${faqHtmlSection}
       ${buildEdgeInternalLinkHub(canonicalPath)}
@@ -3331,3 +3331,5 @@ ${itemsXml}
 
 module.exports = middleware;
 module.exports.default = middleware;
+
+
