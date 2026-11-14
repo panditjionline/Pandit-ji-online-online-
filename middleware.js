@@ -1,5 +1,5 @@
 // ============================================================================
-// PANDIT JI ONLINE — VERCEL EDGE ROUTING MIDDLEWARE (middleware.js — v84)
+// PANDIT JI ONLINE — VERCEL EDGE ROUTING MIDDLEWARE (middleware.js — v88)
 // Zero-dependency Edge/Routing Middleware for www.panditjionline.online (111 Routes)
 // Handles:
 // 1. Per-page WhatsApp / Facebook / Social Crawler OpenGraph HTML (200 OK)
@@ -11,7 +11,7 @@
 const SITE_ORIGIN = 'https://www.panditjionline.online';
 const HOMEPAGE_IMAGE = 'https://iili.io/neb1ghg.jpg';
 const PANDIT_PORTRAIT_DATA_URI = 'data:image/jpeg;base64,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';
-const VERSION_TAG = 'v84';
+const VERSION_TAG = 'v88';
 
 const ROUTE_ALIASES = {
   '/home': '/',
@@ -65,6 +65,9 @@ const ROUTE_ALIASES = {
   '/terms': '/terms-and-conditions',
   '/privacy': '/privacy-policy',
   '/8': '/',
+  '/assets': '/',
+  '/assets/': '/',
+  '/last': '/',
   '/media': '/vedic-videos',
   '/media/': '/vedic-videos',
   '/fit]': '/',
@@ -202,8 +205,8 @@ const ROUTE_DATA = {
     accent: '#10b981'
   },
   '/vahan-kharidne-ka-muhurat': {
-    title: 'वाहन खरीदने का शुभ मुहूर्त 2026-27 (Vahan Muhurat) — कार/बाइक तिथि',
-    desc: '2026-2027 में नई कार, बाइक या स्कूटी खरीदने के लिए रविवार व सभी 7 दिनों के सर्वोत्तम शुभ मुहूर्त, चौघड़िया व राशि अनुसार लकी वाहन रंग — अभी देखें ➔',
+    title: 'वाहन खरीदने का शुभ मुहूर्त 2026-27 — कार व बाइक शुभ तिथियां',
+    desc: '2026-2027 में नई कार, बाइक या स्कूटी खरीदने के लिए रविवार व सभी 7 दिनों के सर्वोत्तम शुभ मुहूर्त, चौघड़िया व लकी वाहन रंग — अभी देखें ➔',
     cardTitle: 'VAHAN KHARIDNE KA MUHURAT 2026-27',
     cardSub: 'Best Car & Bike Buying Dates • Lucky Vehicle Color by Rashi',
     shortCard: 'VAHAN MUHURAT 2026-27\nCar & Bike Shubh Dates',
@@ -212,8 +215,8 @@ const ROUTE_DATA = {
     accent: '#3b82f6'
   },
   '/s-naam-rashi-swabhav': {
-    title: 'S नाम की राशि क्या है? (S Naam Ki Rashi) स नाम की राशि कुम्भ, स्वभाव व राजयोग',
-    desc: 'S नाम वालों की राशि कौन सी होती है? (S Name Walo Ki Rashi): स, सा, सी, सू, से, सो, श से कुम्भ राशि (स्वामी शनि) होती है। जानें S नाम का स्वभाव, प्यार, शादी व 2026-27 राजयोग ➔',
+    title: 'S नाम की राशि क्या है? (S Naam Ki Rashi) — कुम्भ व मकर राशि',
+    desc: 'S नाम वालों की राशि स/श अक्षर से कुम्भ व मकर (स्वामी शनि) होती है। जानें S नाम का स्वभाव, प्यार, विवाह, 2026-27 राजयोग व नीलम रत्न ➔',
     cardTitle: 'S NAAM KI RASHI: KUMBH RASHI',
     cardSub: 'S Letter Zodiac (Aquarius) • Shani Dev • Swabhav, Career & Neelam',
     shortCard: 'S NAAM KI RASHI (KUMBH)\nRashi, Swabhav & Career',
@@ -272,8 +275,8 @@ const ROUTE_DATA = {
     accent: '#f59e0b'
   },
   '/ram-shalaka-prashnavali': {
-    title: 'श्री राम शलाका प्रश्नावली — मन में प्रश्न सोचें और चौपाई फल जानें',
-    desc: 'गोस्वामी तुलसीदास कृत श्रीरामचरितमानस की दिव्य श्री राम शलाका प्रश्नावली से अपने मन के प्रश्न और कार्य सिद्धि का तुरंत उत्तर जानें — अभी स्पर्श करें ➔',
+    title: 'श्री राम शलाका प्रश्नावली — प्रश्न सोचें और चौपाई फल जानें',
+    desc: 'गोस्वामी तुलसीदास कृत श्रीरामचरितमानस की दिव्य श्री राम शलाका प्रश्नावली से अपने मन के प्रश्न और कार्य सिद्धि का तुरंत उत्तर जानें — स्पर्श करें ➔',
     cardTitle: 'SHRI RAM SHALAKA PRASHNAVALI',
     cardSub: 'Goswami Tulsidas Krit Ramcharitmanas Chaupai Guidance & Phal',
     shortCard: 'SHRI RAM SHALAKA\nRamcharitmanas Prashnavali',
@@ -312,7 +315,7 @@ const ROUTE_DATA = {
     accent: '#fbbf24'
   },
   '/vastu-shastra-tips': {
-    title: 'वास्तु शास्त्र टिप्स — बिना तोड़-फोड़ घर व दुकान के वास्तु उपाय',
+    title: 'वास्तु शास्त्र टिप्स — बिना तोड़-फोड़ घर-दुकान वास्तु उपाय',
     desc: 'ईशान कोण, आग्नेय, नैऋत्य व वायव्य दिशाओं के वास्तु नियम तथा बिना तोड़-फोड़ घर, रसोई, तिजोरी व दुकान के वास्तु दोष दूर करने के अचूक उपाय ➔',
     cardTitle: 'VASTU SHASTRA & DISHA DOSH UPAY',
     cardSub: 'Ishan, Agneya, Nairitya & Vayavya Rules • Home & Shop Remedies',
@@ -322,7 +325,7 @@ const ROUTE_DATA = {
     accent: '#10b981'
   },
   '/ratna-rudraksha-guide': {
-    title: 'रत्न एवं रुद्राक्ष गाइड — अपनी राशि अनुसार जानें भाग्यशाली रत्न',
+    title: 'रत्न व रुद्राक्ष गाइड — अपनी राशि अनुसार भाग्यशाली रत्न जानें',
     desc: 'राशि और लग्न अनुसार भाग्यशाली नवरत्न (पुखराज, नीलम, माणिक्य, पन्ना, मूंगा, मोती) तथा 1 से 14 मुखी रुद्राक्ष धारण करने की प्रामाणिक विधि ➔',
     cardTitle: 'NAVRATNA & 1-14 MUKHI RUDRAKSHA',
     cardSub: 'Lucky Gemstone by Lagna & Rashi • Authentic Rudraksha Wearing Vidhi',
@@ -342,7 +345,7 @@ const ROUTE_DATA = {
     accent: '#a855f7'
   },
   '/swarodaya-vigyan': {
-    title: 'शिव स्वरोदय विज्ञान — इड़ा, पिंगला व सुषुम्ना नाड़ी से कार्य सिद्धि',
+    title: 'शिव स्वरोदय विज्ञान — इड़ा, पिंगला नाड़ी से कार्य सिद्धि',
     desc: 'चन्द्र स्वर (इड़ा), सूर्य स्वर (पिंगला) और सुषुम्ना नाड़ी की पहचान कर शुभ कार्य, यात्रा व व्यापार में निश्चित कार्य सिद्धि के गुप्त सूत्र — अभी पढ़ें ➔',
     cardTitle: 'SHIV SWARODAYA NADI VIGYAN',
     cardSub: 'Ida (Chandra), Pingala (Surya) & Sushumna Nadi Secrets for Success',
@@ -352,7 +355,7 @@ const ROUTE_DATA = {
     accent: '#38bdf8'
   },
   '/geeta-chanakya-niti': {
-    title: 'श्रीमद्भगवद्गीता के प्रमुख श्लोक एवं चाणक्य नीति सूत्र (अर्थ सहित)',
+    title: 'श्रीमद्भगवद्गीता श्लोक व चाणक्य नीति सूत्र (हिंदी अर्थ सहित)',
     desc: 'जीवन प्रबंधन, धर्म, कर्मयोग और संकट में सही निर्णय लेने के लिए श्रीमद्भगवद्गीता के अमर श्लोक और आचार्य चाणक्य के नीति सूत्र — अभी पढ़ें ➔',
     cardTitle: 'SHRIMAD BHAGAVAD GEETA & CHANAKYA NITI',
     cardSub: 'Immortal Sanskrit Shlokas with Hindi Meaning • Life Management Sutras',
@@ -362,8 +365,8 @@ const ROUTE_DATA = {
     accent: '#f59e0b'
   },
   '/vedic-baby-names': {
-    title: 'वैदिक शिशु नामकरण — राशि व नक्षत्र अक्षर से बच्चों के शुभ नाम',
-    desc: 'नवजात शिशु (लड़के एवं लड़कियों) के लिए 27 नक्षत्र चरण और 12 राशि अक्षर के अनुसार अर्थपूर्ण एवं आधुनिक हिन्दू वैदिक नामों की सूची — अभी खोजें ➔',
+    title: 'वैदिक शिशु नामकरण (Vedic Baby Names) — नक्षत्र व राशि से नाम',
+    desc: 'नवजात शिशु (लड़के व लड़कियों) के लिए 27 नक्षत्र (108 चरण) और 12 राशि अक्षर अनुसार अर्थपूर्ण वैदिक नाम व नामकरण विधि — अभी खोजें ➔',
     cardTitle: 'VEDIC BABY NAMES BY NAKSHATRA',
     cardSub: 'Meaningful Hindu Boy & Girl Names by Rashi Akshar & Nakshatra Charan',
     shortCard: 'VEDIC SHISHU NAAMKARAN\nBaby Names by Nakshatra',
@@ -412,8 +415,8 @@ const ROUTE_DATA = {
     accent: '#f97316'
   },
   '/mantra-jaap': {
-    title: '108 रुद्राक्ष डिजिटल मंत्र जप माला — दैनिक मंत्र काउंटर व साधना',
-    desc: 'गायत्री मंत्र, महामृत्युंजय मंत्र, ॐ नमः शिवाय व नवग्रह बीज मंत्रों के दैनिक 108 मनके जाप हेतु इंटरैक्टिव डिजिटल रुद्राक्ष माला — अभी जाप शुरू करें ➔',
+    title: '108 रुद्राक्ष मंत्र जाप माला — ऑनलाइन डिजिटल काउंटर व साधना',
+    desc: 'गायत्री मंत्र, महामृत्युंजय मंत्र, ॐ नमः शिवाय व नवग्रह बीज मंत्रों के दैनिक 108 मनके जाप हेतु इंटरैक्टिव डिजिटल रुद्राक्ष माला — जाप शुरू करें ➔',
     cardTitle: '108 RUDRAKSHA DIGITAL JAAP MALA',
     cardSub: 'Gayatri Mantra • Mahamrityunjaya • Om Namah Shivaya • Daily Counter',
     shortCard: '108 RUDRAKSHA JAAP MALA\nDigital Mantra Counter',
@@ -422,7 +425,7 @@ const ROUTE_DATA = {
     accent: '#f59e0b'
   },
   '/vedic-videos': {
-    title: 'वैदिक ज्योतिष, मंत्र एवं धर्म ज्ञान वीडियो — आचार्य शशांक शर्मा',
+    title: 'वैदिक ज्योतिष, मंत्र व धर्म ज्ञान वीडियो — आचार्य शशांक शर्मा',
     desc: 'आचार्य पण्डित शशांक शर्मा (रुद्रपुर) द्वारा वैदिक कर्मकाण्ड, पर्व-त्योहार मुहूर्त, राशिफल एवं सनातन धर्म ज्ञान के प्रामाणिक वीडियो — अभी देखें ➔',
     cardTitle: 'VEDIC JYOTISH & DHARM GYAN VIDEOS',
     cardSub: 'Authentic Mantra Path, Parva Muhurat & Remedies by Acharya Shashank',
@@ -432,8 +435,8 @@ const ROUTE_DATA = {
     accent: '#ef4444'
   },
   '/puja/griha-pravesh': {
-    title: 'गृह प्रवेश एवं वास्तु शांति पूजा बुकिंग — विधि, सामग्री व मुहूर्त',
-    desc: 'नूतन गृह प्रवेश का शास्त्रोक्त विधान, 64-पद वास्तु पुरुष पूजन, कलश स्थापना, नवग्रह हवन एवं रुद्रपुर में वैदिक पण्डित बुकिंग — अभी विवरण देखें ➔',
+    title: 'गृह प्रवेश व वास्तु शांति पूजा — शुभ मुहूर्त, विधि व सामग्री',
+    desc: 'नूतन गृह प्रवेश का शास्त्रोक्त विधान, 64-पद वास्तु पुरुष पूजन, कलश स्थापना, नवग्रह हवन एवं रुद्रपुर में वैदिक पण्डित बुकिंग — विवरण देखें ➔',
     cardTitle: 'GRIHA PRAVESH & VASTU SHANTI PUJA',
     cardSub: 'Vastu Purush Pujan • Kalash Sthapana • Auspicious Muhurat & Booking',
     shortCard: 'GRIHA PRAVESH PUJA\nVastu Shanti & Muhurat',
@@ -472,7 +475,7 @@ const ROUTE_DATA = {
     accent: '#ef4444'
   },
   '/puja/navgrah-shanti': {
-    title: 'नवग्रह शांति एवं नक्षत्र हवन विधान — शनि, राहु-केतु व मंगल शांति',
+    title: 'नवग्रह शांति व नक्षत्र हवन विधान — शनि, राहु व मंगल शांति',
     desc: 'सूर्य से केतु तक नवग्रह मंडल पूजन, 9 वैदिक समिधाओं से ग्रह शांति हवन, गण्डमूल नक्षत्र शांति एवं साढ़ेसाती निवारण अनुष्ठान — अभी बुक करें ➔',
     cardTitle: 'NAVGRAH SHANTI & NAKSHATRA HAVAN',
     cardSub: '9 Planetary Mandala Pujan • 9 Vedic Samidha Havan • Dosh Nivaran',
@@ -482,8 +485,8 @@ const ROUTE_DATA = {
     accent: '#a855f7'
   },
   '/puja/kundali-paramarsh': {
-    title: 'व्यक्तिगत जन्म कुंडली परामर्श एवं 36 गुण मिलान — आचार्य शशांक शर्मा',
-    desc: 'पराशरी, जैमिनी और नाड़ी ज्योतिष के 3-स्तरीय सूत्र से जन्म पत्रिका विश्लेषण, करियर, विवाह समय, संतान योग एवं रत्न-रुद्राक्ष परामर्श — अभी बुक करें ➔',
+    title: 'व्यक्तिगत जन्म कुंडली परामर्श व 36 गुण मिलान (ऑनलाइन बुकिंग)',
+    desc: 'पराशरी, जैमिनी और नाड़ी ज्योतिष के 3-स्तरीय सूत्र से जन्म पत्रिका विश्लेषण, करियर, विवाह समय, संतान योग एवं रत्न-रुद्राक्ष परामर्श — बुक करें ➔',
     cardTitle: 'PERSONAL KUNDALI CONSULTATION',
     cardSub: 'Parashari, Jaimini & Nadi Jyotish Analysis by Acharya Shashank Sharma',
     shortCard: 'KUNDALI PARAMARSH\nAcharya Shashank Sharma',
@@ -492,7 +495,7 @@ const ROUTE_DATA = {
     accent: '#f59e0b'
   },
   '/rudrapur-jyotish': {
-    title: 'रुद्रपुर एवं उत्तराखण्ड ज्योतिष व वैदिक पूजा केंद्र — पण्डित शशांक शर्मा',
+    title: 'रुद्रपुर व उत्तराखण्ड ज्योतिष केंद्र — आचार्य शशांक शर्मा',
     desc: 'रुद्रपुर (ऊधम सिंह नगर), हल्द्वानी, पंतनगर व काशीपुर में 15+ वर्ष अनुभवी आचार्य पण्डित शशांक शर्मा से जन्मपत्री परामर्श व वैदिक पूजा बुकिंग ➔',
     cardTitle: 'RUDRAPUR VEDIC JYOTISH & PUJA KENDRA',
     cardSub: 'Acharya Pandit Shashank Sharma • 15+ Yrs Experience in Kumaon & UK',
@@ -502,8 +505,8 @@ const ROUTE_DATA = {
     accent: '#f97316'
   },
   '/kundali-dosh-upay': {
-    title: 'कुंडली दोष निवारण कोष — कालसर्प, पितृ दोष, गुरु चांडाल व केमद्रुम',
-    desc: 'बृहत् पाराशर होरा शास्त्र के अनुसार कालसर्प योग, पितृ दोष, गुरु चांडाल योग, ग्रहण दोष व केमद्रुम दोष के लक्षण, भंग नियम व सात्विक उपाय — अभी पढ़ें ➔',
+    title: 'कुंडली दोष निवारण — कालसर्प, पितृ दोष व गुरु चांडाल उपाय',
+    desc: 'बृहत् पाराशर होरा शास्त्र के अनुसार कालसर्प योग, पितृ दोष, गुरु चांडाल योग, ग्रहण दोष व केमद्रुम दोष के लक्षण, भंग नियम व सात्विक उपाय — पढ़ें ➔',
     cardTitle: 'KUNDALI DOSH NIVARAN KOSH',
     cardSub: 'Kaalsarp • Pitra Dosh • Guru Chandal • Grahan & Kemadruma Remedies',
     shortCard: 'KUNDALI DOSH NIVARAN\nKaalsarp & Pitra Dosh Upay',
@@ -512,7 +515,7 @@ const ROUTE_DATA = {
     accent: '#ef4444'
   },
   '/about-us': {
-    title: 'हमारे बारे में — आचार्य पण्डित शशांक शर्मा, रुद्रपुर | पण्डित जी ऑनलाइन',
+    title: 'हमारे बारे में — आचार्य पण्डित शशांक शर्मा (रुद्रपुर केंद्र)',
     desc: 'आचार्य पण्डित शशांक शर्मा (15+ वर्ष वैदिक कर्मकाण्ड एवं ज्योतिष अनुभव, श्री ज्योतिष वैदिक संस्थान, रुद्रपुर, उत्तराखण्ड) का प्रामाणिक परिचय ➔',
     cardTitle: 'ACHARYA PANDIT SHASHANK SHARMA',
     cardSub: '15+ Years Vedic Jyotish & Karmakand Experience • Rudrapur, Uttarakhand',
@@ -522,7 +525,7 @@ const ROUTE_DATA = {
     accent: '#f59e0b'
   },
   '/contact-us': {
-    title: 'संपर्क करें — आचार्य पण्डित शशांक शर्मा, रुद्रपुर (+91 7017279043)',
+    title: 'संपर्क करें — आचार्य पण्डित शशांक शर्मा (+91 7017279043)',
     desc: 'वैदिक पूजा बुकिंग, जन्मपत्री परामर्श एवं ज्योतिषीय समाधान हेतु सीधे संपर्क करें: आचार्य पण्डित शशांक शर्मा, रुद्रपुर, उत्तराखण्ड (+91 7017279043) ➔',
     cardTitle: 'CONTACT PANDIT JI ONLINE RUDRAPUR',
     cardSub: 'Direct Puja Booking & Horoscope Consultation • +91 7017279043',
@@ -532,8 +535,8 @@ const ROUTE_DATA = {
     accent: '#10b981'
   },
   '/privacy-policy': {
-    title: 'गोपनीयता नीति (Privacy Policy) | पण्डित जी ऑनलाइन',
-    desc: 'पण्डित जी ऑनलाइन (www.panditjionline.online) की आधिकारिक गोपनीयता नीति — जन्म विवरण सुरक्षा, कुकीज़ एवं डेटा गोपनीयता मानक ➔',
+    title: 'गोपनीयता नीति (Privacy Policy) — पण्डित जी ऑनलाइन',
+    desc: 'पण्डित जी ऑनलाइन (www.panditjionline.online) की आधिकारिक गोपनीयता नीति — जन्म विवरण सुरक्षा, कुकीज़, विज्ञापन एवं डेटा गोपनीयता मानक — अभी पढ़ें ➔',
     cardTitle: 'PRIVACY POLICY & DATA SECURITY',
     cardSub: '100% Confidential Birth Details & Secure Vedic Astrology Portal',
     shortCard: 'PRIVACY POLICY\nPandit Ji Online',
@@ -542,8 +545,8 @@ const ROUTE_DATA = {
     accent: '#10b981'
   },
   '/terms-and-conditions': {
-    title: 'नियम एवं शर्तें (Terms & Conditions) | पण्डित जी ऑनलाइन',
-    desc: 'पण्डित जी ऑनलाइन पोर्टल के उपयोग, वैदिक ज्योतिष गणना, पंचांग एवं पूजा बुकिंग सेवाओं से जुड़े आधिकारिक नियम एवं शर्तें ➔',
+    title: 'नियम एवं शर्तें (Terms & Conditions) — पण्डित जी ऑनलाइन',
+    desc: 'पण्डित जी ऑनलाइन पोर्टल के उपयोग, वैदिक ज्योतिष गणना, दैनिक पंचांग एवं ऑनलाइन पूजा बुकिंग सेवाओं से जुड़े आधिकारिक नियम एवं शर्तें — अभी पढ़ें ➔',
     cardTitle: 'TERMS & CONDITIONS • PANDIT JI ONLINE',
     cardSub: 'Official Portal Guidelines, Puja Booking Rules & Vedic Standards',
     shortCard: 'TERMS & CONDITIONS\nPandit Ji Online',
@@ -552,8 +555,8 @@ const ROUTE_DATA = {
     accent: '#f59e0b'
   },
   '/disclaimer': {
-    title: 'अस्वीकरण (Disclaimer) — वैदिक ज्योतिष परामर्श सूचना | पण्डित जी ऑनलाइन',
-    desc: 'पण्डित जी ऑनलाइन पर प्रस्तुत वैदिक ज्योतिषीय गणनाओं, राशिफल एवं आध्यात्मिक उपायों से संबंधित आधिकारिक अस्वीकरण (Disclaimer) ➔',
+    title: 'अस्वीकरण (Disclaimer) — वैदिक ज्योतिष सूचना व शर्तें',
+    desc: 'पण्डित जी ऑनलाइन पर प्रस्तुत वैदिक ज्योतिषीय गणनाओं, राशिफल, पंचांग एवं आध्यात्मिक उपायों से संबंधित आधिकारिक अस्वीकरण (Disclaimer) — पढ़ें ➔',
     cardTitle: 'OFFICIAL ASTROLOGICAL DISCLAIMER',
     cardSub: 'Vedic Shastra Advisory & Spiritual Guidance Standards',
     shortCard: 'OFFICIAL DISCLAIMER\nPandit Ji Online',
@@ -562,8 +565,8 @@ const ROUTE_DATA = {
     accent: '#f59e0b'
   },
   '/a-naam-rashi-swabhav': {
-    title: 'A नाम की राशि क्या है? (A Naam Ki Rashi) अ नाम की राशि मेष, स्वभाव व राजयोग',
-    desc: 'A नाम वालों की राशि क्या है? (A Name Walo Ki Rashi): अ, आ, अं (अच्युत, अमन, आरती, अंजलि) से मेष राशि (स्वामी मंगल) होती है। जानें A नाम का स्वभाव, प्रेम, सरकारी राजयोग व मूंगा रत्न ➔',
+    title: 'A नाम की राशि क्या है? (A Naam Ki Rashi) — मेष राशि व राजयोग',
+    desc: 'A (अ, आ, अं) नाम वालों की राशि मेष (स्वामी मंगल) होती है। जानें A नाम वालों का निडर स्वभाव, सच्चा प्यार, सरकारी राजयोग व मूंगा रत्न ➔',
     cardTitle: 'A NAAM KI RASHI: MESH (ARIES)',
     cardSub: 'Swami Mangal • Swabhav • Career • Love Life & Lucky Moonga Ratna',
     shortCard: 'A NAAM KI RASHI (MESH)\nSwabhav, Career & Ratna',
@@ -572,8 +575,8 @@ const ROUTE_DATA = {
     accent: '#ef4444'
   },
   '/r-naam-rashi-swabhav': {
-    title: 'R नाम की राशि क्या है? (R Naam Ki Rashi) र नाम की राशि तुला, स्वभाव व धन योग',
-    desc: 'R नाम वालों की राशि क्या है? (R Name Walo Ki Rashi): र, रा, री, रू, रे, रो से तुला राशि (स्वामी शुक्र) होती है। जानें R नाम का स्वभाव, सच्चा प्यार, विवाह, 2026-27 धन योग व लकी रत्न ➔',
+    title: 'R नाम की राशि क्या है? (R Naam Ki Rashi) — तुला राशि व धन योग',
+    desc: 'R (र, रा, री, रू, रे, रो) नाम वालों की राशि तुला (स्वामी शुक्र) होती है। जानें R नाम का स्वभाव, सच्चा प्यार, विवाह, धन योग व ओपल रत्न ➔',
     cardTitle: 'R NAAM KI RASHI: TULA (LIBRA)',
     cardSub: 'Swami Shukra • Swabhav • Career • Marriage & Lucky Opal Ratna',
     shortCard: 'R NAAM KI RASHI (TULA)\nSwabhav, Vivah & Ratna',
@@ -582,8 +585,8 @@ const ROUTE_DATA = {
     accent: '#ec4899'
   },
   '/m-naam-rashi-swabhav': {
-    title: 'M नाम की राशि क्या है? (M Naam Ki Rashi) म नाम की राशि सिंह, स्वभाव व राजयोग',
-    desc: 'M नाम वालों की राशि क्या है? (M Name Walo Ki Rashi): म, मा, मी, मू, मे, मो से सिंह राशि (स्वामी सूर्य) होती है। जानें M नाम का शाही स्वभाव, सरकारी राजयोग, प्रेम व माणिक्य रत्न ➔',
+    title: 'M नाम की राशि क्या है? (M Naam Ki Rashi) — सिंह राशि व राजयोग',
+    desc: 'M (म, मा, मी, मू, मे, मो) नाम वालों की राशि सिंह (स्वामी सूर्य) होती है। जानें M नाम का शाही स्वभाव, सरकारी राजयोग, प्रेम व माणिक्य रत्न ➔',
     cardTitle: 'M NAAM KI RASHI: SINGH (LEO)',
     cardSub: 'Swami Surya • Royal Nature • Rajyoga • Career & Lucky Ruby Ratna',
     shortCard: 'M NAAM KI RASHI (SINGH)\nRajyoga, Career & Manikya',
@@ -592,8 +595,8 @@ const ROUTE_DATA = {
     accent: '#f59e0b'
   },
   '/p-naam-rashi-swabhav': {
-    title: 'P नाम की राशि क्या है? (P / Pi Naam Ki Rashi) प नाम की राशि कन्या, स्वभाव व धन योग',
-    desc: 'P और Pi (प, पा, पी, पू, पे, पो) नाम वालों की राशि कन्या (स्वामी बुध) होती है। जानें P नाम वालों की बुद्धि, व्यापार धन योग, सच्चा प्यार, करियर व पन्ना रत्न ➔',
+    title: 'P व Pi नाम की राशि क्या है? (P Naam Ki Rashi) — कन्या राशि',
+    desc: 'P और Pi (प, पा, पी, पू, पे, पो) नाम वालों की राशि कन्या (स्वामी बुध) होती है। जानें P नाम का स्वभाव, प्यार, व्यापार धन योग व पन्ना रत्न ➔',
     cardTitle: 'P NAAM KI RASHI: KANYA (VIRGO)',
     cardSub: 'Swami Budh • Sharp Intellect • Business • Career & Emerald Ratna',
     shortCard: 'P NAAM KI RASHI (KANYA)\nSwabhav, Vyapar & Panna',
@@ -642,7 +645,7 @@ const ROUTE_DATA = {
     accent: '#14b8a6'
   },
   '/aaj-ka-choghadiya': {
-    title: 'आज का चौघड़िया — दिन और रात के शुभ चौघड़िया मुहूर्त (अमृत, शुभ)',
+    title: 'आज का चौघड़िया मुहूर्त — दिन-रात शुभ अमृत व लाभ समय सारणी',
     desc: 'स्थानीय सूर्योदय पर आधारित आज का दिन और रात का लाइव चौघड़िया मुहूर्त — जानिए अमृत, शुभ, लाभ व चर चौघड़िया का सटीक समय — अभी देखें ➔',
     cardTitle: 'AAJ KA DIN & RAAT CHOGHADIYA',
     cardSub: 'Amrit • Shubh • Labh • Char Muhurat • Daily Live Choghadiya Table',
@@ -662,8 +665,8 @@ const ROUTE_DATA = {
     accent: '#f43f5e'
   },
   '/naam-rashi': {
-    title: 'नाम से राशि जानें (A to Z Calculator) — अक्षर से अपनी राशि देखें',
-    desc: 'अपने हिंदी या अंग्रेजी नाम के पहले अक्षर (A से Z) से जानें अपनी सटीक वैदिक चंद्र राशि, नक्षत्र, स्वामी ग्रह, स्वभाव व शुभ रत्न — अभी निःशुल्क जांचें ➔',
+    title: 'नाम से राशि जानें (Naam Se Rashi) — अक्षर से राशि कैलकुलेटर',
+    desc: 'अपने हिंदी या अंग्रेजी नाम के पहले अक्षर (A से Z) से जानें अपनी सटीक वैदिक चंद्र राशि, नक्षत्र, स्वामी ग्रह, स्वभाव व शुभ रत्न — अभी जांचें ➔',
     cardTitle: 'NAAM RASHI CALCULATOR (A TO Z)',
     cardSub: 'Find Vedic Rashi by Name • 27 Nakshatra Pada • Lucky Ratna & Number',
     shortCard: 'NAAM RASHI CALCULATOR\nRashi, Nakshatra & Ratna',
@@ -672,8 +675,8 @@ const ROUTE_DATA = {
     accent: '#a855f7'
   },
   '/mesh-rashifal': {
-    title: 'मेष राशिफल आज का (Mesh Rashifal Today): मेष राशि का स्वभाव, करियर, धन व मूंगा रत्न',
-    desc: 'मेष राशि (चू, चे, चो, ला, ली, लू, ले, लो, अ) का आज का वैदिक राशिफल, स्वामी मंगल का गोचर फल, करियर, विवाह व शुभ मूंगा रत्न — अभी देखें ➔',
+    title: 'आज का मेष राशिफल (Mesh Rashifal) — करियर, धन व मूंगा रत्न',
+    desc: 'मेष राशि (चू, चे, चो, ला, ली, लू, ले, लो, अ) का आज का वैदिक राशिफल, स्वामी मंगल का गोचर फल, करियर, विवाह व मूंगा रत्न — अभी देखें ➔',
     cardTitle: 'MESH RASHIFAL (ARIES HOROSCOPE)',
     cardSub: 'Swami Mangal • Daily Gochar • Career, Love & Red Coral (Moonga) Upay',
     shortCard: 'MESH RASHIFAL (ARIES)\nDaily Horoscope & Upay',
@@ -682,8 +685,8 @@ const ROUTE_DATA = {
     accent: '#ef4444'
   },
   '/vrishabh-rashifal': {
-    title: 'वृषभ राशिफल आज का (Vrishabh Rashifal Today): वृषभ राशि का धन योग, करियर व शुभ रत्न',
-    desc: 'वृषभ राशि (ई, ऊ, ए, ओ, वा, वी, वू, वे, वो) का आज का वैदिक राशिफल, स्वामी शुक्र का गोचर प्रभाव, धन योग, परिवार व ओपल रत्न — अभी पढ़ें ➔',
+    title: 'आज का वृषभ राशिफल (Vrishabh Rashifal) — धन, प्रेम व ओपल',
+    desc: 'वृषभ राशि (ई, ऊ, ए, ओ, वा, वी, वू, वे, वो) का आज का वैदिक राशिफल, स्वामी शुक्र का गोचर प्रभाव, धन योग, परिवार व ओपल रत्न — पढ़ें ➔',
     cardTitle: 'VRISHABH RASHIFAL (TAURUS)',
     cardSub: 'Swami Shukra • Daily Gochar • Wealth, Family & Diamond/Opal Ratna',
     shortCard: 'VRISHABH RASHIFAL\nDaily Horoscope & Upay',
@@ -692,8 +695,8 @@ const ROUTE_DATA = {
     accent: '#ec4899'
   },
   '/mithun-rashifal': {
-    title: 'मिथुन राशिफल आज का (Mithun Rashifal Today): मिथुन राशि का व्यापार, करियर व पन्ना रत्न',
-    desc: 'मिथुन राशि (का, की, कू, घ, ङ, छ, के, को, ह) का आज का वैदिक राशिफल, स्वामी बुध का गोचर फल, व्यापार सफलता व शुभ पन्ना रत्न — अभी देखें ➔',
+    title: 'आज का मिथुन राशिफल (Mithun Rashifal) — व्यापार, धन व पन्ना',
+    desc: 'मिथुन राशि (का, की, कू, घ, ङ, छ, के, को, ह) का आज का वैदिक राशिफल, स्वामी बुध का गोचर फल, व्यापार सफलता व शुभ पन्ना रत्न — देखें ➔',
     cardTitle: 'MITHUN RASHIFAL (GEMINI)',
     cardSub: 'Swami Budh • Daily Gochar • Business, Intellect & Emerald (Panna)',
     shortCard: 'MITHUN RASHIFAL\nDaily Horoscope & Upay',
@@ -702,8 +705,8 @@ const ROUTE_DATA = {
     accent: '#10b981'
   },
   '/kark-rashifal': {
-    title: 'कर्क राशिफल आज का (Kark Rashifal Today): कर्क राशि का परिवार, धन योग व शुभ मोती रत्न',
-    desc: 'कर्क राशि (ही, हू, हे, हो, डा, डी, डू, डे, डो) का आज का वैदिक राशिफल, स्वामी चंद्रमा का गोचर फल, पारिवारिक सुख व शुभ मोती रत्न — अभी पढ़ें ➔',
+    title: 'आज का कर्क राशिफल (Kark Rashifal) — परिवार, करियर व मोती',
+    desc: 'कर्क राशि (ही, हू, हे, हो, डा, डी, डू, डे, डो) का आज का वैदिक राशिफल, स्वामी चंद्रमा का गोचर फल, पारिवारिक सुख व मोती रत्न — पढ़ें ➔',
     cardTitle: 'KARK RASHIFAL (CANCER HOROSCOPE)',
     cardSub: 'Swami Chandra • Daily Gochar • Family, Peace & Natural Pearl (Moti)',
     shortCard: 'KARK RASHIFAL (CANCER)\nDaily Horoscope & Upay',
@@ -712,8 +715,8 @@ const ROUTE_DATA = {
     accent: '#38bdf8'
   },
   '/simha-rashifal': {
-    title: 'सिंह राशिफल आज का (Simha / Singh Rashifal Today): सिंह राशि का राजयोग, करियर व माणिक्य रत्न',
-    desc: 'सिंह राशि (मा, मी, मू, मे, मो, टा, टी, टू, टे) का आज का वैदिक राशिफल, स्वामी सूर्य देव का गोचर फल, सरकारी नौकरी योग व माणिक्य रत्न — अभी देखें ➔',
+    title: 'आज का सिंह राशिफल (Simha Rashifal) — राजयोग, पद व माणिक्य',
+    desc: 'सिंह राशि (मा, मी, मू, मे, मो, टा, टी, टू, टे) का आज का वैदिक राशिफल, स्वामी सूर्य का गोचर फल, सरकारी नौकरी व माणिक्य रत्न — देखें ➔',
     cardTitle: 'SIMHA RASHIFAL (LEO HOROSCOPE)',
     cardSub: 'Swami Surya • Daily Gochar • Leadership, Rajyoga & Ruby (Manikya)',
     shortCard: 'SIMHA RASHIFAL (LEO)\nDaily Horoscope & Upay',
@@ -722,8 +725,8 @@ const ROUTE_DATA = {
     accent: '#f59e0b'
   },
   '/kanya-rashifal': {
-    title: 'कन्या राशिफल आज का (Kanya Rashifal Today): कन्या राशि का करियर, व्यापार व पन्ना रत्न',
-    desc: 'कन्या राशि (टो, पा, पी, पू, ष, ण, ठ, पे, पो) का आज का वैदिक राशिफल, उच्च के बुध का गोचर फल, व्यापार वृद्धि, स्वास्थ्य व पन्ना रत्न — अभी पढ़ें ➔',
+    title: 'आज का कन्या राशिफल (Kanya Rashifal) — करियर, व्यापार व पन्ना',
+    desc: 'कन्या राशि (टो, पा, पी, पू, ष, ण, ठ, पे, पो) का आज का वैदिक राशिफल, उच्च के बुध का गोचर फल, व्यापार वृद्धि व पन्ना रत्न — पढ़ें ➔',
     cardTitle: 'KANYA RASHIFAL (VIRGO HOROSCOPE)',
     cardSub: 'Swami Budh • Daily Gochar • Finance, Career & Emerald (Panna) Upay',
     shortCard: 'KANYA RASHIFAL (VIRGO)\nDaily Horoscope & Upay',
@@ -732,8 +735,8 @@ const ROUTE_DATA = {
     accent: '#10b981'
   },
   '/tula-rashifal': {
-    title: 'तुला राशिफल आज का (Tula Rashifal Today): तुला राशि का धन योग, दांपत्य व ओपल रत्न',
-    desc: 'तुला राशि (रा, री, रू, रे, रो, ता, ती, तू, ते) का आज का वैदिक राशिफल, स्वामी शुक्र का गोचर फल, व्यापार, दांपत्य सुख व ओपल/हीरा रत्न — अभी देखें ➔',
+    title: 'आज का तुला राशिफल (Tula Rashifal) — धन, दांपत्य व ओपल',
+    desc: 'तुला राशि (रा, री, रू, रे, रो, ता, ती, तू, ते) का आज का वैदिक राशिफल, स्वामी शुक्र का गोचर फल, व्यापार, दांपत्य सुख व ओपल — देखें ➔',
     cardTitle: 'TULA RASHIFAL (LIBRA HOROSCOPE)',
     cardSub: 'Swami Shukra • Daily Gochar • Harmony, Business & Opal/Diamond Upay',
     shortCard: 'TULA RASHIFAL (LIBRA)\nDaily Horoscope & Upay',
@@ -742,8 +745,8 @@ const ROUTE_DATA = {
     accent: '#ec4899'
   },
   '/vrishchik-rashifal': {
-    title: 'वृश्चिक राशिफल आज का (Vrishchik Rashifal Today): वृश्चिक राशि का साहस, करियर व मूंगा रत्न',
-    desc: 'वृश्चिक राशि (तो, ना, नी, नू, ने, नो, या, यी, यू) का आज का वैदिक राशिफल, स्वामी मंगल का गोचर फल, करियर सफलता, मूंगा रत्न व उपाय — अभी पढ़ें ➔',
+    title: 'आज का वृश्चिक राशिफल (Vrishchik Rashifal) — करियर व मूंगा',
+    desc: 'वृश्चिक राशि (तो, ना, नी, नू, ने, नो, या, यी, यू) का आज का वैदिक राशिफल, स्वामी मंगल का गोचर फल, करियर सफलता व मूंगा रत्न — पढ़ें ➔',
     cardTitle: 'VRISHCHIK RASHIFAL (SCORPIO)',
     cardSub: 'Swami Mangal • Daily Gochar • Determination, Career & Moonga Ratna',
     shortCard: 'VRISHCHIK RASHIFAL\nDaily Horoscope & Upay',
@@ -752,8 +755,8 @@ const ROUTE_DATA = {
     accent: '#dc2626'
   },
   '/dhanu-rashifal': {
-    title: 'धनु राशिफल आज का (Dhanu Rashifal Today): धनु राशि का भाग्य, करियर व पुखराज रत्न',
-    desc: 'धनु राशि (ये, यो, भा, भी, भू, धा, फा, ढा, भे) का आज का वैदिक राशिफल, देवगुरु बृहस्पति का गोचर फल, उच्च पद योग व पुखराज रत्न — अभी देखें ➔',
+    title: 'आज का धनु राशिफल (Dhanu Rashifal) — भाग्य, धन व पुखराज',
+    desc: 'धनु राशि (ये, यो, भा, भी, भू, धा, फा, ढा, भे) का आज का वैदिक राशिफल, देवगुरु बृहस्पति का गोचर फल, उच्च पद व पुखराज रत्न — देखें ➔',
     cardTitle: 'DHANU RASHIFAL (SAGITTARIUS)',
     cardSub: 'Swami Guru Brihaspati • Daily Gochar • Wisdom, Fortune & Pukhraj',
     shortCard: 'DHANU RASHIFAL\nDaily Horoscope & Upay',
@@ -762,8 +765,8 @@ const ROUTE_DATA = {
     accent: '#eab308'
   },
   '/makar-rashifal': {
-    title: 'मकर राशिफल आज का (Makar Rashifal Today): मकर राशि का कर्मयोग, धन व शुभ नीलम रत्न',
-    desc: 'मकर राशि (भो, जा, जी, खी, खू, खे, खो, गा, गी) का आज का वैदिक राशिफल, स्वामी शनि देव का गोचर फल, करियर उन्नति व शुभ नीलम रत्न — अभी पढ़ें ➔',
+    title: 'आज का मकर राशिफल (Makar Rashifal) — कर्मयोग, धन व नीलम',
+    desc: 'मकर राशि (भो, जा, जी, खी, खू, खे, खो, गा, गी) का आज का वैदिक राशिफल, स्वामी शनि देव का गोचर फल, करियर उन्नति व नीलम रत्न — पढ़ें ➔',
     cardTitle: 'MAKAR RASHIFAL (CAPRICORN)',
     cardSub: 'Swami Shani Dev • Daily Gochar • Hard Work, Success & Blue Sapphire',
     shortCard: 'MAKAR RASHIFAL\nDaily Horoscope & Upay',
@@ -772,8 +775,8 @@ const ROUTE_DATA = {
     accent: '#6366f1'
   },
   '/kumbh-rashifal': {
-    title: 'कुम्भ राशिफल आज का (Kumbh Rashifal Today): कुम्भ राशि का साढ़ेसाती फल, धन व नीलम रत्न',
-    desc: 'कुम्भ राशि (गू, गे, गो, सा, सी, सू, से, सो, दा) का आज का वैदिक राशिफल, स्वामी शनि का गोचर फल, करियर राजयोग, साढ़ेसाती उपाय व नीलम रत्न — अभी देखें ➔',
+    title: 'आज का कुम्भ राशिफल (Kumbh Rashifal) — साढ़ेसाती, धन व नीलम',
+    desc: 'कुम्भ राशि (गू, गे, गो, सा, सी, सू, से, सो, दा) का आज का वैदिक राशिफल, स्वामी शनि का गोचर फल, राजयोग, साढ़ेसाती उपाय व नीलम — देखें ➔',
     cardTitle: 'KUMBH RASHIFAL (AQUARIUS)',
     cardSub: 'Swami Shani Dev • Daily Gochar • Innovation, Sadesati & Neelam Upay',
     shortCard: 'KUMBH RASHIFAL\nDaily Horoscope & Upay',
@@ -782,8 +785,8 @@ const ROUTE_DATA = {
     accent: '#818cf8'
   },
   '/meen-rashifal': {
-    title: 'मीन राशिफल आज का (Meen Rashifal Today): मीन राशि का सात्विक ज्ञान, भाग्य व पुखराज रत्न',
-    desc: 'मीन राशि (दी, दू, थ, झ, ञ, दे, दो, चा, ची) का आज का वैदिक राशिफल, देवगुरु बृहस्पति का गोचर फल, करियर, विदेश योग व पुखराज रत्न — अभी पढ़ें ➔',
+    title: 'आज का मीन राशिफल (Meen Rashifal) — ज्ञान, भाग्य व पुखराज',
+    desc: 'मीन राशि (दी, दू, थ, झ, ञ, दे, दो, चा, ची) का आज का वैदिक राशिफल, देवगुरु बृहस्पति का गोचर फल, करियर, विदेश योग व पुखराज — पढ़ें ➔',
     cardTitle: 'MEEN RASHIFAL (PISCES HOROSCOPE)',
     cardSub: 'Swami Guru Brihaspati • Daily Gochar • Spirituality & Yellow Sapphire',
     shortCard: 'MEEN RASHIFAL (PISCES)\nDaily Horoscope & Upay',
@@ -792,8 +795,8 @@ const ROUTE_DATA = {
     accent: '#fbbf24'
   },
   '/ank-jyotish-mulank-calculator': {
-    title: 'अंक ज्योतिष कैलकुलेटर | पण्डित जी ऑनलाइन',
-    desc: 'जन्म तिथि से जानें अपना मूलांक (1-9), भाग्यांक, स्वामी ग्रह, लकी मोबाइल नंबर और गाड़ी का भाग्यशाली नंबर — अभी निःशुल्क जांचें ➔',
+    title: 'अंक ज्योतिष कैलकुलेटर — मूलांक, भाग्यांक व लकी नंबर जानें',
+    desc: 'अपनी जन्म तिथि से 1 सेकंड में जानें सटीक मूलांक (1-9), भाग्यांक, स्वामी ग्रह, लकी मोबाइल/गाड़ी नंबर व शुभ रत्न — अभी जांचें ➔',
     cardTitle: 'ANK JYOTISH MULANK CALCULATOR',
     cardSub: 'Mulank 1-9 • Bhagyank • Lucky Mobile & Vehicle Number Check',
     shortCard: 'MULANK & BHAGYANK\nLucky Number Calculator',
@@ -802,8 +805,8 @@ const ROUTE_DATA = {
     accent: '#f59e0b'
   },
   '/naam-se-kundali-milan': {
-    title: 'सिर्फ नाम से 36 गुण कुंडली मिलान | पण्डित जी ऑनलाइन',
-    desc: 'जन्म समय याद न होने पर केवल वर और कन्या के प्रचलित नाम से करें अष्टकूट 36 गुण विवाह मिलान एवं नाड़ी-भकूट दोष परिहार — अभी मिलाएं ➔',
+    title: 'नाम से कुंडली मिलान (Naam Se 36 Gun Milan) — विवाह मिलान फ्री',
+    desc: 'जन्म समय न होने पर वर और कन्या के प्रचलित नाम से तुरंत करें अष्टकूट 36 गुण कुंडली मिलान व नाड़ी-भकूट दोष परिहार — अभी मिलाएं ➔',
     cardTitle: 'NAAM SE 36 GUN KUNDALI MILAN',
     cardSub: 'No Birth Time Needed • Var-Kanya Name Ashtakoot Matching',
     shortCard: 'NAAM SE 36 GUN MILAN\nVivah Matching by Name',
@@ -812,8 +815,8 @@ const ROUTE_DATA = {
     accent: '#f43f5e'
   },
   '/vivah-yog-calculator': {
-    title: 'मेरी शादी कब और किस दिशा में होगी? — विवाह योग कैलकुलेटर',
-    desc: 'जन्म तिथि या नाम राशि से जानें आपके विवाह का सटीक शुभ वर्ष, जीवनसाथी का स्वभाव, ससुराल की शुभ दिशा व शीघ्र विवाह के उपाय — अभी देखें ➔',
+    title: 'शादी कब और किस दिशा में होगी? — विवाह योग कैलकुलेटर फ्री',
+    desc: 'जन्म तिथि या नाम राशि से जानें आपकी शादी कब होगी (विवाह का शुभ वर्ष), जीवनसाथी का स्वभाव, ससुराल की दिशा व शीघ्र विवाह उपाय ➔',
     cardTitle: 'VIVAH YOG & DIRECTION CALCULATOR',
     cardSub: 'Marriage Year • Spouse Nature • Sasural Direction & Vivah Upay',
     shortCard: 'VIVAH YOG CALCULATOR\nShadi Kab & Kis Disha Me',
@@ -822,8 +825,8 @@ const ROUTE_DATA = {
     accent: '#ec4899'
   },
   '/sarkari-naukri-rajyog': {
-    title: 'सरकारी नौकरी एवं धन राजयोग कैलकुलेटर | पण्डित जी ऑनलाइन',
-    desc: 'कुंडली व नाम राशि में सूर्य, गुरु, शनि और मंगल की स्थिति से जानें सरकारी नौकरी (IAS/PCS/Police/Bank/Teacher) व उच्च राजयोग — अभी जांचें ➔',
+    title: 'सरकारी नौकरी व धन राजयोग कैलकुलेटर — कुंडली में राजयोग जांचें',
+    desc: 'जन्म तिथि या नाम राशि में सूर्य, गुरु, शनि से जानें सरकारी नौकरी (IAS/PCS/Police/Bank/SSC) का योग, भाग्योदय वर्ष व अचूक उपाय ➔',
     cardTitle: 'SARKARI NAUKRI & RAJYOG CHECK',
     cardSub: 'Surya, Guru & Shani Analysis • Govt Job Yoga & Career Remedies',
     shortCard: 'SARKARI NAUKRI RAJYOG\nGovt Job & Wealth Check',
@@ -832,8 +835,8 @@ const ROUTE_DATA = {
     accent: '#10b981'
   },
   '/bhumi-pujan-muhurat': {
-    title: 'भूमि पूजन मुहूर्त 2026-27 | पण्डित जी ऑनलाइन',
-    desc: 'साल 2026-2027 में नए मकान या प्लॉट के भूमि पूजन व शिलान्यास की सर्वोत्तम शुभ तिथियां, नाग फण दिशा विचार व कलश स्थापना विधि — अभी देखें ➔',
+    title: 'भूमि पूजन मुहूर्त 2026-27 — नींव रखने की शुभ तिथियां व विधि',
+    desc: 'साल 2026 और 2027 में नए घर, प्लॉट या फैक्ट्री के भूमि पूजन व शिलान्यास की शुभ तिथियां, नाग फण दिशा व कलश स्थापना विधि — देखें ➔',
     cardTitle: 'BHUMI PUJAN MUHURAT 2026-2027',
     cardSub: 'Foundation Laying Dates • Vastu Nag Phan Direction & Puja Vidhi',
     shortCard: 'BHUMI PUJAN 2026-27\nNeev Rakhne Ki Shubh Tithi',
@@ -842,8 +845,8 @@ const ROUTE_DATA = {
     accent: '#f59e0b'
   },
   '/dukan-vyapar-muhurat': {
-    title: 'नया व्यापार व दुकान खोलने का शुभ मुहूर्त 2026-27 | पण्डित जी ऑनलाइन',
-    desc: '2026-2027 में नई दुकान, ऑफिस, शोरूम या फैक्ट्री उद्घाटन के लिए सर्वोत्तम शुभ मुहूर्त, अमृत-लाभ चौघड़िया व गल्ला पूजन विधि — अभी पढ़ें ➔',
+    title: 'दुकान व व्यापार मुहूर्त 2026-27 — शोरूम खोलने की शुभ तिथियां',
+    desc: 'साल 2026-2027 में नई दुकान, ऑफिस या नया व्यापार शुरू करने की सर्वोत्तम शुभ तिथियां, लाभ चौघड़िया, स्थिर लग्न व गल्ला पूजन विधि ➔',
     cardTitle: 'DUKAN & VYAPAR MUHURAT 2026-27',
     cardSub: 'New Business & Shop Opening Dates • Shubh Choghadiya & Lagna',
     shortCard: 'VYAPAR MUHURAT 2026-27\nDukan & Office Opening',
@@ -852,8 +855,8 @@ const ROUTE_DATA = {
     accent: '#10b981'
   },
   '/naamkaran-muhurat': {
-    title: 'नामकरण संस्कार मुहूर्त 2026-27 | पण्डित जी ऑनलाइन',
-    desc: 'नवजात शिशु के नामकरण संस्कार हेतु 2026-2027 की शुभ तिथियां, 11वें/12वें दिन का शास्त्रीय नियम व 27 नक्षत्र नामाक्षर चक्र — अभी देखें ➔',
+    title: 'नामकरण संस्कार मुहूर्त 2026-27 — शिशु नामकरण की शुभ तिथियां',
+    desc: 'नवजात शिशु के नामकरण संस्कार की 2026-2027 की सभी शुभ तिथियां, 11वें/12वें दिन का नियम, शुभ नक्षत्र व अवकहड़ा चक्र — अभी देखें ➔',
     cardTitle: 'SHISHU NAAMKARAN MUHURAT 2026-27',
     cardSub: 'Baby Naming Ceremony Dates • 27 Nakshatra Syllable Guide',
     shortCard: 'NAAMKARAN MUHURAT\nBaby Naming Shubh Tithi',
@@ -862,8 +865,8 @@ const ROUTE_DATA = {
     accent: '#38bdf8'
   },
   '/annaprashan-muhurat': {
-    title: 'अन्नप्राशन मुहूर्त 2026-27 | पण्डित जी ऑनलाइन',
-    desc: 'साल 2026-2027 में शिशु के अन्नप्राशन संस्कार (मुंहजुठी) की सबसे शुभ तिथियां, छठे/सातवें मास का नियम व खीर पूजन विधि — अभी जांचें ➔',
+    title: 'अन्नप्राशन मुहूर्त 2026-27 — शिशु प्रथम अन्न की शुभ तिथियां',
+    desc: 'साल 2026-2027 में शिशु के अन्नप्राशन संस्कार (मुंहजुठी) की शुभ तिथियां, लड़के (6/8 माह) व लड़की (5/7 माह) नियम एवं विधि — देखें ➔',
     cardTitle: 'ANNAPRASHAN MUHURAT 2026-2027',
     cardSub: 'Baby First Solid Food Ceremony • Even/Odd Month Vedic Rules',
     shortCard: 'ANNAPRASHAN 2026-27\nShishu First Food Dates',
@@ -872,8 +875,8 @@ const ROUTE_DATA = {
     accent: '#f97316'
   },
   '/surya-chandra-grahan-2027': {
-    title: 'सूर्य ग्रहण और चंद्र ग्रहण 2026-27 | पण्डित जी ऑनलाइन',
-    desc: 'वर्ष 2026 और 2027 में लगने वाले सभी सूर्य ग्रहण व चंद्र ग्रहण की तिथियां, भारत में दृश्यता, सूतक काल समय व गर्भवती महिलाओं के नियम ➔',
+    title: 'सूर्य ग्रहण व चंद्र ग्रहण 2026-27 — भारत में समय, सूतक व नियम',
+    desc: 'साल 2026 और 2027 में लगने वाले सभी सूर्य व चंद्र ग्रहण की तिथियां, भारत में दृश्यता, सूतक काल समय व गर्भवती महिलाओं के नियम ➔',
     cardTitle: 'SURYA & CHANDRA GRAHAN 2026-27',
     cardSub: 'Solar & Lunar Eclipse Timings in India • Sutak Kaal & Rashi Phal',
     shortCard: 'GRAHAN LIST 2026-27\nSutak Time & Rashi Effect',
@@ -882,8 +885,8 @@ const ROUTE_DATA = {
     accent: '#818cf8'
   },
   '/purnima-vrat-2027': {
-    title: 'पूर्णिमा व्रत कैलेंडर 2026-27 | पण्डित जी ऑनलाइन',
-    desc: 'साल 2026-2027 की सभी 12 पूर्णिमा व्रत तिथियां, सत्यनारायण कथा मुहूर्त, चंद्रोदय अर्घ्य समय व स्नान-दान का शास्त्रीय महत्व — अभी देखें ➔',
+    title: 'पूर्णिमा व्रत कैलेंडर 2026-27 — सभी 12 पूर्णिमा व चंद्रोदय समय',
+    desc: 'साल 2026 और 2027 की सभी 12 पूर्णिमा व्रत तिथियां (माघी, गुरु, शरद, कार्तिक पूर्णिमा), सत्यनारायण कथा व चंद्रोदय समय — देखें ➔',
     cardTitle: 'PURNIMA VRAT CALENDAR 2026-2027',
     cardSub: 'All 12 Purnima Tithi • Satyanarayan Katha & Chandrodaya Time',
     shortCard: 'PURNIMA VRAT 2026-27\nSnan-Daan & Puja Dates',
@@ -892,8 +895,8 @@ const ROUTE_DATA = {
     accent: '#fbbf24'
   },
   '/amavasya-2027': {
-    title: 'अमावस्या तिथि कैलेंडर 2026-27 | पण्डित जी ऑनलाइन',
-    desc: 'वर्ष 2026-2027 की सभी अमावस्या तिथियां (सोमवती, मौनी, शनिश्चरी, महालया अमावस्या), पितृ तर्पण समय व पीपल पूजन के अचूक उपाय — अभी पढ़ें ➔',
+    title: 'अमावस्या कैलेंडर 2026-27 — सोमवती, मौनी व शनि अमावस्या तिथियां',
+    desc: 'साल 2026 और 2027 की सभी अमावस्या तिथियां (मौनी, सोमवती, शनिश्चरी व सर्वपितृ अमावस्या), पितृ तर्पण समय व पीपल पूजन उपाय देखें ➔',
     cardTitle: 'AMAVASYA TITHI LIST 2026-2027',
     cardSub: 'Somvati, Mauni & Shani Amavasya • Pitra Tarpan & Peepal Puja',
     shortCard: 'AMAVASYA LIST 2026-27\nPitra Tarpan & Snan Dates',
@@ -902,8 +905,8 @@ const ROUTE_DATA = {
     accent: '#6366f1'
   },
   '/pradosh-vrat-2027': {
-    title: 'प्रदोष व्रत कैलेंडर 2026-27 | पण्डित जी ऑनलाइन',
-    desc: 'साल 2026-2027 के सभी 24 प्रदोष व्रत (सोम प्रदोष, भौम प्रदोष, शनि प्रदोष) की तिथियां, सायंकाल शिव अभिषेक मुहूर्त व प्रदोष व्रत कथा ➔',
+    title: 'प्रदोष व्रत कैलेंडर 2026-27 — सोम, भौम व शनि प्रदोष पूजा समय',
+    desc: 'साल 2026 और 2027 के सभी 24 प्रदोष व्रत (सोम, भौम व शनि प्रदोष) की सटीक तिथियां, प्रदोष काल शिव पूजा समय, कथा व विधि — देखें ➔',
     cardTitle: 'PRADOSH VRAT CALENDAR 2026-2027',
     cardSub: 'Som, Bhaum & Shani Pradosh Dates • Evening Shiva Puja Time',
     shortCard: 'PRADOSH VRAT 2026-27\nShiva Abhishek Muhurat',
@@ -912,8 +915,8 @@ const ROUTE_DATA = {
     accent: '#f97316'
   },
   '/sankashti-chaturthi-2027': {
-    title: 'संकष्टी चतुर्थी 2026-27 | पण्डित जी ऑनलाइन',
-    desc: 'वर्ष 2026-2027 की सभी संकष्टी गणेश चतुर्थी, माघी सकट चौथ व अंगारकी चौथ व्रत तिथियां, चंद्रोदय अर्घ्य समय व श्री गणेश पूजा विधि ➔',
+    title: 'संकष्टी चतुर्थी 2026-27 — सकट चौथ व अंगारकी चंद्रोदय समय',
+    desc: 'साल 2026 और 2027 की सभी 12 संकष्टी गणेश चतुर्थी (सकट चौथ, अंगारकी चौथ) की व्रत तिथियां, रात्रि चंद्रोदय समय व गणेश पूजा विधि ➔',
     cardTitle: 'SANKASHTI CHATURTHI 2026-2027',
     cardSub: 'Sakat Chauth & Angarki Chaturthi • Moonrise Time & Ganesh Puja',
     shortCard: 'SANKASHTI VRAT 2026-27\nChandrodaya & Ganesh Puja',
@@ -922,8 +925,8 @@ const ROUTE_DATA = {
     accent: '#ef4444'
   },
   '/k-naam-rashi-swabhav': {
-    title: 'K नाम की राशि क्या है? (K Naam Ki Rashi) मिथुन राशि, स्वभाव व प्रेम | पण्डित जी ऑनलाइन',
-    desc: 'K (क, का, की, कू, के, को) नाम वालों की राशि मिथुन (स्वामी बुध) होती है। जानें K नाम वालों का स्वभाव, लव लाइफ, करियर व पन्ना रत्न — अभी देखें ➔',
+    title: 'K नाम की राशि क्या है? (K Naam Ki Rashi) — मिथुन व मकर राशि',
+    desc: 'K (क, का, की, कू, के, को) नाम वालों की राशि मिथुन (बुध) व ख से मकर (शनि) होती है। जानें K नाम का स्वभाव, प्यार, करियर व पन्ना रत्न ➔',
     cardTitle: 'K NAAM KI RASHI: MITHUN (GEMINI)',
     cardSub: 'Swami Budh • Intelligent Nature • Career, Love & Panna Ratna',
     shortCard: 'K NAAM KI RASHI\nMithun Rashi & Swabhav',
@@ -932,8 +935,8 @@ const ROUTE_DATA = {
     accent: '#10b981'
   },
   '/n-naam-rashi-swabhav': {
-    title: 'N नाम की राशि क्या है? (N Naam Ki Rashi) वृश्चिक राशि, स्वभाव व प्यार | पण्डित जी ऑनलाइन',
-    desc: 'N (न, ना, नी, नू, ने, नो) नाम वालों की राशि वृश्चिक (स्वामी मंगल) होती है। जानें N नाम वालों का निडर स्वभाव, सच्चा प्यार, करियर व मूंगा रत्न ➔',
+    title: 'N नाम की राशि क्या है? (N Naam Ki Rashi) — वृश्चिक राशि व फल',
+    desc: 'N (न, ना, नी, नू, ने, नो) नाम वालों की राशि वृश्चिक (स्वामी मंगल) होती है। जानें N नाम का स्वभाव, लव लाइफ, करियर, राजयोग व मूंगा रत्न ➔',
     cardTitle: 'N NAAM KI RASHI: VRISHCHIK (SCORPIO)',
     cardSub: 'Swami Mangal • Fearless Nature • Love, Career & Moonga Ratna',
     shortCard: 'N NAAM KI RASHI\nVrishchik Rashi & Swabhav',
@@ -942,8 +945,8 @@ const ROUTE_DATA = {
     accent: '#ef4444'
   },
   '/v-naam-rashi-swabhav': {
-    title: 'V नाम की राशि क्या है? (V Naam Ki Rashi) वृषभ राशि, स्वभाव व धन योग | पण्डित जी ऑनलाइन',
-    desc: 'V (व, वा, वी, वू, वे, वो) नाम वालों की राशि वृषभ (स्वामी शुक्र) होती है। जानें V नाम वालों का आकर्षक स्वभाव, धन राजयोग, प्रेम व ओपल रत्न ➔',
+    title: 'V नाम की राशि क्या है? (V Naam Ki Rashi) — वृषभ राशि व धन योग',
+    desc: 'V (व, वा, वी, वू, वे, वो) नाम वालों की राशि वृषभ (स्वामी शुक्र) होती है। जानें V नाम का आकर्षक स्वभाव, प्रेम, धन राजयोग व ओपल रत्न ➔',
     cardTitle: 'V NAAM KI RASHI: VRISHABH (TAURUS)',
     cardSub: 'Swami Shukra • Wealth & Luxury • Career, Marriage & Opal Ratna',
     shortCard: 'V NAAM KI RASHI\nVrishabh Rashi & Swabhav',
@@ -952,8 +955,8 @@ const ROUTE_DATA = {
     accent: '#ec4899'
   },
   '/b-naam-rashi-swabhav': {
-    title: 'B नाम की राशि क्या है? (B Naam Ki Rashi) धनु व वृषभ, स्वभाव व भाग्य | पण्डित जी ऑनलाइन',
-    desc: 'B (ब, बा, बी, बू, भ, भा, भी, भू) नाम वालों की राशि वृषभ व धनु होती है। जानें B नाम वालों का सच्चा स्वभाव, विवाह, करियर व लकी रत्न — अभी देखें ➔',
+    title: 'B नाम की राशि क्या है? (B Naam Ki Rashi) — वृषभ व धनु राशि',
+    desc: 'B नाम वालों की राशि ब से वृषभ (शुक्र), भ से धनु (गुरु) व भो से मकर होती है। जानें B नाम का स्वभाव, सच्चा प्यार, विवाह व लकी रत्न ➔',
     cardTitle: 'B NAAM KI RASHI: VRISHABH & DHANU',
     cardSub: 'Swami Shukra & Guru • Honest Nature • Career, Love & Lucky Ratna',
     shortCard: 'B NAAM KI RASHI\nSwabhav, Vivah & Career',
@@ -962,8 +965,8 @@ const ROUTE_DATA = {
     accent: '#f59e0b'
   },
   '/d-naam-rashi-swabhav': {
-    title: 'D नाम की राशि क्या है? (D Naam Ki Rashi) मीन व कर्क, स्वभाव व करियर | पण्डित जी ऑनलाइन',
-    desc: 'D (द, दी, दू, दे, दो, ड, डी, डू) नाम वालों की राशि मीन, कुम्भ व कर्क होती है। जानें D नाम वालों का स्वभाव, प्रेम, भाग्योदय व पुखराज रत्न ➔',
+    title: 'D नाम की राशि क्या है? (D Naam Ki Rashi) — मीन, कुम्भ व कर्क',
+    desc: 'D नाम वालों की राशि दी/दे से मीन, द/दा से कुम्भ, ड से कर्क व ध से धनु होती है। जानें D नाम का स्वभाव, प्रेम, करियर व पुखराज रत्न ➔',
     cardTitle: 'D NAAM KI RASHI: MEEN & KARK',
     cardSub: 'Swami Guru & Chandra • Kind Nature • Career, Marriage & Pukhraj',
     shortCard: 'D NAAM KI RASHI\nSwabhav, Career & Ratna',
@@ -972,8 +975,8 @@ const ROUTE_DATA = {
     accent: '#fbbf24'
   },
   '/g-naam-rashi-swabhav': {
-    title: 'G नाम की राशि क्या है? (G Naam Ki Rashi) कुम्भ व मकर, स्वभाव व कर्म | पण्डित जी ऑनलाइन',
-    desc: 'G (ग, गा, गी, गू, गे, गो) नाम वालों की राशि कुम्भ व मकर (स्वामी शनि) होती है। जानें G नाम वालों का मेहनती स्वभाव, धन योग, प्रेम व नीलम रत्न ➔',
+    title: 'G नाम की राशि क्या है? (G Naam Ki Rashi) — मकर व कुम्भ राशि',
+    desc: 'G नाम वालों की राशि ग/गा/गी से मकर तथा गू/गे/गो से कुम्भ (स्वामी शनि देव) होती है। जानें G नाम का स्वभाव, प्रेम, करियर व नीलम रत्न ➔',
     cardTitle: 'G NAAM KI RASHI: KUMBH & MAKAR',
     cardSub: 'Swami Shani Dev • Disciplined Nature • Career, Wealth & Neelam',
     shortCard: 'G NAAM KI RASHI\nKumbh/Makar & Swabhav',
@@ -982,8 +985,8 @@ const ROUTE_DATA = {
     accent: '#6366f1'
   },
   '/h-naam-rashi-swabhav': {
-    title: 'H नाम की राशि क्या है? (H Naam Ki Rashi) कर्क व मिथुन, स्वभाव व प्रेम | पण्डित जी ऑनलाइन',
-    desc: 'H (ह, ही, हू, हे, हो) नाम वालों की राशि कर्क (स्वामी चंद्रमा) व मिथुन होती है। जानें H नाम वालों का भावुक स्वभाव, परिवार प्रेम, धन व मोती रत्न ➔',
+    title: 'H नाम की राशि क्या है? (H Naam Ki Rashi) — कर्क व मिथुन राशि',
+    desc: 'H नाम वालों की राशि ही/हू/हे/हो से कर्क (चंद्रमा) व ह/हा से मिथुन (बुध) होती है। जानें H नाम का स्वभाव, प्यार, धन योग व मोती रत्न ➔',
     cardTitle: 'H NAAM KI RASHI: KARK (CANCER)',
     cardSub: 'Swami Chandra • Caring Nature • Family, Wealth & Pearl (Moti)',
     shortCard: 'H NAAM KI RASHI\nKark Rashi & Swabhav',
@@ -992,8 +995,8 @@ const ROUTE_DATA = {
     accent: '#38bdf8'
   },
   '/j-naam-rashi-swabhav': {
-    title: 'J नाम की राशि क्या है? (J Naam Ki Rashi) मकर राशि, स्वभाव व राजयोग | पण्डित जी ऑनलाइन',
-    desc: 'J (ज, जा, जी, खी, खू, खे, खो) नाम वालों की राशि मकर (स्वामी शनि देव) होती है। जानें J नाम वालों का दृढ़ स्वभाव, प्रशासनिक योग, प्रेम व नीलम रत्न ➔',
+    title: 'J नाम की राशि क्या है? (J Naam Ki Rashi) — मकर व मीन राशि',
+    desc: 'J नाम वालों की राशि ज/जा/जी से मकर (स्वामी शनि) व झ से मीन (गुरु) होती है। जानें J नाम का दृढ़ स्वभाव, प्रेम, राजयोग व नीलम रत्न ➔',
     cardTitle: 'J NAAM KI RASHI: MAKAR (CAPRICORN)',
     cardSub: 'Swami Shani Dev • Ambitious Nature • Career, Love & Neelam Ratna',
     shortCard: 'J NAAM KI RASHI\nMakar Rashi & Swabhav',
@@ -1002,8 +1005,8 @@ const ROUTE_DATA = {
     accent: '#818cf8'
   },
   '/t-naam-rashi-swabhav': {
-    title: 'T नाम की राशि क्या है? (T Naam Ki Rashi) तुला व सिंह, स्वभाव व करियर | पण्डित जी ऑनलाइन',
-    desc: 'T (त, ता, ती, तू, ते, ट, टा, टी, टू) नाम वालों की राशि तुला व सिंह होती है। जानें T नाम वालों का नेतृत्व स्वभाव, प्रेम, धन योग व लकी रत्न ➔',
+    title: 'T नाम की राशि क्या है? (T Naam Ki Rashi) — तुला व सिंह राशि',
+    desc: 'T नाम वालों की राशि त/ता/ती से तुला, तो से वृश्चिक, ट से सिंह व टो से कन्या होती है। जानें T नाम का स्वभाव, प्यार, करियर व लकी रत्न ➔',
     cardTitle: 'T NAAM KI RASHI: TULA & SINGH',
     cardSub: 'Swami Shukra & Surya • Dynamic Nature • Career, Love & Ratna',
     shortCard: 'T NAAM KI RASHI\nTula/Singh & Swabhav',
@@ -1012,8 +1015,8 @@ const ROUTE_DATA = {
     accent: '#f43f5e'
   },
   '/y-naam-rashi-swabhav': {
-    title: 'Y नाम की राशि क्या है? (Y Naam Ki Rashi) वृश्चिक व धनु, स्वभाव व भाग्य | पण्डित जी ऑनलाइन',
-    desc: 'Y (य, या, यी, यू, ये, यो) नाम वालों की राशि वृश्चिक व धनु होती है। जानें Y नाम वालों का स्पष्टवादी स्वभाव, करियर सफलता, विवाह व लकी रत्न ➔',
+    title: 'Y नाम की राशि क्या है? (Y Naam Ki Rashi) — वृश्चिक व धनु राशि',
+    desc: 'Y नाम वालों की राशि या/यी/यू से वृश्चिक (मंगल) तथा ये/यो से धनु (गुरु) होती है। जानें Y नाम का स्वभाव, प्रेम, करियर व लकी रत्न ➔',
     cardTitle: 'Y NAAM KI RASHI: VRISHCHIK & DHANU',
     cardSub: 'Swami Mangal & Guru •Focused Nature • Career, Marriage & Ratna',
     shortCard: 'Y NAAM KI RASHI\nSwabhav, Vivah & Career',
@@ -1022,8 +1025,8 @@ const ROUTE_DATA = {
     accent: '#eab308'
   },
   '/l-naam-rashi-swabhav': {
-    title: 'L नाम की राशि क्या है? (L Naam Ki Rashi) मेष राशि, स्वभाव व प्रेम | पण्डित जी ऑनलाइन',
-    desc: 'L (ल, ला, ली, लू, ले, लो) नाम वालों की राशि मेष (स्वामी मंगल) होती है। जानें L नाम वालों का ऊर्जावान स्वभाव, सच्चा प्यार, करियर व मूंगा रत्न ➔',
+    title: 'L नाम की राशि क्या है? (L Naam Ki Rashi) — मेष राशि व स्वभाव',
+    desc: 'L (ल, ला, ली, लू, ले, लो) नाम वालों की राशि मेष (स्वामी मंगल देव) होती है। जानें L नाम का स्वभाव, लव लाइफ, करियर व मूंगा रत्न ➔',
     cardTitle: 'L NAAM KI RASHI: MESH (ARIES)',
     cardSub: 'Swami Mangal • Energetic Nature • Love Life, Career & Moonga',
     shortCard: 'L NAAM KI RASHI\nMesh Rashi & Swabhav',
@@ -1032,8 +1035,8 @@ const ROUTE_DATA = {
     accent: '#ef4444'
   },
   '/c-naam-rashi-swabhav': {
-    title: 'C नाम की राशि क्या है? (C Naam Ki Rashi) मेष व मीन, स्वभाव व धन योग | पण्डित जी ऑनलाइन',
-    desc: 'C (च, चू, चे, चो, चा, ची, छ) नाम वालों की राशि मेष, मीन व मिथुन होती है। जानें C नाम वालों का आकर्षक स्वभाव, करियर, प्रेम व भाग्यशाली रत्न ➔',
+    title: 'C नाम की राशि क्या है? (C Naam Ki Rashi) — मेष, मीन व मिथुन',
+    desc: 'C/Ch नाम वालों की राशि चू/चे/चो से मेष, चा/ची से मीन तथा छ/क से मिथुन होती है। जानें C नाम का स्वभाव, प्रेम, करियर व लकी रत्न ➔',
     cardTitle: 'C NAAM KI RASHI: MESH & MEEN',
     cardSub: 'Swami Mangal & Guru • Creative Nature • Career, Love & Ratna',
     shortCard: 'C NAAM KI RASHI\nMesh/Meen & Swabhav',
@@ -1042,8 +1045,8 @@ const ROUTE_DATA = {
     accent: '#f97316'
   },
   '/makar-sankranti-muhurat-puja-vidhi': {
-    title: 'मकर संक्रांति पुण्यकाल शुभ मुहूर्त, स्नान-दान व पूजा विधि | पण्डित जी ऑनलाइन',
-    desc: 'मकर संक्रांति उत्तरायण पुण्यकाल व महापुण्यकाल शुभ मुहूर्त, तिल-गुड़-खिचड़ी दान महिमा एवं सूर्य अर्घ्य विधि — अभी देखें ➔',
+    title: 'मकर संक्रांति 2026-27 (14 जनवरी) — पुण्यकाल मुहूर्त व विधि',
+    desc: 'मकर संक्रांति 2026 (14 जनवरी) व 2027 (15 जनवरी) का सटीक महापुण्यकाल मुहूर्त (दोपहर 03:13 से 04:58), स्नान-दान महत्व, पूजा विधि व सूर्य मंत्र ➔',
     cardTitle: 'MAKAR SANKRANTI SHUBH MUHURAT',
     cardSub: 'Uttarayan Punyakaal • Mahapunyakaal • Snan-Daan & Surya Arghya',
     shortCard: 'MAKAR SANKRANTI\nPunyakaal & Puja Vidhi',
@@ -1052,8 +1055,8 @@ const ROUTE_DATA = {
     accent: '#f59e0b'
   },
   '/vasant-panchami-saraswati-puja-muhurat': {
-    title: 'बसंत पंचमी व सरस्वती पूजा शुभ मुहूर्त एवं पूजा विधि | पण्डित जी ऑनलाइन',
-    desc: 'बसंत पंचमी पर माँ सरस्वती पूजा व विद्यारम्भ संस्कार का शुभ मुहूर्त, अबूझ मुहूर्त महिमा एवं सरस्वती वंदना — अभी देखें ➔',
+    title: 'बसंत पंचमी 2026-27 (23 जनवरी) — सरस्वती पूजा मुहूर्त व विधि',
+    desc: 'बसंत पंचमी 2026 (23 जनवरी) व 2027 (11 फरवरी) का सरस्वती पूजा शुभ मुहूर्त (प्रातः 07:13 से 12:33), पीले पुष्प भोग, पूजा विधि व विद्या मंत्र ➔',
     cardTitle: 'VASANT PANCHAMI SARASWATI PUJA',
     cardSub: 'Saraswati Puja Muhurat • Vidyarambh Sanskar • Vandana & Vidhi',
     shortCard: 'VASANT PANCHAMI\nSaraswati Puja Muhurat',
@@ -1062,8 +1065,8 @@ const ROUTE_DATA = {
     accent: '#eab308'
   },
   '/maha-shivratri-puja-vidhi-muhurat': {
-    title: 'महाशिवरात्रि 4 प्रहर व निशीथ काल पूजा मुहूर्त एवं रुद्राभिषेक विधि | पण्डित जी ऑनलाइन',
-    desc: 'महाशिवरात्रि निशीथ काल व चारों प्रहर शिव अभिषेक का शुभ मुहूर्त, बिल्वपत्र अर्पण नियम व रुद्राभिषेक विधि — अभी देखें ➔',
+    title: 'महाशिवरात्रि 2026-27 (15 फरवरी) — निशीथ काल मुहूर्त व विधि',
+    desc: 'महाशिवरात्रि 2026 (15 फरवरी) व 2027 (06 मार्च) का निशीथ काल पूजा मुहूर्त (रात्रि 12:09 से 01:00), चार प्रहर पूजन, रुद्राभिषेक व शिव मंत्र ➔',
     cardTitle: 'MAHA SHIVRATRI 4 PRAHAR MUHURAT',
     cardSub: 'Nishita Kaal Puja • 4 Prahar Rudrabhishek • Shiva Mantra & Vidhi',
     shortCard: 'MAHA SHIVRATRI\nNishita Kaal & Puja Vidhi',
@@ -1072,8 +1075,8 @@ const ROUTE_DATA = {
     accent: '#fbbf24'
   },
   '/holika-dahan-shubh-muhurat-vidhi': {
-    title: 'होलिका दहन भद्रा-रहित शुभ मुहूर्त, पूजा विधि व रंगवाली होली | पण्डित जी ऑनलाइन',
-    desc: 'भद्रा पुच्छ व भद्रा समाप्ति के बाद होलिका दहन का शुद्ध प्रदोष काल मुहूर्त, परिक्रमा नियम व होलिका पूजन विधि — अभी देखें ➔',
+    title: 'होलिका दहन व होली 2026-27 (2-4 मार्च) — भद्रा रहित मुहूर्त',
+    desc: 'होलिका दहन 2026 (02 मार्च, रंग 04 मार्च) व 2027 (21-22 मार्च) का भद्रा रहित शुभ मुहूर्त (रात्रि 12:50 से 02:02), पूजा सामग्री व विधि देखें ➔',
     cardTitle: 'HOLIKA DAHAN SHUBH MUHURAT',
     cardSub: 'Bhadra-Free Pradosh Kaal • Holika Pujan Vidhi • Rangwali Holi',
     shortCard: 'HOLIKA DAHAN\nBhadra-Free Shubh Muhurat',
@@ -1082,8 +1085,8 @@ const ROUTE_DATA = {
     accent: '#ef4444'
   },
   '/chaitra-navratri-ghatasthapana-muhurat': {
-    title: 'चैत्र नवरात्रि कलश स्थापना (घटस्थापना) शुभ मुहूर्त व पूजा विधि | पण्डित जी ऑनलाइन',
-    desc: 'चैत्र नवरात्रि व हिन्दू नववर्ष पर कलश स्थापना (घटस्थापना) का प्रातः व अभिजित शुभ मुहूर्त तथा नवदुर्गा पूजन विधि — अभी देखें ➔',
+    title: 'चैत्र नवरात्रि 2026-27 (19 मार्च) — घटस्थापना मुहूर्त व विधि',
+    desc: 'चैत्र नवरात्रि व हिन्दू नववर्ष 2026 (19-27 मार्च) व 2027 (07-15 अप्रैल) का कलश घटस्थापना शुभ मुहूर्त (प्रातः 06:52 से 07:43), सामग्री व विधि ➔',
     cardTitle: 'CHAITRA NAVRATRI GHATASTHAPANA',
     cardSub: 'Kalash Sthapana Muhurat • Abhijit Kaal • Navdurga Puja Vidhi',
     shortCard: 'CHAITRA NAVRATRI\nGhatasthapana Muhurat',
@@ -1092,8 +1095,8 @@ const ROUTE_DATA = {
     accent: '#f43f5e'
   },
   '/shri-ram-navami-puja-shubh-muhurat': {
-    title: 'श्री रामनवमी मध्याह्न जन्मोत्सव शुभ मुहूर्त, पूजा विधि व आरती | पण्डित जी ऑनलाइन',
-    desc: 'श्री रामनवमी पर भगवान श्रीराम जन्मोत्सव का मध्याह्न कर्क लग्न शुभ मुहूर्त, षोडशोपचार पूजन विधि व श्रीराम स्तुति — अभी देखें ➔',
+    title: 'श्री रामनवमी 2026-27 (27 मार्च) — मध्याह्न पूजा मुहूर्त व विधि',
+    desc: 'श्री रामनवमी 2026 (27 मार्च) व 2027 (15 अप्रैल) का मध्याह्न राम जन्मोत्सव पूजा मुहूर्त (11:13 से 01:41), पूजा सामग्री, आरती व राम रक्षा मंत्र ➔',
     cardTitle: 'SHRI RAM NAVAMI PUJA MUHURAT',
     cardSub: 'Madhyahna Janmotsav Muhurat • Kark Lagna • Ram Puja & Stuti',
     shortCard: 'SHRI RAM NAVAMI\nMadhyahna Puja Muhurat',
@@ -1102,8 +1105,8 @@ const ROUTE_DATA = {
     accent: '#f97316'
   },
   '/hanuman-jayanti-puja-vidhi-shubh-muhurat': {
-    title: 'हनुमान जयंती शुभ मुहूर्त, चोला अर्पण, पूजा विधि व बजरंग बाण | पण्डित जी ऑनलाइन',
-    desc: 'चैत्र पूर्णिमा श्री हनुमान जन्मोत्सव का शुभ पूजा मुहूर्त, सिंदूर चोला अर्पण विधि, सुंदरकांड व हनुमान चालीसा पाठ नियम ➔',
+    title: 'हनुमान जयंती 2026-27 (2 अप्रैल) — प्रातः पूजा मुहूर्त व विधि',
+    desc: 'श्री हनुमान जयंती 2026 (02 अप्रैल) व 2027 (20 अप्रैल) का प्रातः पूजा शुभ मुहूर्त (06:10 से 07:43), चोला चढ़ाने की विधि, चालीसा व मंत्र देखें ➔',
     cardTitle: 'SHREE HANUMAN JAYANTI MUHURAT',
     cardSub: 'Chaitra Purnima Muhurat • Sindoor Chola Vidhi • Hanuman Chalisa',
     shortCard: 'HANUMAN JAYANTI\nPuja Muhurat & Vidhi',
@@ -1112,8 +1115,8 @@ const ROUTE_DATA = {
     accent: '#ea580c'
   },
   '/akshaya-tritiya-shubh-muhurat-sona-kharidne': {
-    title: 'अक्षय तृतीया सोना खरीदने व लक्ष्मी पूजा का अबूझ शुभ मुहूर्त | पण्डित जी ऑनलाइन',
-    desc: 'अक्षय तृतीया (आखा तीज) पर सोना-चांदी खरीदने, गृह प्रवेश व लक्ष्मी-नारायण पूजन का चौघड़िया शुभ मुहूर्त एवं दान विधि ➔',
+    title: 'अक्षय तृतीया 2026-27 (19 अप्रैल) — सोना खरीदने का शुभ मुहूर्त',
+    desc: 'अक्षय तृतीया (आखा तीज) 2026 (19 अप्रैल) व 2027 (09 मई) का पूजा व सोना खरीदने का शुभ मुहूर्त (10:49 से 12:20), अबूझ मुहूर्त नियम व विधि ➔',
     cardTitle: 'AKSHAYA TRITIYA SHUBH MUHURAT',
     cardSub: 'Gold Buying Timings • Abujh Muhurat • Laxmi-Narayan Puja Vidhi',
     shortCard: 'AKSHAYA TRITIYA\nGold Buying & Puja Time',
@@ -1122,8 +1125,8 @@ const ROUTE_DATA = {
     accent: '#eab308'
   },
   '/nirjala-ekadashi-vrat-katha-shubh-muhurat': {
-    title: 'निर्जला एकादशी व्रत शुभ मुहूर्त, जल-कलश दान, कथा व पारण समय | पण्डित जी ऑनलाइन',
-    desc: 'भीमसेनी निर्जला एकादशी व्रत की तिथि, पूजा शुभ मुहूर्त, द्वादशी हरि वासर रहित व्रत पारण समय एवं पौराणिक कथा — अभी देखें ➔',
+    title: 'निर्जला एकादशी 2026-27 (25 जून) — व्रत कथा, पारण व मुहूर्त',
+    desc: 'निर्जला (भीमसेनी) एकादशी 2026 (25 जून) व 2027 (15 जून) का विष्णु पूजन मुहूर्त (05:25 से 12:24), पारण समय, व्रत कथा, जल दान नियम व मंत्र ➔',
     cardTitle: 'NIRJALA EKADASHI VRAT MUHURAT',
     cardSub: 'Bhimseni Ekadashi • Vrat Paran Time • Jal Kalash Daan & Katha',
     shortCard: 'NIRJALA EKADASHI\nMuhurat, Katha & Paran',
@@ -1132,8 +1135,8 @@ const ROUTE_DATA = {
     accent: '#f59e0b'
   },
   '/guru-purnima-puja-vidhi-mahatmya': {
-    title: 'गुरु पूर्णिमा (व्यास पूर्णिमा) शुभ मुहूर्त, गुरु पूजन विधि व मंत्र | पण्डित जी ऑनलाइन',
-    desc: 'आषाढ़ गुरु पूर्णिमा (महर्षि वेदव्यास जयंती) का स्नान-दान व गुरु पादुका पूजन शुभ मुहूर्त, गुरु मंत्र दीक्षा व शास्त्रीय महत्व ➔',
+    title: 'गुरु पूर्णिमा 2026-27 (29 जुलाई) — व्यास पूजा मुहूर्त व महत्व',
+    desc: 'गुरु (व्यास) पूर्णिमा 2026 (29 जुलाई) व 2027 (18 जुलाई) का सर्वश्रेष्ठ पूजा मुहूर्त (05:40 से 12:27), गुरु पूजन सामग्री, पादुका विधि व मंत्र ➔',
     cardTitle: 'GURU PURNIMA PUJA MUHURAT',
     cardSub: 'Vyas Purnima Snan-Daan • Guru Paduka Pujan • Brihaspati Mantra',
     shortCard: 'GURU PURNIMA\nPuja Muhurat & Vidhi',
@@ -1142,8 +1145,8 @@ const ROUTE_DATA = {
     accent: '#fbbf24'
   },
   '/nag-panchami-puja-vidhi-kaalsarp-upay': {
-    title: 'नाग पंचमी पूजा शुभ मुहूर्त, अष्टनाग पूजन विधि व कालसर्प दोष उपाय | पण्डित जी ऑनलाइन',
-    desc: 'श्रावण शुक्ल नाग पंचमी पर नाग देवता पूजन का शुभ मुहूर्त, अष्टनाग मंत्र एवं कुंडली के कालसर्प/राहु-केतु दोष शांति के अचूक उपाय ➔',
+    title: 'नाग पंचमी 2026-27 (17 अगस्त) — पूजा मुहूर्त व कालसर्प उपाय',
+    desc: 'नाग पंचमी 2026 (17 अगस्त) व 2027 (07 अगस्त) का प्रातः पूजा शुभ मुहूर्त (05:51 से 08:29), नाग देवता पूजन सामग्री, कालसर्प दोष उपाय व मंत्र ➔',
     cardTitle: 'NAG PANCHAMI PUJA & KAALSARP UPAY',
     cardSub: 'Shravan Nag Panchami Muhurat • Ashta Nag Pujan • Kaalsarp Shanti',
     shortCard: 'NAG PANCHAMI\nPuja Time & Kaalsarp Upay',
@@ -1152,8 +1155,8 @@ const ROUTE_DATA = {
     accent: '#10b981'
   },
   '/raksha-bandhan-shubh-muhurat-bhadra-kaal': {
-    title: 'रक्षाबंधन राखी बांधने का भद्रा-रहित शुभ मुहूर्त व वैदिक रक्षासूत्र मंत्र | पण्डित जी ऑनलाइन',
-    desc: 'रक्षाबंधन पर भद्रा काल का सटीक समय और भद्रा समाप्ति के बाद भाई को राखी बांधने का अपराह्न व प्रदोष शुभ मुहूर्त — अभी देखें ➔',
+    title: 'रक्षाबंधन 2026-27 (28 अगस्त) — राखी बांधने का भद्रा रहित समय',
+    desc: 'रक्षाबंधन (राखी) 2026 (28 अगस्त) व 2027 (17 अगस्त) का भद्रा रहित राखी बांधने का शुभ मुहूर्त (05:57 से रात्रि 09:18), थाली विधि व मंत्र देखें ➔',
     cardTitle: 'RAKSHA BANDHAN SHUBH MUHURAT',
     cardSub: 'Bhadra-Free Rakhi Tying Time • Aparahna Muhurat • Raksha Mantra',
     shortCard: 'RAKSHA BANDHAN\nBhadra-Free Rakhi Time',
@@ -1162,8 +1165,8 @@ const ROUTE_DATA = {
     accent: '#ec4899'
   },
   '/shri-krishna-janmashtami-puja-muhurat': {
-    title: 'श्रीकृष्ण जन्माष्टमी निशीथ काल पूजा मुहूर्त, रोहिणी नक्षत्र व व्रत विधि | पण्डित जी ऑनलाइन',
-    desc: 'श्रीकृष्ण जन्माष्टमी (स्मार्त व वैष्णव) निशीथ काल लड्डू गोपाल अभिषेक का शुभ मुहूर्त, पंचामृत स्नान विधि व पारण समय ➔',
+    title: 'कृष्ण जन्माष्टमी 2026-27 (4 सितंबर) — निशीथ काल पूजा मुहूर्त',
+    desc: 'श्री कृष्ण जन्माष्टमी 2026 (04 सितंबर) व 2027 (25 अगस्त) का निशीथ काल जन्मोत्सव पूजा मुहूर्त (रात्रि 11:57 से 12:43), छप्पन भोग व विधि ➔',
     cardTitle: 'KRISHNA JANMASHTAMI PUJA MUHURAT',
     cardSub: 'Midnight Nishita Kaal Puja • Rohini Nakshatra • Bal Gopal Abhishek',
     shortCard: 'JANMASHTAMI\nNishita Kaal Puja Time',
@@ -1172,8 +1175,8 @@ const ROUTE_DATA = {
     accent: '#38bdf8'
   },
   '/ganesh-chaturthi-sthapana-shubh-muhurat': {
-    title: 'गणेश चतुर्थी मूर्ति स्थापना शुभ मुहूर्त, षोडशोपचार पूजा व चंद्र दर्शन निषेध | पण्डित जी ऑनलाइन',
-    desc: 'भाद्रपद गणेश चतुर्थी पर गणपति बप्पा की मूर्ति स्थापना का मध्याह्न शुभ मुहूर्त, 21 दूर्वा अर्पण विधि व कलंक चतुर्थी समय ➔',
+    title: 'गणेश चतुर्थी 2026-27 (14 सितंबर) — मूर्ति स्थापना शुभ मुहूर्त',
+    desc: 'श्री गणेश चतुर्थी 2026 (14-25 सितंबर) व 2027 (04-14 सितंबर) का मध्याह्न गणेश स्थापना मुहूर्त (11:01 से 01:29), विसर्जन तिथि, सामग्री व मंत्र ➔',
     cardTitle: 'GANESH CHATURTHI STHAPANA MUHURAT',
     cardSub: 'Madhyahna Ganpati Sthapana • Shodashopachar Puja • Visarjan Rule',
     shortCard: 'GANESH CHATURTHI\nSthapana Shubh Muhurat',
@@ -1182,8 +1185,8 @@ const ROUTE_DATA = {
     accent: '#f97316'
   },
   '/sharad-purnima-kheer-amrit-snan-muhurat': {
-    title: 'शरद पूर्णिमा (कोजागरी) चंद्रोदय समय, खीर रखने का मुहूर्त व लक्ष्मी पूजा | पण्डित जी ऑनलाइन',
-    desc: 'शरद पूर्णिमा की सोलह कलाओं वाली अमृत वर्षा रात्रि में चंद्रमा को अर्घ्य देने, चांदनी में खीर रखने व कोजागरी लक्ष्मी पूजा का शुभ मुहूर्त ➔',
+    title: 'शरद पूर्णिमा 2026-27 (25 अक्टूबर) — चंद्रोदय व खीर अमृत समय',
+    desc: 'शरद (कोजागरी) पूर्णिमा 2026 (25 अक्टूबर) व 2027 (15 अक्टूबर) का चंद्रोदय समय (सायं 05:18), रात्रि में खीर रखने का मुहूर्त व लक्ष्मी पूजा विधि ➔',
     cardTitle: 'SHARAD PURNIMA CHANDRODAYA TIME',
     cardSub: 'Amrit Kheer Muhurat • 16 Kala Moonrise • Kojagari Laxmi Puja',
     shortCard: 'SHARAD PURNIMA\nMoonrise & Kheer Muhurat',
@@ -1192,8 +1195,8 @@ const ROUTE_DATA = {
     accent: '#fbbf24'
   },
   '/karwa-chauth-puja-vidhi-chandrama-arghya-time': {
-    title: 'करवा चौथ पूजा शुभ मुहूर्त, शहर अनुसार चंद्रोदय (चांद निकलने का) समय व कथा | पण्डित जी ऑनलाइन',
-    desc: 'करवा चौथ पर चौथ माता पूजन का प्रदोष शुभ मुहूर्त, भद्रा-रहित कथा समय और आज रात चांद निकलने (चंद्रोदय अर्घ्य) का सटीक समय ➔',
+    title: 'करवा चौथ 2026-27 (29 अक्टूबर) — पूजा मुहूर्त व चंद्रोदय समय',
+    desc: 'करवा चौथ 2026 (29 अक्टूबर) व 2027 (18 अक्टूबर) का संध्या पूजा शुभ मुहूर्त (सायं 05:35 से 06:52), चंद्रोदय अर्घ्य समय, सरगी, कथा व विधि देखें ➔',
     cardTitle: 'KARWA CHAUTH MOONRISE & PUJA TIME',
     cardSub: 'Pradosh Kaal Karwa Puja • Moonrise Arghya Time • Vrat Katha',
     shortCard: 'KARWA CHAUTH\nChandrodaya & Puja Time',
@@ -1202,8 +1205,8 @@ const ROUTE_DATA = {
     accent: '#f43f5e'
   },
   '/diwali-laxmi-puja-shubh-muhurat-vidhi': {
-    title: 'दिवाली लक्ष्मी-गणेश पूजा शुभ मुहूर्त (प्रदोष, वृषभ व सिंह लग्न) एवं विधि | पण्डित जी ऑनलाइन',
-    desc: 'दीपावली पर गृहस्थों व व्यापारियों के लिए प्रदोष काल, स्थिर वृषभ लग्न व निशीथ सिंह लग्न में महालक्ष्मी-गणेश व कुबेर पूजन का शुभ मुहूर्त ➔',
+    title: 'दीपावली 2026-27 (8 नवंबर) — लक्ष्मी पूजा प्रदोष व स्थिर लग्न',
+    desc: 'दीपावली महालक्ष्मी पूजन 2026 (08 नवंबर) व 2027 (29 अक्टूबर) का प्रदोष व वृषभ स्थिर लग्न मुहूर्त (सायं 05:54 से 07:50), सामग्री व विधि ➔',
     cardTitle: 'DIWALI MAHALAXMI PUJA MUHURAT',
     cardSub: 'Pradosh Kaal & Vrishabh Lagna • Kuber & Bahi-Khata Puja Vidhi',
     shortCard: 'DIWALI LAXMI PUJA\nVrishabh Lagna Muhurat',
@@ -1212,8 +1215,8 @@ const ROUTE_DATA = {
     accent: '#eab308'
   },
   '/chhath-puja-arghya-surya-time-vidhi': {
-    title: 'छठ पूजा नहाय-खाय, खरना, संध्या व उषा अर्घ्य (सूर्योदय-सूर्यास्त) समय | पण्डित जी ऑनलाइन',
-    desc: 'महापर्व छठ पूजा के चारों दिनों (नहाय-खाय, खरना, संध्या डूबते सूर्य अर्घ्य व सप्तमी उगते सूर्य अर्घ्य) का सटीक सूर्योदय-सूर्यास्त समय व व्रत विधि ➔',
+    title: 'छठ पूजा 2026-27 (13-16 नवंबर) — संध्या व प्रातः सूर्य अर्घ्य',
+    desc: 'छठ महापर्व 2026 (13-16 नवंबर, मुख्य अर्घ्य 15 नव.) व 2027 (02-05 नव.) का संध्या सूर्यास्त अर्घ्य समय (05:24), नहाय-खाय, खरना व विधि ➔',
     cardTitle: 'CHHATH PUJA SURYA ARGHYA TIMINGS',
     cardSub: 'Nahay-Khay & Kharna • Sandhya & Usha Surya Arghya • Chhathi Maiya',
     shortCard: 'CHHATH PUJA\nSurya Arghya & Vrat Vidhi',
