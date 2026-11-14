@@ -3209,6 +3209,53 @@ ${itemsXml}
     return Response.redirect(rasterMirrors[0], 302);
   }
 
+  // 4B. Binary PDF attachment download endpoint (/api/pdf-download) for Android/iOS browsers & WebViews
+  if (pathname === '/api/pdf-download' && request.method === 'POST') {
+    try {
+      const contentType = (request.headers.get('content-type') || '').toLowerCase();
+      let rawFilename = 'PanditJiOnline_Vedic_Patrika.pdf';
+      let rawBase64 = '';
+      if (contentType.includes('application/json')) {
+        const bodyJson = await request.json();
+        rawFilename = String(bodyJson?.filename || rawFilename);
+        rawBase64 = String(bodyJson?.base64 || '');
+        if (!url.searchParams.get('direct')) {
+          return new Response(JSON.stringify({ ok: false, edgeDirectFormRequired: true }), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' }
+          });
+        }
+      } else {
+        const bodyText = await request.text();
+        const params = new URLSearchParams(bodyText);
+        rawFilename = params.get('filename') || rawFilename;
+        rawBase64 = params.get('base64') || '';
+      }
+      const safeFilename =
+        rawFilename
+          .replace(/[^\x20-\x7E]/g, '')
+          .replace(/[^A-Za-z0-9_.-]/g, '_')
+          .replace(/_+/g, '_')
+          .replace(/\.pdf$/i, '') + '.pdf';
+      const cleanB64 = rawBase64.includes(',') ? rawBase64.split(',')[1] : rawBase64;
+      const binStr = atob(cleanB64);
+      const bytes = new Uint8Array(binStr.length);
+      for (let i = 0; i < binStr.length; i++) {
+        bytes[i] = binStr.charCodeAt(i);
+      }
+      return new Response(bytes, {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/octet-stream',
+          'Content-Disposition': `attachment; filename="${safeFilename}"`,
+          'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate'
+        }
+      });
+    } catch {
+      return new Response('PDF stream error', { status: 400 });
+    }
+  }
+
   // 5. Explicit /api/social-preview endpoint
   if (pathname === '/api/social-preview') {
     const targetPath = url.searchParams.get('path') || '/';
