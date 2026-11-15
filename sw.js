@@ -1,6 +1,6 @@
-// Pandit Ji Online — Lightweight Service Worker & Instant Engine Cache (v91)
+// Pandit Ji Online — Lightweight Service Worker & Instant Engine Cache (v92)
 // Designed for instant mobile copy-paste on GitHub (~75 lines, ~2.5 KB)
-const CACHE_NAME = 'panditji-v91';
+const CACHE_NAME = 'panditji-v92';
 const PRECACHE_ASSETS = [
   '/manifest.json',
   '/favicon.ico',
@@ -53,7 +53,8 @@ self.addEventListener('fetch', (event) => {
   const isVersionedEngine =
     url.pathname === '/app-engine.txt' ||
     url.pathname === '/app-engine.html' ||
-    url.pathname === '/panditji-app.bundle.js';
+    url.pathname === '/panditji-app.bundle.js' ||
+    url.pathname === '/shell-runtime.js';
 
   if (isVersionedEngine) {
     event.respondWith(
