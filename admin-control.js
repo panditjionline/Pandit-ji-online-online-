@@ -14,8 +14,8 @@
   var ABACUS_THEME_GET_URL = 'https://abacus.jasoncameron.dev/get/panditjionline.online/admin_theme_sync_v2';
   var ABACUS_THEME_SET_URL = 'https://abacus.jasoncameron.dev/set/panditjionline.online/admin_theme_sync_v2';
   var ABACUS_THEME_ADMIN_TOKEN = '1a94bb8a-98bc-4c03-8d0b-5194aecfcbbd';
-  var NTFY_THEME_TOPIC_URL = 'https://ntfy.sh/pj_theme_sync_8958499979_v1';
-  var NTFY_THEME_POLL_URL = 'https://ntfy.sh/pj_theme_sync_8958499979_v1/json?poll=1&since=72h';
+  var NTFY_THEME_TOPIC_URL = 'https://ntfy.sh/pj_festive_live_v3_8958499979';
+  var NTFY_THEME_POLL_URL = 'https://ntfy.sh/pj_festive_live_v3_8958499979/json?poll=1&since=72h';
 
   var FESTIVE_STORAGE_KEY = 'panditji_admin_festive_override_v1';
   var FESTIVE_LEGACY_KEY = 'panditji_admin_festive_override';
@@ -70,13 +70,13 @@
   "version": "20.3.0",
   "adminPhone": "8958499979",
   "festiveTheme": {
-    "mode": "auto",
-    "manualFestivalId": null,
+    "mode": "manual",
+    "manualFestivalId": "chhath-puja",
     "enableDayOfWeekTheme": true,
-    "lightsMode": "spectrum_line",
+    "lightsMode": "royal_jhalar",
     "jhalarAnimation": "running_chase",
     "toranStyle": "marigold_mango",
-    "cornerLadiMode": "off",
+    "cornerLadiMode": "auto",
     "autoPushpVarsha": true,
     "enableGlowingHairline": true,
     "hairlineIntensity": "medium",
@@ -84,49 +84,49 @@
     "hairlineSpeed": "normal",
     "showToran": true,
     "sandhyaAutoGlow": true,
-    "updatedAt": 1794748364145,
+    "updatedAt": 1794750000000,
     "customBadgeHi": "",
     "customGreetingHi": "",
     "customSubtitleHi": "",
-    "syncCode": 6753031982751560,
+    "syncCode": 6761282450751360,
     "themeSnapshot": {
       "id": "chhath-puja",
       "isDefaultAsIs": false,
-      "lightsMode": "spectrum_line",
+      "lightsMode": "royal_jhalar",
       "jhalarAnimation": "running_chase",
       "toranStyle": "marigold_mango",
-      "cornerLadiMode": "off",
+      "cornerLadiMode": "auto",
       "showToran": true,
-      "icon": "☀️",
-      "badge": "४-दिवसीय सूर्य उपासना",
-      "badgeEn": "Chhath Mahaparv",
-      "fullBadge": "४-दिवसीय सूर्य उपासना • नहाय-खाय, खरना, संध्या अर्घ्य एवं उषा अर्घ्य",
-      "name": "लोकआस्था का महापर्व छठ पूजा (सूर्य षष्ठी)",
-      "nameEn": "Chhath Mahaparv (Nahay Khay to Usha Arghya)",
-      "sub": "लोकआस्था के महापर्व छठ पूजा की हार्दिक शुभकामनाएं! भगवान भास्कर एवं छठी मैया आपके परिवार को सुख-समृद्धि व संतान सुख दें",
-      "greeting": "लोकआस्था के महापर्व छठ पूजा की हार्दिक शुभकामनाएं! भगवान भास्कर एवं छठी मैया आपके परिवार को सुख-समृद्धि व संतान सुख दें",
-      "subtitle": "आज के सूर्योदय व सूर्यास्त का सटीक अर्घ्य समय हमारे लाइव दृक् पंचांग में अपने शहर के अनुसार देखें",
-      "mantra": "ॐ घृणि सूर्याय नमः ॥ ॐ आदित्याय विद्महे दिवाकराय धीमहि तन्नो सूर्यः प्रचोदयात् ॥",
-      "cta": "सूर्यास्त व सूर्योदय अर्घ्य समय देखें",
+      "icon": "🌅",
+      "badge": "छठ महापर्व",
+      "badgeEn": "Chhath Puja",
+      "fullBadge": "छठ महापर्व • कार्तिक शुक्ल षष्ठी — भगवान सूर्य व छठी मैया अर्घ्य",
+      "name": "सूर्य षष्ठी — लोक आस्था का महापर्व छठ पूजा",
+      "nameEn": "Chhath Mahaparv (Surya Shashthi)",
+      "sub": "छठ महापर्व की हार्दिक शुभकामनाएं — भगवान भास्कर और छठी मैया आपके परिवार को सुख, आरोग्य और समृद्धि प्रदान करें",
+      "greeting": "छठ महापर्व की हार्दिक शुभकामनाएं — भगवान भास्कर और छठी मैया आपके परिवार को सुख, आरोग्य और समृद्धि प्रदान करें",
+      "subtitle": "अस्ताचलगामी एवं उदीयमान सूर्य देव को पावन अर्घ्य एवं संतान-परिवार आरोग्य कामना",
+      "mantra": "ॐ घृणिः सूर्याय नमः • जय छठी मैया ॥",
+      "cta": "आज का सूर्योदय व सूर्यास्त समय",
       "ctaTab": "panchang",
-      "color": "#b45309",
-      "accent": "#facc15",
-      "hBg": "linear-gradient(180deg,#3d1702f5,#2e0c02f5,#140501f5)",
-      "hBdr": "#b4530973",
-      "hShd": "0 6px 26px rgba(250, 204, 21, 0.45)",
+      "color": "#ea580c",
+      "accent": "#fde047",
+      "hBg": "linear-gradient(180deg,#2b1005f5,#1b0a03f5,#0e0501f5)",
+      "hBdr": "#ea580c73",
+      "hShd": "0 6px 26px rgba(251, 191, 36, 0.35)",
       "tBg": "linear-gradient(90deg,rgba(29,15,5,0.92),rgba(43,22,8,0.92),rgba(29,15,5,0.92))",
       "tBdr": "rgba(180,83,9,0.4)",
       "nBg": "rgba(13,19,34,0.96)",
       "nBdr": "rgba(120,53,15,0.35)",
-      "pBg": "linear-gradient(90deg,#612104,#854d0e,#571204)",
-      "pBdr": "#b453098c",
-      "pShd": "0 12px 35px rgba(250, 204, 21, 0.45)",
+      "pBg": "linear-gradient(90deg,#3d1505,#2c0f04,#1a0902)",
+      "pBdr": "#ea580c8c",
+      "pShd": "0 12px 35px rgba(251, 191, 36, 0.35)",
       "boxBg": "rgba(15,23,42,0.85)",
       "boxBdr": "rgba(146,64,14,0.4)",
-      "bBg": "linear-gradient(0deg,#3d1702fa,#2e0c02fa,#140501fa)",
-      "bBdr": "#b453098c",
-      "sBg": "radial-gradient(circle at 50% 0%, #b4530922 0%, transparent 45%), radial-gradient(circle at 100% 25%, #facc1516 0%, transparent 35%)",
-      "updatedAt": 1794748364145
+      "bBg": "linear-gradient(0deg,#2b1005fa,#1b0a03fa,#0e0501fa)",
+      "bBdr": "#ea580c8c",
+      "sBg": "radial-gradient(circle at 50% 0%, #ea580c22 0%, transparent 45%), radial-gradient(circle at 100% 25%, #fde04716 0%, transparent 35%)",
+      "updatedAt": 1794750000000
     },
     "adminBy": "8958499979",
     "adminPhone": "8958499979"
@@ -140,7 +140,7 @@
       "AQ.Ab8••••••••keVg"
     ],
     "count": 4,
-    "updatedAt": 1794748552223
+    "updatedAt": 1794750875918
   }
 } /*__PANDITJI_EMBEDDED_ADMIN_STATE_END__*/;
 
@@ -460,11 +460,11 @@
 
   function syncFromRealtimeCloud() {
     if (typeof window.fetch !== 'function') return Promise.resolve(null);
-    if (Date.now() - Number(window.__pjLastAdminLocalActionAt || 0) < 25000) {
+    if (Date.now() - Number(window.__pjLastAdminLocalActionAt || 0) < 60000) {
       return Promise.resolve(null);
     }
 
-    // 1. Sync Festive & 7-Vaar Theme from Primary ntfy.sh JSON Stream (with timestamp protection)
+    // 1. Sync Festive & 7-Vaar Theme from Primary ntfy.sh JSON Stream (with strict timestamp protection)
     var themePromise = window
       .fetch(NTFY_THEME_POLL_URL + '&_t=' + Date.now(), { cache: 'no-store' })
       .then(function (r) {
@@ -475,7 +475,7 @@
       })
       .then(function (text) {
         if (!text) return null;
-        if (Date.now() - Number(window.__pjLastAdminLocalActionAt || 0) < 25000) return null;
+        if (Date.now() - Number(window.__pjLastAdminLocalActionAt || 0) < 60000) return null;
         var lines = text.trim().split('\n');
         var latestMsg = null;
         var latestEvtTime = 0;
@@ -510,8 +510,8 @@
           var remoteStamp = extractStamp(latestMsg.syncCode);
 
           if (
-            (localUpdated > 0 && remoteUpdated > 0 && remoteUpdated < localUpdated - 2000) ||
-            (localStamp > 0 && remoteStamp > 0 && remoteStamp < localStamp)
+            (localUpdated > 0 && (!remoteUpdated || remoteUpdated <= localUpdated + 1000)) ||
+            (localStamp > 0 && remoteStamp > 0 && remoteStamp <= localStamp)
           ) {
             return currentObj;
           }
@@ -722,22 +722,6 @@
       // ignore
     }
 
-    var abacusReq = window
-      .fetch(
-        ABACUS_THEME_SET_URL +
-          '?token=' +
-          ABACUS_THEME_ADMIN_TOKEN +
-          '&value=' +
-          stateCode,
-        {
-          method: 'POST',
-          headers: {
-            Authorization: 'Bearer ' + ABACUS_THEME_ADMIN_TOKEN
-          }
-        }
-      )
-      .catch(function () {});
-
     var ntfyReq = window
       .fetch(NTFY_THEME_TOPIC_URL, {
         method: 'POST',
@@ -756,7 +740,7 @@
       })
       .catch(function () {});
 
-    return Promise.allSettled([abacusReq, ntfyReq, serverReq]).then(function () {
+    return Promise.allSettled([ntfyReq, serverReq]).then(function () {
       return pushConfigToGitHubRepo({ festiveTheme: payload }, adminPhone);
     });
   }
@@ -845,7 +829,7 @@
   applyEmbeddedDefaultsIfNewer();
 
   syncFromRealtimeCloud();
-  window.setInterval(syncFromRealtimeCloud, 4000);
+  window.setInterval(syncFromRealtimeCloud, 20000);
   window.addEventListener('focus', syncFromRealtimeCloud);
   document.addEventListener('visibilitychange', function () {
     if (document.visibilityState === 'visible') {

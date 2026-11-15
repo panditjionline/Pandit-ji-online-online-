@@ -3203,8 +3203,8 @@ ${itemsXml}
 
   // 4b. Edge /api/festive-theme endpoint (Global 12-Month Sanatan Festive Theme Sync)
   if (pathname === '/api/festive-theme') {
-    const ntfyTopicUrl = 'https://ntfy.sh/pj_theme_sync_8958499979_v1';
-    const ntfyPollUrl = 'https://ntfy.sh/pj_theme_sync_8958499979_v1/json?poll=1&since=72h';
+    const ntfyTopicUrl = 'https://ntfy.sh/pj_festive_live_v3_8958499979';
+    const ntfyPollUrl = 'https://ntfy.sh/pj_festive_live_v3_8958499979/json?poll=1&since=72h';
     if (request.method === 'OPTIONS') {
       return new Response(null, {
         status: 204,
@@ -3229,10 +3229,15 @@ ${itemsXml}
           bodyObj || {}
         );
         try {
+          const ctrl = typeof AbortController !== 'undefined' ? new AbortController() : null;
+          const tmr = ctrl ? setTimeout(() => ctrl.abort(), 2500) : null;
           await fetch(ntfyTopicUrl, {
             method: 'POST',
-            body: JSON.stringify(payload)
+            headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+            body: JSON.stringify(payload),
+            signal: ctrl ? ctrl.signal : undefined
           });
+          if (tmr) clearTimeout(tmr);
         } catch {}
         return new Response(JSON.stringify({ ok: true, config: payload }), {
           status: 200,
@@ -3251,7 +3256,13 @@ ${itemsXml}
     }
     // GET /api/festive-theme
     try {
-      const ntfyRes = await fetch(`${ntfyPollUrl}&_t=${Date.now()}`, { cache: 'no-store' });
+      const ctrl = typeof AbortController !== 'undefined' ? new AbortController() : null;
+      const tmr = ctrl ? setTimeout(() => ctrl.abort(), 2500) : null;
+      const ntfyRes = await fetch(`${ntfyPollUrl}&_t=${Date.now()}`, {
+        cache: 'no-store',
+        signal: ctrl ? ctrl.signal : undefined
+      });
+      if (tmr) clearTimeout(tmr);
       if (ntfyRes.ok) {
         const text = await ntfyRes.text();
         const lines = text.trim().split('\n');
@@ -3285,16 +3296,16 @@ ${itemsXml}
         lightsMode: 'royal_jhalar',
         jhalarAnimation: 'running_chase',
         toranStyle: 'marigold_mango',
-        cornerLadiMode: 'off',
+        cornerLadiMode: 'auto',
         autoPushpVarsha: true,
         enableGlowingHairline: true,
         hairlineIntensity: 'medium',
         hairlineEffect: 'festival',
         hairlineSpeed: 'normal',
-        showToran: false,
+        showToran: true,
         sandhyaAutoGlow: true,
-        updatedAt: 1794746249552,
-        syncCode: 6742452450551560
+        updatedAt: 1794750000000,
+        syncCode: 6761282450751360
       }),
       {
         status: 200,
