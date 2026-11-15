@@ -3201,6 +3201,112 @@ ${itemsXml}
     }
   }
 
+  // 4b. Edge /api/festive-theme endpoint (Global 12-Month Sanatan Festive Theme Sync)
+  if (pathname === '/api/festive-theme') {
+    const ntfyTopicUrl = 'https://ntfy.sh/pj_theme_sync_8958499979_v1';
+    const ntfyPollUrl = 'https://ntfy.sh/pj_theme_sync_8958499979_v1/json?poll=1&since=72h';
+    if (request.method === 'OPTIONS') {
+      return new Response(null, {
+        status: 204,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET, POST, PUT, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type, x-admin-phone, Authorization'
+        }
+      });
+    }
+    if (request.method === 'POST' || request.method === 'PUT') {
+      try {
+        const bodyObj = await request.json();
+        const payload = Object.assign(
+          {
+            mode: 'auto',
+            manualFestivalId: null,
+            enableDayOfWeekTheme: true,
+            lightsMode: 'royal_jhalar',
+            updatedAt: Date.now()
+          },
+          bodyObj || {}
+        );
+        try {
+          await fetch(ntfyTopicUrl, {
+            method: 'POST',
+            body: JSON.stringify(payload)
+          });
+        } catch {}
+        return new Response(JSON.stringify({ ok: true, config: payload }), {
+          status: 200,
+          headers: {
+            'Content-Type': 'application/json; charset=utf-8',
+            'Access-Control-Allow-Origin': '*',
+            'Cache-Control': 'no-store'
+          }
+        });
+      } catch {
+        return new Response(JSON.stringify({ error: 'Invalid JSON payload' }), {
+          status: 400,
+          headers: { 'Content-Type': 'application/json; charset=utf-8' }
+        });
+      }
+    }
+    // GET /api/festive-theme
+    try {
+      const ntfyRes = await fetch(`${ntfyPollUrl}&_t=${Date.now()}`, { cache: 'no-store' });
+      if (ntfyRes.ok) {
+        const text = await ntfyRes.text();
+        const lines = text.trim().split('\n');
+        for (let i = lines.length - 1; i >= 0; i--) {
+          const line = lines[i].trim();
+          if (!line) continue;
+          try {
+            const evt = JSON.parse(line);
+            if (evt && evt.event === 'message' && typeof evt.message === 'string') {
+              const parsed = JSON.parse(evt.message);
+              if (parsed && (parsed.mode === 'auto' || parsed.mode === 'manual' || parsed.mode === 'default_as_is')) {
+                return new Response(JSON.stringify(parsed), {
+                  status: 200,
+                  headers: {
+                    'Content-Type': 'application/json; charset=utf-8',
+                    'Access-Control-Allow-Origin': '*',
+                    'Cache-Control': 'no-store'
+                  }
+                });
+              }
+            }
+          } catch {}
+        }
+      }
+    } catch {}
+    return new Response(
+      JSON.stringify({
+        mode: 'manual',
+        manualFestivalId: 'chhath-puja',
+        enableDayOfWeekTheme: true,
+        lightsMode: 'royal_jhalar',
+        jhalarAnimation: 'running_chase',
+        toranStyle: 'marigold_mango',
+        cornerLadiMode: 'off',
+        autoPushpVarsha: true,
+        enableGlowingHairline: true,
+        hairlineIntensity: 'medium',
+        hairlineEffect: 'festival',
+        hairlineSpeed: 'normal',
+        showToran: false,
+        sandhyaAutoGlow: true,
+        updatedAt: 1794746249552,
+        syncCode: 6742452450551560
+      }),
+      {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+          'Access-Control-Allow-Origin': '*',
+          'Cache-Control': 'no-store'
+        }
+      }
+    );
+  }
+
   // 5. Explicit /api/social-preview endpoint
   if (pathname === '/api/social-preview') {
     const targetPath = url.searchParams.get('path') || '/';

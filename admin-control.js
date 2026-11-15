@@ -15,6 +15,7 @@
   var ABACUS_THEME_SET_URL = 'https://abacus.jasoncameron.dev/set/panditjionline.online/admin_theme_sync_v2';
   var ABACUS_THEME_ADMIN_TOKEN = '1a94bb8a-98bc-4c03-8d0b-5194aecfcbbd';
   var NTFY_THEME_TOPIC_URL = 'https://ntfy.sh/pj_theme_sync_8958499979_v1';
+  var NTFY_THEME_POLL_URL = 'https://ntfy.sh/pj_theme_sync_8958499979_v1/json?poll=1&since=72h';
 
   var FESTIVE_STORAGE_KEY = 'panditji_admin_festive_override_v1';
   var FESTIVE_LEGACY_KEY = 'panditji_admin_festive_override';
@@ -72,7 +73,7 @@
     "mode": "auto",
     "manualFestivalId": null,
     "enableDayOfWeekTheme": true,
-    "lightsMode": "royal_jhalar",
+    "lightsMode": "spectrum_line",
     "jhalarAnimation": "running_chase",
     "toranStyle": "marigold_mango",
     "cornerLadiMode": "off",
@@ -81,13 +82,54 @@
     "hairlineIntensity": "medium",
     "hairlineEffect": "festival",
     "hairlineSpeed": "normal",
-    "showToran": false,
+    "showToran": true,
     "sandhyaAutoGlow": true,
-    "updatedAt": 1794486679746,
+    "updatedAt": 1794748364145,
     "customBadgeHi": "",
     "customGreetingHi": "",
     "customSubtitleHi": "",
-    "syncCode": 4774721982551560
+    "syncCode": 6753031982751560,
+    "themeSnapshot": {
+      "id": "chhath-puja",
+      "isDefaultAsIs": false,
+      "lightsMode": "spectrum_line",
+      "jhalarAnimation": "running_chase",
+      "toranStyle": "marigold_mango",
+      "cornerLadiMode": "off",
+      "showToran": true,
+      "icon": "☀️",
+      "badge": "४-दिवसीय सूर्य उपासना",
+      "badgeEn": "Chhath Mahaparv",
+      "fullBadge": "४-दिवसीय सूर्य उपासना • नहाय-खाय, खरना, संध्या अर्घ्य एवं उषा अर्घ्य",
+      "name": "लोकआस्था का महापर्व छठ पूजा (सूर्य षष्ठी)",
+      "nameEn": "Chhath Mahaparv (Nahay Khay to Usha Arghya)",
+      "sub": "लोकआस्था के महापर्व छठ पूजा की हार्दिक शुभकामनाएं! भगवान भास्कर एवं छठी मैया आपके परिवार को सुख-समृद्धि व संतान सुख दें",
+      "greeting": "लोकआस्था के महापर्व छठ पूजा की हार्दिक शुभकामनाएं! भगवान भास्कर एवं छठी मैया आपके परिवार को सुख-समृद्धि व संतान सुख दें",
+      "subtitle": "आज के सूर्योदय व सूर्यास्त का सटीक अर्घ्य समय हमारे लाइव दृक् पंचांग में अपने शहर के अनुसार देखें",
+      "mantra": "ॐ घृणि सूर्याय नमः ॥ ॐ आदित्याय विद्महे दिवाकराय धीमहि तन्नो सूर्यः प्रचोदयात् ॥",
+      "cta": "सूर्यास्त व सूर्योदय अर्घ्य समय देखें",
+      "ctaTab": "panchang",
+      "color": "#b45309",
+      "accent": "#facc15",
+      "hBg": "linear-gradient(180deg,#3d1702f5,#2e0c02f5,#140501f5)",
+      "hBdr": "#b4530973",
+      "hShd": "0 6px 26px rgba(250, 204, 21, 0.45)",
+      "tBg": "linear-gradient(90deg,rgba(29,15,5,0.92),rgba(43,22,8,0.92),rgba(29,15,5,0.92))",
+      "tBdr": "rgba(180,83,9,0.4)",
+      "nBg": "rgba(13,19,34,0.96)",
+      "nBdr": "rgba(120,53,15,0.35)",
+      "pBg": "linear-gradient(90deg,#612104,#854d0e,#571204)",
+      "pBdr": "#b453098c",
+      "pShd": "0 12px 35px rgba(250, 204, 21, 0.45)",
+      "boxBg": "rgba(15,23,42,0.85)",
+      "boxBdr": "rgba(146,64,14,0.4)",
+      "bBg": "linear-gradient(0deg,#3d1702fa,#2e0c02fa,#140501fa)",
+      "bBdr": "#b453098c",
+      "sBg": "radial-gradient(circle at 50% 0%, #b4530922 0%, transparent 45%), radial-gradient(circle at 100% 25%, #facc1516 0%, transparent 35%)",
+      "updatedAt": 1794748364145
+    },
+    "adminBy": "8958499979",
+    "adminPhone": "8958499979"
   },
   "geminiKeysPool": {
     "keys": [],
@@ -98,7 +140,7 @@
       "AQ.Ab8••••••••keVg"
     ],
     "count": 4,
-    "updatedAt": 1794486884263
+    "updatedAt": 1794748552223
   }
 } /*__PANDITJI_EMBEDDED_ADMIN_STATE_END__*/;
 
@@ -408,58 +450,107 @@
     return cleaned;
   }
 
+  function extractStamp(code) {
+    var s = String(code || '').trim();
+    if (s.length === 16 && /^\d{16}$/.test(s)) {
+      return parseInt(s.slice(0, 6), 10) || 0;
+    }
+    return 0;
+  }
+
   function syncFromRealtimeCloud() {
     if (typeof window.fetch !== 'function') return Promise.resolve(null);
-    if (Date.now() - Number(window.__pjLastAdminLocalActionAt || 0) < 15000) {
+    if (Date.now() - Number(window.__pjLastAdminLocalActionAt || 0) < 25000) {
       return Promise.resolve(null);
     }
 
-    // 1. Sync Festive & 7-Vaar Theme from Zero-Firebase Abacus v2 Cloud State
+    // 1. Sync Festive & 7-Vaar Theme from Primary ntfy.sh JSON Stream (with timestamp protection)
     var themePromise = window
-      .fetch(ABACUS_THEME_GET_URL + '?t=' + Date.now(), { cache: 'no-store' })
+      .fetch(NTFY_THEME_POLL_URL + '&_t=' + Date.now(), { cache: 'no-store' })
       .then(function (r) {
-        return r.ok ? r.json() : null;
+        return r.ok ? r.text() : '';
       })
       .catch(function () {
-        return null;
+        return '';
       })
-      .then(function (abData) {
-        if (!abData || typeof abData.value !== 'number' || abData.value <= 0) return null;
-        if (Date.now() - Number(window.__pjLastAdminLocalActionAt || 0) < 15000) return null;
-        var decoded = decodeAbacusState(abData.value);
-        if (!decoded) return null;
+      .then(function (text) {
+        if (!text) return null;
+        if (Date.now() - Number(window.__pjLastAdminLocalActionAt || 0) < 25000) return null;
+        var lines = text.trim().split('\n');
+        var latestMsg = null;
+        var latestEvtTime = 0;
+        for (var i = lines.length - 1; i >= 0; i--) {
+          var line = lines[i].trim();
+          if (!line) continue;
+          try {
+            var evt = JSON.parse(line);
+            if (evt && evt.event === 'message' && typeof evt.message === 'string') {
+              var parsed = JSON.parse(evt.message);
+              if (
+                parsed &&
+                (parsed.mode === 'auto' || parsed.mode === 'manual' || parsed.mode === 'default_as_is')
+              ) {
+                latestMsg = parsed;
+                latestEvtTime = Number(evt.time) ? Number(evt.time) * 1000 : 0;
+                break;
+              }
+            }
+          } catch (e) {
+            // continue
+          }
+        }
+        if (!latestMsg) return null;
         try {
           var savedCode = Number(window.localStorage.getItem(CLOUD_THEME_CODE_KEY) || '0');
           var currentRaw = window.localStorage.getItem(FESTIVE_STORAGE_KEY);
           var currentObj = currentRaw ? JSON.parse(currentRaw) : null;
+          var localUpdated = Number((currentObj && currentObj.updatedAt) || 0);
+          var remoteUpdated = Number(latestMsg.updatedAt || latestEvtTime || 0);
+          var localStamp = extractStamp(savedCode || (currentObj && currentObj.syncCode));
+          var remoteStamp = extractStamp(latestMsg.syncCode);
+
+          if (
+            (localUpdated > 0 && remoteUpdated > 0 && remoteUpdated < localUpdated - 2000) ||
+            (localStamp > 0 && remoteStamp > 0 && remoteStamp < localStamp)
+          ) {
+            return currentObj;
+          }
+
           var isChanged =
-            decoded.syncCode !== savedCode ||
+            (latestMsg.syncCode && Number(latestMsg.syncCode) !== savedCode) ||
             !currentObj ||
-            decoded.mode !== currentObj.mode ||
-            (decoded.manualFestivalId || null) !== (currentObj.manualFestivalId || null) ||
-            (decoded.lightsMode || 'royal_jhalar') !== (currentObj.lightsMode || 'royal_jhalar') ||
-            (decoded.jhalarAnimation || 'twinkle') !== (currentObj.jhalarAnimation || 'twinkle') ||
-            (decoded.toranStyle || 'marigold_mango') !== (currentObj.toranStyle || 'marigold_mango') ||
-            (decoded.cornerLadiMode || 'auto') !== (currentObj.cornerLadiMode || 'auto') ||
-            Boolean(decoded.autoPushpVarsha) !== Boolean(currentObj.autoPushpVarsha) ||
-            Boolean(decoded.showToran !== false) !== Boolean(currentObj.showToran !== false) ||
-            Boolean(decoded.enableGlowingHairline !== false) !== Boolean(currentObj.enableGlowingHairline !== false) ||
-            (decoded.hairlineEffect || 'rainbow') !== (currentObj.hairlineEffect || 'rainbow');
+            latestMsg.mode !== currentObj.mode ||
+            (latestMsg.manualFestivalId || null) !== (currentObj.manualFestivalId || null) ||
+            (latestMsg.lightsMode || 'royal_jhalar') !== (currentObj.lightsMode || 'royal_jhalar') ||
+            (latestMsg.jhalarAnimation || 'twinkle') !== (currentObj.jhalarAnimation || 'twinkle') ||
+            (latestMsg.toranStyle || 'marigold_mango') !== (currentObj.toranStyle || 'marigold_mango') ||
+            (latestMsg.cornerLadiMode || 'auto') !== (currentObj.cornerLadiMode || 'auto') ||
+            Boolean(latestMsg.autoPushpVarsha) !== Boolean(currentObj.autoPushpVarsha) ||
+            Boolean(latestMsg.showToran !== false) !== Boolean(currentObj.showToran !== false) ||
+            Boolean(latestMsg.enableGlowingHairline !== false) !== Boolean(currentObj.enableGlowingHairline !== false) ||
+            (latestMsg.hairlineEffect || 'rainbow') !== (currentObj.hairlineEffect || 'rainbow');
 
           if (isChanged) {
-            var merged = Object.assign({}, currentObj || {}, decoded);
+            var merged = Object.assign({}, currentObj || {}, latestMsg, {
+              updatedAt: remoteUpdated || Date.now()
+            });
+            var codeToSave = Number(merged.syncCode) || encodeAbacusState(merged);
+            merged.syncCode = codeToSave;
             var serialized = JSON.stringify(merged);
-            window.localStorage.setItem(CLOUD_THEME_CODE_KEY, String(decoded.syncCode));
+            window.localStorage.setItem(CLOUD_THEME_CODE_KEY, String(codeToSave));
             window.localStorage.setItem(FESTIVE_STORAGE_KEY, serialized);
             window.localStorage.setItem(FESTIVE_LEGACY_KEY, serialized);
-            applyThemeSnapshotToDOM(null);
+            if (merged.themeSnapshot) {
+              window.localStorage.setItem(VISUAL_CACHE_KEY, JSON.stringify(merged.themeSnapshot));
+            }
+            applyThemeSnapshotToDOM(merged.themeSnapshot || null);
             window.dispatchEvent(new CustomEvent(FESTIVE_UPDATED_EVENT, { detail: merged }));
             window.dispatchEvent(new CustomEvent(FESTIVE_UPDATED_EVENT_LEGACY, { detail: merged }));
           }
         } catch (e) {
           // ignore
         }
-        return decoded;
+        return latestMsg;
       });
 
     // 2. Sync masked key status from secure backend (/api/admin/gemini-key)
