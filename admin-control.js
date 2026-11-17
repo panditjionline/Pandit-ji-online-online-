@@ -70,9 +70,11 @@
   "version": "20.3.0",
   "adminPhone": "8958499979",
   "festiveTheme": {
-    "mode": "manual",
-    "manualFestivalId": "chhath-puja",
+    "mode": "auto",
+    "manualFestivalId": null,
     "enableDayOfWeekTheme": true,
+    "royalEngineEnabled": true,
+    "royalManualPresetId": null,
     "lightsMode": "spectrum_line",
     "jhalarAnimation": "running_chase",
     "toranStyle": "marigold_mango",
@@ -84,50 +86,11 @@
     "hairlineSpeed": "normal",
     "showToran": false,
     "sandhyaAutoGlow": true,
-    "updatedAt": 1794757016335,
+    "updatedAt": 1794903505543,
     "customBadgeHi": "",
     "customGreetingHi": "",
     "customSubtitleHi": "",
-    "syncCode": 6796282452551560,
-    "themeSnapshot": {
-      "id": "chhath-puja",
-      "isDefaultAsIs": false,
-      "lightsMode": "spectrum_line",
-      "jhalarAnimation": "running_chase",
-      "toranStyle": "marigold_mango",
-      "cornerLadiMode": "off",
-      "showToran": false,
-      "icon": "☀️",
-      "badge": "४-दिवसीय सूर्य उपासना",
-      "badgeEn": "Chhath Mahaparv",
-      "fullBadge": "४-दिवसीय सूर्य उपासना • नहाय-खाय, खरना, संध्या अर्घ्य एवं उषा अर्घ्य",
-      "name": "लोकआस्था का महापर्व छठ पूजा (सूर्य षष्ठी)",
-      "nameEn": "Chhath Mahaparv (Nahay Khay to Usha Arghya)",
-      "sub": "लोकआस्था के महापर्व छठ पूजा की हार्दिक शुभकामनाएं! भगवान भास्कर एवं छठी मैया आपके परिवार को सुख-समृद्धि व संतान सुख दें",
-      "greeting": "लोकआस्था के महापर्व छठ पूजा की हार्दिक शुभकामनाएं! भगवान भास्कर एवं छठी मैया आपके परिवार को सुख-समृद्धि व संतान सुख दें",
-      "subtitle": "आज के सूर्योदय व सूर्यास्त का सटीक अर्घ्य समय हमारे लाइव दृक् पंचांग में अपने शहर के अनुसार देखें",
-      "mantra": "ॐ घृणि सूर्याय नमः ॥ ॐ आदित्याय विद्महे दिवाकराय धीमहि तन्नो सूर्यः प्रचोदयात् ॥",
-      "cta": "सूर्यास्त व सूर्योदय अर्घ्य समय देखें",
-      "ctaTab": "panchang",
-      "color": "#b45309",
-      "accent": "#facc15",
-      "hBg": "linear-gradient(180deg,#3d1702f5,#2e0c02f5,#140501f5)",
-      "hBdr": "#b4530973",
-      "hShd": "0 6px 26px rgba(250, 204, 21, 0.45)",
-      "tBg": "linear-gradient(90deg,rgba(29,15,5,0.92),rgba(43,22,8,0.92),rgba(29,15,5,0.92))",
-      "tBdr": "rgba(180,83,9,0.4)",
-      "nBg": "rgba(13,19,34,0.96)",
-      "nBdr": "rgba(120,53,15,0.35)",
-      "pBg": "linear-gradient(90deg,#612104,#854d0e,#571204)",
-      "pBdr": "#b453098c",
-      "pShd": "0 12px 35px rgba(250, 204, 21, 0.45)",
-      "boxBg": "rgba(15,23,42,0.85)",
-      "boxBdr": "rgba(146,64,14,0.4)",
-      "bBg": "linear-gradient(0deg,#3d1702fa,#2e0c02fa,#140501fa)",
-      "bBdr": "#b453098c",
-      "sBg": "radial-gradient(circle at 50% 0%, #b4530922 0%, transparent 45%), radial-gradient(circle at 100% 25%, #facc1516 0%, transparent 35%)",
-      "updatedAt": 1794757015345
-    },
+    "syncCode": 7526481982151560,
     "adminBy": "8958499979",
     "adminPhone": "8958499979"
   },
@@ -140,7 +103,7 @@
       "AQ.Ab8••••••••keVg"
     ],
     "count": 4,
-    "updatedAt": 1794839846865
+    "updatedAt": 1794905725286
   }
 } /*__PANDITJI_EMBEDDED_ADMIN_STATE_END__*/;
 
@@ -404,13 +367,13 @@
           var serialized = JSON.stringify(EMBEDDED_ADMIN_STATE.festiveTheme);
           window.localStorage.setItem(FESTIVE_STORAGE_KEY, serialized);
           window.localStorage.setItem(FESTIVE_LEGACY_KEY, serialized);
-          if (EMBEDDED_ADMIN_STATE.festiveTheme.themeSnapshot) {
+          if (EMBEDDED_ADMIN_STATE.festiveTheme.mode === manual && EMBEDDED_ADMIN_STATE.festiveTheme.themeSnapshot) {
             window.localStorage.setItem(
               VISUAL_CACHE_KEY,
               JSON.stringify(EMBEDDED_ADMIN_STATE.festiveTheme.themeSnapshot)
             );
+            applyThemeSnapshotToDOM(EMBEDDED_ADMIN_STATE.festiveTheme.themeSnapshot);
           }
-          applyThemeSnapshotToDOM(EMBEDDED_ADMIN_STATE.festiveTheme.themeSnapshot);
           window.dispatchEvent(
             new CustomEvent(FESTIVE_UPDATED_EVENT, {
               detail: EMBEDDED_ADMIN_STATE.festiveTheme
@@ -540,10 +503,16 @@
             window.localStorage.setItem(CLOUD_THEME_CODE_KEY, String(codeToSave));
             window.localStorage.setItem(FESTIVE_STORAGE_KEY, serialized);
             window.localStorage.setItem(FESTIVE_LEGACY_KEY, serialized);
-            if (merged.themeSnapshot) {
+            if (merged.mode !== manual) {
+              delete merged.themeSnapshot;
+              if (merged.mode === auto) { merged.manualFestivalId = null; merged.royalManualPresetId = null; }
+              window.localStorage.removeItem(VISUAL_CACHE_KEY);
+              window.localStorage.setItem(FESTIVE_STORAGE_KEY, JSON.stringify(merged));
+              window.localStorage.setItem(FESTIVE_LEGACY_KEY, JSON.stringify(merged));
+            } else if (merged.themeSnapshot) {
               window.localStorage.setItem(VISUAL_CACHE_KEY, JSON.stringify(merged.themeSnapshot));
+              applyThemeSnapshotToDOM(merged.themeSnapshot);
             }
-            applyThemeSnapshotToDOM(merged.themeSnapshot || null);
             window.dispatchEvent(new CustomEvent(FESTIVE_UPDATED_EVENT, { detail: merged }));
             window.dispatchEvent(new CustomEvent(FESTIVE_UPDATED_EVENT_LEGACY, { detail: merged }));
           }
@@ -712,10 +681,15 @@
       window.localStorage.setItem(CLOUD_THEME_CODE_KEY, String(stateCode));
       window.localStorage.setItem(FESTIVE_STORAGE_KEY, serialized);
       window.localStorage.setItem(FESTIVE_LEGACY_KEY, serialized);
-      if (payload.themeSnapshot) {
+      if (payload.mode !== manual) {
+        delete payload.themeSnapshot;
+        window.localStorage.setItem(FESTIVE_STORAGE_KEY, JSON.stringify(payload));
+        window.localStorage.setItem(FESTIVE_LEGACY_KEY, JSON.stringify(payload));
+        window.localStorage.removeItem(VISUAL_CACHE_KEY);
+      } else if (payload.themeSnapshot) {
         window.localStorage.setItem(VISUAL_CACHE_KEY, JSON.stringify(payload.themeSnapshot));
+        applyThemeSnapshotToDOM(payload.themeSnapshot);
       }
-      applyThemeSnapshotToDOM(payload.themeSnapshot);
       window.dispatchEvent(new CustomEvent(FESTIVE_UPDATED_EVENT, { detail: payload }));
       window.dispatchEvent(new CustomEvent(FESTIVE_UPDATED_EVENT_LEGACY, { detail: payload }));
     } catch (e) {
