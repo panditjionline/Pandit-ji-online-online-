@@ -110,7 +110,7 @@
       ]
     },
     {
-      "source": "/(robots\\.txt|404\\.html|404|llms\\.txt|ai-catalog\\.json|\\.well-known/.*|manifest\\.json|sw\\.js|middleware\\.js|admin-control\\.js|shell-runtime\\.js)",
+      "source": "/(robots\\.txt|404\\.html|404|llms\\.txt|ai-catalog\\.json|seo-data\\.json|app-engine\\.txt|app-engine\\.html|panditji-app\\.bundle\\.js|panditji-app\\.bundle\\.css|download-center|indexnow\\.txt|\\.well-known/.*|api/.*|manifest\\.json|sw\\.js|middleware\\.js|admin-control\\.js|shell-runtime\\.js)",
       "headers": [
         { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
       ]
@@ -120,16 +120,6 @@
     { "source": "/home", "destination": "/", "permanent": true },
     { "source": "/index.html", "destination": "/", "permanent": true },
     { "source": "/index", "destination": "/", "permanent": true },
-    { "source": "/404.html", "destination": "/", "permanent": true },
-    { "source": "/404", "destination": "/", "permanent": true },
-    { "source": "/&", "destination": "/", "permanent": true },
-    { "source": "/8", "destination": "/", "permanent": true },
-    { "source": "/assets", "destination": "/", "permanent": true },
-    { "source": "/assets/", "destination": "/", "permanent": true },
-    { "source": "/Last", "destination": "/", "permanent": true },
-    { "source": "/last", "destination": "/", "permanent": true },
-    { "source": "/Fit]", "destination": "/", "permanent": true },
-    { "source": "/fit]", "destination": "/", "permanent": true },
     { "source": "/aaj-ka-panchang", "destination": "/panchang", "permanent": true },
     { "source": "/media", "destination": "/vedic-videos", "permanent": true },
     { "source": "/media/", "destination": "/vedic-videos", "permanent": true },
