@@ -20,8 +20,6 @@ Allow: /og-card/
 Allow: /og-svg/
 Allow: /googlea0e64484b80e13d1.html
 Disallow: /api/
-Disallow: /seo-data.json
-Disallow: /app-engine.txt
 Disallow: /app-engine.html
 Disallow: /ai-catalog.json
 Disallow: /llms.txt
@@ -37,8 +35,6 @@ Allow: /og-card/
 Allow: /og-svg/
 Allow: /googlea0e64484b80e13d1.html
 Disallow: /api/
-Disallow: /seo-data.json
-Disallow: /app-engine.txt
 Disallow: /app-engine.html
 Disallow: /ai-catalog.json
 Disallow: /llms.txt
