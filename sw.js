@@ -2,7 +2,6 @@
 // Designed for instant mobile copy-paste on GitHub (~75 lines, ~2.5 KB)
 const CACHE_NAME = 'panditji-v95';
 const PRECACHE_ASSETS = [
-  '/manifest.json',
   '/favicon.ico',
   '/favicon-48x48.png',
   '/favicon-96x96.png',
@@ -19,9 +18,9 @@ self.addEventListener('install', (event) => {
 
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key)))
-    )
+    caches.keys()
+      .then((keys) => Promise.all(keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key))))
+      .then(() => caches.open(CACHE_NAME).then((cache) => cache.delete('/manifest.json').catch(() => {})))
   );
   self.clients.claim();
 });
@@ -31,6 +30,7 @@ self.addEventListener('fetch', (event) => {
   if (url.origin !== self.location.origin || event.request.method !== 'GET') return;
   if (
     url.pathname === '/sw.js' ||
+    url.pathname === '/manifest.json' ||
     url.pathname === '/middleware.js' ||
     url.pathname === '/admin-control.js' ||
     url.pathname === '/seo-data.json' ||
