@@ -11,7 +11,7 @@
   "display_override": ["standalone", "minimal-ui"],
   "orientation": "portrait-primary",
   "background_color": "#090a0f",
-  "theme_color": "#FF6F00",
+  "theme_color": "#090a0f",
   "prefer_related_applications": false,
   "categories": ["lifestyle", "education", "reference", "utilities"],
   "icons": [
