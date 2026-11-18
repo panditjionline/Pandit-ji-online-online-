@@ -3302,6 +3302,7 @@ function injectEdgeRouteSeo(rawHtml, canonicalPath, info, seoEntry, _ua, options
 }
 
 async function middleware(request, event) {
+  try {
   if (request.headers && typeof request.headers.get === 'function' && request.headers.get('x-pj-internal-shell') === '1') {
     return new Response(null, {
       headers: {
@@ -3315,14 +3316,14 @@ async function middleware(request, event) {
   const ua = (request.headers && typeof request.headers.get === 'function' && request.headers.get('user-agent')) || '';
   const isProd = isProductionHost(url.hostname);
 
-  // 0. Dynamic /robots.txt (Disallows non-HTML system endpoints & blocks preview domains)
+  // 0. Dynamic /robots.txt fallback (Primary delivery bypassed via vercel.json proxy.matcher; never allow robots.txt indexing)
   if (pathname === '/robots.txt') {
     return new Response(generateEdgeRobotsTxt(isProd), {
       status: 200,
       headers: {
         'Content-Type': 'text/plain; charset=utf-8',
-        'X-Robots-Tag': isProd ? 'index, follow' : 'noindex, nofollow',
-        'Cache-Control': 'public, max-age=1800, s-maxage=1800'
+        'X-Robots-Tag': 'noindex, nofollow',
+        'Cache-Control': 'public, max-age=1800, s-maxage=3600, stale-while-revalidate=86400'
       }
     });
   }
@@ -4005,9 +4006,23 @@ ${itemsXml}
     passHeaders['x-robots-tag'] = 'noindex, nofollow';
   }
   return new Response(null, { headers: passHeaders });
+  } catch (_err) {
+    return new Response(null, {
+      headers: {
+        'x-middleware-next': '1'
+      }
+    });
+  }
 }
+
+const config = {
+  matcher: [
+    '/((?!robots\\.txt|ads\\.txt|googlea0e64484b80e13d1\\.html|sw\\.js|manifest\\.json|app-engine\\.txt|app-engine\\.html|panditji-app\\.bundle\\.js|panditji-app\\.bundle\\.css|admin-control\\.js|shell-runtime\\.js|seo-data\\.json|ai-catalog\\.json|llms\\.txt|indexnow\\.txt|favicon|pwa-|apple-touch-icon|app-icon|pandit-photo\\.jpg|pandit-shashank-sharma\\.jpg|FB_IMG_|\\.well-known/|assets/|deities/).*)'
+  ]
+};
 
 module.exports = middleware;
 module.exports.default = middleware;
+module.exports.config = config;
 
 

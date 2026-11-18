@@ -2,7 +2,8 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "trailingSlash": false,
   "proxy": {
-    "entrypoint": "middleware.js"
+    "entrypoint": "middleware.js",
+    "matcher": "/((?!robots\\.txt|ads\\.txt|googlea0e64484b80e13d1\\.html|sw\\.js|manifest\\.json|app-engine\\.txt|app-engine\\.html|panditji-app\\.bundle\\.js|panditji-app\\.bundle\\.css|admin-control\\.js|shell-runtime\\.js|seo-data\\.json|ai-catalog\\.json|llms\\.txt|indexnow\\.txt|favicon|pwa-|apple-touch-icon|app-icon|pandit-photo\\.jpg|pandit-shashank-sharma\\.jpg|FB_IMG_|\\.well-known/|assets/|deities/).*)"
   },
   "headers": [
     {
@@ -18,7 +19,7 @@
       "headers": [
         { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
         { "key": "Access-Control-Allow-Origin", "value": "*" },
-        { "key": "Cache-Control", "value": "public, max-age=3600" }
+        { "key": "Cache-Control", "value": "public, max-age=1800, s-maxage=3600, stale-while-revalidate=86400" }
       ]
     },
     {
