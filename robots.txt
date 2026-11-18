@@ -23,8 +23,6 @@ Disallow: /api/
 Disallow: /seo-data.json
 Disallow: /app-engine.txt
 Disallow: /app-engine.html
-Disallow: /panditji-app.bundle.js
-Disallow: /panditji-app.bundle.css
 Disallow: /ai-catalog.json
 Disallow: /llms.txt
 Disallow: /.well-known/
@@ -42,8 +40,6 @@ Disallow: /api/
 Disallow: /seo-data.json
 Disallow: /app-engine.txt
 Disallow: /app-engine.html
-Disallow: /panditji-app.bundle.js
-Disallow: /panditji-app.bundle.css
 Disallow: /ai-catalog.json
 Disallow: /llms.txt
 Disallow: /.well-known/
