@@ -3753,10 +3753,58 @@ ${itemsXml}
     }
   }
 
-  // 4b. Edge /api/festive-theme endpoint (Global 12-Month Sanatan Festive Theme Sync)
+  // 4b. Edge /api/festive-theme endpoint (Global 12-Month Sanatan Festive Theme Sync — Permanent GitHub + ntfy fallback)
   if (pathname === '/api/festive-theme') {
     const ntfyTopicUrl = 'https://ntfy.sh/pj_festive_live_v3_8958499979';
     const ntfyPollUrl = 'https://ntfy.sh/pj_festive_live_v3_8958499979/json?poll=1&since=72h';
+    const ADMIN_PHONE = '8958499979';
+    const ghToken = (typeof process !== 'undefined' && process.env && (process.env.GITHUB_FESTIVE_TOKEN || process.env.GITHUB_TOKEN)) || '';
+    const ghRepo = (typeof process !== 'undefined' && process.env && (process.env.GITHUB_FESTIVE_REPO || process.env.GITHUB_REPO)) || '';
+    const ghBranch = (typeof process !== 'undefined' && process.env && process.env.GITHUB_FESTIVE_BRANCH) || 'main';
+    const ghPath = (typeof process !== 'undefined' && process.env && process.env.GITHUB_FESTIVE_PATH) || 'data/festive-theme.json';
+
+    const cleanPhoneDigits = (raw) => {
+      const d = String(raw || '').replace(/\D/g, '');
+      if (d.length === 12 && d.startsWith('91')) return d.slice(2);
+      return d.length > 10 ? d.slice(-10) : d;
+    };
+
+    const sanitizeLightweightPayload = (bodyObj) => {
+      const src = bodyObj && typeof bodyObj === 'object' ? bodyObj : {};
+      const validMode =
+        src.mode === 'manual' ? 'manual' : src.mode === 'default_as_is' ? 'default_as_is' : 'auto';
+      return {
+        mode: validMode,
+        manualFestivalId: validMode === 'manual' ? (src.manualFestivalId || null) : null,
+        royalEngineEnabled: src.royalEngineEnabled !== false,
+        royalManualPresetId: validMode === 'manual' ? (src.royalManualPresetId || null) : null,
+        enableDayOfWeekTheme: src.enableDayOfWeekTheme !== false,
+        lightsMode: src.lightsMode || 'royal_jhalar',
+        jhalarAnimation: src.jhalarAnimation || 'twinkle',
+        toranStyle: src.toranStyle || 'marigold_mango',
+        cornerLadiMode: src.cornerLadiMode || 'auto',
+        autoPushpVarsha: Boolean(src.autoPushpVarsha),
+        enableGlowingHairline: src.enableGlowingHairline !== false,
+        hairlineIntensity: src.hairlineIntensity || 'medium',
+        hairlineEffect: src.hairlineEffect || 'rainbow',
+        hairlineSpeed: src.hairlineSpeed || 'normal',
+        showToran: src.showToran !== false,
+        sandhyaAutoGlow: src.sandhyaAutoGlow !== false,
+        customBadgeHi: String(src.customBadgeHi || '').trim(),
+        customGreetingHi: String(src.customGreetingHi || '').trim(),
+        customSubtitleHi: String(src.customSubtitleHi || '').trim(),
+        syncCode: Number(src.syncCode) || 0,
+        updatedAt: Date.now()
+      };
+    };
+
+    const utf8ToBase64 = (str) => {
+      const bytes = new TextEncoder().encode(str);
+      let binary = '';
+      for (let i = 0; i < bytes.length; i++) binary += String.fromCharCode(bytes[i]);
+      return btoa(binary);
+    };
+
     if (request.method === 'OPTIONS') {
       return new Response(null, {
         status: 204,
@@ -3767,54 +3815,190 @@ ${itemsXml}
         }
       });
     }
+
     if (request.method === 'POST' || request.method === 'PUT') {
       try {
         const bodyObj = await request.json();
-        const payload = Object.assign(
-          {
-            mode: 'auto',
-            manualFestivalId: null,
-            enableDayOfWeekTheme: true,
-            lightsMode: 'royal_jhalar',
-            updatedAt: Date.now()
-          },
-          bodyObj || {}
-        );
+        const headerPhone = cleanPhoneDigits(request.headers.get('x-admin-phone') || '');
+        const bodyPhone = cleanPhoneDigits((bodyObj && (bodyObj.adminPhone || bodyObj.adminBy)) || '');
+        if (headerPhone !== ADMIN_PHONE && bodyPhone !== ADMIN_PHONE) {
+          return new Response(
+            JSON.stringify({ ok: false, error: 'UNAUTHORIZED_ADMIN', message: 'केवल अधिकृत एडमिन (8958499979) को अनुमति है।' }),
+            {
+              status: 403,
+              headers: {
+                'Content-Type': 'application/json; charset=utf-8',
+                'Access-Control-Allow-Origin': '*',
+                'Cache-Control': 'no-store'
+              }
+            }
+          );
+        }
+
+        const payload = sanitizeLightweightPayload(bodyObj);
+        const serializedPayload = JSON.stringify(payload, null, 2);
+        let savedToGitHub = false;
+        let savedToNtfy = false;
+        let githubError = '';
+
+        // 1. Primary Permanent Storage: GitHub Repository JSON file (never expires, [skip ci] avoids rebuilds)
+        if (ghToken && ghRepo && ghRepo.includes('/')) {
+          try {
+            const ghApiUrl = `https://api.github.com/repos/${ghRepo}/contents/${ghPath}`;
+            const ghHeaders = {
+              Authorization: `Bearer ${ghToken}`,
+              Accept: 'application/vnd.github+json',
+              'User-Agent': 'PanditJiOnline-Edge/1.0',
+              'X-GitHub-Api-Version': '2022-11-28'
+            };
+            let existingSha = undefined;
+            const getCtrl = new AbortController();
+            const getTmr = setTimeout(() => getCtrl.abort(), 4000);
+            const getRes = await fetch(`${ghApiUrl}?ref=${encodeURIComponent(ghBranch)}`, {
+              headers: ghHeaders,
+              cache: 'no-store',
+              signal: getCtrl.signal
+            });
+            clearTimeout(getTmr);
+            if (getRes.ok) {
+              const meta = await getRes.json();
+              if (meta && meta.sha) existingSha = meta.sha;
+            }
+
+            const putBody = {
+              message: `Update 12-month festive theme config (${payload.mode}) [skip ci]`,
+              content: utf8ToBase64(serializedPayload),
+              branch: ghBranch
+            };
+            if (existingSha) putBody.sha = existingSha;
+
+            const putCtrl = new AbortController();
+            const putTmr = setTimeout(() => putCtrl.abort(), 5000);
+            const putRes = await fetch(ghApiUrl, {
+              method: 'PUT',
+              headers: Object.assign({ 'Content-Type': 'application/json' }, ghHeaders),
+              body: JSON.stringify(putBody),
+              signal: putCtrl.signal
+            });
+            clearTimeout(putTmr);
+            if (putRes.ok) {
+              savedToGitHub = true;
+            } else {
+              githubError = `GitHub HTTP ${putRes.status}`;
+            }
+          } catch (e) {
+            githubError = String(e && e.message ? e.message : 'GitHub write failed');
+          }
+        }
+
+        // 2. Secondary Lightweight Broadcast: ntfy.sh (<600 bytes, single clean POST)
         try {
-          const ctrl = typeof AbortController !== 'undefined' ? new AbortController() : null;
-          const tmr = ctrl ? setTimeout(() => ctrl.abort(), 2500) : null;
-          await fetch(ntfyTopicUrl, {
+          const ctrl = new AbortController();
+          const tmr = setTimeout(() => ctrl.abort(), 3500);
+          const ntfyRes = await fetch(ntfyTopicUrl, {
             method: 'POST',
             headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
             body: JSON.stringify(payload),
-            signal: ctrl ? ctrl.signal : undefined
+            signal: ctrl.signal
           });
-          if (tmr) clearTimeout(tmr);
+          clearTimeout(tmr);
+          if (ntfyRes.ok) savedToNtfy = true;
         } catch {}
-        return new Response(JSON.stringify({ ok: true, config: payload }), {
-          status: 200,
-          headers: {
-            'Content-Type': 'application/json; charset=utf-8',
-            'Access-Control-Allow-Origin': '*',
-            'Cache-Control': 'no-store'
+
+        if (!savedToGitHub && !savedToNtfy) {
+          return new Response(
+            JSON.stringify({
+              ok: false,
+              error: 'PERSISTENCE_FAILED',
+              githubError: githubError || 'GITHUB_FESTIVE_TOKEN not configured',
+              message: 'क्लाउड सेव विफल रहा। कृपया Vercel में GITHUB_FESTIVE_TOKEN व GITHUB_FESTIVE_REPO सेट करें या पुनः प्रयास करें।'
+            }),
+            {
+              status: 502,
+              headers: {
+                'Content-Type': 'application/json; charset=utf-8',
+                'Access-Control-Allow-Origin': '*',
+                'Cache-Control': 'no-store'
+              }
+            }
+          );
+        }
+
+        return new Response(
+          JSON.stringify({
+            ok: true,
+            persisted: true,
+            persistedTo: savedToGitHub ? 'github' : 'ntfy',
+            savedToGitHub,
+            savedToNtfy,
+            githubConfigured: Boolean(ghToken && ghRepo),
+            githubError: savedToGitHub ? '' : githubError,
+            config: payload
+          }),
+          {
+            status: 200,
+            headers: {
+              'Content-Type': 'application/json; charset=utf-8',
+              'Access-Control-Allow-Origin': '*',
+              'Cache-Control': 'no-store'
+            }
           }
-        });
+        );
       } catch {
-        return new Response(JSON.stringify({ error: 'Invalid JSON payload' }), {
+        return new Response(JSON.stringify({ ok: false, error: 'Invalid JSON payload' }), {
           status: 400,
           headers: { 'Content-Type': 'application/json; charset=utf-8' }
         });
       }
     }
+
     // GET /api/festive-theme
+    // Priority 1: Permanent GitHub Repository JSON (never expires, instant live read)
+    if (ghRepo && ghRepo.includes('/')) {
+      try {
+        const ghApiUrl = `https://api.github.com/repos/${ghRepo}/contents/${ghPath}?ref=${encodeURIComponent(ghBranch)}`;
+        const ghHeaders = {
+          Accept: 'application/vnd.github.raw+json',
+          'User-Agent': 'PanditJiOnline-Edge/1.0',
+          'X-GitHub-Api-Version': '2022-11-28'
+        };
+        if (ghToken) ghHeaders.Authorization = `Bearer ${ghToken}`;
+        const ctrl = new AbortController();
+        const tmr = setTimeout(() => ctrl.abort(), 3500);
+        const ghRes = await fetch(ghApiUrl, {
+          headers: ghHeaders,
+          cache: 'no-store',
+          signal: ctrl.signal
+        });
+        clearTimeout(tmr);
+        if (ghRes.ok) {
+          const parsed = await ghRes.json();
+          if (parsed && (parsed.mode === 'auto' || parsed.mode === 'manual' || parsed.mode === 'default_as_is')) {
+            return new Response(
+              JSON.stringify(Object.assign({}, parsed, { _source: 'github', persisted: true })),
+              {
+                status: 200,
+                headers: {
+                  'Content-Type': 'application/json; charset=utf-8',
+                  'Access-Control-Allow-Origin': '*',
+                  'Cache-Control': 'no-store, max-age=0'
+                }
+              }
+            );
+          }
+        }
+      } catch {}
+    }
+
+    // Priority 2: Recent ntfy.sh broadcast stream (if GitHub env vars are not yet configured)
     try {
-      const ctrl = typeof AbortController !== 'undefined' ? new AbortController() : null;
-      const tmr = ctrl ? setTimeout(() => ctrl.abort(), 2500) : null;
+      const ctrl = new AbortController();
+      const tmr = setTimeout(() => ctrl.abort(), 2500);
       const ntfyRes = await fetch(`${ntfyPollUrl}&_t=${Date.now()}`, {
         cache: 'no-store',
-        signal: ctrl ? ctrl.signal : undefined
+        signal: ctrl.signal
       });
-      if (tmr) clearTimeout(tmr);
+      clearTimeout(tmr);
       if (ntfyRes.ok) {
         const text = await ntfyRes.text();
         const lines = text.trim().split('\n');
@@ -3826,45 +4010,54 @@ ${itemsXml}
             if (evt && evt.event === 'message' && typeof evt.message === 'string') {
               const parsed = JSON.parse(evt.message);
               if (parsed && (parsed.mode === 'auto' || parsed.mode === 'manual' || parsed.mode === 'default_as_is')) {
-                return new Response(JSON.stringify(parsed), {
-                  status: 200,
-                  headers: {
-                    'Content-Type': 'application/json; charset=utf-8',
-                    'Access-Control-Allow-Origin': '*',
-                    'Cache-Control': 'no-store'
+                return new Response(
+                  JSON.stringify(Object.assign({}, parsed, { _source: 'ntfy', persisted: true })),
+                  {
+                    status: 200,
+                    headers: {
+                      'Content-Type': 'application/json; charset=utf-8',
+                      'Access-Control-Allow-Origin': '*',
+                      'Cache-Control': 'no-store, max-age=0'
+                    }
                   }
-                });
+                );
               }
             }
           } catch {}
         }
       }
     } catch {}
+
+    // Priority 3: Safe fallback (updatedAt: 1 — NEVER a future timestamp!)
     return new Response(
       JSON.stringify({
         mode: 'auto',
         manualFestivalId: null,
+        royalEngineEnabled: true,
+        royalManualPresetId: null,
         enableDayOfWeekTheme: true,
-        lightsMode: 'spectrum_line',
-        jhalarAnimation: 'running_chase',
+        lightsMode: 'royal_jhalar',
+        jhalarAnimation: 'twinkle',
         toranStyle: 'marigold_mango',
         cornerLadiMode: 'auto',
-        autoPushpVarsha: true,
+        autoPushpVarsha: false,
         enableGlowingHairline: true,
         hairlineIntensity: 'medium',
-        hairlineEffect: 'festival',
+        hairlineEffect: 'rainbow',
         hairlineSpeed: 'normal',
         showToran: true,
         sandhyaAutoGlow: true,
-        updatedAt: 1794750000000,
-        syncCode: 6761282450751360
+        updatedAt: 1,
+        syncCode: 0,
+        _source: 'fallback',
+        persisted: false
       }),
       {
         status: 200,
         headers: {
           'Content-Type': 'application/json; charset=utf-8',
           'Access-Control-Allow-Origin': '*',
-          'Cache-Control': 'no-store'
+          'Cache-Control': 'no-store, max-age=0'
         }
       }
     );

@@ -55,11 +55,19 @@
       ]
     },
     {
-      "source": "/(panditji-app\\.bundle\\.js|admin-control\\.js|shell-runtime\\.js)",
+      "source": "/(panditji-app\\.bundle\\.js|shell-runtime\\.js)",
       "headers": [
         { "key": "Content-Type", "value": "application/javascript; charset=utf-8" },
         { "key": "Access-Control-Allow-Origin", "value": "*" },
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/admin-control\\.js",
+      "headers": [
+        { "key": "Content-Type", "value": "application/javascript; charset=utf-8" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Cache-Control", "value": "public, max-age=60, must-revalidate" }
       ]
     },
     {

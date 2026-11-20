@@ -27,6 +27,8 @@ Disallow: /.well-known/
 Disallow: /404.html
 Disallow: /download-center
 Disallow: /indexnow.txt
+Disallow: /*?city=
+Disallow: /*?date=
 
 User-agent: Googlebot
 Allow: /
@@ -42,6 +44,8 @@ Disallow: /.well-known/
 Disallow: /404.html
 Disallow: /download-center
 Disallow: /indexnow.txt
+Disallow: /*?city=
+Disallow: /*?date=
 
 User-agent: Googlebot-Image
 Allow: /

@@ -67,7 +67,7 @@
 
   // Default Embedded Snapshot (Dynamically Replaced on Server Download - Zero Secrets)
   var EMBEDDED_ADMIN_STATE = /*__PANDITJI_EMBEDDED_ADMIN_STATE_START__*/ {
-  "version": "20.3.0",
+  "version": "20.4.0",
   "adminPhone": "8958499979",
   "festiveTheme": {
     "mode": "auto",
@@ -86,11 +86,11 @@
     "hairlineSpeed": "normal",
     "showToran": false,
     "sandhyaAutoGlow": true,
-    "updatedAt": 1794903505543,
+    "updatedAt": 1,
     "customBadgeHi": "",
     "customGreetingHi": "",
     "customSubtitleHi": "",
-    "syncCode": 7526481982151560,
+    "syncCode": 0,
     "adminBy": "8958499979",
     "adminPhone": "8958499979"
   },
@@ -103,7 +103,7 @@
       "AQ.Ab8••••••••keVg"
     ],
     "count": 4,
-    "updatedAt": 1794905725286
+    "updatedAt": 1
   }
 } /*__PANDITJI_EMBEDDED_ADMIN_STATE_END__*/;
 
@@ -367,7 +367,7 @@
           var serialized = JSON.stringify(EMBEDDED_ADMIN_STATE.festiveTheme);
           window.localStorage.setItem(FESTIVE_STORAGE_KEY, serialized);
           window.localStorage.setItem(FESTIVE_LEGACY_KEY, serialized);
-          if (EMBEDDED_ADMIN_STATE.festiveTheme.mode === manual && EMBEDDED_ADMIN_STATE.festiveTheme.themeSnapshot) {
+          if (EMBEDDED_ADMIN_STATE.festiveTheme.mode === 'manual' && EMBEDDED_ADMIN_STATE.festiveTheme.themeSnapshot) {
             window.localStorage.setItem(
               VISUAL_CACHE_KEY,
               JSON.stringify(EMBEDDED_ADMIN_STATE.festiveTheme.themeSnapshot)
@@ -423,96 +423,87 @@
 
   function syncFromRealtimeCloud() {
     if (typeof window.fetch !== 'function') return Promise.resolve(null);
-    if (Date.now() - Number(window.__pjLastAdminLocalActionAt || 0) < 60000) {
+    if (Date.now() - Number(window.__pjLastAdminLocalActionAt || 0) < 12000) {
       return Promise.resolve(null);
     }
 
-    // 1. Sync Festive & 7-Vaar Theme from Primary ntfy.sh JSON Stream (with strict timestamp protection)
+    // 1. Sync Festive & 7-Vaar Theme from authoritative /api/festive-theme endpoint (GitHub-backed)
     var themePromise = window
-      .fetch(NTFY_THEME_POLL_URL + '&_t=' + Date.now(), { cache: 'no-store' })
+      .fetch('/api/festive-theme?_t=' + Date.now(), {
+        cache: 'no-store',
+        headers: { Accept: 'application/json' }
+      })
       .then(function (r) {
-        return r.ok ? r.text() : '';
+        return r.ok ? r.json() : null;
       })
       .catch(function () {
-        return '';
+        return null;
       })
-      .then(function (text) {
-        if (!text) return null;
-        if (Date.now() - Number(window.__pjLastAdminLocalActionAt || 0) < 60000) return null;
-        var lines = text.trim().split('\n');
-        var latestMsg = null;
-        var latestEvtTime = 0;
-        for (var i = lines.length - 1; i >= 0; i--) {
-          var line = lines[i].trim();
-          if (!line) continue;
-          try {
-            var evt = JSON.parse(line);
-            if (evt && evt.event === 'message' && typeof evt.message === 'string') {
-              var parsed = JSON.parse(evt.message);
-              if (
-                parsed &&
-                (parsed.mode === 'auto' || parsed.mode === 'manual' || parsed.mode === 'default_as_is')
-              ) {
-                latestMsg = parsed;
-                latestEvtTime = Number(evt.time) ? Number(evt.time) * 1000 : 0;
-                break;
-              }
-            }
-          } catch (e) {
-            // continue
-          }
+      .then(function (latestMsg) {
+        if (
+          !latestMsg ||
+          (latestMsg.mode !== 'auto' && latestMsg.mode !== 'manual' && latestMsg.mode !== 'default_as_is')
+        ) {
+          return null;
         }
-        if (!latestMsg) return null;
+        if (latestMsg._source === 'fallback') return null;
+        if (Date.now() - Number(window.__pjLastAdminLocalActionAt || 0) < 12000) return null;
         try {
-          var savedCode = Number(window.localStorage.getItem(CLOUD_THEME_CODE_KEY) || '0');
           var currentRaw = window.localStorage.getItem(FESTIVE_STORAGE_KEY);
           var currentObj = currentRaw ? JSON.parse(currentRaw) : null;
           var localUpdated = Number((currentObj && currentObj.updatedAt) || 0);
-          var remoteUpdated = Number(latestMsg.updatedAt || latestEvtTime || 0);
-          var localStamp = extractStamp(savedCode || (currentObj && currentObj.syncCode));
-          var remoteStamp = extractStamp(latestMsg.syncCode);
-
-          if (
-            (localUpdated > 0 && (!remoteUpdated || remoteUpdated <= localUpdated + 1000)) ||
-            (localStamp > 0 && remoteStamp > 0 && remoteStamp <= localStamp)
-          ) {
-            return currentObj;
+          var nowMs = Date.now();
+          // Self-heal poisoned future timestamps saved by older builds
+          if (localUpdated > nowMs + 60000) {
+            localUpdated = 0;
           }
+          var remoteUpdated = Number(latestMsg.updatedAt || nowMs);
 
           var isChanged =
-            (latestMsg.syncCode && Number(latestMsg.syncCode) !== savedCode) ||
             !currentObj ||
             latestMsg.mode !== currentObj.mode ||
             (latestMsg.manualFestivalId || null) !== (currentObj.manualFestivalId || null) ||
+            (latestMsg.royalManualPresetId || null) !== (currentObj.royalManualPresetId || null) ||
+            Boolean(latestMsg.royalEngineEnabled !== false) !== Boolean(currentObj.royalEngineEnabled !== false) ||
+            Boolean(latestMsg.enableDayOfWeekTheme !== false) !== Boolean(currentObj.enableDayOfWeekTheme !== false) ||
             (latestMsg.lightsMode || 'royal_jhalar') !== (currentObj.lightsMode || 'royal_jhalar') ||
             (latestMsg.jhalarAnimation || 'twinkle') !== (currentObj.jhalarAnimation || 'twinkle') ||
             (latestMsg.toranStyle || 'marigold_mango') !== (currentObj.toranStyle || 'marigold_mango') ||
             (latestMsg.cornerLadiMode || 'auto') !== (currentObj.cornerLadiMode || 'auto') ||
             Boolean(latestMsg.autoPushpVarsha) !== Boolean(currentObj.autoPushpVarsha) ||
             Boolean(latestMsg.showToran !== false) !== Boolean(currentObj.showToran !== false) ||
+            Boolean(latestMsg.sandhyaAutoGlow !== false) !== Boolean(currentObj.sandhyaAutoGlow !== false) ||
             Boolean(latestMsg.enableGlowingHairline !== false) !== Boolean(currentObj.enableGlowingHairline !== false) ||
-            (latestMsg.hairlineEffect || 'rainbow') !== (currentObj.hairlineEffect || 'rainbow');
+            (latestMsg.hairlineIntensity || 'medium') !== (currentObj.hairlineIntensity || 'medium') ||
+            (latestMsg.hairlineEffect || 'rainbow') !== (currentObj.hairlineEffect || 'rainbow') ||
+            (latestMsg.hairlineSpeed || 'normal') !== (currentObj.hairlineSpeed || 'normal') ||
+            String(latestMsg.customBadgeHi || '') !== String(currentObj.customBadgeHi || '') ||
+            String(latestMsg.customGreetingHi || '') !== String(currentObj.customGreetingHi || '') ||
+            String(latestMsg.customSubtitleHi || '') !== String(currentObj.customSubtitleHi || '');
 
-          if (isChanged) {
+          if (isChanged || localUpdated === 0) {
             var merged = Object.assign({}, currentObj || {}, latestMsg, {
-              updatedAt: remoteUpdated || Date.now()
+              updatedAt: remoteUpdated
             });
+            delete merged._source;
+            delete merged.persisted;
             var codeToSave = Number(merged.syncCode) || encodeAbacusState(merged);
             merged.syncCode = codeToSave;
-            var serialized = JSON.stringify(merged);
-            window.localStorage.setItem(CLOUD_THEME_CODE_KEY, String(codeToSave));
-            window.localStorage.setItem(FESTIVE_STORAGE_KEY, serialized);
-            window.localStorage.setItem(FESTIVE_LEGACY_KEY, serialized);
-            if (merged.mode !== manual) {
+            if (merged.mode !== 'manual') {
               delete merged.themeSnapshot;
-              if (merged.mode === auto) { merged.manualFestivalId = null; merged.royalManualPresetId = null; }
+              if (merged.mode === 'auto') {
+                merged.manualFestivalId = null;
+                merged.royalManualPresetId = null;
+              }
               window.localStorage.removeItem(VISUAL_CACHE_KEY);
-              window.localStorage.setItem(FESTIVE_STORAGE_KEY, JSON.stringify(merged));
-              window.localStorage.setItem(FESTIVE_LEGACY_KEY, JSON.stringify(merged));
             } else if (merged.themeSnapshot) {
               window.localStorage.setItem(VISUAL_CACHE_KEY, JSON.stringify(merged.themeSnapshot));
               applyThemeSnapshotToDOM(merged.themeSnapshot);
             }
+            var serialized = JSON.stringify(merged);
+            window.localStorage.setItem(CLOUD_THEME_CODE_KEY, String(codeToSave));
+            window.localStorage.setItem(FESTIVE_STORAGE_KEY, serialized);
+            window.localStorage.setItem(FESTIVE_LEGACY_KEY, serialized);
             window.dispatchEvent(new CustomEvent(FESTIVE_UPDATED_EVENT, { detail: merged }));
             window.dispatchEvent(new CustomEvent(FESTIVE_UPDATED_EVENT_LEGACY, { detail: merged }));
           }
@@ -677,31 +668,19 @@
     payload.syncCode = stateCode;
 
     try {
+      delete payload.themeSnapshot;
       var serialized = JSON.stringify(payload);
       window.localStorage.setItem(CLOUD_THEME_CODE_KEY, String(stateCode));
       window.localStorage.setItem(FESTIVE_STORAGE_KEY, serialized);
       window.localStorage.setItem(FESTIVE_LEGACY_KEY, serialized);
-      if (payload.mode !== manual) {
-        delete payload.themeSnapshot;
-        window.localStorage.setItem(FESTIVE_STORAGE_KEY, JSON.stringify(payload));
-        window.localStorage.setItem(FESTIVE_LEGACY_KEY, JSON.stringify(payload));
+      if (payload.mode !== 'manual') {
         window.localStorage.removeItem(VISUAL_CACHE_KEY);
-      } else if (payload.themeSnapshot) {
-        window.localStorage.setItem(VISUAL_CACHE_KEY, JSON.stringify(payload.themeSnapshot));
-        applyThemeSnapshotToDOM(payload.themeSnapshot);
       }
       window.dispatchEvent(new CustomEvent(FESTIVE_UPDATED_EVENT, { detail: payload }));
       window.dispatchEvent(new CustomEvent(FESTIVE_UPDATED_EVENT_LEGACY, { detail: payload }));
     } catch (e) {
       // ignore
     }
-
-    var ntfyReq = window
-      .fetch(NTFY_THEME_TOPIC_URL, {
-        method: 'POST',
-        body: JSON.stringify(payload)
-      })
-      .catch(function () {});
 
     var serverReq = window
       .fetch('/api/festive-theme', {
@@ -714,7 +693,7 @@
       })
       .catch(function () {});
 
-    return Promise.allSettled([ntfyReq, serverReq]).then(function () {
+    return Promise.allSettled([serverReq]).then(function () {
       return pushConfigToGitHubRepo({ festiveTheme: payload }, adminPhone);
     });
   }

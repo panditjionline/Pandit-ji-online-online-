@@ -1,6 +1,7 @@
-// Pandit Ji Online — Lightweight Service Worker & Instant Engine Cache (v95)
-// Designed for instant mobile copy-paste on GitHub (~75 lines, ~2.5 KB)
-const CACHE_NAME = 'panditji-v95';
+// Pandit Ji Online — Lightweight Service Worker & Instant Engine Cache (v96)
+// Active ONLY on live production domain (panditjionline.online); self-unregisters on local/preview hosts
+const CACHE_NAME = 'panditji-v96';
+const IS_LIVE_PROD_HOST = /^(?:www\.)?panditjionline\.online$/i.test(self.location.hostname || '');
 const PRECACHE_ASSETS = [
   '/favicon.ico',
   '/favicon-48x48.png',
@@ -10,6 +11,10 @@ const PRECACHE_ASSETS = [
 ];
 
 self.addEventListener('install', (event) => {
+  if (!IS_LIVE_PROD_HOST) {
+    self.skipWaiting();
+    return;
+  }
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => cache.addAll(PRECACHE_ASSETS).catch(() => {}))
   );
@@ -17,6 +22,15 @@ self.addEventListener('install', (event) => {
 });
 
 self.addEventListener('activate', (event) => {
+  if (!IS_LIVE_PROD_HOST) {
+    event.waitUntil(
+      caches.keys()
+        .then((keys) => Promise.all(keys.map((key) => caches.delete(key))))
+        .then(() => self.registration.unregister())
+        .catch(() => {})
+    );
+    return;
+  }
   event.waitUntil(
     caches.keys()
       .then((keys) => Promise.all(keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key))))
@@ -26,6 +40,7 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
+  if (!IS_LIVE_PROD_HOST) return;
   const url = new URL(event.request.url);
   if (url.origin !== self.location.origin || event.request.method !== 'GET') return;
   if (
